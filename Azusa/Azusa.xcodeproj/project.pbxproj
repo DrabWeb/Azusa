@@ -11,6 +11,7 @@
 		53972DEAC0433850D6F03B99 /* Pods_AzusaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2678CC813C178D98EA2A33CE /* Pods_AzusaTests.framework */; };
 		778AB413AB8D92C59EBA5D4C /* Pods_Azusa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B738081D445F81D5FED696B /* Pods_Azusa.framework */; };
 		AE2340FD1DE5227300C6D3B3 /* MITCPCommunications.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */; };
+		AEC555801DE54062005D7640 /* MISong.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC5557F1DE54062005D7640 /* MISong.swift */; };
 		AEC7E1BF1DE40F3600E1EA3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1BE1DE40F3600E1EA3A /* AppDelegate.swift */; };
 		AEC7E1C11DE40F3600E1EA3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1C01DE40F3600E1EA3A /* ViewController.swift */; };
 		AEC7E1C31DE40F3600E1EA3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEC7E1C21DE40F3600E1EA3A /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		2678CC813C178D98EA2A33CE /* Pods_AzusaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AzusaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B738081D445F81D5FED696B /* Pods_Azusa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Azusa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MITCPCommunications.swift; path = Mio/MITCPCommunications.swift; sourceTree = "<group>"; };
+		AEC5557F1DE54062005D7640 /* MISong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MISong.swift; path = Mio/MISong.swift; sourceTree = "<group>"; };
 		AEC7E1BB1DE40F3600E1EA3A /* Azusa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Azusa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEC7E1BE1DE40F3600E1EA3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEC7E1C01DE40F3600E1EA3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,9 +105,18 @@
 		AE2340FB1DE5210300C6D3B3 /* Mio */ = {
 			isa = PBXGroup;
 			children = (
-				AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */,
+				AEC5557C1DE5404A005D7640 /* Objects */,
 			);
 			name = Mio;
+			sourceTree = "<group>";
+		};
+		AEC5557C1DE5404A005D7640 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */,
+				AEC5557F1DE54062005D7640 /* MISong.swift */,
+			);
+			name = Objects;
 			sourceTree = "<group>";
 		};
 		AEC7E1B21DE40F3600E1EA3A = {
@@ -472,6 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEC555801DE54062005D7640 /* MISong.swift in Sources */,
 				AEC7E1C11DE40F3600E1EA3A /* ViewController.swift in Sources */,
 				AEC7E1BF1DE40F3600E1EA3A /* AppDelegate.swift in Sources */,
 				AE2340FD1DE5227300C6D3B3 /* MITCPCommunications.swift in Sources */,
