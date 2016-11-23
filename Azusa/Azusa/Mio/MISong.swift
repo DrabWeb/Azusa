@@ -21,8 +21,20 @@ class MISong: NSObject {
     /// The artist of this song
     var artist : String = "";
     
+    /// Same as artist but for sorting
+    var artistSort : String = "";
+    
     /// The album of this song
     var album : String = "";
+    
+    /// Same as album but for sorting
+    var albumSort : String = "";
+    
+    /// The artist of this album
+    var albumArtist : String = "";
+    
+    /// Same as albumArtist but for sorting
+    var albumArtistSort : String = "";
     
     /// The title of this song
     var title : String = "";
@@ -30,20 +42,29 @@ class MISong: NSObject {
     /// The track number of this song
     var track : Int = -1;
     
+    /// From the MPD docs: a name for this song. This is not the song title. The exact meaning of this tag is not well-defined. It is often used by badly configured internet radio stations with broken tags to squeeze both the artist name and the song title in one tag.
+    var name : String = "";
+    
     /// The genre of this song
     var genre : String = "";
     
     /// The year this track was released
     var year : Int = -1;
     
-    /// The disc number this song is on
+    /// The artist who composed this song
+    var composer : String = "";
+    
+    /// The artist who performed this song
+    var performer : String = "";
+    
+    /// A human-readable comment about the song
+    var comment : String = "";
+    
+    /// The disc number for this song if it's in a multi-disc album
     var disc : Int = -1;
     
-    /// The total count of discs for the album this song is on
+    /// The total count of discs for the album this song is on(if it's in a multi-disc album)
     var discCount : Int = -1;
-    
-    /// The artist of this album
-    var albumArtist : String = "";
     
     /// The length of this song in seconds
     var length : Int = -1;
