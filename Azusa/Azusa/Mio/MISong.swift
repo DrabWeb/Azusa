@@ -77,9 +77,58 @@ class MISong: NSObject {
     
     /// The debug description for this song
     override var debugDescription : String {
-        return "\(self): \(self.title) by \(self.artist)(\(self.length) seconds long), in album \(self.album)";
+        return "\(self): \(self.displayTitle) by \(self.displayArtist)(\(self.length) seconds long), in \(self.displayAlbum)";
     }
     
+    /// Returns the display title for this song
+    var displayTitle : String {
+        // If the title is set...
+        if(self.title != "") {
+            // Return the title
+            return title;
+        }
+        // If the title isn't set...
+        else {
+            // If the file path is set...
+            if(self.file != "") {
+                // Return the filename without extension and path
+                return NSString(string: NSString(string: self.file).lastPathComponent).deletingPathExtension;
+            }
+            // If the file path isn't set...
+            else {
+                // Return a string saying we don't know the song title
+                return "Unknown Title";
+            }
+        }
+    }
+    
+    /// Returns the display artist for this song
+    var displayArtist : String {
+        // If artist is set...
+        if(album != "") {
+            // Return artist
+            return artist;
+        }
+        // If artist isn't set...
+        else {
+            // Return a string saying we don't know the artist
+            return "Unknown Artist";
+        }
+    }
+    
+    /// Returns the display album for this song
+    var displayAlbum : String {
+        // If the album is set...
+        if(album != "") {
+            // Return album
+            return album;
+        }
+        // If the album isn't set...
+        else {
+            // Return a string saying we don't know the album
+            return "Unknown Album";
+        }
+    }
     
     /// Init
     
