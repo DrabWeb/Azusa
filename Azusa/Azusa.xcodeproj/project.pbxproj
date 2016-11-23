@@ -1,0 +1,753 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2AD5E763B10F7F0B4E61684E /* Pods_AzusaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F92BD759DAB962EFD700C981 /* Pods_AzusaUITests.framework */; };
+		53972DEAC0433850D6F03B99 /* Pods_AzusaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2678CC813C178D98EA2A33CE /* Pods_AzusaTests.framework */; };
+		778AB413AB8D92C59EBA5D4C /* Pods_Azusa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B738081D445F81D5FED696B /* Pods_Azusa.framework */; };
+		AE2340FD1DE5227300C6D3B3 /* MITCPCommunications.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */; };
+		AEC7E1BF1DE40F3600E1EA3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1BE1DE40F3600E1EA3A /* AppDelegate.swift */; };
+		AEC7E1C11DE40F3600E1EA3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1C01DE40F3600E1EA3A /* ViewController.swift */; };
+		AEC7E1C31DE40F3600E1EA3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEC7E1C21DE40F3600E1EA3A /* Assets.xcassets */; };
+		AEC7E1C61DE40F3600E1EA3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEC7E1C41DE40F3600E1EA3A /* Main.storyboard */; };
+		AEC7E1D11DE40F3700E1EA3A /* AzusaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1D01DE40F3700E1EA3A /* AzusaTests.swift */; };
+		AEC7E1DC1DE40F3700E1EA3A /* AzusaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1DB1DE40F3700E1EA3A /* AzusaUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AEC7E1CD1DE40F3700E1EA3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AEC7E1B31DE40F3600E1EA3A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AEC7E1BA1DE40F3600E1EA3A;
+			remoteInfo = Azusa;
+		};
+		AEC7E1D81DE40F3700E1EA3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AEC7E1B31DE40F3600E1EA3A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AEC7E1BA1DE40F3600E1EA3A;
+			remoteInfo = Azusa;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1092E6258CF331260EE48436 /* Pods-AzusaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaTests/Pods-AzusaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2678CC813C178D98EA2A33CE /* Pods_AzusaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AzusaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B738081D445F81D5FED696B /* Pods_Azusa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Azusa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MITCPCommunications.swift; path = Mio/MITCPCommunications.swift; sourceTree = "<group>"; };
+		AEC7E1BB1DE40F3600E1EA3A /* Azusa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Azusa.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEC7E1BE1DE40F3600E1EA3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AEC7E1C01DE40F3600E1EA3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AEC7E1C21DE40F3600E1EA3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AEC7E1C51DE40F3600E1EA3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AEC7E1C71DE40F3600E1EA3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEC7E1CC1DE40F3700E1EA3A /* AzusaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AzusaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEC7E1D01DE40F3700E1EA3A /* AzusaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzusaTests.swift; sourceTree = "<group>"; };
+		AEC7E1D21DE40F3700E1EA3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEC7E1D71DE40F3700E1EA3A /* AzusaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AzusaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEC7E1DB1DE40F3700E1EA3A /* AzusaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzusaUITests.swift; sourceTree = "<group>"; };
+		AEC7E1DD1DE40F3700E1EA3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEC7E1F91DE4100C00E1EA3A /* Azusa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Azusa-Bridging-Header.h"; sourceTree = "<group>"; };
+		B7574045846D53593B02590C /* Pods-AzusaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaTests/Pods-AzusaTests.release.xcconfig"; sourceTree = "<group>"; };
+		D55C6E657156603734D1F603 /* Pods-Azusa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Azusa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Azusa/Pods-Azusa.release.xcconfig"; sourceTree = "<group>"; };
+		DA63A79CB83EE55853E4A1C4 /* Pods-AzusaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EC5825A0A2A836D281009B23 /* Pods-Azusa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Azusa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Azusa/Pods-Azusa.debug.xcconfig"; sourceTree = "<group>"; };
+		F8DA8A57AF983F0649C01875 /* Pods-AzusaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F92BD759DAB962EFD700C981 /* Pods_AzusaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AzusaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AEC7E1B81DE40F3600E1EA3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				778AB413AB8D92C59EBA5D4C /* Pods_Azusa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEC7E1C91DE40F3700E1EA3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53972DEAC0433850D6F03B99 /* Pods_AzusaTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEC7E1D41DE40F3700E1EA3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AD5E763B10F7F0B4E61684E /* Pods_AzusaUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A1A7A10D3210FACA4103F66A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B738081D445F81D5FED696B /* Pods_Azusa.framework */,
+				2678CC813C178D98EA2A33CE /* Pods_AzusaTests.framework */,
+				F92BD759DAB962EFD700C981 /* Pods_AzusaUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE2340FB1DE5210300C6D3B3 /* Mio */ = {
+			isa = PBXGroup;
+			children = (
+				AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */,
+			);
+			name = Mio;
+			sourceTree = "<group>";
+		};
+		AEC7E1B21DE40F3600E1EA3A = {
+			isa = PBXGroup;
+			children = (
+				AEC7E1BD1DE40F3600E1EA3A /* Azusa */,
+				AEC7E1CF1DE40F3700E1EA3A /* AzusaTests */,
+				AEC7E1DA1DE40F3700E1EA3A /* AzusaUITests */,
+				AEC7E1BC1DE40F3600E1EA3A /* Products */,
+				C9378EFBC710E0381AF9D5DE /* Pods */,
+				A1A7A10D3210FACA4103F66A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AEC7E1BC1DE40F3600E1EA3A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AEC7E1BB1DE40F3600E1EA3A /* Azusa.app */,
+				AEC7E1CC1DE40F3700E1EA3A /* AzusaTests.xctest */,
+				AEC7E1D71DE40F3700E1EA3A /* AzusaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AEC7E1BD1DE40F3600E1EA3A /* Azusa */ = {
+			isa = PBXGroup;
+			children = (
+				AEC7E1BE1DE40F3600E1EA3A /* AppDelegate.swift */,
+				AEC7E1C01DE40F3600E1EA3A /* ViewController.swift */,
+				AEC7E2041DE4104700E1EA3A /* Storyboards */,
+				AE2340FB1DE5210300C6D3B3 /* Mio */,
+				AEC7E24C1DE4295000E1EA3A /* Libraries */,
+				AEC7E1F91DE4100C00E1EA3A /* Azusa-Bridging-Header.h */,
+				AEC7E1C21DE40F3600E1EA3A /* Assets.xcassets */,
+				AEC7E1C71DE40F3600E1EA3A /* Info.plist */,
+			);
+			path = Azusa;
+			sourceTree = "<group>";
+		};
+		AEC7E1CF1DE40F3700E1EA3A /* AzusaTests */ = {
+			isa = PBXGroup;
+			children = (
+				AEC7E1D01DE40F3700E1EA3A /* AzusaTests.swift */,
+				AEC7E1D21DE40F3700E1EA3A /* Info.plist */,
+			);
+			path = AzusaTests;
+			sourceTree = "<group>";
+		};
+		AEC7E1DA1DE40F3700E1EA3A /* AzusaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AEC7E1DB1DE40F3700E1EA3A /* AzusaUITests.swift */,
+				AEC7E1DD1DE40F3700E1EA3A /* Info.plist */,
+			);
+			path = AzusaUITests;
+			sourceTree = "<group>";
+		};
+		AEC7E2041DE4104700E1EA3A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AEC7E1C41DE40F3600E1EA3A /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		AEC7E24C1DE4295000E1EA3A /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		C9378EFBC710E0381AF9D5DE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EC5825A0A2A836D281009B23 /* Pods-Azusa.debug.xcconfig */,
+				D55C6E657156603734D1F603 /* Pods-Azusa.release.xcconfig */,
+				1092E6258CF331260EE48436 /* Pods-AzusaTests.debug.xcconfig */,
+				B7574045846D53593B02590C /* Pods-AzusaTests.release.xcconfig */,
+				F8DA8A57AF983F0649C01875 /* Pods-AzusaUITests.debug.xcconfig */,
+				DA63A79CB83EE55853E4A1C4 /* Pods-AzusaUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AEC7E1BA1DE40F3600E1EA3A /* Azusa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEC7E1E01DE40F3700E1EA3A /* Build configuration list for PBXNativeTarget "Azusa" */;
+			buildPhases = (
+				DE88781D0EA0D46C3433C321 /* [CP] Check Pods Manifest.lock */,
+				AEC7E1B71DE40F3600E1EA3A /* Sources */,
+				AEC7E1B81DE40F3600E1EA3A /* Frameworks */,
+				AEC7E1B91DE40F3600E1EA3A /* Resources */,
+				4A43B80F2517933A01ACA7D2 /* [CP] Embed Pods Frameworks */,
+				4609561268C85868D907D239 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Azusa;
+			productName = Azusa;
+			productReference = AEC7E1BB1DE40F3600E1EA3A /* Azusa.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AEC7E1CB1DE40F3700E1EA3A /* AzusaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEC7E1E31DE40F3700E1EA3A /* Build configuration list for PBXNativeTarget "AzusaTests" */;
+			buildPhases = (
+				A5E3646E1117F3D084A4D368 /* [CP] Check Pods Manifest.lock */,
+				AEC7E1C81DE40F3700E1EA3A /* Sources */,
+				AEC7E1C91DE40F3700E1EA3A /* Frameworks */,
+				AEC7E1CA1DE40F3700E1EA3A /* Resources */,
+				C328E2EA98C3F0FB67E825F2 /* [CP] Embed Pods Frameworks */,
+				0C564FD405C9CC2B37D9BC1D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AEC7E1CE1DE40F3700E1EA3A /* PBXTargetDependency */,
+			);
+			name = AzusaTests;
+			productName = AzusaTests;
+			productReference = AEC7E1CC1DE40F3700E1EA3A /* AzusaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AEC7E1D61DE40F3700E1EA3A /* AzusaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEC7E1E61DE40F3700E1EA3A /* Build configuration list for PBXNativeTarget "AzusaUITests" */;
+			buildPhases = (
+				4611B9F3BD149521E5DA07A1 /* [CP] Check Pods Manifest.lock */,
+				AEC7E1D31DE40F3700E1EA3A /* Sources */,
+				AEC7E1D41DE40F3700E1EA3A /* Frameworks */,
+				AEC7E1D51DE40F3700E1EA3A /* Resources */,
+				116F6E6B2FD258FFB2065B7A /* [CP] Embed Pods Frameworks */,
+				838F78BF278069733F6BE4BE /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AEC7E1D91DE40F3700E1EA3A /* PBXTargetDependency */,
+			);
+			name = AzusaUITests;
+			productName = AzusaUITests;
+			productReference = AEC7E1D71DE40F3700E1EA3A /* AzusaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AEC7E1B31DE40F3600E1EA3A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = DrabWeb;
+				TargetAttributes = {
+					AEC7E1BA1DE40F3600E1EA3A = {
+						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
+					};
+					AEC7E1CB1DE40F3700E1EA3A = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AEC7E1BA1DE40F3600E1EA3A;
+					};
+					AEC7E1D61DE40F3700E1EA3A = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AEC7E1BA1DE40F3600E1EA3A;
+					};
+				};
+			};
+			buildConfigurationList = AEC7E1B61DE40F3600E1EA3A /* Build configuration list for PBXProject "Azusa" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AEC7E1B21DE40F3600E1EA3A;
+			productRefGroup = AEC7E1BC1DE40F3600E1EA3A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AEC7E1BA1DE40F3600E1EA3A /* Azusa */,
+				AEC7E1CB1DE40F3700E1EA3A /* AzusaTests */,
+				AEC7E1D61DE40F3700E1EA3A /* AzusaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AEC7E1B91DE40F3600E1EA3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEC7E1C31DE40F3600E1EA3A /* Assets.xcassets in Resources */,
+				AEC7E1C61DE40F3600E1EA3A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEC7E1CA1DE40F3700E1EA3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEC7E1D51DE40F3700E1EA3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0C564FD405C9CC2B37D9BC1D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AzusaTests/Pods-AzusaTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		116F6E6B2FD258FFB2065B7A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4609561268C85868D907D239 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Azusa/Pods-Azusa-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4611B9F3BD149521E5DA07A1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4A43B80F2517933A01ACA7D2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Azusa/Pods-Azusa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		838F78BF278069733F6BE4BE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5E3646E1117F3D084A4D368 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C328E2EA98C3F0FB67E825F2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AzusaTests/Pods-AzusaTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE88781D0EA0D46C3433C321 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AEC7E1B71DE40F3600E1EA3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEC7E1C11DE40F3600E1EA3A /* ViewController.swift in Sources */,
+				AEC7E1BF1DE40F3600E1EA3A /* AppDelegate.swift in Sources */,
+				AE2340FD1DE5227300C6D3B3 /* MITCPCommunications.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEC7E1C81DE40F3700E1EA3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEC7E1D11DE40F3700E1EA3A /* AzusaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEC7E1D31DE40F3700E1EA3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEC7E1DC1DE40F3700E1EA3A /* AzusaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AEC7E1CE1DE40F3700E1EA3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AEC7E1BA1DE40F3600E1EA3A /* Azusa */;
+			targetProxy = AEC7E1CD1DE40F3700E1EA3A /* PBXContainerItemProxy */;
+		};
+		AEC7E1D91DE40F3700E1EA3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AEC7E1BA1DE40F3600E1EA3A /* Azusa */;
+			targetProxy = AEC7E1D81DE40F3700E1EA3A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AEC7E1C41DE40F3600E1EA3A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AEC7E1C51DE40F3600E1EA3A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AEC7E1DE1DE40F3700E1EA3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AEC7E1DF1DE40F3700E1EA3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		AEC7E1E11DE40F3700E1EA3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC5825A0A2A836D281009B23 /* Pods-Azusa.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Azusa/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Azusa/Azusa-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		AEC7E1E21DE40F3700E1EA3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D55C6E657156603734D1F603 /* Pods-Azusa.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Azusa/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Azusa/Azusa-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		AEC7E1E41DE40F3700E1EA3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1092E6258CF331260EE48436 /* Pods-AzusaTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AzusaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = drabweb.AzusaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Azusa.app/Contents/MacOS/Azusa";
+			};
+			name = Debug;
+		};
+		AEC7E1E51DE40F3700E1EA3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7574045846D53593B02590C /* Pods-AzusaTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AzusaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = drabweb.AzusaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Azusa.app/Contents/MacOS/Azusa";
+			};
+			name = Release;
+		};
+		AEC7E1E71DE40F3700E1EA3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8DA8A57AF983F0649C01875 /* Pods-AzusaUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AzusaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = drabweb.AzusaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Azusa;
+			};
+			name = Debug;
+		};
+		AEC7E1E81DE40F3700E1EA3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA63A79CB83EE55853E4A1C4 /* Pods-AzusaUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AzusaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = drabweb.AzusaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Azusa;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AEC7E1B61DE40F3600E1EA3A /* Build configuration list for PBXProject "Azusa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEC7E1DE1DE40F3700E1EA3A /* Debug */,
+				AEC7E1DF1DE40F3700E1EA3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AEC7E1E01DE40F3700E1EA3A /* Build configuration list for PBXNativeTarget "Azusa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEC7E1E11DE40F3700E1EA3A /* Debug */,
+				AEC7E1E21DE40F3700E1EA3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AEC7E1E31DE40F3700E1EA3A /* Build configuration list for PBXNativeTarget "AzusaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEC7E1E41DE40F3700E1EA3A /* Debug */,
+				AEC7E1E51DE40F3700E1EA3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AEC7E1E61DE40F3700E1EA3A /* Build configuration list for PBXNativeTarget "AzusaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEC7E1E71DE40F3700E1EA3A /* Debug */,
+				AEC7E1E81DE40F3700E1EA3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AEC7E1B31DE40F3600E1EA3A /* Project object */;
+}
