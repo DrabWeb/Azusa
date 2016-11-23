@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="bBI-lt-a5U">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
@@ -678,11 +678,162 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
+        <!--Window Controller-->
+        <scene sceneID="wsw-Ur-YJb">
+            <objects>
+                <windowController id="bBI-lt-a5U" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="92f-jO-h1S">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="229" y="249" width="350" height="600"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1600" height="900"/>
+                        <value key="minSize" type="size" width="350" height="500"/>
+                    </window>
+                    <connections>
+                        <segue destination="Gpq-yk-DCa" kind="relationship" relationship="window.shadowedContentViewController" id="GMo-4P-UmE"/>
+                    </connections>
+                </windowController>
+                <customObject id="M9a-40-FI7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="872" y="250"/>
+        </scene>
+        <!--Music Player View Controller-->
+        <scene sceneID="Lxv-uR-chT">
+            <objects>
+                <viewController id="Gpq-yk-DCa" customClass="AZMusicPlayerViewController" customModule="Azusa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" wantsLayer="YES" id="JWh-ju-ZSA">
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mZD-g8-0yW" userLabel="Titlebar View">
+                                <rect key="frame" x="0.0" y="350" width="350" height="250"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="lv9-BA-r4O" userLabel="Cover Image" customClass="AZAspectFillImageView" customModule="Azusa" customModuleProvider="target">
+                                        <rect key="frame" x="-100" y="-100" width="550" height="450"/>
+                                        <contentFilters>
+                                            <ciFilter name="CIGaussianBlur">
+                                                <configuration>
+                                                    <null key="inputImage"/>
+                                                    <real key="inputRadius" value="35"/>
+                                                </configuration>
+                                            </ciFilter>
+                                        </contentFilters>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AZExampleCover" id="HtS-1n-w7x"/>
+                                    </imageView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="fP5-07-wCf" userLabel="Titlebar" customClass="AZGradientView" customModule="Azusa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="175" width="350" height="75"/>
+                                        <subviews>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="a8M-PB-nkr" userLabel="Menu Button">
+                                                <rect key="frame" x="30" y="30" width="15" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="15" id="XZH-dV-Lrn"/>
+                                                    <constraint firstAttribute="height" constant="15" id="mQx-gQ-Buv"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZMenu" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="JYJ-8T-S0b">
+                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="ddm-tN-e9L" userLabel="Search Button">
+                                                <rect key="frame" x="305" y="30" width="15" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="15" id="rL8-9A-sV4"/>
+                                                    <constraint firstAttribute="width" constant="15" id="tqg-pU-LKI"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZSearch" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="GtA-12-mbG">
+                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="ddm-tN-e9L" secondAttribute="bottom" constant="30" id="Bvm-Yv-pSc"/>
+                                            <constraint firstItem="a8M-PB-nkr" firstAttribute="top" secondItem="fP5-07-wCf" secondAttribute="top" constant="30" id="KkW-TV-ukb"/>
+                                            <constraint firstAttribute="bottom" secondItem="a8M-PB-nkr" secondAttribute="bottom" constant="30" id="gVO-md-DXF"/>
+                                            <constraint firstItem="ddm-tN-e9L" firstAttribute="top" secondItem="fP5-07-wCf" secondAttribute="top" constant="30" id="hSF-YM-1tj"/>
+                                            <constraint firstAttribute="trailing" secondItem="ddm-tN-e9L" secondAttribute="trailing" constant="30" id="nDb-hz-uJ9"/>
+                                            <constraint firstAttribute="height" constant="75" id="tQv-WG-Hz0"/>
+                                            <constraint firstItem="a8M-PB-nkr" firstAttribute="leading" secondItem="fP5-07-wCf" secondAttribute="leading" constant="30" id="zkq-iT-eaj"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.19693551936619719" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                                <real key="value" value="270"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="fP5-07-wCf" secondAttribute="trailing" id="0uI-0V-EAf"/>
+                                    <constraint firstAttribute="height" constant="250" id="4YZ-mF-N4h"/>
+                                    <constraint firstItem="fP5-07-wCf" firstAttribute="leading" secondItem="mZD-g8-0yW" secondAttribute="leading" id="Dke-an-8QL"/>
+                                    <constraint firstItem="lv9-BA-r4O" firstAttribute="leading" secondItem="mZD-g8-0yW" secondAttribute="leading" constant="-100" id="JIv-LA-L8Z"/>
+                                    <constraint firstItem="lv9-BA-r4O" firstAttribute="top" secondItem="mZD-g8-0yW" secondAttribute="top" constant="-100" id="Xfy-7H-T8P"/>
+                                    <constraint firstItem="fP5-07-wCf" firstAttribute="top" secondItem="mZD-g8-0yW" secondAttribute="top" id="ame-Lm-V7i"/>
+                                    <constraint firstAttribute="bottom" secondItem="lv9-BA-r4O" secondAttribute="bottom" constant="-100" id="mLE-0G-mfV"/>
+                                    <constraint firstAttribute="trailing" secondItem="lv9-BA-r4O" secondAttribute="trailing" constant="-100" id="y9v-NH-Z7i"/>
+                                </constraints>
+                            </customView>
+                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ubp-RK-Yel" userLabel="Cover Image Shadow Case">
+                                <rect key="frame" x="67" y="304" width="216" height="216"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="tvG-xV-qyy" userLabel="Cover Art Container" customClass="AZRoundedCornersView" customModule="Azusa" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="20" width="176" height="176"/>
+                                        <subviews>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XXW-Rb-vbO" userLabel="Cover Image View" customClass="AZAspectFillImageView" customModule="Azusa" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="176" height="176"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AZExampleCover" id="e1N-Nd-A8q"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="XXW-Rb-vbO" secondAttribute="trailing" id="1hk-4e-BKg"/>
+                                            <constraint firstItem="XXW-Rb-vbO" firstAttribute="top" secondItem="tvG-xV-qyy" secondAttribute="top" id="2C5-Qp-zRU"/>
+                                            <constraint firstItem="XXW-Rb-vbO" firstAttribute="leading" secondItem="tvG-xV-qyy" secondAttribute="leading" id="2hC-iP-GFx"/>
+                                            <constraint firstAttribute="height" constant="176" id="Ley-rs-edy"/>
+                                            <constraint firstAttribute="bottom" secondItem="XXW-Rb-vbO" secondAttribute="bottom" id="meA-mg-qy4"/>
+                                            <constraint firstAttribute="width" constant="176" id="zsc-IA-5JN"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="tvG-xV-qyy" firstAttribute="top" secondItem="Ubp-RK-Yel" secondAttribute="top" constant="20" id="04Y-WQ-ddJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="tvG-xV-qyy" secondAttribute="bottom" constant="20" symbolic="YES" id="OHn-Rw-x8h"/>
+                                    <constraint firstItem="tvG-xV-qyy" firstAttribute="centerX" secondItem="Ubp-RK-Yel" secondAttribute="centerX" id="a1W-5f-b0e"/>
+                                    <constraint firstItem="tvG-xV-qyy" firstAttribute="leading" secondItem="Ubp-RK-Yel" secondAttribute="leading" constant="20" symbolic="YES" id="kJy-0z-UFS"/>
+                                </constraints>
+                                <shadow key="shadow" blurRadius="5">
+                                    <color key="color" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                </shadow>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="mZD-g8-0yW" secondAttribute="trailing" id="Adf-zO-OR7"/>
+                            <constraint firstItem="Ubp-RK-Yel" firstAttribute="top" secondItem="JWh-ju-ZSA" secondAttribute="top" constant="80" id="FNc-YG-d3I"/>
+                            <constraint firstItem="Ubp-RK-Yel" firstAttribute="centerX" secondItem="JWh-ju-ZSA" secondAttribute="centerX" id="SkI-hH-JBp"/>
+                            <constraint firstItem="mZD-g8-0yW" firstAttribute="leading" secondItem="JWh-ju-ZSA" secondAttribute="leading" id="x3t-O1-Rrt"/>
+                            <constraint firstItem="mZD-g8-0yW" firstAttribute="top" secondItem="JWh-ju-ZSA" secondAttribute="top" id="xxE-QV-4H4"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="LMc-PX-EZb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="872" y="999"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Azusa" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
+                    <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -750,4 +901,9 @@
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AZExampleCover" width="1400" height="1400"/>
+        <image name="AZMenu" width="15" height="15"/>
+        <image name="AZSearch" width="15" height="15"/>
+    </resources>
 </document>
