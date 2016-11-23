@@ -115,6 +115,22 @@ class MISong {
                     break;
                 
                 case "Last-Modified:":
+                    // Replace the T with a space and remove the Z in 'content'
+                    content = content.replacingOccurrences(of: "T", with: " ");
+                    content = content.replacingOccurrences(of: "Z", with: "");
+                    
+                    /// The date formatter for reading the last modified date
+                    let dateFormatter : DateFormatter = DateFormatter();
+                    
+                    // Setup the date formatter
+                    dateFormatter.timeZone = NSTimeZone.default;
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss";
+                    
+                    /// The date from 'contents'
+                    let date : NSDate? = dateFormatter.date(from: content) as NSDate?;
+                    
+                    // Set the last modified date
+                    self.lastModified = ((date == nil) ? NSDate(timeIntervalSince1970: TimeInterval(0)) : date!);
                     break;
                 
                 case "Artist:":
@@ -142,6 +158,9 @@ class MISong {
                     break;
                 
                 case "Disc:":
+                    let contentSplitAtSlash : [String] = content.components(separatedBy: "/");
+                    disc = Int(NSString(string: contentSplitAtSlash[0]).intValue);
+                    discCount = Int(NSString(string: contentSplitAtSlash[1]).intValue);
                     break;
                 
                 case "AlbumArtist:":
