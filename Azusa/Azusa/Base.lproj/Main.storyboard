@@ -705,11 +705,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mZD-g8-0yW" userLabel="Titlebar View">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="mZD-g8-0yW" userLabel="Top Container">
                                 <rect key="frame" x="0.0" y="350" width="350" height="250"/>
                                 <subviews>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="lv9-BA-r4O" userLabel="Cover Image" customClass="AZAspectFillImageView" customModule="Azusa" customModuleProvider="target">
-                                        <rect key="frame" x="-100" y="-100" width="550" height="450"/>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="lv9-BA-r4O" userLabel="Cover Image Blurred Image View" customClass="AZAspectFillImageView" customModule="Azusa" customModuleProvider="target">
+                                        <rect key="frame" x="-50" y="-100" width="450" height="450"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="450" id="A6c-bB-sjh"/>
+                                            <constraint firstAttribute="height" constant="450" id="QzT-NW-Ohq"/>
+                                        </constraints>
                                         <contentFilters>
                                             <ciFilter name="CIGaussianBlur">
                                                 <configuration>
@@ -718,7 +722,7 @@
                                                 </configuration>
                                             </ciFilter>
                                         </contentFilters>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AZExampleCover" id="HtS-1n-w7x"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyUpOrDown" image="AZExampleCoverMoe" id="HtS-1n-w7x"/>
                                     </imageView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="fP5-07-wCf" userLabel="Titlebar" customClass="AZGradientView" customModule="Azusa" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="175" width="350" height="75"/>
@@ -733,6 +737,9 @@
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
+                                                <connections>
+                                                    <action selector="titlebarPlaylistButtonPressed:" target="Gpq-yk-DCa" id="Dcz-BE-PDD"/>
+                                                </connections>
                                             </button>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="ddm-tN-e9L" userLabel="Search Button">
                                                 <rect key="frame" x="305" y="30" width="15" height="15"/>
@@ -744,6 +751,9 @@
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
+                                                <connections>
+                                                    <action selector="titlebarSearchButtonPressed:" target="Gpq-yk-DCa" id="M7l-mt-z6d"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -757,7 +767,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.19693551936619719" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.20191461267605634" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="endColor">
                                                 <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -771,23 +781,21 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="fP5-07-wCf" secondAttribute="trailing" id="0uI-0V-EAf"/>
                                     <constraint firstAttribute="height" constant="250" id="4YZ-mF-N4h"/>
+                                    <constraint firstItem="lv9-BA-r4O" firstAttribute="centerY" secondItem="mZD-g8-0yW" secondAttribute="centerY" id="AUN-UX-F2H"/>
                                     <constraint firstItem="fP5-07-wCf" firstAttribute="leading" secondItem="mZD-g8-0yW" secondAttribute="leading" id="Dke-an-8QL"/>
-                                    <constraint firstItem="lv9-BA-r4O" firstAttribute="leading" secondItem="mZD-g8-0yW" secondAttribute="leading" constant="-100" id="JIv-LA-L8Z"/>
-                                    <constraint firstItem="lv9-BA-r4O" firstAttribute="top" secondItem="mZD-g8-0yW" secondAttribute="top" constant="-100" id="Xfy-7H-T8P"/>
                                     <constraint firstItem="fP5-07-wCf" firstAttribute="top" secondItem="mZD-g8-0yW" secondAttribute="top" id="ame-Lm-V7i"/>
-                                    <constraint firstAttribute="bottom" secondItem="lv9-BA-r4O" secondAttribute="bottom" constant="-100" id="mLE-0G-mfV"/>
-                                    <constraint firstAttribute="trailing" secondItem="lv9-BA-r4O" secondAttribute="trailing" constant="-100" id="y9v-NH-Z7i"/>
+                                    <constraint firstItem="lv9-BA-r4O" firstAttribute="centerX" secondItem="mZD-g8-0yW" secondAttribute="centerX" id="nvE-qi-UhN"/>
                                 </constraints>
                             </customView>
-                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ubp-RK-Yel" userLabel="Cover Image Shadow Case">
+                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ubp-RK-Yel" userLabel="Cover Image Shadow Container">
                                 <rect key="frame" x="67" y="304" width="216" height="216"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="tvG-xV-qyy" userLabel="Cover Art Container" customClass="AZRoundedCornersView" customModule="Azusa" customModuleProvider="target">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="tvG-xV-qyy" userLabel="Cover Image Container" customClass="AZRoundedCornersView" customModule="Azusa" customModuleProvider="target">
                                         <rect key="frame" x="20" y="20" width="176" height="176"/>
                                         <subviews>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XXW-Rb-vbO" userLabel="Cover Image View" customClass="AZAspectFillImageView" customModule="Azusa" customModuleProvider="target">
+                                            <imageView horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="XXW-Rb-vbO" userLabel="Cover Image Image View">
                                                 <rect key="frame" x="0.0" y="0.0" width="176" height="176"/>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AZExampleCover" id="e1N-Nd-A8q"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="AZExampleCoverMoe" id="e1N-Nd-A8q"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -824,6 +832,15 @@
                             <constraint firstItem="mZD-g8-0yW" firstAttribute="top" secondItem="JWh-ju-ZSA" secondAttribute="top" id="xxE-QV-4H4"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="coverImageBlurredImageView" destination="lv9-BA-r4O" id="6mv-T5-xcK"/>
+                        <outlet property="coverImageContainer" destination="Ubp-RK-Yel" id="PDQ-rv-xhC"/>
+                        <outlet property="coverImageImageView" destination="XXW-Rb-vbO" id="hxg-Yq-nNJ"/>
+                        <outlet property="titlebarContainer" destination="fP5-07-wCf" id="gn7-5U-zcA"/>
+                        <outlet property="titlebarPlaylistButton" destination="a8M-PB-nkr" id="KNd-MG-Q08"/>
+                        <outlet property="titlebarSearchButton" destination="ddm-tN-e9L" id="GOW-o7-CVM"/>
+                        <outlet property="topContainer" destination="mZD-g8-0yW" id="vrV-7W-5Xq"/>
+                    </connections>
                 </viewController>
                 <customObject id="LMc-PX-EZb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -902,7 +919,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AZExampleCover" width="1400" height="1400"/>
+        <image name="AZExampleCoverMoe" width="1400" height="1400"/>
         <image name="AZMenu" width="15" height="15"/>
         <image name="AZSearch" width="15" height="15"/>
     </resources>

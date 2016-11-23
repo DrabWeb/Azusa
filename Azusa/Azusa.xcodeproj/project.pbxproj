@@ -12,6 +12,7 @@
 		778AB413AB8D92C59EBA5D4C /* Pods_Azusa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B738081D445F81D5FED696B /* Pods_Azusa.framework */; };
 		AE12BE361DE57B2600BAF030 /* AZGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE12BE351DE57B2600BAF030 /* AZGradientView.swift */; };
 		AE2340FD1DE5227300C6D3B3 /* MITCPCommunications.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */; };
+		AE25C3221DE645D100DE4A97 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = AE25C3211DE645D100DE4A97 /* Fonts */; };
 		AE6E222F1DE56E79003DBC94 /* AZAspectFillImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E222E1DE56E79003DBC94 /* AZAspectFillImageView.swift */; };
 		AE6E22311DE57102003DBC94 /* AZMusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E22301DE57102003DBC94 /* AZMusicPlayerViewController.swift */; };
 		AE6E22331DE57711003DBC94 /* AZRoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E22321DE57711003DBC94 /* AZRoundedCornersView.swift */; };
@@ -47,6 +48,7 @@
 		9B738081D445F81D5FED696B /* Pods_Azusa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Azusa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE12BE351DE57B2600BAF030 /* AZGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZGradientView.swift; sourceTree = "<group>"; };
 		AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MITCPCommunications.swift; path = Mio/MITCPCommunications.swift; sourceTree = "<group>"; };
+		AE25C3211DE645D100DE4A97 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = Azusa/Resources/Fonts; sourceTree = "<group>"; };
 		AE6E222E1DE56E79003DBC94 /* AZAspectFillImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZAspectFillImageView.swift; sourceTree = "<group>"; };
 		AE6E22301DE57102003DBC94 /* AZMusicPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerViewController.swift; sourceTree = "<group>"; };
 		AE6E22321DE57711003DBC94 /* AZRoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZRoundedCornersView.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				AEC7E1BD1DE40F3600E1EA3A /* Azusa */,
+				AE25C3211DE645D100DE4A97 /* Fonts */,
 				AEC7E1CF1DE40F3700E1EA3A /* AzusaTests */,
 				AEC7E1DA1DE40F3700E1EA3A /* AzusaUITests */,
 				AEC7E1BC1DE40F3600E1EA3A /* Products */,
@@ -341,6 +344,7 @@
 			files = (
 				AEC7E1C31DE40F3600E1EA3A /* Assets.xcassets in Resources */,
 				AEC7E1C61DE40F3600E1EA3A /* Main.storyboard in Resources */,
+				AE25C3221DE645D100DE4A97 /* Fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,6 @@ class AZAspectFillImageView: NSImageView {
 //        self.layer = CALayer();
         self.layer?.contentsGravity = kCAGravityResizeAspectFill;
         self.layer?.contents = self.image;
-//        self.wantsLayer = true;
+        self.wantsLayer = true;
     }
 }
