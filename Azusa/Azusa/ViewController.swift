@@ -35,30 +35,24 @@ class ViewController: NSViewController, GCDAsyncSocketDelegate {
             // Get the output of the entered command
             self.communications!.outputOf(command: self.commandField.stringValue, completionHandler: { output in
                 // Display the output
-                print("Output of \"\(self.commandField.stringValue)\": \n\(output)");
+//                print("Output of \"\(self.commandField.stringValue)\": \n\(output)");
+                
+                var outputSplitAtNewLine : [String] = output.components(separatedBy: "\n");
+                
+                outputSplitAtNewLine.removeFirst();
+                outputSplitAtNewLine.removeLast();
+                
+                var cleanedOutput : String = "";
+                
+                for(currentIndex, currentLine) in outputSplitAtNewLine.enumerated() {
+                    cleanedOutput = cleanedOutput + currentLine + ((currentIndex == (outputSplitAtNewLine.count - 1)) ? "" : "\n");
+                }
+                
+                for(_, currentSong) in MISong.from(songList: cleanedOutput).enumerated() {
+                    print(currentSong.debugDescription);
+                }
             });
         });
-        
-        /// A test string for testing MISong parsing
-        let songTestString : String = "file: K-On!/K-ON MHB D1/01 Cagayake! GIRLS.mp3\n" +
-        "Last-Modified: 2015-06-12T17:07:42Z\n" +
-        "Artist: HO-KAGO TEA TIME/Toyasaki Aki & Hisaka Youko & Satou Satomi & Kotobuki Minako\n" +
-        "Album: K-ON! MUSIC HISTORY'S BOX CD1\n" +
-        "Title: Cagayake! GIRLS\n" +
-        "Track: 1\n" +
-        "Genre: Anime\n" +
-        "Date: 2013\n" +
-        "Disc: 1/15\n" +
-        "AlbumArtist: HO-KAGO TEA TIME\n" +
-        "Time: 250\n" +
-        "Pos: 0\n" +
-        "Id: 47\n"
-        
-        /// The song from 'songTestString'
-        let song : MISong = MISong(string: songTestString);
-        
-        // Print the song's description
-        print(song.description);
     }
     
     override func viewDidLoad() {

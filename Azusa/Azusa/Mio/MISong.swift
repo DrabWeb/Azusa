@@ -8,7 +8,7 @@
 import Foundation
 
 /// Represents a song in MPD
-class MISong {
+class MISong: NSObject {
     
     /// Variables
     
@@ -55,12 +55,36 @@ class MISong {
     var id : Int = -1;
     
     /// The debug description for this song
-    var description : String {
+    override var debugDescription : String {
         return "\(self): \(self.title) by \(self.artist)(\(self.length) seconds long), in album \(self.album)";
     }
     
     
     /// Init
+    
+    /// Returns an array of MISongs based on the given string(should be a playlistinfo or similar)
+    static func from(songList : String) -> [MISong] {
+        /// The array of MISongs to return
+        var songs : [MISong] = [];
+        
+        /// 'songList' split at every "file:"
+        var songListSplitAtFile : [String] = songList.components(separatedBy: "file:");
+        
+        // Remove the first item(it's blank)
+        songListSplitAtFile.removeFirst();
+        
+        // For every item in 'songListSplitAtFile'...
+        for(_, currentSongListItem) in songListSplitAtFile.enumerated() {
+            /// 'currentSongListItem' with "file:" on the front
+            let currentSongListItemWithFile : String = "file:" + currentSongListItem;
+            
+            // Add the MISong for the current item to 'songs'
+            songs.append(MISong(string: currentSongListItemWithFile));
+        }
+        
+        // Return the songs
+        return songs;
+    }
     
     /// Init from a string returned by MPD
     init(string : String) {
