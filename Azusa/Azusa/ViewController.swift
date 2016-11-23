@@ -16,16 +16,26 @@ class ViewController: NSViewController, GCDAsyncSocketDelegate {
     /// The field for entering the port to connect to
     @IBOutlet weak var portField: NSTextField!
     
+    /// The field for entering the MPD command to run
+    @IBOutlet weak var commandField: NSTextField!
+    
+    /// A 'MITCPCommunications' object for testing
     var communications : MITCPCommunications? = nil;
     
-    /// When the user presses the "Run Tests" button...
-    @IBAction func runTestsButtonPressed(_ sender: Any) {
-        communications = MITCPCommunications(host: addressField.stringValue, port: Int(portField.intValue));
+    /// When the user presses the "Run" button...
+    @IBAction func runButtonPressed(_ sender: Any) {
+        // If communications is nil...
+        if(communications == nil) {
+            // Create the communications object with the entered address and port
+            communications = MITCPCommunications(host: addressField.stringValue, port: Int(portField.intValue));
+        }
         
+        // Connect to the server
         communications!.connect(completionHandler: { socket in
-            self.communications!.outputOf(command: "stats", completionHandler: { output in
-                print("Got output:");
-                print(output);
+            // Get the output of the entered command
+            self.communications!.outputOf(command: self.commandField.stringValue, completionHandler: { output in
+                // Display the output
+                print("Output of \"\(self.commandField.stringValue)\": \n\(output)");
             });
         });
     }

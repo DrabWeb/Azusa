@@ -11,7 +11,7 @@ import CocoaAsyncSocket
 /// The different tags for 'GCDAsyncSocket' requests in 'MITCPCommunications'
 enum MITCPTags : Int {
     /// The tag for write requests made from 'outputOf'
-    case commandOutput = 0
+    case commandOutput
 }
 
 class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
@@ -79,11 +79,8 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // Print the tag that was used to write the data
         print("MITCPCommunications: Data was written with tag \"\(tag)\"");
         
-        // If the tag is MITCPTags.commandOutput(meaning the write was from 'outputOf')...
-        if(tag == MITCPTags.commandOutput.rawValue) {
-            // Read all the data in the MPD output
-            sock.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTags.commandOutput.rawValue);
-        }
+        // Read all the data in the MPD output
+        sock.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
     }
     
     func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {

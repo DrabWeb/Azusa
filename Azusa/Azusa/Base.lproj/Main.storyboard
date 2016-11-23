@@ -702,34 +702,46 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5KZ-Ln-SV4" userLabel="Run Tests Button">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ha6-K4-NFP" userLabel="Command Field">
+                                <rect key="frame" x="20" y="168" width="440" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="Command" bezelStyle="round" id="DzB-PG-bkv">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5KZ-Ln-SV4" userLabel="Run Button">
                                 <rect key="frame" x="14" y="13" width="452" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="vrZ-3S-Veu"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Run Tests" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DHS-3t-v2O" userLabel="Cell">
+                                <buttonCell key="cell" type="push" title="Run" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DHS-3t-v2O" userLabel="Cell">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="runTestsButtonPressed:" target="XfG-lQ-9wD" id="GtV-XF-Z8a"/>
+                                    <action selector="runButtonPressed:" target="XfG-lQ-9wD" id="gBo-p8-iqG"/>
                                 </connections>
                             </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="JFE-FN-x2b" secondAttribute="trailing" constant="20" id="3C1-IQ-exI"/>
+                            <constraint firstAttribute="trailing" secondItem="ha6-K4-NFP" secondAttribute="trailing" constant="20" id="82D-DX-qME"/>
                             <constraint firstItem="JFE-FN-x2b" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="AEc-ko-NO2"/>
+                            <constraint firstItem="ha6-K4-NFP" firstAttribute="top" secondItem="JFE-FN-x2b" secondAttribute="bottom" constant="8" id="B9c-PB-3cK"/>
                             <constraint firstItem="EkA-Kc-YLf" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="HLo-7r-X1G"/>
                             <constraint firstItem="5KZ-Ln-SV4" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="IeC-o2-62a"/>
                             <constraint firstAttribute="bottom" secondItem="5KZ-Ln-SV4" secondAttribute="bottom" constant="20" id="KSc-7R-Szi"/>
                             <constraint firstAttribute="trailing" secondItem="5KZ-Ln-SV4" secondAttribute="trailing" constant="20" id="mdu-ml-BEP"/>
                             <constraint firstAttribute="trailing" secondItem="EkA-Kc-YLf" secondAttribute="trailing" constant="20" id="pJZ-W4-kQZ"/>
+                            <constraint firstItem="ha6-K4-NFP" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="ppa-mb-ltd"/>
                             <constraint firstItem="JFE-FN-x2b" firstAttribute="top" secondItem="EkA-Kc-YLf" secondAttribute="bottom" constant="8" id="rJA-Fx-JfA"/>
                             <constraint firstItem="EkA-Kc-YLf" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="vto-qx-QtA"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addressField" destination="EkA-Kc-YLf" id="n3x-cN-ZyR"/>
+                        <outlet property="commandField" destination="ha6-K4-NFP" id="8sy-Jo-dq7"/>
                         <outlet property="portField" destination="JFE-FN-x2b" id="N6D-16-Kh7"/>
                     </connections>
                 </viewController>
