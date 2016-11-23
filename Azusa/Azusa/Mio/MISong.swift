@@ -182,8 +182,24 @@ class MISong: NSObject {
                     self.artist = content;
                     break;
                 
+                case "ArtistSort:":
+                    self.artistSort = content;
+                    break;
+                
                 case "Album:":
                     self.album = content;
+                    break;
+                
+                case "AlbumSort:":
+                    self.albumSort = content;
+                    break;
+                
+                case "AlbumArtist:":
+                    self.albumArtist = content;
+                    break;
+                
+                case "AlbumArtistSort:":
+                    self.albumArtistSort = content;
                     break;
                 
                 case "Title:":
@@ -194,6 +210,10 @@ class MISong: NSObject {
                     self.track = Int(NSString(string: content).intValue);
                     break;
                 
+                case "Name:":
+                    self.name = content;
+                    break;
+                
                 case "Genre:":
                     self.genre = content;
                     break;
@@ -202,14 +222,22 @@ class MISong: NSObject {
                     self.year = Int(NSString(string: content).intValue);
                     break;
                 
+                case "Composer:":
+                    self.composer = content;
+                    break;
+                
+                case "Performer:":
+                    self.performer = content;
+                    break;
+                
+                case "Comment:":
+                    self.comment = content;
+                    break;
+                
                 case "Disc:":
                     let contentSplitAtSlash : [String] = content.components(separatedBy: "/");
                     disc = Int(NSString(string: contentSplitAtSlash[0]).intValue);
                     discCount = Int(NSString(string: contentSplitAtSlash[1]).intValue);
-                    break;
-                
-                case "AlbumArtist:":
-                    self.albumArtist = content;
                     break;
                 
                 case "Time:":
