@@ -139,8 +139,45 @@ class AZMusicPlayerViewController: NSViewController {
     /// The loop mode playback control button
     @IBOutlet weak var playbackControlsLoopButton: NSButton!
     
+    /// The current loop mode the user has selected
+    var currentLoopMode : AZLoopMode = AZLoopMode.off;
+    
     @IBAction func playbackControlsLoopButtonPressed(_ sender: NSButton) {
+        // Switch loop modes
+        switch(currentLoopMode) {
+            case .off:
+                self.setLoop(mode: .playlist);
+                break;
+            
+            case .playlist:
+                self.setLoop(mode: .song);
+                break;
+            
+            case .song:
+                self.setLoop(mode: .off);
+                break;
+        }
+    }
+    
+    /// Sets the loop mode to the given mode and updates the loop button to match
+    func setLoop(mode : AZLoopMode) {
+        // Switch on the mode and act accordingly
+        switch(mode) {
+            case .off:
+                playbackControlsLoopButton.image = #imageLiteral(resourceName: "AZLoopOff");
+                break;
+            
+            case .playlist:
+                playbackControlsLoopButton.image = #imageLiteral(resourceName: "AZLoopPlaylist");
+                break;
+            
+            case .song:
+                playbackControlsLoopButton.image = #imageLiteral(resourceName: "AZLoopSong");
+                break;
+        }
         
+        // Set currentLoopMode to the given loop mode
+        currentLoopMode = mode;
     }
     
     /// The favourite song playback control button
@@ -336,6 +373,9 @@ class AZMusicPlayerViewController: NSViewController {
         // Print that we are darkening
 //        print("AZMusicPlayerViewController: Darkening view with titlebar item \"\(withTitlebarItemAbove)\" above");
         
+        // Move the darken view to the front
+        self.view.addSubview(contentDarken, positioned: .above, relativeTo: nil);
+        
         // If 'withTitlebarItemAbove' isn't nil...
         if(withTitlebarItemAbove != nil) {
             /// Readjust the titlebar subviews so that darken is moved above all, than the given item above darken
@@ -404,6 +444,9 @@ class AZMusicPlayerViewController: NSViewController {
             
             // Say we aren't darkening
             self.darkening = false;
+            
+            // Move the darken view to the back
+            self.view.addSubview(contentDarken, positioned: .above, relativeTo: nil);
         }
     }
     

@@ -700,6 +700,14 @@
                                     <segue destination="VPH-z3-Cub" kind="embed" id="JT3-ad-Nje"/>
                                 </connections>
                             </containerView>
+                            <customView alphaValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="fpl-2a-9SU" userLabel="Darken" customClass="AZColoredView" customModule="Azusa" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="525"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                        <color key="value" white="0.0" alpha="0.5" colorSpace="deviceWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="mZD-g8-0yW" userLabel="Top Container">
                                 <rect key="frame" x="0.0" y="350" width="350" height="250"/>
                                 <subviews>
@@ -800,30 +808,8 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Kka-dx-iSd" userLabel="Bottom Content">
                                 <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="McP-we-ZyI" userLabel="Current Song Artist Label">
-                                        <rect key="frame" x="18" y="264" width="314" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="aVi-6u-T6o"/>
-                                        </constraints>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Artist" id="93e-gw-XbF">
-                                            <font key="font" size="13" name="Exo2-Regular"/>
-                                            <color key="textColor" white="0.90092075890000001" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cQN-2I-zei" userLabel="Current Song Title Label">
-                                        <rect key="frame" x="18" y="235" width="314" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="uyl-DA-SAj"/>
-                                        </constraints>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Song Title" id="ftV-y2-om9">
-                                            <font key="font" size="15" name="Exo2-SemiBold"/>
-                                            <color key="textColor" white="0.90092075890000001" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Fkg-nT-dAj" userLabel="Progress">
-                                        <rect key="frame" x="0.0" y="190" width="350" height="20"/>
+                                        <rect key="frame" x="0.0" y="165" width="350" height="20"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Cxd-jh-I7S" userLabel="Current Time">
                                                 <rect key="frame" x="-2" y="5" width="66" height="16"/>
@@ -884,10 +870,10 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="OHA-Qn-g5o" userLabel="Playback Controls Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="190"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="165"/>
                                         <subviews>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="WcW-Np-1o0" userLabel="Skip Previous Button">
-                                                <rect key="frame" x="87" y="122" width="18" height="18"/>
+                                                <rect key="frame" x="87" y="110" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="Dj3-Oz-opO"/>
                                                     <constraint firstAttribute="height" constant="18" id="eaL-Bt-GE4"/>
@@ -901,7 +887,7 @@
                                                 </connections>
                                             </button>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="ZPs-Yo-3I3" userLabel="Pause/Play Button">
-                                                <rect key="frame" x="165" y="120" width="20" height="20"/>
+                                                <rect key="frame" x="165" y="108" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="0he-rA-pWh"/>
                                                     <constraint firstAttribute="height" constant="20" id="HMS-vY-vZp"/>
@@ -915,7 +901,7 @@
                                                 </connections>
                                             </button>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="cK8-Om-Ff3" userLabel="Skip Next Button">
-                                                <rect key="frame" x="245" y="122" width="18" height="18"/>
+                                                <rect key="frame" x="245" y="110" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="Q5X-to-WqL"/>
                                                     <constraint firstAttribute="height" constant="18" id="yEw-z3-T8t"/>
@@ -929,7 +915,7 @@
                                                 </connections>
                                             </button>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="LYo-Cp-CAS" userLabel="Random Button">
-                                                <rect key="frame" x="111" y="64" width="16" height="16"/>
+                                                <rect key="frame" x="111" y="52" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="XTD-cH-9Uk"/>
                                                     <constraint firstAttribute="width" constant="16" id="cfK-Fw-hS9"/>
@@ -943,12 +929,12 @@
                                                 </connections>
                                             </button>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="QJ7-q0-S80" userLabel="Loop Button">
-                                                <rect key="frame" x="167" y="64" width="16" height="16"/>
+                                                <rect key="frame" x="167" y="52" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="MTq-aN-STf"/>
                                                     <constraint firstAttribute="width" constant="16" id="aAr-Vf-Yte"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZLoopPlaylist" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="S45-3r-WGs">
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZLoopOff" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="S45-3r-WGs">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -957,12 +943,12 @@
                                                 </connections>
                                             </button>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="Gnj-dx-crK" userLabel="Favourite Button">
-                                                <rect key="frame" x="223" y="64" width="16" height="16"/>
+                                                <rect key="frame" x="223" y="52" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="4ER-3e-jLB"/>
                                                     <constraint firstAttribute="width" constant="16" id="4iq-rF-4Ko"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZNotFavourite" imagePosition="only" alignment="center" alternateImage="AZFavourite" imageScaling="proportionallyUpOrDown" inset="2" id="iZc-zi-cta">
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZNotFavourite" imagePosition="left" alternateImage="AZFavourite" inset="2" id="iZc-zi-cta">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -986,21 +972,59 @@
                                             <constraint firstItem="ZPs-Yo-3I3" firstAttribute="leading" secondItem="WcW-Np-1o0" secondAttribute="trailing" constant="60" id="ucN-Hs-qfI"/>
                                         </constraints>
                                     </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="WTT-Od-TBL" userLabel="Song Info Container">
+                                        <rect key="frame" x="0.0" y="185" width="350" height="119"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="McP-we-ZyI" userLabel="Current Song Artist Label">
+                                                <rect key="frame" x="18" y="65" width="314" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="nfo-rU-8Cp"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Artist" id="93e-gw-XbF">
+                                                    <font key="font" size="13" name="Exo2-Regular"/>
+                                                    <color key="textColor" white="0.90092075890000001" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cQN-2I-zei" userLabel="Current Song Title Label">
+                                                <rect key="frame" x="18" y="32" width="314" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="uyl-DA-SAj"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Song Title" id="ftV-y2-om9">
+                                                    <font key="font" size="15" name="Exo2-SemiBold"/>
+                                                    <color key="textColor" white="0.90092075890000001" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="cQN-2I-zei" firstAttribute="centerY" secondItem="WTT-Od-TBL" secondAttribute="centerY" constant="15" id="BSM-vc-Ope"/>
+                                            <constraint firstItem="McP-we-ZyI" firstAttribute="leading" secondItem="WTT-Od-TBL" secondAttribute="leading" constant="20" id="Vq7-Zq-Flf"/>
+                                            <constraint firstAttribute="trailing" secondItem="cQN-2I-zei" secondAttribute="trailing" constant="20" id="ZPr-vo-7u5"/>
+                                            <constraint firstItem="McP-we-ZyI" firstAttribute="centerY" secondItem="WTT-Od-TBL" secondAttribute="centerY" constant="-15" id="cR2-uv-HYK"/>
+                                            <constraint firstItem="cQN-2I-zei" firstAttribute="leading" secondItem="WTT-Od-TBL" secondAttribute="leading" constant="20" id="hDE-eq-9zU"/>
+                                            <constraint firstAttribute="trailing" secondItem="McP-we-ZyI" secondAttribute="trailing" constant="20" id="okf-h6-aQZ"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                <color key="value" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Fkg-nT-dAj" firstAttribute="top" secondItem="cQN-2I-zei" secondAttribute="bottom" constant="25" id="9DV-wD-TRR"/>
+                                    <constraint firstAttribute="trailing" secondItem="WTT-Od-TBL" secondAttribute="trailing" id="2Mp-CN-fNu"/>
+                                    <constraint firstItem="Fkg-nT-dAj" firstAttribute="centerY" secondItem="Kka-dx-iSd" secondAttribute="centerY" id="4b4-vp-tpH"/>
+                                    <constraint firstItem="Fkg-nT-dAj" firstAttribute="top" secondItem="WTT-Od-TBL" secondAttribute="bottom" id="6Ib-3f-sY9"/>
+                                    <constraint firstItem="WTT-Od-TBL" firstAttribute="leading" secondItem="Kka-dx-iSd" secondAttribute="leading" id="6cw-jj-n9b"/>
                                     <constraint firstAttribute="bottom" secondItem="OHA-Qn-g5o" secondAttribute="bottom" id="EIM-WJ-x3z"/>
                                     <constraint firstAttribute="trailing" secondItem="Fkg-nT-dAj" secondAttribute="trailing" id="Iai-hS-EkI"/>
-                                    <constraint firstItem="McP-we-ZyI" firstAttribute="top" secondItem="Kka-dx-iSd" secondAttribute="top" constant="66" id="KDz-bB-3Wt"/>
-                                    <constraint firstItem="McP-we-ZyI" firstAttribute="leading" secondItem="Kka-dx-iSd" secondAttribute="leading" constant="20" id="KyA-ec-aZs"/>
-                                    <constraint firstAttribute="trailing" secondItem="cQN-2I-zei" secondAttribute="trailing" constant="20" id="VcF-wC-FJP"/>
                                     <constraint firstAttribute="trailing" secondItem="OHA-Qn-g5o" secondAttribute="trailing" id="YoJ-gu-UaG"/>
                                     <constraint firstItem="Fkg-nT-dAj" firstAttribute="leading" secondItem="Kka-dx-iSd" secondAttribute="leading" id="ZFb-eX-6b5"/>
-                                    <constraint firstItem="cQN-2I-zei" firstAttribute="leading" secondItem="Kka-dx-iSd" secondAttribute="leading" constant="20" id="q6G-86-Uk2"/>
                                     <constraint firstItem="OHA-Qn-g5o" firstAttribute="top" secondItem="Fkg-nT-dAj" secondAttribute="bottom" id="rjU-cS-5xo"/>
-                                    <constraint firstItem="cQN-2I-zei" firstAttribute="top" secondItem="McP-we-ZyI" secondAttribute="bottom" constant="4" id="uj5-aC-mex"/>
                                     <constraint firstItem="OHA-Qn-g5o" firstAttribute="leading" secondItem="Kka-dx-iSd" secondAttribute="leading" id="uvt-8j-cI1"/>
-                                    <constraint firstAttribute="trailing" secondItem="McP-we-ZyI" secondAttribute="trailing" constant="20" id="yck-Tw-kFi"/>
+                                    <constraint firstItem="WTT-Od-TBL" firstAttribute="top" secondItem="Kka-dx-iSd" secondAttribute="top" constant="46" id="yN4-6j-dc7"/>
                                 </constraints>
                             </customView>
                             <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ubp-RK-Yel" userLabel="Cover Image Shadow Container">
@@ -1038,14 +1062,6 @@
                                 <shadow key="shadow" blurRadius="5">
                                     <color key="color" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                                 </shadow>
-                            </customView>
-                            <customView alphaValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="fpl-2a-9SU" userLabel="Darken" customClass="AZColoredView" customModule="Azusa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="350" height="525"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                        <color key="value" white="0.0" alpha="0.5" colorSpace="deviceWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </customView>
                         </subviews>
                         <constraints>
@@ -1290,7 +1306,7 @@
     <resources>
         <image name="AZExampleCoverMoe" width="1400" height="1400"/>
         <image name="AZFavourite" width="16" height="16"/>
-        <image name="AZLoopPlaylist" width="16" height="16"/>
+        <image name="AZLoopOff" width="16" height="16"/>
         <image name="AZMenu" width="15" height="15"/>
         <image name="AZNotFavourite" width="16" height="16"/>
         <image name="AZPanelConnectionArrow" width="41" height="22"/>
