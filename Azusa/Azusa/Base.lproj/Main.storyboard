@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -711,14 +712,13 @@
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="lv9-BA-r4O" userLabel="Cover Image Blurred Image View" customClass="AZAspectFillImageView" customModule="Azusa" customModuleProvider="target">
                                         <rect key="frame" x="-50" y="-100" width="450" height="450"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="450" id="A6c-bB-sjh"/>
-                                            <constraint firstAttribute="height" constant="450" id="QzT-NW-Ohq"/>
+                                            <constraint firstAttribute="width" secondItem="lv9-BA-r4O" secondAttribute="height" multiplier="1:1" id="9gf-Yk-qRt"/>
                                         </constraints>
                                         <contentFilters>
                                             <ciFilter name="CIGaussianBlur">
                                                 <configuration>
                                                     <null key="inputImage"/>
-                                                    <real key="inputRadius" value="35"/>
+                                                    <real key="inputRadius" value="30"/>
                                                 </configuration>
                                             </ciFilter>
                                         </contentFilters>
@@ -767,7 +767,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.20191461267605634" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.25519916373239437" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="endColor">
                                                 <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -783,28 +783,176 @@
                                     <constraint firstAttribute="height" constant="250" id="4YZ-mF-N4h"/>
                                     <constraint firstItem="lv9-BA-r4O" firstAttribute="centerY" secondItem="mZD-g8-0yW" secondAttribute="centerY" id="AUN-UX-F2H"/>
                                     <constraint firstItem="fP5-07-wCf" firstAttribute="leading" secondItem="mZD-g8-0yW" secondAttribute="leading" id="Dke-an-8QL"/>
+                                    <constraint firstItem="lv9-BA-r4O" firstAttribute="leading" secondItem="mZD-g8-0yW" secondAttribute="leading" constant="-50" id="FY1-0A-J1Z"/>
+                                    <constraint firstItem="lv9-BA-r4O" firstAttribute="centerY" secondItem="mZD-g8-0yW" secondAttribute="centerY" id="IbT-xh-ILd"/>
+                                    <constraint firstAttribute="trailing" secondItem="lv9-BA-r4O" secondAttribute="trailing" constant="-50" id="NOL-AX-gu6"/>
                                     <constraint firstItem="fP5-07-wCf" firstAttribute="top" secondItem="mZD-g8-0yW" secondAttribute="top" id="ame-Lm-V7i"/>
+                                    <constraint firstItem="lv9-BA-r4O" firstAttribute="centerX" secondItem="mZD-g8-0yW" secondAttribute="centerX" id="b7o-qg-DFd"/>
                                     <constraint firstItem="lv9-BA-r4O" firstAttribute="centerX" secondItem="mZD-g8-0yW" secondAttribute="centerX" id="nvE-qi-UhN"/>
                                 </constraints>
                             </customView>
-                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ubp-RK-Yel" userLabel="Cover Image Shadow Container">
-                                <rect key="frame" x="67" y="304" width="216" height="216"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Kka-dx-iSd" userLabel="Bottom Content">
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="tvG-xV-qyy" userLabel="Cover Image Container" customClass="AZRoundedCornersView" customModule="Azusa" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="20" width="176" height="176"/>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="McP-we-ZyI" userLabel="Artist Label">
+                                        <rect key="frame" x="18" y="264" width="314" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="aVi-6u-T6o"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Artist" id="93e-gw-XbF">
+                                            <font key="font" size="13" name="Exo2-Regular"/>
+                                            <color key="textColor" white="0.90092075890000001" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cQN-2I-zei" userLabel="Song Title Label">
+                                        <rect key="frame" x="18" y="235" width="314" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="uyl-DA-SAj"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Song Title" id="ftV-y2-om9">
+                                            <font key="font" size="15" name="Exo2-SemiBold"/>
+                                            <color key="textColor" white="0.90092075890000001" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Fkg-nT-dAj" userLabel="Progress">
+                                        <rect key="frame" x="0.0" y="190" width="350" height="20"/>
                                         <subviews>
-                                            <imageView horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="XXW-Rb-vbO" userLabel="Cover Image Image View">
-                                                <rect key="frame" x="0.0" y="0.0" width="176" height="176"/>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Cxd-jh-I7S" userLabel="Current Time">
+                                                <rect key="frame" x="-2" y="5" width="66" height="16"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="62" id="oVE-LT-3RJ"/>
+                                                    <constraint firstAttribute="height" constant="16" id="zjs-hj-4oN"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="00:00" id="kjN-6z-YhY">
+                                                    <font key="font" size="12" name="Exo2-Regular"/>
+                                                    <color key="textColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="98P-Sa-2u9" userLabel="Progress Slider">
+                                                <rect key="frame" x="68" y="0.0" width="214" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="15" id="Bfq-mt-sLn"/>
+                                                </constraints>
+                                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="hio-yD-xek" customClass="AZProgressSliderCell" customModule="Azusa" customModuleProvider="target">
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                            <color key="value" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                                            <color key="value" red="0.50588235294117645" green="0.72941176470588232" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </sliderCell>
+                                            </slider>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="X06-G0-8Oz" userLabel="Song Length">
+                                                <rect key="frame" x="286" y="5" width="66" height="16"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="62" id="D12-om-jrh"/>
+                                                    <constraint firstAttribute="height" constant="16" id="Dev-CG-CIP"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="00:00" id="AZ0-Zj-uOZ">
+                                                    <font key="font" size="12" name="Exo2-Regular"/>
+                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Cxd-jh-I7S" firstAttribute="leading" secondItem="Fkg-nT-dAj" secondAttribute="leading" id="2IY-nA-cfv"/>
+                                            <constraint firstItem="98P-Sa-2u9" firstAttribute="centerY" secondItem="Fkg-nT-dAj" secondAttribute="centerY" id="FNr-kH-LgZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="X06-G0-8Oz" secondAttribute="trailing" id="Gcq-rY-qzO"/>
+                                            <constraint firstAttribute="height" constant="20" id="OO4-0W-vMs"/>
+                                            <constraint firstAttribute="bottom" secondItem="Cxd-jh-I7S" secondAttribute="bottom" constant="5" id="SIO-cK-bN0"/>
+                                            <constraint firstItem="98P-Sa-2u9" firstAttribute="centerX" secondItem="Fkg-nT-dAj" secondAttribute="centerX" id="ntC-Ae-rxm"/>
+                                            <constraint firstItem="98P-Sa-2u9" firstAttribute="leading" secondItem="Cxd-jh-I7S" secondAttribute="trailing" constant="8" id="po1-7G-6cw"/>
+                                            <constraint firstItem="X06-G0-8Oz" firstAttribute="top" secondItem="Fkg-nT-dAj" secondAttribute="top" constant="-1" id="pqv-bQ-Pgz"/>
+                                            <constraint firstAttribute="bottom" secondItem="X06-G0-8Oz" secondAttribute="bottom" constant="5" id="u86-i5-eu6"/>
+                                            <constraint firstItem="X06-G0-8Oz" firstAttribute="leading" secondItem="98P-Sa-2u9" secondAttribute="trailing" constant="8" id="vga-28-rqa"/>
+                                            <constraint firstItem="Cxd-jh-I7S" firstAttribute="top" secondItem="Fkg-nT-dAj" secondAttribute="top" constant="-1" id="y7b-1u-YrG"/>
+                                        </constraints>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="OHA-Qn-g5o" userLabel="Media Controls View">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="190"/>
+                                        <subviews>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="WcW-Np-1o0" userLabel="Skip Previous Button">
+                                                <rect key="frame" x="97" y="86" width="18" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="18" id="Dj3-Oz-opO"/>
+                                                    <constraint firstAttribute="height" constant="18" id="eaL-Bt-GE4"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZSkipPrevious" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="dMs-A5-fTD">
+                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="ZPs-Yo-3I3" userLabel="Pause/Play Button">
+                                                <rect key="frame" x="165" y="85" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="0he-rA-pWh"/>
+                                                    <constraint firstAttribute="height" constant="20" id="HMS-vY-vZp"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZPause" imagePosition="only" alignment="center" alternateImage="AZPlay" imageScaling="proportionallyUpOrDown" inset="2" id="xmi-d6-ed1">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="cK8-Om-Ff3" userLabel="Skip Next Button">
+                                                <rect key="frame" x="235" y="86" width="18" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="18" id="Q5X-to-WqL"/>
+                                                    <constraint firstAttribute="height" constant="18" id="yEw-z3-T8t"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZSkipNext" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="3jH-eC-NOo">
+                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="WcW-Np-1o0" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" id="Lbr-HO-gz0"/>
+                                            <constraint firstItem="cK8-Om-Ff3" firstAttribute="leading" secondItem="ZPs-Yo-3I3" secondAttribute="trailing" constant="50" id="XP2-1F-sA3"/>
+                                            <constraint firstItem="cK8-Om-Ff3" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" id="cvX-00-mQt"/>
+                                            <constraint firstItem="ZPs-Yo-3I3" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" id="hjH-MX-F21"/>
+                                            <constraint firstItem="ZPs-Yo-3I3" firstAttribute="centerX" secondItem="OHA-Qn-g5o" secondAttribute="centerX" id="m20-z6-OL5"/>
+                                            <constraint firstItem="ZPs-Yo-3I3" firstAttribute="leading" secondItem="WcW-Np-1o0" secondAttribute="trailing" constant="50" id="ucN-Hs-qfI"/>
+                                        </constraints>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Fkg-nT-dAj" firstAttribute="top" secondItem="cQN-2I-zei" secondAttribute="bottom" constant="25" id="9DV-wD-TRR"/>
+                                    <constraint firstAttribute="bottom" secondItem="OHA-Qn-g5o" secondAttribute="bottom" id="EIM-WJ-x3z"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fkg-nT-dAj" secondAttribute="trailing" id="Iai-hS-EkI"/>
+                                    <constraint firstItem="McP-we-ZyI" firstAttribute="top" secondItem="Kka-dx-iSd" secondAttribute="top" constant="66" id="KDz-bB-3Wt"/>
+                                    <constraint firstItem="McP-we-ZyI" firstAttribute="leading" secondItem="Kka-dx-iSd" secondAttribute="leading" constant="20" id="KyA-ec-aZs"/>
+                                    <constraint firstAttribute="trailing" secondItem="cQN-2I-zei" secondAttribute="trailing" constant="20" id="VcF-wC-FJP"/>
+                                    <constraint firstAttribute="trailing" secondItem="OHA-Qn-g5o" secondAttribute="trailing" id="YoJ-gu-UaG"/>
+                                    <constraint firstItem="Fkg-nT-dAj" firstAttribute="leading" secondItem="Kka-dx-iSd" secondAttribute="leading" id="ZFb-eX-6b5"/>
+                                    <constraint firstItem="cQN-2I-zei" firstAttribute="leading" secondItem="Kka-dx-iSd" secondAttribute="leading" constant="20" id="q6G-86-Uk2"/>
+                                    <constraint firstItem="OHA-Qn-g5o" firstAttribute="top" secondItem="Fkg-nT-dAj" secondAttribute="bottom" id="rjU-cS-5xo"/>
+                                    <constraint firstItem="cQN-2I-zei" firstAttribute="top" secondItem="McP-we-ZyI" secondAttribute="bottom" constant="4" id="uj5-aC-mex"/>
+                                    <constraint firstItem="OHA-Qn-g5o" firstAttribute="leading" secondItem="Kka-dx-iSd" secondAttribute="leading" id="uvt-8j-cI1"/>
+                                    <constraint firstAttribute="trailing" secondItem="McP-we-ZyI" secondAttribute="trailing" constant="20" id="yck-Tw-kFi"/>
+                                </constraints>
+                            </customView>
+                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ubp-RK-Yel" userLabel="Cover Image Shadow Container">
+                                <rect key="frame" x="52" y="284" width="246" height="246"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="ie0-rE-YqC" customClass="AZRoundedCornersView" customModule="Azusa" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="20" width="206" height="206"/>
+                                        <subviews>
+                                            <imageView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="XXW-Rb-vbO" userLabel="Cover Image Image View">
+                                                <rect key="frame" x="0.0" y="0.0" width="206" height="206"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="AZExampleCoverMoe" id="e1N-Nd-A8q"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="XXW-Rb-vbO" secondAttribute="trailing" id="1hk-4e-BKg"/>
-                                            <constraint firstItem="XXW-Rb-vbO" firstAttribute="top" secondItem="tvG-xV-qyy" secondAttribute="top" id="2C5-Qp-zRU"/>
-                                            <constraint firstItem="XXW-Rb-vbO" firstAttribute="leading" secondItem="tvG-xV-qyy" secondAttribute="leading" id="2hC-iP-GFx"/>
-                                            <constraint firstAttribute="height" constant="176" id="Ley-rs-edy"/>
-                                            <constraint firstAttribute="bottom" secondItem="XXW-Rb-vbO" secondAttribute="bottom" id="meA-mg-qy4"/>
-                                            <constraint firstAttribute="width" constant="176" id="zsc-IA-5JN"/>
+                                            <constraint firstItem="XXW-Rb-vbO" firstAttribute="leading" secondItem="ie0-rE-YqC" secondAttribute="leading" id="U4h-eP-grG"/>
+                                            <constraint firstItem="XXW-Rb-vbO" firstAttribute="top" secondItem="ie0-rE-YqC" secondAttribute="top" id="hjj-HW-BG7"/>
+                                            <constraint firstAttribute="trailing" secondItem="XXW-Rb-vbO" secondAttribute="trailing" id="v2V-gu-pmd"/>
+                                            <constraint firstAttribute="bottom" secondItem="XXW-Rb-vbO" secondAttribute="bottom" id="wBL-C4-0Vn"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -814,10 +962,12 @@
                                     </customView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="tvG-xV-qyy" firstAttribute="top" secondItem="Ubp-RK-Yel" secondAttribute="top" constant="20" id="04Y-WQ-ddJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="tvG-xV-qyy" secondAttribute="bottom" constant="20" symbolic="YES" id="OHn-Rw-x8h"/>
-                                    <constraint firstItem="tvG-xV-qyy" firstAttribute="centerX" secondItem="Ubp-RK-Yel" secondAttribute="centerX" id="a1W-5f-b0e"/>
-                                    <constraint firstItem="tvG-xV-qyy" firstAttribute="leading" secondItem="Ubp-RK-Yel" secondAttribute="leading" constant="20" symbolic="YES" id="kJy-0z-UFS"/>
+                                    <constraint firstAttribute="trailing" secondItem="ie0-rE-YqC" secondAttribute="trailing" constant="20" id="8j6-vN-Hx1"/>
+                                    <constraint firstAttribute="bottom" secondItem="ie0-rE-YqC" secondAttribute="bottom" constant="20" id="HGz-yB-VSw"/>
+                                    <constraint firstAttribute="height" constant="246" id="WkN-sj-lPW"/>
+                                    <constraint firstAttribute="width" constant="246" id="iNt-cW-sPS"/>
+                                    <constraint firstItem="ie0-rE-YqC" firstAttribute="leading" secondItem="Ubp-RK-Yel" secondAttribute="leading" constant="20" id="jb4-fK-COP"/>
+                                    <constraint firstItem="ie0-rE-YqC" firstAttribute="top" secondItem="Ubp-RK-Yel" secondAttribute="top" constant="20" id="kXK-5F-2PL"/>
                                 </constraints>
                                 <shadow key="shadow" blurRadius="5">
                                     <color key="color" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
@@ -825,9 +975,13 @@
                             </customView>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Kka-dx-iSd" secondAttribute="trailing" id="1zs-kM-Tbl"/>
+                            <constraint firstItem="Kka-dx-iSd" firstAttribute="top" secondItem="mZD-g8-0yW" secondAttribute="bottom" id="9Ym-YO-3B3"/>
                             <constraint firstAttribute="trailing" secondItem="mZD-g8-0yW" secondAttribute="trailing" id="Adf-zO-OR7"/>
-                            <constraint firstItem="Ubp-RK-Yel" firstAttribute="top" secondItem="JWh-ju-ZSA" secondAttribute="top" constant="80" id="FNc-YG-d3I"/>
+                            <constraint firstItem="Kka-dx-iSd" firstAttribute="leading" secondItem="JWh-ju-ZSA" secondAttribute="leading" id="BCm-H6-ZeU"/>
+                            <constraint firstItem="Ubp-RK-Yel" firstAttribute="top" secondItem="JWh-ju-ZSA" secondAttribute="top" constant="70" id="FNc-YG-d3I"/>
                             <constraint firstItem="Ubp-RK-Yel" firstAttribute="centerX" secondItem="JWh-ju-ZSA" secondAttribute="centerX" id="SkI-hH-JBp"/>
+                            <constraint firstAttribute="bottom" secondItem="Kka-dx-iSd" secondAttribute="bottom" id="ngw-NI-lpS"/>
                             <constraint firstItem="mZD-g8-0yW" firstAttribute="leading" secondItem="JWh-ju-ZSA" secondAttribute="leading" id="x3t-O1-Rrt"/>
                             <constraint firstItem="mZD-g8-0yW" firstAttribute="top" secondItem="JWh-ju-ZSA" secondAttribute="top" id="xxE-QV-4H4"/>
                         </constraints>
@@ -921,6 +1075,10 @@
     <resources>
         <image name="AZExampleCoverMoe" width="1400" height="1400"/>
         <image name="AZMenu" width="15" height="15"/>
+        <image name="AZPause" width="20" height="20"/>
+        <image name="AZPlay" width="20" height="20"/>
         <image name="AZSearch" width="15" height="15"/>
+        <image name="AZSkipNext" width="18" height="18"/>
+        <image name="AZSkipPrevious" width="18" height="18"/>
     </resources>
 </document>
