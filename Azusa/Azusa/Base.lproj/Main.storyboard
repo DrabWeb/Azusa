@@ -755,14 +755,26 @@
                                                     <action selector="titlebarSearchButtonPressed:" target="Gpq-yk-DCa" id="M7l-mt-z6d"/>
                                                 </connections>
                                             </button>
+                                            <customView alphaValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="ka2-gA-cf6" userLabel="Darken" customClass="AZColoredView" customModule="Azusa" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="350" height="75"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                        <color key="value" white="0.0" alpha="0.5" colorSpace="deviceWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </customView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="ka2-gA-cf6" secondAttribute="trailing" id="5W7-LK-rRI"/>
                                             <constraint firstAttribute="bottom" secondItem="ddm-tN-e9L" secondAttribute="bottom" constant="30" id="Bvm-Yv-pSc"/>
+                                            <constraint firstItem="ka2-gA-cf6" firstAttribute="leading" secondItem="fP5-07-wCf" secondAttribute="leading" id="H9t-JK-yjt"/>
                                             <constraint firstItem="a8M-PB-nkr" firstAttribute="top" secondItem="fP5-07-wCf" secondAttribute="top" constant="30" id="KkW-TV-ukb"/>
                                             <constraint firstAttribute="bottom" secondItem="a8M-PB-nkr" secondAttribute="bottom" constant="30" id="gVO-md-DXF"/>
                                             <constraint firstItem="ddm-tN-e9L" firstAttribute="top" secondItem="fP5-07-wCf" secondAttribute="top" constant="30" id="hSF-YM-1tj"/>
                                             <constraint firstAttribute="trailing" secondItem="ddm-tN-e9L" secondAttribute="trailing" constant="30" id="nDb-hz-uJ9"/>
+                                            <constraint firstAttribute="bottom" secondItem="ka2-gA-cf6" secondAttribute="bottom" id="q3m-Wp-uLa"/>
                                             <constraint firstAttribute="height" constant="75" id="tQv-WG-Hz0"/>
+                                            <constraint firstItem="ka2-gA-cf6" firstAttribute="top" secondItem="fP5-07-wCf" secondAttribute="top" id="vAh-ts-hje"/>
                                             <constraint firstItem="a8M-PB-nkr" firstAttribute="leading" secondItem="fP5-07-wCf" secondAttribute="leading" constant="30" id="zkq-iT-eaj"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -794,7 +806,7 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Kka-dx-iSd" userLabel="Bottom Content">
                                 <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="McP-we-ZyI" userLabel="Artist Label">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="McP-we-ZyI" userLabel="Current Song Artist Label">
                                         <rect key="frame" x="18" y="264" width="314" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="aVi-6u-T6o"/>
@@ -805,7 +817,7 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cQN-2I-zei" userLabel="Song Title Label">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cQN-2I-zei" userLabel="Current Song Title Label">
                                         <rect key="frame" x="18" y="235" width="314" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="uyl-DA-SAj"/>
@@ -846,6 +858,9 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </sliderCell>
+                                                <connections>
+                                                    <action selector="progressSliderMoved:" target="Gpq-yk-DCa" id="BtG-7B-PC4"/>
+                                                </connections>
                                             </slider>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="X06-G0-8Oz" userLabel="Song Length">
                                                 <rect key="frame" x="286" y="5" width="66" height="16"/>
@@ -874,11 +889,11 @@
                                             <constraint firstItem="Cxd-jh-I7S" firstAttribute="top" secondItem="Fkg-nT-dAj" secondAttribute="top" constant="-1" id="y7b-1u-YrG"/>
                                         </constraints>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="OHA-Qn-g5o" userLabel="Media Controls View">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="OHA-Qn-g5o" userLabel="Playback Controls Container">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="190"/>
                                         <subviews>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="WcW-Np-1o0" userLabel="Skip Previous Button">
-                                                <rect key="frame" x="97" y="122" width="18" height="18"/>
+                                                <rect key="frame" x="87" y="122" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="Dj3-Oz-opO"/>
                                                     <constraint firstAttribute="height" constant="18" id="eaL-Bt-GE4"/>
@@ -887,6 +902,9 @@
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
+                                                <connections>
+                                                    <action selector="playbackControlsSkipPreviousButtonPressed:" target="Gpq-yk-DCa" id="nTL-gU-egn"/>
+                                                </connections>
                                             </button>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="ZPs-Yo-3I3" userLabel="Pause/Play Button">
                                                 <rect key="frame" x="165" y="120" width="20" height="20"/>
@@ -898,9 +916,12 @@
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
+                                                <connections>
+                                                    <action selector="playbackControlsPausePlayButtonPressed:" target="Gpq-yk-DCa" id="Lww-aB-nf5"/>
+                                                </connections>
                                             </button>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="cK8-Om-Ff3" userLabel="Skip Next Button">
-                                                <rect key="frame" x="235" y="122" width="18" height="18"/>
+                                                <rect key="frame" x="245" y="122" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="Q5X-to-WqL"/>
                                                     <constraint firstAttribute="height" constant="18" id="yEw-z3-T8t"/>
@@ -909,6 +930,9 @@
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
+                                                <connections>
+                                                    <action selector="playbackControlsSkipNextButtonPressed:" target="Gpq-yk-DCa" id="B2W-AE-kk0"/>
+                                                </connections>
                                             </button>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="LYo-Cp-CAS" userLabel="Random Button">
                                                 <rect key="frame" x="111" y="64" width="16" height="16"/>
@@ -920,6 +944,9 @@
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
+                                                <connections>
+                                                    <action selector="playbackControlsRandomButtonPressed:" target="Gpq-yk-DCa" id="1Ww-pY-Ske"/>
+                                                </connections>
                                             </button>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="QJ7-q0-S80" userLabel="Loop Button">
                                                 <rect key="frame" x="167" y="64" width="16" height="16"/>
@@ -931,6 +958,9 @@
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
+                                                <connections>
+                                                    <action selector="playbackControlsLoopButtonPressed:" target="Gpq-yk-DCa" id="bOP-6U-glW"/>
+                                                </connections>
                                             </button>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="Gnj-dx-crK" userLabel="Favourite Button">
                                                 <rect key="frame" x="223" y="64" width="16" height="16"/>
@@ -942,13 +972,16 @@
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
+                                                <connections>
+                                                    <action selector="playbackControlsFavouriteButtonPressed:" target="Gpq-yk-DCa" id="97F-l5-hSb"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="LYo-Cp-CAS" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" constant="23" id="E3A-0k-ih0"/>
                                             <constraint firstItem="WcW-Np-1o0" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" constant="-36" id="Lbr-HO-gz0"/>
                                             <constraint firstItem="QJ7-q0-S80" firstAttribute="centerX" secondItem="OHA-Qn-g5o" secondAttribute="centerX" id="T61-Vg-Dp4"/>
-                                            <constraint firstItem="cK8-Om-Ff3" firstAttribute="leading" secondItem="ZPs-Yo-3I3" secondAttribute="trailing" constant="50" id="XP2-1F-sA3"/>
+                                            <constraint firstItem="cK8-Om-Ff3" firstAttribute="leading" secondItem="ZPs-Yo-3I3" secondAttribute="trailing" constant="60" id="XP2-1F-sA3"/>
                                             <constraint firstItem="cK8-Om-Ff3" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" constant="-36" id="cvX-00-mQt"/>
                                             <constraint firstItem="Gnj-dx-crK" firstAttribute="leading" secondItem="QJ7-q0-S80" secondAttribute="trailing" constant="40" id="fXi-Ae-DBx"/>
                                             <constraint firstItem="ZPs-Yo-3I3" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" constant="-35" id="hjH-MX-F21"/>
@@ -956,7 +989,7 @@
                                             <constraint firstItem="Gnj-dx-crK" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" constant="23" id="i77-uX-0Zr"/>
                                             <constraint firstItem="ZPs-Yo-3I3" firstAttribute="centerX" secondItem="OHA-Qn-g5o" secondAttribute="centerX" id="m20-z6-OL5"/>
                                             <constraint firstItem="QJ7-q0-S80" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" constant="23" id="nFZ-Wz-nYj"/>
-                                            <constraint firstItem="ZPs-Yo-3I3" firstAttribute="leading" secondItem="WcW-Np-1o0" secondAttribute="trailing" constant="50" id="ucN-Hs-qfI"/>
+                                            <constraint firstItem="ZPs-Yo-3I3" firstAttribute="leading" secondItem="WcW-Np-1o0" secondAttribute="trailing" constant="60" id="ucN-Hs-qfI"/>
                                         </constraints>
                                     </customView>
                                 </subviews>
@@ -1012,6 +1045,14 @@
                                     <color key="color" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                                 </shadow>
                             </customView>
+                            <customView alphaValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="fpl-2a-9SU" userLabel="Darken" customClass="AZColoredView" customModule="Azusa" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="525"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                        <color key="value" white="0.0" alpha="0.5" colorSpace="deviceWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </customView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Kka-dx-iSd" secondAttribute="trailing" id="1zs-kM-Tbl"/>
@@ -1020,16 +1061,35 @@
                             <constraint firstItem="Kka-dx-iSd" firstAttribute="leading" secondItem="JWh-ju-ZSA" secondAttribute="leading" id="BCm-H6-ZeU"/>
                             <constraint firstItem="Ubp-RK-Yel" firstAttribute="top" secondItem="JWh-ju-ZSA" secondAttribute="top" constant="70" id="FNc-YG-d3I"/>
                             <constraint firstItem="Ubp-RK-Yel" firstAttribute="centerX" secondItem="JWh-ju-ZSA" secondAttribute="centerX" id="SkI-hH-JBp"/>
+                            <constraint firstItem="fpl-2a-9SU" firstAttribute="leading" secondItem="JWh-ju-ZSA" secondAttribute="leading" id="TvW-xb-hIZ"/>
+                            <constraint firstAttribute="bottom" secondItem="fpl-2a-9SU" secondAttribute="bottom" id="eUh-zn-vbE"/>
                             <constraint firstAttribute="bottom" secondItem="Kka-dx-iSd" secondAttribute="bottom" id="ngw-NI-lpS"/>
+                            <constraint firstItem="fpl-2a-9SU" firstAttribute="top" secondItem="JWh-ju-ZSA" secondAttribute="top" constant="75" id="rNk-GM-Vmv"/>
+                            <constraint firstAttribute="trailing" secondItem="fpl-2a-9SU" secondAttribute="trailing" id="x1p-5P-SoW"/>
                             <constraint firstItem="mZD-g8-0yW" firstAttribute="leading" secondItem="JWh-ju-ZSA" secondAttribute="leading" id="x3t-O1-Rrt"/>
                             <constraint firstItem="mZD-g8-0yW" firstAttribute="top" secondItem="JWh-ju-ZSA" secondAttribute="top" id="xxE-QV-4H4"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="contentDarken" destination="fpl-2a-9SU" id="us3-Mh-P7x"/>
                         <outlet property="coverImageBlurredImageView" destination="lv9-BA-r4O" id="6mv-T5-xcK"/>
                         <outlet property="coverImageContainer" destination="Ubp-RK-Yel" id="PDQ-rv-xhC"/>
                         <outlet property="coverImageImageView" destination="XXW-Rb-vbO" id="hxg-Yq-nNJ"/>
+                        <outlet property="currentSongArtistLabel" destination="McP-we-ZyI" id="6pc-Rz-INd"/>
+                        <outlet property="currentSongTitleLabel" destination="cQN-2I-zei" id="taH-mg-h2A"/>
+                        <outlet property="playbackControlsContainer" destination="OHA-Qn-g5o" id="mdD-s7-Kfw"/>
+                        <outlet property="playbackControlsFavouriteButton" destination="Gnj-dx-crK" id="YBe-BN-ZO6"/>
+                        <outlet property="playbackControlsLoopButton" destination="QJ7-q0-S80" id="0cf-tu-PPL"/>
+                        <outlet property="playbackControlsPausePlayButton" destination="ZPs-Yo-3I3" id="9g9-Mx-jvy"/>
+                        <outlet property="playbackControlsRandomButton" destination="LYo-Cp-CAS" id="kHr-9n-qMD"/>
+                        <outlet property="playbackControlsSkipNextButton" destination="cK8-Om-Ff3" id="N1p-8f-haZ"/>
+                        <outlet property="playbackControlsSkipPreviousButton" destination="WcW-Np-1o0" id="cn7-FB-Fp0"/>
+                        <outlet property="progressContainer" destination="Fkg-nT-dAj" id="bps-KS-kON"/>
+                        <outlet property="progressCurrentTimeLabel" destination="Cxd-jh-I7S" id="zqn-Kd-Tsy"/>
+                        <outlet property="progressSlider" destination="98P-Sa-2u9" id="jzZ-IW-8ud"/>
+                        <outlet property="progressSongLengthLabel" destination="X06-G0-8Oz" id="bmh-vP-uHs"/>
                         <outlet property="titlebarContainer" destination="fP5-07-wCf" id="gn7-5U-zcA"/>
+                        <outlet property="titlebarDarken" destination="ka2-gA-cf6" id="sre-bH-Pxz"/>
                         <outlet property="titlebarPlaylistButton" destination="a8M-PB-nkr" id="KNd-MG-Q08"/>
                         <outlet property="titlebarSearchButton" destination="ddm-tN-e9L" id="GOW-o7-CVM"/>
                         <outlet property="topContainer" destination="mZD-g8-0yW" id="vrV-7W-5Xq"/>
