@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "AZMenu@1x.png",
+      "filename" : "AZRandomOff@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "AZMenu@2x.png",
+      "filename" : "AZRandomOff@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "AZMenu@3x.png",
+      "filename" : "AZRandomOff@3x.png",
       "scale" : "3x"
     }
   ],

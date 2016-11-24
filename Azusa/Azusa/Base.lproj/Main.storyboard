@@ -688,7 +688,7 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="229" y="249" width="350" height="600"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1600" height="900"/>
-                        <value key="minSize" type="size" width="350" height="500"/>
+                        <value key="minSize" type="size" width="350" height="600"/>
                     </window>
                     <connections>
                         <segue destination="Gpq-yk-DCa" kind="relationship" relationship="window.shadowedContentViewController" id="GMo-4P-UmE"/>
@@ -878,7 +878,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="190"/>
                                         <subviews>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="WcW-Np-1o0" userLabel="Skip Previous Button">
-                                                <rect key="frame" x="97" y="86" width="18" height="18"/>
+                                                <rect key="frame" x="97" y="122" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="Dj3-Oz-opO"/>
                                                     <constraint firstAttribute="height" constant="18" id="eaL-Bt-GE4"/>
@@ -889,7 +889,7 @@
                                                 </buttonCell>
                                             </button>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="ZPs-Yo-3I3" userLabel="Pause/Play Button">
-                                                <rect key="frame" x="165" y="85" width="20" height="20"/>
+                                                <rect key="frame" x="165" y="120" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="0he-rA-pWh"/>
                                                     <constraint firstAttribute="height" constant="20" id="HMS-vY-vZp"/>
@@ -900,7 +900,7 @@
                                                 </buttonCell>
                                             </button>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="cK8-Om-Ff3" userLabel="Skip Next Button">
-                                                <rect key="frame" x="235" y="86" width="18" height="18"/>
+                                                <rect key="frame" x="235" y="122" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="Q5X-to-WqL"/>
                                                     <constraint firstAttribute="height" constant="18" id="yEw-z3-T8t"/>
@@ -910,13 +910,52 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </button>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="LYo-Cp-CAS" userLabel="Random Button">
+                                                <rect key="frame" x="111" y="64" width="16" height="16"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="16" id="XTD-cH-9Uk"/>
+                                                    <constraint firstAttribute="width" constant="16" id="cfK-Fw-hS9"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZRandomOff" imagePosition="only" alignment="center" alternateImage="AZRandomOn" imageScaling="proportionallyUpOrDown" inset="2" id="Gnd-9V-eJA">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="QJ7-q0-S80" userLabel="Loop Button">
+                                                <rect key="frame" x="167" y="64" width="16" height="16"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="16" id="MTq-aN-STf"/>
+                                                    <constraint firstAttribute="width" constant="16" id="aAr-Vf-Yte"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZLoopPlaylist" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="S45-3r-WGs">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="Gnj-dx-crK" userLabel="Favourite Button">
+                                                <rect key="frame" x="223" y="64" width="16" height="16"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="16" id="4ER-3e-jLB"/>
+                                                    <constraint firstAttribute="width" constant="16" id="4iq-rF-4Ko"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZNotFavourite" imagePosition="only" alignment="center" alternateImage="AZFavourite" imageScaling="proportionallyUpOrDown" inset="2" id="iZc-zi-cta">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="WcW-Np-1o0" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" id="Lbr-HO-gz0"/>
+                                            <constraint firstItem="LYo-Cp-CAS" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" constant="23" id="E3A-0k-ih0"/>
+                                            <constraint firstItem="WcW-Np-1o0" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" constant="-36" id="Lbr-HO-gz0"/>
+                                            <constraint firstItem="QJ7-q0-S80" firstAttribute="centerX" secondItem="OHA-Qn-g5o" secondAttribute="centerX" id="T61-Vg-Dp4"/>
                                             <constraint firstItem="cK8-Om-Ff3" firstAttribute="leading" secondItem="ZPs-Yo-3I3" secondAttribute="trailing" constant="50" id="XP2-1F-sA3"/>
-                                            <constraint firstItem="cK8-Om-Ff3" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" id="cvX-00-mQt"/>
-                                            <constraint firstItem="ZPs-Yo-3I3" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" id="hjH-MX-F21"/>
+                                            <constraint firstItem="cK8-Om-Ff3" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" constant="-36" id="cvX-00-mQt"/>
+                                            <constraint firstItem="Gnj-dx-crK" firstAttribute="leading" secondItem="QJ7-q0-S80" secondAttribute="trailing" constant="40" id="fXi-Ae-DBx"/>
+                                            <constraint firstItem="ZPs-Yo-3I3" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" constant="-35" id="hjH-MX-F21"/>
+                                            <constraint firstItem="QJ7-q0-S80" firstAttribute="leading" secondItem="LYo-Cp-CAS" secondAttribute="trailing" constant="40" id="i1y-nh-zWx"/>
+                                            <constraint firstItem="Gnj-dx-crK" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" constant="23" id="i77-uX-0Zr"/>
                                             <constraint firstItem="ZPs-Yo-3I3" firstAttribute="centerX" secondItem="OHA-Qn-g5o" secondAttribute="centerX" id="m20-z6-OL5"/>
+                                            <constraint firstItem="QJ7-q0-S80" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" constant="23" id="nFZ-Wz-nYj"/>
                                             <constraint firstItem="ZPs-Yo-3I3" firstAttribute="leading" secondItem="WcW-Np-1o0" secondAttribute="trailing" constant="50" id="ucN-Hs-qfI"/>
                                         </constraints>
                                     </customView>
@@ -1074,9 +1113,14 @@
     </scenes>
     <resources>
         <image name="AZExampleCoverMoe" width="1400" height="1400"/>
+        <image name="AZFavourite" width="16" height="16"/>
+        <image name="AZLoopPlaylist" width="16" height="16"/>
         <image name="AZMenu" width="15" height="15"/>
+        <image name="AZNotFavourite" width="16" height="16"/>
         <image name="AZPause" width="20" height="20"/>
         <image name="AZPlay" width="20" height="20"/>
+        <image name="AZRandomOff" width="16" height="16"/>
+        <image name="AZRandomOn" width="16" height="16"/>
         <image name="AZSearch" width="15" height="15"/>
         <image name="AZSkipNext" width="18" height="18"/>
         <image name="AZSkipPrevious" width="18" height="18"/>
