@@ -659,25 +659,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Azusa" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
-        </scene>
-        <!--Window Controller-->
-        <scene sceneID="R2V-B0-nI4">
-            <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                    </window>
-                    <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
-                    </connections>
-                </windowController>
-                <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="873" y="-234"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="wsw-Ur-YJb">
@@ -706,6 +688,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <containerView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cOB-sT-QbK" userLabel="Playlist Container View">
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
+                                <connections>
+                                    <segue destination="0pL-3u-gRo" kind="embed" id="Tdb-XC-fSG"/>
+                                </connections>
+                            </containerView>
+                            <containerView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3wM-8b-Obt" userLabel="Search Container View">
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
+                                <connections>
+                                    <segue destination="VPH-z3-Cub" kind="embed" id="JT3-ad-Nje"/>
+                                </connections>
+                            </containerView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="mZD-g8-0yW" userLabel="Top Container">
                                 <rect key="frame" x="0.0" y="350" width="350" height="250"/>
                                 <subviews>
@@ -727,7 +721,15 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="fP5-07-wCf" userLabel="Titlebar" customClass="AZGradientView" customModule="Azusa" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="175" width="350" height="75"/>
                                         <subviews>
-                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="a8M-PB-nkr" userLabel="Menu Button">
+                                            <customView alphaValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="ka2-gA-cf6" userLabel="Darken" customClass="AZColoredView" customModule="Azusa" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="350" height="75"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                        <color key="value" white="0.0" alpha="0.5" colorSpace="deviceWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </customView>
+                                            <button toolTip="Playlist" translatesAutoresizingMaskIntoConstraints="NO" id="a8M-PB-nkr" userLabel="Menu Button">
                                                 <rect key="frame" x="30" y="30" width="15" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="15" id="XZH-dV-Lrn"/>
@@ -741,7 +743,7 @@
                                                     <action selector="titlebarPlaylistButtonPressed:" target="Gpq-yk-DCa" id="Dcz-BE-PDD"/>
                                                 </connections>
                                             </button>
-                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="ddm-tN-e9L" userLabel="Search Button">
+                                            <button toolTip="Search" translatesAutoresizingMaskIntoConstraints="NO" id="ddm-tN-e9L" userLabel="Search Button">
                                                 <rect key="frame" x="305" y="30" width="15" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="rL8-9A-sV4"/>
@@ -755,14 +757,6 @@
                                                     <action selector="titlebarSearchButtonPressed:" target="Gpq-yk-DCa" id="M7l-mt-z6d"/>
                                                 </connections>
                                             </button>
-                                            <customView alphaValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="ka2-gA-cf6" userLabel="Darken" customClass="AZColoredView" customModule="Azusa" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="350" height="75"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                                        <color key="value" white="0.0" alpha="0.5" colorSpace="deviceWhite"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </customView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="ka2-gA-cf6" secondAttribute="trailing" id="5W7-LK-rRI"/>
@@ -779,7 +773,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.25519916373239437" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.40347161091549294" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="endColor">
                                                 <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1056,15 +1050,23 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Kka-dx-iSd" secondAttribute="trailing" id="1zs-kM-Tbl"/>
+                            <constraint firstAttribute="trailing" secondItem="3wM-8b-Obt" secondAttribute="trailing" id="9VL-Nv-LXZ"/>
                             <constraint firstItem="Kka-dx-iSd" firstAttribute="top" secondItem="mZD-g8-0yW" secondAttribute="bottom" id="9Ym-YO-3B3"/>
                             <constraint firstAttribute="trailing" secondItem="mZD-g8-0yW" secondAttribute="trailing" id="Adf-zO-OR7"/>
                             <constraint firstItem="Kka-dx-iSd" firstAttribute="leading" secondItem="JWh-ju-ZSA" secondAttribute="leading" id="BCm-H6-ZeU"/>
+                            <constraint firstAttribute="bottom" secondItem="3wM-8b-Obt" secondAttribute="bottom" id="Bnq-74-V1M"/>
+                            <constraint firstItem="cOB-sT-QbK" firstAttribute="leading" secondItem="JWh-ju-ZSA" secondAttribute="leading" id="CtK-dF-IGi"/>
                             <constraint firstItem="Ubp-RK-Yel" firstAttribute="top" secondItem="JWh-ju-ZSA" secondAttribute="top" constant="70" id="FNc-YG-d3I"/>
+                            <constraint firstItem="3wM-8b-Obt" firstAttribute="leading" secondItem="JWh-ju-ZSA" secondAttribute="leading" id="FTy-wi-N7p"/>
+                            <constraint firstItem="3wM-8b-Obt" firstAttribute="top" secondItem="JWh-ju-ZSA" secondAttribute="top" id="GrK-cK-nhb"/>
+                            <constraint firstAttribute="bottom" secondItem="cOB-sT-QbK" secondAttribute="bottom" id="IZ8-Zv-R2z"/>
+                            <constraint firstItem="cOB-sT-QbK" firstAttribute="top" secondItem="JWh-ju-ZSA" secondAttribute="top" id="J8H-Kw-VFJ"/>
                             <constraint firstItem="Ubp-RK-Yel" firstAttribute="centerX" secondItem="JWh-ju-ZSA" secondAttribute="centerX" id="SkI-hH-JBp"/>
                             <constraint firstItem="fpl-2a-9SU" firstAttribute="leading" secondItem="JWh-ju-ZSA" secondAttribute="leading" id="TvW-xb-hIZ"/>
                             <constraint firstAttribute="bottom" secondItem="fpl-2a-9SU" secondAttribute="bottom" id="eUh-zn-vbE"/>
                             <constraint firstAttribute="bottom" secondItem="Kka-dx-iSd" secondAttribute="bottom" id="ngw-NI-lpS"/>
                             <constraint firstItem="fpl-2a-9SU" firstAttribute="top" secondItem="JWh-ju-ZSA" secondAttribute="top" constant="75" id="rNk-GM-Vmv"/>
+                            <constraint firstAttribute="trailing" secondItem="cOB-sT-QbK" secondAttribute="trailing" id="siD-Ac-z79"/>
                             <constraint firstAttribute="trailing" secondItem="fpl-2a-9SU" secondAttribute="trailing" id="x1p-5P-SoW"/>
                             <constraint firstItem="mZD-g8-0yW" firstAttribute="leading" secondItem="JWh-ju-ZSA" secondAttribute="leading" id="x3t-O1-Rrt"/>
                             <constraint firstItem="mZD-g8-0yW" firstAttribute="top" secondItem="JWh-ju-ZSA" secondAttribute="top" id="xxE-QV-4H4"/>
@@ -1084,10 +1086,12 @@
                         <outlet property="playbackControlsRandomButton" destination="LYo-Cp-CAS" id="kHr-9n-qMD"/>
                         <outlet property="playbackControlsSkipNextButton" destination="cK8-Om-Ff3" id="N1p-8f-haZ"/>
                         <outlet property="playbackControlsSkipPreviousButton" destination="WcW-Np-1o0" id="cn7-FB-Fp0"/>
+                        <outlet property="playlistContainerView" destination="cOB-sT-QbK" id="p51-8e-wwo"/>
                         <outlet property="progressContainer" destination="Fkg-nT-dAj" id="bps-KS-kON"/>
                         <outlet property="progressCurrentTimeLabel" destination="Cxd-jh-I7S" id="zqn-Kd-Tsy"/>
                         <outlet property="progressSlider" destination="98P-Sa-2u9" id="jzZ-IW-8ud"/>
                         <outlet property="progressSongLengthLabel" destination="X06-G0-8Oz" id="bmh-vP-uHs"/>
+                        <outlet property="searchContainerView" destination="3wM-8b-Obt" id="WuT-gX-sCA"/>
                         <outlet property="titlebarContainer" destination="fP5-07-wCf" id="gn7-5U-zcA"/>
                         <outlet property="titlebarDarken" destination="ka2-gA-cf6" id="sre-bH-Pxz"/>
                         <outlet property="titlebarPlaylistButton" destination="a8M-PB-nkr" id="KNd-MG-Q08"/>
@@ -1099,76 +1103,188 @@
             </objects>
             <point key="canvasLocation" x="872" y="999"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="hIz-AP-VOD">
+        <!--Playlist View Controller-->
+        <scene sceneID="dl6-S0-zF9">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Azusa" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <viewController id="0pL-3u-gRo" userLabel="Playlist View Controller" sceneMemberID="viewController">
+                    <view key="view" id="gbo-xh-Jy8">
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JFE-FN-x2b" userLabel="Port Field">
-                                <rect key="frame" x="20" y="198" width="440" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="6600" placeholderString="Port" bezelStyle="round" id="GAg-Fv-cca" userLabel="Cell">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EkA-Kc-YLf" userLabel="Address Field">
-                                <rect key="frame" x="20" y="228" width="440" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="127.0.0.1" placeholderString="Address" bezelStyle="round" id="8FW-u8-hCY" userLabel="Cell">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ha6-K4-NFP" userLabel="Command Field">
-                                <rect key="frame" x="20" y="168" width="440" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="Command" bezelStyle="round" id="DzB-PG-bkv">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5KZ-Ln-SV4" userLabel="Run Button">
-                                <rect key="frame" x="14" y="13" width="452" height="32"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="OvM-Ei-iSN" userLabel="Content Area" customClass="AZColoredView" customModule="Azusa" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="525"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="gFf-n3-pnb" userLabel="Header" customClass="AZColoredView" customModule="Azusa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="450" width="350" height="75"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tRm-38-4Le" userLabel="Playlist Header">
+                                                <rect key="frame" x="18" y="25" width="72" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="68" id="Cob-xS-KkI"/>
+                                                    <constraint firstAttribute="height" constant="30" id="YxD-6S-ta6"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Playlist" id="yvH-6e-dUq">
+                                                    <font key="font" size="20" name="Exo2-Medium"/>
+                                                    <color key="textColor" red="0.89838169642857146" green="0.89838169642857146" blue="0.89838169642857146" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="8Yr-B9-TpB" userLabel="Playlist Song Count">
+                                                <rect key="frame" x="281" y="29" width="51" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="RHC-oV-2El"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="X songs" id="Cni-6s-jxz">
+                                                    <font key="font" size="13" name="Exo2-MediumItalic"/>
+                                                    <color key="textColor" white="0.60273437500000004" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="8Yr-B9-TpB" firstAttribute="centerY" secondItem="gFf-n3-pnb" secondAttribute="centerY" constant="-1.5" id="2Cg-oz-sYX"/>
+                                            <constraint firstItem="tRm-38-4Le" firstAttribute="leading" secondItem="gFf-n3-pnb" secondAttribute="leading" constant="20" id="9tZ-BR-w4i"/>
+                                            <constraint firstAttribute="height" constant="75" id="Dhz-zB-eVQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="8Yr-B9-TpB" secondAttribute="trailing" constant="20" id="Vvg-x3-n83"/>
+                                            <constraint firstItem="tRm-38-4Le" firstAttribute="centerY" secondItem="gFf-n3-pnb" secondAttribute="centerY" constant="-2.5" id="dGP-W6-Phx"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                <color key="value" red="0.1435546875" green="0.1435546875" blue="0.1435546875" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="vrZ-3S-Veu"/>
+                                    <constraint firstItem="gFf-n3-pnb" firstAttribute="top" secondItem="OvM-Ei-iSN" secondAttribute="top" id="NVY-OF-Qrj"/>
+                                    <constraint firstItem="gFf-n3-pnb" firstAttribute="leading" secondItem="OvM-Ei-iSN" secondAttribute="leading" id="TM9-6E-Yxd"/>
+                                    <constraint firstAttribute="trailing" secondItem="gFf-n3-pnb" secondAttribute="trailing" id="Yxs-jq-9nh"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Run" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DHS-3t-v2O" userLabel="Cell">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="runButtonPressed:" target="XfG-lQ-9wD" id="gBo-p8-iqG"/>
-                                </connections>
-                            </button>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                        <color key="value" red="0.078348214285714285" green="0.078348214285714285" blue="0.078348214285714285" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="yDk-5E-Ztc" userLabel="Titlebar Area">
+                                <rect key="frame" x="0.0" y="525" width="350" height="75"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O1x-jl-2VD">
+                                        <rect key="frame" x="17" y="0.0" width="41" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="MaI-ZB-ULx"/>
+                                            <constraint firstAttribute="width" constant="41" id="YIv-cM-FJd"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AZPanelConnectionArrow" id="fQN-zb-jY4"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="O1x-jl-2VD" firstAttribute="leading" secondItem="yDk-5E-Ztc" secondAttribute="leading" constant="17" id="9Yl-1g-QI2"/>
+                                    <constraint firstAttribute="height" constant="75" id="Aln-4Q-Id8"/>
+                                    <constraint firstAttribute="bottom" secondItem="O1x-jl-2VD" secondAttribute="bottom" id="J8g-cW-dNt"/>
+                                </constraints>
+                            </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="JFE-FN-x2b" secondAttribute="trailing" constant="20" id="3C1-IQ-exI"/>
-                            <constraint firstAttribute="trailing" secondItem="ha6-K4-NFP" secondAttribute="trailing" constant="20" id="82D-DX-qME"/>
-                            <constraint firstItem="JFE-FN-x2b" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="AEc-ko-NO2"/>
-                            <constraint firstItem="ha6-K4-NFP" firstAttribute="top" secondItem="JFE-FN-x2b" secondAttribute="bottom" constant="8" id="B9c-PB-3cK"/>
-                            <constraint firstItem="EkA-Kc-YLf" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="HLo-7r-X1G"/>
-                            <constraint firstItem="5KZ-Ln-SV4" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="IeC-o2-62a"/>
-                            <constraint firstAttribute="bottom" secondItem="5KZ-Ln-SV4" secondAttribute="bottom" constant="20" id="KSc-7R-Szi"/>
-                            <constraint firstAttribute="trailing" secondItem="5KZ-Ln-SV4" secondAttribute="trailing" constant="20" id="mdu-ml-BEP"/>
-                            <constraint firstAttribute="trailing" secondItem="EkA-Kc-YLf" secondAttribute="trailing" constant="20" id="pJZ-W4-kQZ"/>
-                            <constraint firstItem="ha6-K4-NFP" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="ppa-mb-ltd"/>
-                            <constraint firstItem="JFE-FN-x2b" firstAttribute="top" secondItem="EkA-Kc-YLf" secondAttribute="bottom" constant="8" id="rJA-Fx-JfA"/>
-                            <constraint firstItem="EkA-Kc-YLf" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="vto-qx-QtA"/>
+                            <constraint firstItem="OvM-Ei-iSN" firstAttribute="top" secondItem="yDk-5E-Ztc" secondAttribute="bottom" id="4Yw-YK-bGm"/>
+                            <constraint firstItem="yDk-5E-Ztc" firstAttribute="leading" secondItem="gbo-xh-Jy8" secondAttribute="leading" id="99t-1e-ncy"/>
+                            <constraint firstAttribute="bottom" secondItem="OvM-Ei-iSN" secondAttribute="bottom" id="G9K-r2-DQs"/>
+                            <constraint firstAttribute="trailing" secondItem="yDk-5E-Ztc" secondAttribute="trailing" id="Yoc-WY-ADq"/>
+                            <constraint firstAttribute="trailing" secondItem="OvM-Ei-iSN" secondAttribute="trailing" id="cpY-ef-qzP"/>
+                            <constraint firstItem="yDk-5E-Ztc" firstAttribute="top" secondItem="gbo-xh-Jy8" secondAttribute="top" id="mA5-WS-YXW"/>
+                            <constraint firstItem="OvM-Ei-iSN" firstAttribute="leading" secondItem="gbo-xh-Jy8" secondAttribute="leading" id="qhw-4R-EaX"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="addressField" destination="EkA-Kc-YLf" id="n3x-cN-ZyR"/>
-                        <outlet property="commandField" destination="ha6-K4-NFP" id="8sy-Jo-dq7"/>
-                        <outlet property="portField" destination="JFE-FN-x2b" id="N6D-16-Kh7"/>
-                    </connections>
                 </viewController>
-                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="5eZ-eN-E6z" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="397" y="999"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="nTx-r0-YUl">
+            <objects>
+                <viewController id="VPH-z3-Cub" userLabel="Search View Controller" sceneMemberID="viewController">
+                    <view key="view" id="riV-2R-Sqi">
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="NAr-fT-qLc" userLabel="Titlebar Area">
+                                <rect key="frame" x="0.0" y="525" width="350" height="75"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lio-Z6-cC5">
+                                        <rect key="frame" x="292" y="0.0" width="41" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="41" id="FgX-gg-Jd9"/>
+                                            <constraint firstAttribute="height" constant="22" id="SSs-30-K3d"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AZPanelConnectionArrow" id="hoP-zU-gWj"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="lio-Z6-cC5" secondAttribute="trailing" constant="17" id="BdL-oW-1S7"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="RVV-ta-TaM"/>
+                                    <constraint firstAttribute="height" constant="75" id="Yjf-lo-7d0"/>
+                                    <constraint firstAttribute="bottom" secondItem="lio-Z6-cC5" secondAttribute="bottom" id="nh1-sW-MHp"/>
+                                </constraints>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="xxR-WL-Qyl" userLabel="Content Area" customClass="AZColoredView" customModule="Azusa" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="525"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="32l-B1-AdH" userLabel="Header" customClass="AZColoredView" customModule="Azusa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="450" width="350" height="75"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fCk-GH-hI9" userLabel="Search Header">
+                                                <rect key="frame" x="18" y="25" width="67" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="63" id="7dw-bG-Vbu"/>
+                                                    <constraint firstAttribute="height" constant="30" id="9Cc-mD-t1c"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Search" id="Ak8-l8-086">
+                                                    <font key="font" size="20" name="Exo2-Medium"/>
+                                                    <color key="textColor" red="0.89838169639999998" green="0.89838169639999998" blue="0.89838169639999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="YO4-2s-Tkr"/>
+                                            <constraint firstItem="fCk-GH-hI9" firstAttribute="centerY" secondItem="32l-B1-AdH" secondAttribute="centerY" constant="-2.5" id="YOv-PE-MXZ"/>
+                                            <constraint firstItem="fCk-GH-hI9" firstAttribute="leading" secondItem="32l-B1-AdH" secondAttribute="leading" constant="20" id="bwx-2R-Pbe"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                <color key="value" red="0.1435546875" green="0.1435546875" blue="0.1435546875" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="32l-B1-AdH" firstAttribute="leading" secondItem="xxR-WL-Qyl" secondAttribute="leading" id="4Vs-Ng-qGR"/>
+                                    <constraint firstAttribute="trailing" secondItem="32l-B1-AdH" secondAttribute="trailing" id="RWX-Hg-vTC"/>
+                                    <constraint firstItem="32l-B1-AdH" firstAttribute="top" secondItem="xxR-WL-Qyl" secondAttribute="top" id="j9Q-aa-fpx"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                        <color key="value" red="0.078348214289999996" green="0.078348214289999996" blue="0.078348214289999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="NAr-fT-qLc" firstAttribute="leading" secondItem="riV-2R-Sqi" secondAttribute="leading" id="D3n-se-gKr"/>
+                            <constraint firstAttribute="trailing" secondItem="NAr-fT-qLc" secondAttribute="trailing" id="QhV-Tt-5ih"/>
+                            <constraint firstItem="xxR-WL-Qyl" firstAttribute="leading" secondItem="riV-2R-Sqi" secondAttribute="leading" id="XAt-cO-RnW"/>
+                            <constraint firstItem="xxR-WL-Qyl" firstAttribute="top" secondItem="NAr-fT-qLc" secondAttribute="bottom" id="cdo-ay-ZJg"/>
+                            <constraint firstAttribute="trailing" secondItem="xxR-WL-Qyl" secondAttribute="trailing" id="gaz-I6-tjm"/>
+                            <constraint firstItem="NAr-fT-qLc" firstAttribute="top" secondItem="riV-2R-Sqi" secondAttribute="top" id="k97-QF-Zp7"/>
+                            <constraint firstAttribute="bottom" secondItem="xxR-WL-Qyl" secondAttribute="bottom" id="vYW-cg-Y35"/>
+                            <constraint firstItem="xxR-WL-Qyl" firstAttribute="top" secondItem="NAr-fT-qLc" secondAttribute="bottom" id="xd9-oJ-1zC"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="2nz-Nh-2OR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1340" y="999"/>
         </scene>
     </scenes>
     <resources>
@@ -1177,6 +1293,7 @@
         <image name="AZLoopPlaylist" width="16" height="16"/>
         <image name="AZMenu" width="15" height="15"/>
         <image name="AZNotFavourite" width="16" height="16"/>
+        <image name="AZPanelConnectionArrow" width="41" height="22"/>
         <image name="AZPause" width="20" height="20"/>
         <image name="AZPlay" width="20" height="20"/>
         <image name="AZRandomOff" width="16" height="16"/>

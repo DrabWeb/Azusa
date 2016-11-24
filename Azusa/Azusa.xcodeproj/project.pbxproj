@@ -20,7 +20,6 @@
 		AE6E22331DE57711003DBC94 /* AZRoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E22321DE57711003DBC94 /* AZRoundedCornersView.swift */; };
 		AEC555801DE54062005D7640 /* MISong.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC5557F1DE54062005D7640 /* MISong.swift */; };
 		AEC7E1BF1DE40F3600E1EA3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1BE1DE40F3600E1EA3A /* AppDelegate.swift */; };
-		AEC7E1C11DE40F3600E1EA3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1C01DE40F3600E1EA3A /* ViewController.swift */; };
 		AEC7E1C31DE40F3600E1EA3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEC7E1C21DE40F3600E1EA3A /* Assets.xcassets */; };
 		AEC7E1C61DE40F3600E1EA3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEC7E1C41DE40F3600E1EA3A /* Main.storyboard */; };
 		AEC7E1D11DE40F3700E1EA3A /* AzusaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1D01DE40F3700E1EA3A /* AzusaTests.swift */; };
@@ -59,7 +58,6 @@
 		AEC5557F1DE54062005D7640 /* MISong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MISong.swift; path = Mio/MISong.swift; sourceTree = "<group>"; };
 		AEC7E1BB1DE40F3600E1EA3A /* Azusa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Azusa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEC7E1BE1DE40F3600E1EA3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AEC7E1C01DE40F3600E1EA3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AEC7E1C21DE40F3600E1EA3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEC7E1C51DE40F3600E1EA3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AEC7E1C71DE40F3600E1EA3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				AEC7E1BE1DE40F3600E1EA3A /* AppDelegate.swift */,
-				AEC7E1C01DE40F3600E1EA3A /* ViewController.swift */,
 				AE6E22301DE57102003DBC94 /* AZMusicPlayerViewController.swift */,
 				AEC7E2041DE4104700E1EA3A /* Storyboards */,
 				AE6E222D1DE56E56003DBC94 /* Views */,
@@ -515,7 +512,6 @@
 			files = (
 				AE6E22311DE57102003DBC94 /* AZMusicPlayerViewController.swift in Sources */,
 				AEC555801DE54062005D7640 /* MISong.swift in Sources */,
-				AEC7E1C11DE40F3600E1EA3A /* ViewController.swift in Sources */,
 				AE12BE361DE57B2600BAF030 /* AZGradientView.swift in Sources */,
 				AE11B52C1DE66C56008B2827 /* AZProgressSliderCell.swift in Sources */,
 				AEC7E1BF1DE40F3600E1EA3A /* AppDelegate.swift in Sources */,
