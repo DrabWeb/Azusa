@@ -1,11 +1,13 @@
 //
 //  MISong.swift
-//  Azusa
+//  Mio
 //
 //  Created by Ushio on 11/22/16.
 //
 
 import Foundation
+import AppKit
+import AVFoundation
 
 /// Represents a song in MPD
 class MISong: NSObject {
@@ -128,6 +130,41 @@ class MISong: NSObject {
             // Return a string saying we don't know the album
             return "Unknown Album";
         }
+    }
+    
+    var coverImage : NSImage {
+        /// The cover to return
+        var cover : NSImage = (NSApp.delegate as! AppDelegate).preferences.defaultCoverImage;
+        
+        /// The URL for this song's file
+        let fileUrl : URL? = URL(fileURLWithPath: self.file);
+        
+        // If 'fileUrl' isn't nil...
+        if(fileUrl != nil) {
+            /// The AVFoundation asset for this song
+            let songAsset : AVURLAsset = AVURLAsset(url: fileUrl!);
+            
+            /// For every tag in this song's tags...
+            for currentTag : AVMetadataItem in songAsset.metadata(forFormat: AVMetadataFormatID3Metadata) as Array<AVMetadataItem> {
+                // If the current tag is the artwork tag...
+                if(currentTag.commonKey == "artwork") {
+                    // If the current tag's data isnt nil...
+                    if(currentTag.dataValue != nil) {
+                        /// The image from this tag
+                        let tagImage : NSImage? = NSImage(data: currentTag.dataValue!);
+                        
+                        // If tagImage isnt nil...
+                        if(tagImage != nil) {
+                            // Set the cover image to tagImage
+                            cover = tagImage!;
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Return the cover
+        return cover;
     }
     
     /// Init

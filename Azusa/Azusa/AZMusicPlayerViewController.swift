@@ -111,8 +111,23 @@ class AZMusicPlayerViewController: NSViewController {
     /// The skip previous playback control button
     @IBOutlet weak var playbackControlsSkipPreviousButton: NSButton!
     
+    private var coverTesters : [String] = ["/Volumes/Storage/macOS/Music/K-On!/K-ON MHB D1/01 Cagayake! GIRLS.mp3",
+                                           "/Volumes/Storage/macOS/Music/chibi-tech/Moe Moe Kyunstep (lil' demonic swallowtail VIP mix).mp3",
+                                           "/Volumes/Storage/macOS/Music/coralmines - Technicoral/coralmines - Technicoral - 03 Try Again!.mp3",
+                                           "/This/is/non-existant/for/testing"];
+    
+    private var coverTestersIndex : Int = 0;
+    
     @IBAction func playbackControlsSkipPreviousButtonPressed(_ sender: NSButton) {
+        let song : MISong = MISong(string: "");
+        song.file = coverTesters[coverTestersIndex];
         
+        display(coverImage: song.coverImage);
+        
+        coverTestersIndex += 1;
+        if(coverTestersIndex >= coverTesters.count) {
+            coverTestersIndex = 0;
+        }
     }
     
     /// The play/pause playback control button
@@ -453,7 +468,7 @@ class AZMusicPlayerViewController: NSViewController {
     /// Displays the given NSImage as the cover image for this music player
     func display(coverImage : NSImage) {
         // Set the cover image view's image to the passed cover image
-        coverImageImageView.image = coverImage;
+        coverImageImageView.setAspectFillImage(coverImage);
         
         /// The animation for crossfading coverImageBlurredImageView's image
         let coverBlurCrossFade : CABasicAnimation = CABasicAnimation(keyPath: "contents");
@@ -477,7 +492,7 @@ class AZMusicPlayerViewController: NSViewController {
         self.coverImageBlurredImageView.layer?.add(coverBlurCrossFade, forKey: "animateContents");
         
         // Set the blurred image view's image to the given image
-        self.coverImageBlurredImageView.image = coverImage;
+        self.coverImageBlurredImageView.setAspectFillImage(coverImage);
     }
     
     /// Styles the window

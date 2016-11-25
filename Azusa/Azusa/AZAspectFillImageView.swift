@@ -13,9 +13,20 @@ class AZAspectFillImageView: NSImageView {
         super.draw(dirtyRect)
 
         // Drawing code here.
-//        self.layer = CALayer();
-        self.layer?.contentsGravity = kCAGravityResizeAspectFill;
-        self.layer?.contents = self.image;
+    }
+    
+    /// Used for setting the image for aspect filling
+    func setAspectFillImage(_ image : NSImage) {
+        // Set the actual image so it's still accessable
+        self.image = image;
+        
+        // Setup the layer with smoothing, scaling, etc.
         self.wantsLayer = true;
+        self.layer?.contentsGravity = kCAGravityResizeAspectFill;
+        self.layer?.contents = image;
+        self.layer?.minificationFilter = kCAFilterLinear;
+        self.layer?.rasterizationScale = NSScreen.main()!.backingScaleFactor * 2;
+        self.layer?.shouldRasterize = true;
+        self.layer?.contentsScale = NSScreen.main()!.backingScaleFactor;
     }
 }
