@@ -1,6 +1,6 @@
 //
 //  MITCPCommunications.swift
-//  Mio
+//  Azusa.Mio
 //
 //  Created by Ushio on 11/22/16.
 //
@@ -14,6 +14,7 @@ enum MITCPTags : Int {
     case commandOutput
 }
 
+/// The class for making TCP connections and requests to MPD
 class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
     /// Variables
@@ -96,7 +97,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             outputCompletionHandler?(dataString);
             
             // Clear outputCompletionHandler
-            outputCompletionHandler = nil;
+//            outputCompletionHandler = nil;
         }
     }
     
@@ -108,7 +109,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         self.connectionCompletionHandler?(sock);
         
         // Clear connectionCompletionHandler
-        connectionCompletionHandler = nil;
+//        connectionCompletionHandler = nil;
     }
     
     

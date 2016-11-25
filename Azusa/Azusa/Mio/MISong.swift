@@ -1,6 +1,6 @@
 //
 //  MISong.swift
-//  Mio
+//  Azusa.Mio
 //
 //  Created by Ushio on 11/22/16.
 //
@@ -77,6 +77,11 @@ class MISong: NSObject {
     /// The ID of this song
     var id : Int = -1;
     
+    /// Is this a valid MISong?
+    var valid : Bool {
+        return self.file != "";
+    }
+    
     /// The debug description for this song
     override var debugDescription : String {
         return "\(self): \(self.displayTitle) by \(self.displayArtist)(\(self.length) seconds long), in \(self.displayAlbum)";
@@ -107,7 +112,7 @@ class MISong: NSObject {
     /// Returns the display artist for this song
     var displayArtist : String {
         // If artist is set...
-        if(album != "") {
+        if(artist != "") {
             // Return artist
             return artist;
         }

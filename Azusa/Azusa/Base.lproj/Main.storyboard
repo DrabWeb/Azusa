@@ -975,23 +975,23 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="WTT-Od-TBL" userLabel="Song Info Container">
                                         <rect key="frame" x="0.0" y="185" width="350" height="119"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="McP-we-ZyI" userLabel="Current Song Artist Label">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="McP-we-ZyI" userLabel="Current Song Artist Label">
                                                 <rect key="frame" x="18" y="65" width="314" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="nfo-rU-8Cp"/>
                                                 </constraints>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Artist" id="93e-gw-XbF">
+                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="center" title="Artist" id="93e-gw-XbF">
                                                     <font key="font" size="13" name="Exo2-Regular"/>
                                                     <color key="textColor" white="0.90092075890000001" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cQN-2I-zei" userLabel="Current Song Title Label">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cQN-2I-zei" userLabel="Current Song Title Label">
                                                 <rect key="frame" x="18" y="32" width="314" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="uyl-DA-SAj"/>
                                                 </constraints>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Song Title" id="ftV-y2-om9">
+                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="center" title="Song Title" id="ftV-y2-om9">
                                                     <font key="font" size="15" name="Exo2-SemiBold"/>
                                                     <color key="textColor" white="0.90092075890000001" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1123,7 +1123,7 @@
         <scene sceneID="dl6-S0-zF9">
             <objects>
                 <viewController id="0pL-3u-gRo" userLabel="Playlist View Controller" sceneMemberID="viewController">
-                    <view key="view" id="gbo-xh-Jy8">
+                    <view key="view" wantsLayer="YES" id="gbo-xh-Jy8">
                         <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1210,6 +1210,10 @@
                             <constraint firstItem="yDk-5E-Ztc" firstAttribute="top" secondItem="gbo-xh-Jy8" secondAttribute="top" id="mA5-WS-YXW"/>
                             <constraint firstItem="OvM-Ei-iSN" firstAttribute="leading" secondItem="gbo-xh-Jy8" secondAttribute="leading" id="qhw-4R-EaX"/>
                         </constraints>
+                        <shadow key="shadow" blurRadius="10">
+                            <size key="offset" width="0.0" height="1"/>
+                            <color key="color" white="0.0" alpha="0.75280589788732399" colorSpace="calibratedWhite"/>
+                        </shadow>
                     </view>
                 </viewController>
                 <customObject id="5eZ-eN-E6z" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1220,7 +1224,7 @@
         <scene sceneID="nTx-r0-YUl">
             <objects>
                 <viewController id="VPH-z3-Cub" userLabel="Search View Controller" sceneMemberID="viewController">
-                    <view key="view" id="riV-2R-Sqi">
+                    <view key="view" wantsLayer="YES" id="riV-2R-Sqi">
                         <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1296,6 +1300,10 @@
                             <constraint firstAttribute="bottom" secondItem="xxR-WL-Qyl" secondAttribute="bottom" id="vYW-cg-Y35"/>
                             <constraint firstItem="xxR-WL-Qyl" firstAttribute="top" secondItem="NAr-fT-qLc" secondAttribute="bottom" id="xd9-oJ-1zC"/>
                         </constraints>
+                        <shadow key="shadow" blurRadius="10">
+                            <size key="offset" width="0.0" height="1"/>
+                            <color key="color" white="0.0" alpha="0.75319102112676062" colorSpace="calibratedWhite"/>
+                        </shadow>
                     </view>
                 </viewController>
                 <customObject id="2nz-Nh-2OR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

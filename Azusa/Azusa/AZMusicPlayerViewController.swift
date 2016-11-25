@@ -111,23 +111,8 @@ class AZMusicPlayerViewController: NSViewController {
     /// The skip previous playback control button
     @IBOutlet weak var playbackControlsSkipPreviousButton: NSButton!
     
-    private var coverTesters : [String] = ["/Volumes/Storage/macOS/Music/K-On!/K-ON MHB D1/01 Cagayake! GIRLS.mp3",
-                                           "/Volumes/Storage/macOS/Music/chibi-tech/Moe Moe Kyunstep (lil' demonic swallowtail VIP mix).mp3",
-                                           "/Volumes/Storage/macOS/Music/coralmines - Technicoral/coralmines - Technicoral - 03 Try Again!.mp3",
-                                           "/This/is/non-existant/for/testing"];
-    
-    private var coverTestersIndex : Int = 0;
-    
     @IBAction func playbackControlsSkipPreviousButtonPressed(_ sender: NSButton) {
-        let song : MISong = MISong(string: "");
-        song.file = coverTesters[coverTestersIndex];
         
-        display(coverImage: song.coverImage);
-        
-        coverTestersIndex += 1;
-        if(coverTestersIndex >= coverTesters.count) {
-            coverTestersIndex = 0;
-        }
     }
     
     /// The play/pause playback control button
@@ -229,11 +214,25 @@ class AZMusicPlayerViewController: NSViewController {
     // Is search open?
     var searchOpen : Bool = false;
     
+    /// The MPD server to use
+    var mpd : MIMPD = MIMPD(address: "127.0.0.1", port: 6600, musicDirectory: "/Volumes/Storage/macOS/Music/");
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         // Style the window
         styleWindow();
+        
+        // Connect to the MPD server
+        mpd.connect({ socket in
+            self.mpd.getCurrentSong(completionHandler: { song in
+                print(song!.debugDescription);
+                
+                song!.file = self.mpd.musicDirectory + song!.file;
+                
+                self.display(song: song!);
+            });
+        });
     }
     
     /// The last timer created by 'close(Playlist/Search)' for doing post-animation stuff
@@ -463,6 +462,16 @@ class AZMusicPlayerViewController: NSViewController {
             // Move the darken view to the back
             self.view.addSubview(contentDarken, positioned: .above, relativeTo: nil);
         }
+    }
+    
+    /// Displays the given MISong
+    func display(song : MISong) {
+        // Display the cover image
+        display(coverImage: song.coverImage);
+        
+        // Update the labels
+        currentSongTitleLabel.stringValue = song.displayTitle;
+        currentSongArtistLabel.stringValue = song.displayArtist;
     }
     
     /// Displays the given NSImage as the cover image for this music player

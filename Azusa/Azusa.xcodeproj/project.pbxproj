@@ -27,6 +27,7 @@
 		AEC7E1C61DE40F3600E1EA3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEC7E1C41DE40F3600E1EA3A /* Main.storyboard */; };
 		AEC7E1D11DE40F3700E1EA3A /* AzusaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1D01DE40F3700E1EA3A /* AzusaTests.swift */; };
 		AEC7E1DC1DE40F3700E1EA3A /* AzusaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1DB1DE40F3700E1EA3A /* AzusaUITests.swift */; };
+		AED1518A1DE7C89100AA0D7F /* MIMPD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED151891DE7C89100AA0D7F /* MIMPD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		AEC7E1DB1DE40F3700E1EA3A /* AzusaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzusaUITests.swift; sourceTree = "<group>"; };
 		AEC7E1DD1DE40F3700E1EA3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEC7E1F91DE4100C00E1EA3A /* Azusa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Azusa-Bridging-Header.h"; sourceTree = "<group>"; };
+		AED151891DE7C89100AA0D7F /* MIMPD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MIMPD.swift; path = Mio/MIMPD.swift; sourceTree = "<group>"; };
 		B7574045846D53593B02590C /* Pods-AzusaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaTests/Pods-AzusaTests.release.xcconfig"; sourceTree = "<group>"; };
 		D55C6E657156603734D1F603 /* Pods-Azusa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Azusa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Azusa/Pods-Azusa.release.xcconfig"; sourceTree = "<group>"; };
 		DA63A79CB83EE55853E4A1C4 /* Pods-AzusaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		AEC5557C1DE5404A005D7640 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				AED151891DE7C89100AA0D7F /* MIMPD.swift */,
 				AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */,
 				AEC5557F1DE54062005D7640 /* MISong.swift */,
 			);
@@ -546,6 +549,7 @@
 				AE4820ED1DE7934B00F868CE /* AZExtensions.swift in Sources */,
 				AE25C3241DE64EA200DE4A97 /* AZColoredView.swift in Sources */,
 				AE2340FD1DE5227300C6D3B3 /* MITCPCommunications.swift in Sources */,
+				AED1518A1DE7C89100AA0D7F /* MIMPD.swift in Sources */,
 				AE6E22331DE57711003DBC94 /* AZRoundedCornersView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
