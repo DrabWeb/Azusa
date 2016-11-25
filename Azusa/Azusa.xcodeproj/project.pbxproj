@@ -20,6 +20,7 @@
 		AE4820ED1DE7934B00F868CE /* AZExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4820EC1DE7934B00F868CE /* AZExtensions.swift */; };
 		AE6E222F1DE56E79003DBC94 /* AZAspectFillImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E222E1DE56E79003DBC94 /* AZAspectFillImageView.swift */; };
 		AE6E22331DE57711003DBC94 /* AZRoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E22321DE57711003DBC94 /* AZRoundedCornersView.swift */; };
+		AE7584A51DE8136E00246590 /* MIUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7584A41DE8136E00246590 /* MIUtilities.swift */; };
 		AE8A65901DE75D74002DC54A /* AZEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8A658F1DE75D74002DC54A /* AZEnums.swift */; };
 		AEC555801DE54062005D7640 /* MISong.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC5557F1DE54062005D7640 /* MISong.swift */; };
 		AEC7E1BF1DE40F3600E1EA3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1BE1DE40F3600E1EA3A /* AppDelegate.swift */; };
@@ -28,6 +29,7 @@
 		AEC7E1D11DE40F3700E1EA3A /* AzusaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1D01DE40F3700E1EA3A /* AzusaTests.swift */; };
 		AEC7E1DC1DE40F3700E1EA3A /* AzusaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1DB1DE40F3700E1EA3A /* AzusaUITests.swift */; };
 		AED1518A1DE7C89100AA0D7F /* MIMPD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED151891DE7C89100AA0D7F /* MIMPD.swift */; };
+		AED1518C1DE7EC9E00AA0D7F /* MIStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED1518B1DE7EC9E00AA0D7F /* MIStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,7 @@
 		AE6E222E1DE56E79003DBC94 /* AZAspectFillImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZAspectFillImageView.swift; sourceTree = "<group>"; };
 		AE6E22301DE57102003DBC94 /* AZMusicPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerViewController.swift; sourceTree = "<group>"; };
 		AE6E22321DE57711003DBC94 /* AZRoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZRoundedCornersView.swift; sourceTree = "<group>"; };
+		AE7584A41DE8136E00246590 /* MIUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MIUtilities.swift; path = Mio/MIUtilities.swift; sourceTree = "<group>"; };
 		AE8A658F1DE75D74002DC54A /* AZEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZEnums.swift; sourceTree = "<group>"; };
 		AEC5557F1DE54062005D7640 /* MISong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MISong.swift; path = Mio/MISong.swift; sourceTree = "<group>"; };
 		AEC7E1BB1DE40F3600E1EA3A /* Azusa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Azusa.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +79,7 @@
 		AEC7E1DD1DE40F3700E1EA3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEC7E1F91DE4100C00E1EA3A /* Azusa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Azusa-Bridging-Header.h"; sourceTree = "<group>"; };
 		AED151891DE7C89100AA0D7F /* MIMPD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MIMPD.swift; path = Mio/MIMPD.swift; sourceTree = "<group>"; };
+		AED1518B1DE7EC9E00AA0D7F /* MIStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MIStatus.swift; path = Mio/MIStatus.swift; sourceTree = "<group>"; };
 		B7574045846D53593B02590C /* Pods-AzusaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaTests/Pods-AzusaTests.release.xcconfig"; sourceTree = "<group>"; };
 		D55C6E657156603734D1F603 /* Pods-Azusa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Azusa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Azusa/Pods-Azusa.release.xcconfig"; sourceTree = "<group>"; };
 		DA63A79CB83EE55853E4A1C4 /* Pods-AzusaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 		AE2340FB1DE5210300C6D3B3 /* Mio */ = {
 			isa = PBXGroup;
 			children = (
+				AE7584A31DE8135D00246590 /* Utilities */,
 				AEC5557C1DE5404A005D7640 /* Objects */,
 			);
 			name = Mio;
@@ -150,6 +155,14 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		AE7584A31DE8135D00246590 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AE7584A41DE8136E00246590 /* MIUtilities.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		AE8A658E1DE75D62002DC54A /* Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +178,7 @@
 				AED151891DE7C89100AA0D7F /* MIMPD.swift */,
 				AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */,
 				AEC5557F1DE54062005D7640 /* MISong.swift */,
+				AED1518B1DE7EC9E00AA0D7F /* MIStatus.swift */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -541,11 +555,13 @@
 				AE8A65901DE75D74002DC54A /* AZEnums.swift in Sources */,
 				AEC555801DE54062005D7640 /* MISong.swift in Sources */,
 				AE12BE361DE57B2600BAF030 /* AZGradientView.swift in Sources */,
+				AED1518C1DE7EC9E00AA0D7F /* MIStatus.swift in Sources */,
 				AE11B52C1DE66C56008B2827 /* AZProgressSliderCell.swift in Sources */,
 				AE4820E61DE7798900F868CE /* AZMusicPlayerViewController.swift in Sources */,
 				AEC7E1BF1DE40F3600E1EA3A /* AppDelegate.swift in Sources */,
 				AE4820E51DE76B7B00F868CE /* AZPreferences.swift in Sources */,
 				AE6E222F1DE56E79003DBC94 /* AZAspectFillImageView.swift in Sources */,
+				AE7584A51DE8136E00246590 /* MIUtilities.swift in Sources */,
 				AE4820ED1DE7934B00F868CE /* AZExtensions.swift in Sources */,
 				AE25C3241DE64EA200DE4A97 /* AZColoredView.swift in Sources */,
 				AE2340FD1DE5227300C6D3B3 /* MITCPCommunications.swift in Sources */,
@@ -615,6 +631,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -664,6 +681,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

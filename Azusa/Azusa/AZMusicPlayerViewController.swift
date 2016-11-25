@@ -226,11 +226,18 @@ class AZMusicPlayerViewController: NSViewController {
         // Connect to the MPD server
         mpd.connect({ socket in
             self.mpd.getCurrentSong(completionHandler: { song in
-                print(song!.debugDescription);
-                
-                song!.file = self.mpd.musicDirectory + song!.file;
-                
-                self.display(song: song!);
+                if(song != nil) {
+                    print(song!.debugDescription);
+                    
+                    song!.file = self.mpd.musicDirectory + song!.file;
+                    
+                    self.display(song: song!);
+                }
+            });
+            
+            self.mpd.socketConnection.outputOf(command: "status", completionHandler: { output in
+                let status : MIStatus = MIStatus(string: output);
+                print(status.debugDescription);
             });
         });
     }

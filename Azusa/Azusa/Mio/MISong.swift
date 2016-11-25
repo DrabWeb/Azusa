@@ -327,8 +327,15 @@ class MISong: NSObject {
                 
                 case "Disc:":
                     let contentSplitAtSlash : [String] = content.components(separatedBy: "/");
-                    disc = Int(NSString(string: contentSplitAtSlash[0]).intValue);
-                    discCount = Int(NSString(string: contentSplitAtSlash[1]).intValue);
+                    
+                    if(contentSplitAtSlash.count > 1) {
+                        disc = Int(NSString(string: contentSplitAtSlash[0]).intValue);
+                        discCount = Int(NSString(string: contentSplitAtSlash[1]).intValue);
+                    }
+                    else {
+                        disc = Int(NSString(string: contentSplitAtSlash[0]).intValue);
+                        discCount = 0;
+                    }
                     break;
                 
                 case "Time:":
