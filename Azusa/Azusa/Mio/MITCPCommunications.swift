@@ -28,11 +28,11 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     /// The socket for sending/receiving data from the MPD TCP server
     var socket : GCDAsyncSocket? = nil;
     
-    /// The last set completion handler for 'connect'
-    private var connectionCompletionHandler : ((GCDAsyncSocket) -> ())? = nil;
+    /// The completion handlers from 'connect'
+    private var connectionCompletionHandlers : [((GCDAsyncSocket) -> ())] = [];
     
-    /// The last set completion handler for 'outputOf'
-    private var outputCompletionHandler : ((String) -> ())? = nil;
+    /// The completion handlers from 'outputOf'
+    private var outputCompletionHandlers : [((String) -> ())] = [];
     
     
     /// Functions
@@ -51,8 +51,10 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
                 // Connect to the server with a timeout of 10
                 try socket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(10));
                 
-                // Set connectionCompletionHandler
-                connectionCompletionHandler = completionHandler;
+                // Add the completion handler to 'connectionCompletionHandlers'
+                if(completionHandler != nil) {
+                    connectionCompletionHandlers.append(completionHandler!);
+                }
             }
             catch let error as NSError {
                 // Print the error to the log
@@ -63,8 +65,10 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
     /// Calls the completion handler with the output of the given MPD command
     func outputOf(command : String, completionHandler : ((String) -> ())?) {
-        // Set outputCompletionHandler
-        outputCompletionHandler = completionHandler;
+        // Add the completion handler to 'outputCompletionHandlers'
+        if(completionHandler != nil) {
+            outputCompletionHandlers.append(completionHandler!);
+        }
         
         // Print what command we are running
         print("MITCPCommunications: Getting output of command \"\(command)\"");
@@ -93,11 +97,10 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         
         // If the tag is MITCPTags.commandOutput(meaning we want to pass 'dataString' to the completion handler of 'outputOf')...
         if(tag == MITCPTags.commandOutput.rawValue) {
-            // Call the completion handler with 'dataString'
-            outputCompletionHandler?(dataString);
-            
-            // Clear outputCompletionHandler
-//            outputCompletionHandler = nil;
+            if(self.outputCompletionHandlers.first != nil) {
+                // Call and remove the completion handler with 'sock'
+                self.outputCompletionHandlers.removeFirst()(dataString);
+            }
         }
     }
     
@@ -105,11 +108,10 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // Print that the connection was made
         print("MITCPCommunications: Connected to \(host):\(port)");
         
-        // Call connectionCompletionHandler
-        self.connectionCompletionHandler?(sock);
-        
-        // Clear connectionCompletionHandler
-//        connectionCompletionHandler = nil;
+        if(self.connectionCompletionHandlers.first != nil) {
+            // Call and remove the completion handler
+            self.connectionCompletionHandlers.removeFirst()(sock);
+        }
     }
     
     
