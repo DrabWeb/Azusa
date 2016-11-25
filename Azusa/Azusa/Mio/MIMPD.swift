@@ -35,6 +35,14 @@ class MIMPD {
     
     // Functions
     
+    /// Seeks to the given time in the current song(in seconds), optional completion handler for when the command finishes(passed command output)
+    func seek(to : Int, completionHandler : ((String) -> ())?) {
+        print("MIMPD: Seeking to \(MIUtilities.secondsToDisplayTime(to))");
+        
+        // Seek to the given time
+        self.socketConnection.outputOf(command: "seekcur \(to)", log: false, completionHandler: completionHandler);
+    }
+    
     /// Skips to the previous song in the playlist, optional completion handler for when the command finishes(passed command output)
     func skipPrevious(completionHandler : ((String) -> ())?) {
         print("MIMPD: Skipping to the previous song");

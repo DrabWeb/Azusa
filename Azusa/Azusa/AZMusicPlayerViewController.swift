@@ -101,8 +101,32 @@ class AZMusicPlayerViewController: NSViewController {
     /// The slider for showing the current position in the song and allowing the user to scrub
     @IBOutlet weak var progressSlider: NSSlider!
     
+    /// Are we currently dragging the progress slider?
+    var draggingProgressSlider : Bool = false;
+    
     @IBAction func progressSliderMoved(_ sender: NSSlider) {
+        /// The current event of the application
+        let curentEvent : NSEvent = NSApplication.shared().currentEvent!;
         
+        /// Was the dragging on the slider just ended?
+        let endingDrag : Bool = curentEvent.type == NSEventType.leftMouseUp;
+        
+        // If we ended dragging...
+        if(endingDrag) {
+            // Seek to the set time
+            self.mpd.seek(to: Int(sender.intValue), completionHandler: nil);
+            
+            // Say we aren't dragging the progress slider
+            draggingProgressSlider = false;
+        }
+        // If we are still dragging...
+        else {
+            // Set the position label
+            self.progressCurrentTimeLabel.stringValue = MIUtilities.secondsToDisplayTime(Int(sender.intValue));
+            
+            // Say we are dragging the progress slider
+            draggingProgressSlider = true;
+        }
     }
     
     /// The container view for the playback controls
@@ -486,6 +510,10 @@ class AZMusicPlayerViewController: NSViewController {
         // Update the random and loop buttons
         playbackControlsRandomButton.state = (status.randomMode) ? 1 : 0;
         self.setLoop(mode: status.getLoopMode);
+        
+        // Update the progress view
+        progressCurrentTimeLabel.stringValue = MIUtilities.secondsToDisplayTime(Int(status.timeElapsed));
+        progressSlider.intValue = Int32(status.timeElapsed);
     }
     
     /// Displays the values from the given MISong object
@@ -496,6 +524,10 @@ class AZMusicPlayerViewController: NSViewController {
         // Update the labels
         currentSongTitleLabel.stringValue = song.displayTitle;
         currentSongArtistLabel.stringValue = song.displayArtist;
+        
+        // Update the progress view
+        progressSongLengthLabel.stringValue = MIUtilities.secondsToDisplayTime(song.length);
+        progressSlider.maxValue = Double(song.length);
     }
     
     /// Displays the given NSImage as the cover image for this music player
