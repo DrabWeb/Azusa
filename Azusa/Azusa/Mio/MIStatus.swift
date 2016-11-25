@@ -61,6 +61,22 @@ class MIStatus: NSObject {
     /// The audio output info, format is sampleRate:bits:channels
     var audioInfo : String = "0:0:0";
     
+    /// Returns the loop mode
+    var getLoopMode : MILoopMode {
+        if(singleMode && repeatMode) {
+            return .song;
+        }
+        else if(!singleMode && repeatMode) {
+            return .playlist;
+        }
+        else if(!singleMode && !repeatMode) {
+            return .off;
+        }
+        
+        // Default to off
+        return .off;
+    }
+    
     override var debugDescription : String {
         var playingStateString : String = "";
         

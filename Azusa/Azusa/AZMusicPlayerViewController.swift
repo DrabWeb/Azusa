@@ -112,35 +112,39 @@ class AZMusicPlayerViewController: NSViewController {
     @IBOutlet weak var playbackControlsSkipPreviousButton: NSButton!
     
     @IBAction func playbackControlsSkipPreviousButtonPressed(_ sender: NSButton) {
-        
+        // Skip to the previous song
+        self.mpd.skipPrevious(completionHandler: nil);
     }
     
     /// The play/pause playback control button
     @IBOutlet weak var playbackControlsPausePlayButton: NSButton!
     
     @IBAction func playbackControlsPausePlayButtonPressed(_ sender: NSButton) {
-        
+        // Pause/play MPD based on this button
+        self.mpd.setPaused(to: ((sender.state == 1) ? true : false), completionHandler: nil);
     }
     
     /// The skip next playback control button
     @IBOutlet weak var playbackControlsSkipNextButton: NSButton!
     
     @IBAction func playbackControlsSkipNextButtonPressed(_ sender: NSButton) {
-        
+        // Skip to the next song
+        self.mpd.skipNext(completionHandler: nil);
     }
     
     /// The toggle random mode playback control button
     @IBOutlet weak var playbackControlsRandomButton: NSButton!
     
     @IBAction func playbackControlsRandomButtonPressed(_ sender: NSButton) {
-        
+        // Update MPD's random mode
+        self.mpd.setRandomMode(to: ((playbackControlsRandomButton.state == 1) ? true : false), completionHandler: nil);
     }
     
     /// The loop mode playback control button
     @IBOutlet weak var playbackControlsLoopButton: NSButton!
     
     /// The current loop mode the user has selected
-    var currentLoopMode : AZLoopMode = AZLoopMode.off;
+    var currentLoopMode : MILoopMode = MILoopMode.off;
     
     @IBAction func playbackControlsLoopButtonPressed(_ sender: NSButton) {
         // Switch loop modes
@@ -160,7 +164,7 @@ class AZMusicPlayerViewController: NSViewController {
     }
     
     /// Sets the loop mode to the given mode and updates the loop button to match
-    func setLoop(mode : AZLoopMode) {
+    func setLoop(mode : MILoopMode) {
         // Switch on the mode and act accordingly
         switch(mode) {
             case .off:
@@ -178,6 +182,9 @@ class AZMusicPlayerViewController: NSViewController {
         
         // Set currentLoopMode to the given loop mode
         currentLoopMode = mode;
+        
+        // Update the MPD loop mode
+        self.mpd.setLoopMode(to: currentLoopMode, completionHandler: nil);
     }
     
     /// The favourite song playback control button
@@ -232,12 +239,15 @@ class AZMusicPlayerViewController: NSViewController {
                     song!.file = self.mpd.musicDirectory + song!.file;
                     
                     self.display(song: song!);
+                    
+                    self.mpd.socketConnection.outputOf(command: "status", log: true, completionHandler: { output in
+                        let status : MIStatus = MIStatus(string: output);
+                        self.display(status: status);
+                        
+                        print("\(MIUtilities.secondsToDisplayTime(Int(status.timeElapsed)))/\(MIUtilities.secondsToDisplayTime(song!.length)) (\(Int((status.timeElapsed / Float(song!.length)) * 100))%)");
+                        print(status.debugDescription);
+                    });
                 }
-            });
-            
-            self.mpd.socketConnection.outputOf(command: "status", completionHandler: { output in
-                let status : MIStatus = MIStatus(string: output);
-                print(status.debugDescription);
             });
         });
     }
@@ -471,7 +481,14 @@ class AZMusicPlayerViewController: NSViewController {
         }
     }
     
-    /// Displays the given MISong
+    /// Displays the values from the given MIStatus object
+    func display(status : MIStatus) {
+        // Update the random and loop buttons
+        playbackControlsRandomButton.state = (status.randomMode) ? 1 : 0;
+        self.setLoop(mode: status.getLoopMode);
+    }
+    
+    /// Displays the values from the given MISong object
     func display(song : MISong) {
         // Display the cover image
         display(coverImage: song.coverImage);

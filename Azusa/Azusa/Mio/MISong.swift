@@ -84,7 +84,7 @@ class MISong: NSObject {
     
     /// The debug description for this song
     override var debugDescription : String {
-        return "\(self): \(self.displayTitle) by \(self.displayArtist)(\(self.length) seconds long), in \(self.displayAlbum)";
+        return "\(self): \(self.displayTitle) by \(self.displayArtist)(\(MIUtilities.secondsToDisplayTime(self.length))), in \(self.displayAlbum)";
     }
     
     /// Returns the display title for this song

@@ -63,15 +63,18 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         }
     }
     
-    /// Calls the completion handler with the output of the given MPD command
-    func outputOf(command : String, completionHandler : ((String) -> ())?) {
+    /// Calls the completion handler with the output of the given MPD command, and logs the command if 'log' is true
+    func outputOf(command : String, log : Bool, completionHandler : ((String) -> ())?) {
         // Add the completion handler to 'outputCompletionHandlers'
         if(completionHandler != nil) {
             outputCompletionHandlers.append(completionHandler!);
         }
         
-        // Print what command we are running
-        print("MITCPCommunications: Getting output of command \"\(command)\"");
+        // If we said to log the command...
+        if(log) {
+            // Print what command we are running
+            print("MITCPCommunications: Getting output of command \"\(command)\"");
+        }
         
         // Write the command to the socket
         socket?.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTags.commandOutput.rawValue);
@@ -82,7 +85,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
     func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
         // Print the tag that was used to write the data
-        print("MITCPCommunications: Data was written with tag \"\(tag)\"");
+//        print("MITCPCommunications: Data was written with tag \"\(tag)\"");
         
         // Read all the data in the MPD output
         sock.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
@@ -90,7 +93,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
     func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
         // Print that we read the data and with what tag
-        print("MITCPCommunications: Read data written with tag \"\(tag)\"");
+//        print("MITCPCommunications: Read data written with tag \"\(tag)\"");
         
         /// The string from 'data'
         let dataString : String = String(NSString(data: data, encoding: String.Encoding.utf8.rawValue)!);
