@@ -149,8 +149,17 @@ class MISong: NSObject {
             /// The AVFoundation asset for this song
             let songAsset : AVURLAsset = AVURLAsset(url: fileUrl!);
             
-            /// For every tag in this song's tags...
-            for currentTag : AVMetadataItem in songAsset.metadata(forFormat: AVMetadataFormatID3Metadata) as Array<AVMetadataItem> {
+            /// The metadata items for this song(initially ID3)
+            var songMetadata : [AVMetadataItem] = songAsset.metadata(forFormat: AVMetadataFormatID3Metadata) as Array<AVMetadataItem>;
+            
+            // If the metadata is empty...
+            if(songMetadata.isEmpty) {
+                // Load the iTunes metadata
+                songMetadata = songAsset.metadata(forFormat: AVMetadataFormatiTunesMetadata) as Array<AVMetadataItem>;
+            }
+            
+            /// For every tag in this song's metadata...
+            for currentTag : AVMetadataItem in songMetadata {
                 // If the current tag is the artwork tag...
                 if(currentTag.commonKey == "artwork") {
                     // If the current tag's data isnt nil...

@@ -309,8 +309,10 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     }
     
     func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
-        // Print the tag that was used to write the data
-//        print("MITCPCommunications: Data was written with tag \"\(tag)\"");
+        if(MITCPTag(rawValue: tag)! != .progress) {
+            // Print the tag that was used to write the data
+            print("MITCPCommunications: Data was written with tag \"Azusa.Mio.MITCPTag.\(MITCPTag(rawValue: tag)!)\"");
+        }
         
         // If the socket is the main socket...
         if(sock == self.socket) {
@@ -346,17 +348,22 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     }
     
     func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
-        // Print that we read the data and with what tag
-//        print("MITCPCommunications: Read data written with tag \"\(tag)\"");
-        
         /// The string from 'data'
         let dataString : String = String(NSString(data: data, encoding: String.Encoding.utf8.rawValue)!);
+        
+        if(MITCPTag(rawValue: tag)! != .progress) {
+            // Print that we read the data and with what tag
+            print("MITCPCommunications: Read data written with tag \"Azusa.Mio.MITCPTag.\(MITCPTag(rawValue: tag)!)\"");
+            
+            print("MITCPCommunications: Read string \"\(dataString)\"");
+        }
         
         // If the socket is the main socket...
         if(sock == self.socket) {
             // If the tag is MITCPTag.commandOutput(meaning we want to pass 'dataString' to the completion handler of 'outputOf')...
             if(tag == MITCPTag.commandOutput.rawValue) {
                 if(self.outputCompletionHandlers.first != nil) {
+                    print("MITCPCommunications: Output completion handlers: \(self.outputCompletionHandlers)");
                     // Call and remove the completion handler with 'sock'
                     self.outputCompletionHandlers.removeFirst()(dataString);
                 }
