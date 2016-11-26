@@ -187,8 +187,8 @@ class AZMusicPlayerViewController: NSViewController {
         }
     }
     
-    /// Sets the loop mode to the given mode and updates the loop button to match
-    func setLoop(mode : MILoopMode) {
+    /// Changes the loop button to match the given mode
+    func displayLoop(mode : MILoopMode) {
         // Switch on the mode and act accordingly
         switch(mode) {
             case .off:
@@ -206,6 +206,12 @@ class AZMusicPlayerViewController: NSViewController {
         
         // Set currentLoopMode to the given loop mode
         currentLoopMode = mode;
+    }
+    
+    /// Sets the loop mode to the given mode and updates the loop button to match
+    func setLoop(mode : MILoopMode) {
+        // Display the given loop mode
+        displayLoop(mode: mode);
         
         // Update the MPD loop mode
         self.mpd.setLoopMode(to: currentLoopMode, completionHandler: nil);
@@ -265,7 +271,7 @@ class AZMusicPlayerViewController: NSViewController {
             };
         });
         
-        _ = self.mpd.socketConnection.subscribeTo(events: [.player, .options], with: { eventType in
+        _ = self.mpd.socketConnection.subscribeTo(events: [.player, .options, .playlist], with: { eventType in
             // Display the current MPD info
             self.displayCurrent();
         });
@@ -504,20 +510,17 @@ class AZMusicPlayerViewController: NSViewController {
     func displayCurrent() {
         // Get the current playing song
         self.mpd.getCurrentSong(completionHandler: { currentSong in
-            // If the current song isn't nil...
-            if(currentSong != nil) {
-                // Update the song's file
-                currentSong!.file = self.mpd.musicDirectory + currentSong!.file;
-                
-                // Display the song
-                self.display(song: currentSong!);
-                
-                // Get the current status
-                self.mpd.getStatus(log: true, completionHandler: { status in
-                    // Display the current status
-                    self.display(status: status);
-                });
-            }
+            // Update the song's file
+            currentSong.file = self.mpd.musicDirectory + currentSong.file;
+            
+            // Display the song
+            self.display(song: currentSong);
+            
+            // Get the current status
+            self.mpd.getStatus(log: true, completionHandler: { status in
+                // Display the current status
+                self.display(status: status);
+            });
         });
     }
     
@@ -541,13 +544,15 @@ class AZMusicPlayerViewController: NSViewController {
     func display(status : MIStatus) {
         // Update the random and loop buttons
         playbackControlsRandomButton.state = (status.randomMode) ? 1 : 0;
-        self.setLoop(mode: status.getLoopMode);
+//        playbackControlsRandomButton.image = (status.randomMode) ? #imageLiteral(resourceName: "AZRandomOn") : #imageLiteral(resourceName: "AZRandomOff");
+        self.displayLoop(mode: status.getLoopMode);
         
         // Display the progress
         self.display(progress: Int(status.timeElapsed));
         
         // Update the pause/play button
         playbackControlsPausePlayButton.state = (status.playingState == .play) ? 0 : 1;
+//        playbackControlsPausePlayButton.image = (status.playingState == .play) ? #imageLiteral(resourceName: "AZPause") : #imageLiteral(resourceName: "AZPlay");
         
         // Set lastDisplayedStatus
         self.lastDisplayedStatus = status;
@@ -567,7 +572,7 @@ class AZMusicPlayerViewController: NSViewController {
         
         // Update the progress view
         progressSongLengthLabel.stringValue = MIUtilities.secondsToDisplayTime(song.length);
-        progressSlider.maxValue = Double(song.length);
+        progressSlider.maxValue = Double((song.length <= 0) ? 1 : song.length);
         
         // If lastDisplayedSong isn't nil...
         if(lastDisplayedSong != nil) {

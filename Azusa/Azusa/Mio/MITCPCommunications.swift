@@ -12,12 +12,15 @@ import CocoaAsyncSocket
 enum MITCPTag : Int {
     /// The tag for write requests made from 'outputOf'
     case commandOutput = 0
+
+    /// The tag for running a command without capturing output
+    case command = 1
     
     /// The tag for the event listener
-    case eventListener = 1
+    case eventListener = 2
     
     /// The tag for the progress getter
-    case progress = 2
+    case progress = 3
 }
 
 /// The different MPD idle events that are supported
@@ -89,7 +92,10 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     private var connectionCompletionHandlers : [((GCDAsyncSocket) -> ())] = [];
     
     /// The completion handlers from 'outputOf'
-    private var outputCompletionHandlers : [((String) -> ())] = [];
+    private var outputCompletionHandlers : [(String) -> ()] = [];
+    
+    /// The completion handlers from 'run'
+    private var runCommandCompletionHandlers : [() -> ()] = [];
     
     
     /// Functions
@@ -112,9 +118,9 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             
             do {
                 // Connect to the server with a timeout of 10 seconds
-                try socket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(10));
-                try eventSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(10));
-                try progressSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(10));
+                try socket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
+                try eventSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
+                try progressSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
                 
                 // Add the completion handler to 'connectionCompletionHandlers'
                 if(completionHandler != nil) {
@@ -143,6 +149,23 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
         // Write the command to the socket
         socket?.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.commandOutput.rawValue);
+    }
+    
+    /// Calls the completion handler when the given command finishes
+    func run(command : String, log : Bool, completionHandler : (() -> ())?) {
+        if(completionHandler != nil) {
+            // Add the completion handler to 'runCommandCompletionHandlers'
+            runCommandCompletionHandlers.append(completionHandler!);
+        }
+        
+        // If we said to log the command...
+        if(log) {
+            // Print what command we are running
+            print("MITCPCommunications: Running command \"\(command)\"");
+        }
+        
+        // Write the command to the socket
+        socket?.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.command.rawValue);
     }
     
     /// Subscribes to the given events, 'subscriber' gets called with the event type when the event fires, returns the subscriber object
@@ -208,6 +231,26 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
     /// Delegate Methods
     
+    func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
+        print("MITCPCommunications: Socket disconnected with error \(err?.localizedDescription)");
+        
+        // If the host and port are set...
+        if(host != "" && port != -1) {
+            do {
+                // Connect to the server with a timeout of 10 seconds
+                try socket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
+                try eventSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
+                try progressSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
+            }
+            catch let error as NSError {
+                // Print the error to the log
+                print("MITCPCommunications: Error connecting to \(host):\(port), \(error.localizedDescription)");
+            }
+            
+            print("MITCPCommunications: Successfully reconnected");
+        }
+    }
+    
     func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
         // Print the tag that was used to write the data
 //        print("MITCPCommunications: Data was written with tag \"\(tag)\"");
@@ -217,7 +260,14 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             // If the tag is the command output tag...
             if(tag == MITCPTag.commandOutput.rawValue) {
                 // Read all the data in the MPD output
-                sock.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
+                socket?.readData(to: "\nOK\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
+            }
+            // If the tag is the command tag..
+            else if(tag == MITCPTag.command.rawValue) {
+                if(runCommandCompletionHandlers.count > 0) {
+                    // Run the completion handler
+                    runCommandCompletionHandlers.removeFirst()();
+                }
             }
         }
         // If the socket is the event socket...
@@ -225,7 +275,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             // If the tag is the event listener tag...
             if(tag == MITCPTag.eventListener.rawValue) {
                 // Read all the data in the MPD output
-                sock.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
+                eventSocket?.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
             }
         }
         // If the socket is the progress socket...
@@ -233,7 +283,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             // If the tag is the progress tag...
             if(tag == MITCPTag.progress.rawValue) {
                 // Read all the data in the MPD output
-                sock.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
+                progressSocket?.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
             }
         }
     }

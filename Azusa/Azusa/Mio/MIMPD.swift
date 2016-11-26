@@ -51,31 +51,31 @@ class MIMPD {
     }
     
     /// Seeks to the given time in the current song(in seconds), optional completion handler for when the command finishes(passed command output)
-    func seek(to : Int, completionHandler : ((String) -> ())?) {
+    func seek(to : Int, completionHandler : (() -> ())?) {
         print("MIMPD: Seeking to \(MIUtilities.secondsToDisplayTime(to))");
         
         // Seek to the given time
-        self.socketConnection.outputOf(command: "seekcur \(to)", log: false, completionHandler: completionHandler);
+        self.socketConnection.run(command: "seekcur \(to)", log: false, completionHandler: completionHandler);
     }
     
     /// Skips to the previous song in the playlist, optional completion handler for when the command finishes(passed command output)
-    func skipPrevious(completionHandler : ((String) -> ())?) {
+    func skipPrevious(completionHandler : (() -> ())?) {
         print("MIMPD: Skipping to the previous song");
         
         // Skip to the next song
-        self.socketConnection.outputOf(command: "previous", log: false, completionHandler: completionHandler);
+        self.socketConnection.run(command: "previous", log: false, completionHandler: completionHandler);
     }
     
     /// Skips to the next song in the playlist, optional completion handler for when the command finishes(passed command output)
-    func skipNext(completionHandler : ((String) -> ())?) {
+    func skipNext(completionHandler : (() -> ())?) {
         print("MIMPD: Skipping to the next song");
         
         // Skip to the next song
-        self.socketConnection.outputOf(command: "next", log: false, completionHandler: completionHandler);
+        self.socketConnection.run(command: "next", log: false, completionHandler: completionHandler);
     }
     
     /// Toggles pause based on 'to', optional completion handler for when the command finishes(passed command output)
-    func setPaused(to : Bool, completionHandler : ((String) -> ())?) {
+    func setPaused(to : Bool, completionHandler : (() -> ())?) {
         switch(to) {
             case true:
                 print("MIMPD: Pausing song");
@@ -86,14 +86,22 @@ class MIMPD {
                 break;
         }
         
-        // Set the pause accordingly
-        self.socketConnection.outputOf(command: "pause \((to) ? 1 : 0)", log: false, completionHandler: completionHandler);
+        self.getStatus(log: false, completionHandler: { status in
+            if(status.playingState == .stop && status.currentSongId != -1) {
+                // Play the song
+                self.socketConnection.run(command: "playid \(status.currentSongId)", log: false, completionHandler: completionHandler);
+            }
+            else {
+                // Set the pause accordingly
+                self.socketConnection.run(command: "pause \((to) ? 1 : 0)", log: false, completionHandler: completionHandler);
+            }
+        });
     }
     
     /// Toggles random mode based on 'to', optional completion handler for when the command finishes(passed command output)
-    func setRandomMode(to : Bool, completionHandler : ((String) -> ())?) {
+    func setRandomMode(to : Bool, completionHandler : (() -> ())?) {
         // Set the random mode accordingly
-        self.socketConnection.outputOf(command: "random \((to) ? 1 : 0)", log: false, completionHandler: completionHandler);
+        self.socketConnection.run(command: "random \((to) ? 1 : 0)", log: false, completionHandler: completionHandler);
         
         switch(to) {
             case true:
@@ -107,55 +115,55 @@ class MIMPD {
     }
     
     /// Sets the loop mode to the given loop mode, calls the given completion handler when the command returns(if given)
-    func setLoopMode(to : MILoopMode, completionHandler : ((String) -> ())?) {
+    func setLoopMode(to : MILoopMode, completionHandler : (() -> ())?) {
         // Set the loop mode accordingly
         if(to == .off) {
-            self.socketConnection.outputOf(command: "command_list_begin\nrepeat 0\nsingle 0\ncommand_list_end", log: false, completionHandler: completionHandler);
+            self.socketConnection.run(command: "command_list_begin\nrepeat 0\nsingle 0\ncommand_list_end", log: false, completionHandler: completionHandler);
             
             print("MIMPD: Disabling repeat");
         }
         else if(to == .playlist) {
-            self.socketConnection.outputOf(command: "command_list_begin\nrepeat 1\nsingle 0\ncommand_list_end", log: false, completionHandler: completionHandler);
+            self.socketConnection.run(command: "command_list_begin\nrepeat 1\nsingle 0\ncommand_list_end", log: false, completionHandler: completionHandler);
             
             print("MIMPD: Setting repeat mode to playlist");
         }
         else if(to == .song) {
-            self.socketConnection.outputOf(command: "command_list_begin\nrepeat 1\nsingle 1\ncommand_list_end", log: false, completionHandler: completionHandler);
+            self.socketConnection.run(command: "command_list_begin\nrepeat 1\nsingle 1\ncommand_list_end", log: false, completionHandler: completionHandler);
             
             print("MIMPD: Setting repeat mode to single");
         }
     }
     
-    /// Returns the current song to the given completion handler
-    func getCurrentSong(completionHandler : @escaping ((MISong?) -> ())) {
+    /// Returns the current song to the given completion handler, if there is no current song it returns the placeholder song
+    func getCurrentSong(completionHandler : @escaping ((MISong) -> ())) {
         print("MIMPD: Getting current song...");
         
         if(socketConnection.socket != nil) {
             if(socketConnection.socket!.isConnected) {
                 socketConnection.outputOf(command: "currentsong", log: false, completionHandler: { output in
                     /// The MISong from 'output'
-                    let song : MISong? = MISong(string: output);
+                    let song : MISong = MISong(string: output);
                     
                     // If the song is valid...
-                    if(song!.valid) {
+                    if(song.valid) {
                         // Return the song
-                        completionHandler(song!);
+                        completionHandler(song);
                     }
-                        // If the song is invalid...
+                    // If the song is invalid...
                     else {
-                        // Return nil
-                        completionHandler(nil);
+                        // Return the placeholder song
+                        completionHandler(MISong.placeholder());
                     }
                 });
             }
             else {
-                // Default to returning nil
-                completionHandler(nil);
+                // Default to returning the placeholder song
+                completionHandler(MISong.placeholder());
             }
         }
         else {
-            // Default to returning nil
-            completionHandler(nil);
+            // Default to returning the placeholder song
+            completionHandler(MISong.placeholder());
         }
     }
     

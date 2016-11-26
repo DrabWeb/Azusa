@@ -172,6 +172,21 @@ class MISong: NSObject {
         return cover;
     }
     
+    /// Returns a placeholder song(used for displaying that there is no song)
+    static func placeholder() -> MISong {
+        /// The song to return
+        let song : MISong = MISong(string: "");
+        
+        // Setup the song
+        song.title = "No Song Found";
+        song.length = 0;
+        song.file = "";
+
+        // Return the song
+        return song;
+    }
+    
+    
     /// Init
     
     /// Returns an array of MISongs based on the given string(should be a playlistinfo or similar)

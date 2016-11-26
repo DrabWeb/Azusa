@@ -671,6 +671,7 @@
                         <rect key="contentRect" x="229" y="249" width="350" height="600"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1600" height="900"/>
                         <value key="minSize" type="size" width="350" height="600"/>
+                        <value key="maxSize" type="size" width="350" height="1000000000"/>
                     </window>
                     <connections>
                         <segue destination="Gpq-yk-DCa" kind="relationship" relationship="window.shadowedContentViewController" id="GMo-4P-UmE"/>
@@ -816,7 +817,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="nfo-rU-8Cp"/>
                                                 </constraints>
-                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" focusRingType="none" alignment="center" title="Loading..." id="93e-gw-XbF">
+                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" focusRingType="none" alignment="center" title="Unknown Artist" id="93e-gw-XbF">
                                                     <font key="font" size="13" name="Exo2-Regular"/>
                                                     <color key="textColor" white="0.90092075890000001" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -827,7 +828,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="uyl-DA-SAj"/>
                                                 </constraints>
-                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" focusRingType="none" alignment="center" title="Loading..." id="ftV-y2-om9">
+                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" focusRingType="none" alignment="center" title="No Song Found" id="ftV-y2-om9">
                                                     <font key="font" size="15" name="Exo2-SemiBold"/>
                                                     <color key="textColor" white="0.90092075890000001" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
