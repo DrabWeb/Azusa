@@ -258,6 +258,11 @@ class AZMusicPlayerViewController: NSViewController {
         mpd.connect({ socket in
             // Display the current MPD info
             self.displayCurrent();
+            
+            // Set the progress listener
+            self.mpd.socketConnection.progressListener = { progress in
+                self.display(progress: progress);
+            };
         });
         
         _ = self.mpd.socketConnection.subscribeTo(events: [.player, .options], with: { eventType in
@@ -508,12 +513,25 @@ class AZMusicPlayerViewController: NSViewController {
                 self.display(song: currentSong!);
                 
                 // Get the current status
-                self.mpd.getStatus(completionHandler: { status in
+                self.mpd.getStatus(log: true, completionHandler: { status in
                     // Display the current status
                     self.display(status: status);
                 });
             }
         });
+    }
+    
+    // The last displayed progress by display(progress:)
+    var lastDisplayedProgress : Int = -1;
+    
+    /// Displays the given progress(in seconds) in the progress view
+    func display(progress : Int) {
+        // Update the progress view
+        progressCurrentTimeLabel.stringValue = MIUtilities.secondsToDisplayTime(progress);
+        progressSlider.intValue = Int32(progress);
+        
+        // Set lastDisplayedProgress
+        self.lastDisplayedProgress = progress;
     }
     
     /// The last displayed status by display(status:)
@@ -525,9 +543,8 @@ class AZMusicPlayerViewController: NSViewController {
         playbackControlsRandomButton.state = (status.randomMode) ? 1 : 0;
         self.setLoop(mode: status.getLoopMode);
         
-        // Update the progress view
-        progressCurrentTimeLabel.stringValue = MIUtilities.secondsToDisplayTime(Int(status.timeElapsed));
-        progressSlider.intValue = Int32(status.timeElapsed);
+        // Display the progress
+        self.display(progress: Int(status.timeElapsed));
         
         // Update the pause/play button
         playbackControlsPausePlayButton.state = (status.playingState == .play) ? 0 : 1;

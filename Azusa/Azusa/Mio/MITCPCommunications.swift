@@ -15,6 +15,9 @@ enum MITCPTag : Int {
     
     /// The tag for the event listener
     case eventListener = 1
+    
+    /// The tag for the progress getter
+    case progress = 2
 }
 
 /// The different MPD idle events that are supported
@@ -70,11 +73,17 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     /// The socket for catching MPD events
     var eventSocket : GCDAsyncSocket? = nil;
     
+    /// The socket for getting the progress of the current song from MPD
+    var progressSocket : GCDAsyncSocket? = nil;
+    
     /// Has the event idle loop started yet?
     var eventIdleLoopStarted : Bool = false;
     
     /// All the event subscribers
     var eventSubscribers : [MIMPDEventSubscriber] = [];
+    
+    /// The closure to call for progres updates, passed the current song progress in seconds
+    var progressListener : ((Int) -> ())? = nil;
     
     /// The completion handlers from 'connect'
     private var connectionCompletionHandlers : [((GCDAsyncSocket) -> ())] = [];
@@ -95,6 +104,9 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             // Create the event socket
             self.eventSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main);
             
+            // Create the progress socket
+            self.progressSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main);
+            
             // Print what server we are connecting to
             print("MITCPCommunications: Connecting to \(host):\(port)...");
             
@@ -102,6 +114,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
                 // Connect to the server with a timeout of 10 seconds
                 try socket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(10));
                 try eventSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(10));
+                try progressSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(10));
                 
                 // Add the completion handler to 'connectionCompletionHandlers'
                 if(completionHandler != nil) {
@@ -215,6 +228,14 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
                 sock.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
             }
         }
+        // If the socket is the progress socket...
+        else if(sock == self.progressSocket) {
+            // If the tag is the progress tag...
+            if(tag == MITCPTag.progress.rawValue) {
+                // Read all the data in the MPD output
+                sock.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
+            }
+        }
     }
     
     func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
@@ -261,6 +282,23 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
                 eventSocket?.write("idle\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.eventListener.rawValue);
             }
         }
+        // If the socket is the progress socket...
+        else if(sock == self.progressSocket) {
+            // If the tag is the progress tag...
+            if(tag == MITCPTag.progress.rawValue) {
+                /// The status object created
+                let status : MIStatus = MIStatus(string: dataString);
+                
+                // Call the progress closure with the time elapsed(plus one because it's off for whatever reason)
+                self.progressListener?(Int(status.timeElapsed));
+                
+                // Wait a quarter of a second(so we don't use up alot of power or anything)
+                Timer.scheduledTimer(withTimeInterval: TimeInterval(0.25), repeats: false, block: { _ in
+                    // Continue the loop
+                    self.progressSocket!.write("status\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.progress.rawValue);
+                });
+            }
+        }
     }
     
     func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
@@ -278,6 +316,14 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         else if(sock == self.eventSocket) {
             // Print that the connection was made
             print("MITCPCommunications: Connected to event socket \(host):\(port)");
+        }
+        // If the socket is the progress socket...
+        else if(sock == self.progressSocket) {
+            // Print that the connection was made
+            print("MITCPCommunications: Connected to progress socket \(host):\(port)");
+            
+            // Start the progress loop
+            self.progressSocket!.write("status\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.progress.rawValue);
         }
     }
     

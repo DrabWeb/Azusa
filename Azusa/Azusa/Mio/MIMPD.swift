@@ -38,10 +38,10 @@ class MIMPD {
     
     // Functions
     
-    /// Gets the current MIStatus object and calls the given completion handler with it
-    func getStatus(completionHandler : ((MIStatus) -> ())?) {
+    /// Gets the current MIStatus object and calls the given completion handler with it, logs the command if 'log' is true
+    func getStatus(log : Bool, completionHandler : ((MIStatus) -> ())?) {
         // Call and get the output of the status command
-        self.socketConnection.outputOf(command: "status", log: true, completionHandler: { output in
+        self.socketConnection.outputOf(command: "status", log: log, completionHandler: { output in
             /// The MIStatus created from 'output'
             let status : MIStatus = MIStatus(string: output);
             
