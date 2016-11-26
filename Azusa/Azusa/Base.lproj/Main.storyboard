@@ -737,13 +737,13 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </customView>
-                                            <button toolTip="Playlist" translatesAutoresizingMaskIntoConstraints="NO" id="a8M-PB-nkr" userLabel="Menu Button">
+                                            <button toolTip="Playlist" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="a8M-PB-nkr" userLabel="Menu Button">
                                                 <rect key="frame" x="30" y="30" width="15" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="15" id="XZH-dV-Lrn"/>
                                                     <constraint firstAttribute="height" constant="15" id="mQx-gQ-Buv"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZMenu" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="JYJ-8T-S0b">
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZMenu" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="JYJ-8T-S0b">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -751,13 +751,13 @@
                                                     <action selector="titlebarPlaylistButtonPressed:" target="Gpq-yk-DCa" id="Dcz-BE-PDD"/>
                                                 </connections>
                                             </button>
-                                            <button toolTip="Search" translatesAutoresizingMaskIntoConstraints="NO" id="ddm-tN-e9L" userLabel="Search Button">
+                                            <button toolTip="Search" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="ddm-tN-e9L" userLabel="Search Button">
                                                 <rect key="frame" x="305" y="30" width="15" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="rL8-9A-sV4"/>
                                                     <constraint firstAttribute="width" constant="15" id="tqg-pU-LKI"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZSearch" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="GtA-12-mbG">
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZSearch" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="GtA-12-mbG">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -811,23 +811,23 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="WTT-Od-TBL" userLabel="Song Info Container">
                                         <rect key="frame" x="0.0" y="185" width="350" height="119"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="McP-we-ZyI" userLabel="Current Song Artist Label">
+                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="McP-we-ZyI" userLabel="Current Song Artist Label">
                                                 <rect key="frame" x="18" y="65" width="314" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="nfo-rU-8Cp"/>
                                                 </constraints>
-                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="center" title="Loading..." id="93e-gw-XbF">
+                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" focusRingType="none" alignment="center" title="Loading..." id="93e-gw-XbF">
                                                     <font key="font" size="13" name="Exo2-Regular"/>
                                                     <color key="textColor" white="0.90092075890000001" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cQN-2I-zei" userLabel="Current Song Title Label">
+                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cQN-2I-zei" userLabel="Current Song Title Label">
                                                 <rect key="frame" x="18" y="32" width="314" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="uyl-DA-SAj"/>
                                                 </constraints>
-                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="center" title="Loading..." id="ftV-y2-om9">
+                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" focusRingType="none" alignment="center" title="Loading..." id="ftV-y2-om9">
                                                     <font key="font" size="15" name="Exo2-SemiBold"/>
                                                     <color key="textColor" white="0.90092075890000001" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -851,30 +851,30 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Fkg-nT-dAj" userLabel="Progress">
                                         <rect key="frame" x="0.0" y="165" width="350" height="20"/>
                                         <subviews>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Cxd-jh-I7S" userLabel="Current Time">
+                                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Cxd-jh-I7S" userLabel="Current Time">
                                                 <rect key="frame" x="-2" y="5" width="66" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="62" id="oVE-LT-3RJ"/>
                                                     <constraint firstAttribute="height" constant="16" id="zjs-hj-4oN"/>
                                                 </constraints>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="00:00" id="kjN-6z-YhY">
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" focusRingType="none" alignment="right" title="00:00" id="kjN-6z-YhY">
                                                     <font key="font" size="12" name="Exo2-Regular"/>
                                                     <color key="textColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="98P-Sa-2u9" userLabel="Progress Slider">
+                                            <slider focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="98P-Sa-2u9" userLabel="Progress Slider">
                                                 <rect key="frame" x="68" y="0.0" width="214" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="Bfq-mt-sLn"/>
                                                 </constraints>
-                                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="hio-yD-xek" customClass="AZProgressSliderCell" customModule="Azusa" customModuleProvider="target">
+                                                <sliderCell key="cell" continuous="YES" state="on" focusRingType="none" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="hio-yD-xek" customClass="AZProgressSliderCell" customModule="Azusa" customModuleProvider="target">
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
                                                             <color key="value" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
-                                                            <color key="value" red="0.95294117647058818" green="0.96078431372549022" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="value" red="0.90167410714285712" green="0.90167410714285712" blue="0.90167410714285712" alpha="1" colorSpace="calibratedRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </sliderCell>
@@ -882,13 +882,13 @@
                                                     <action selector="progressSliderMoved:" target="Gpq-yk-DCa" id="BtG-7B-PC4"/>
                                                 </connections>
                                             </slider>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="X06-G0-8Oz" userLabel="Song Length">
+                                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="X06-G0-8Oz" userLabel="Song Length">
                                                 <rect key="frame" x="286" y="5" width="66" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="62" id="D12-om-jrh"/>
                                                     <constraint firstAttribute="height" constant="16" id="Dev-CG-CIP"/>
                                                 </constraints>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="00:00" id="AZ0-Zj-uOZ">
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" title="00:00" id="AZ0-Zj-uOZ">
                                                     <font key="font" size="12" name="Exo2-Regular"/>
                                                     <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -912,13 +912,13 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="OHA-Qn-g5o" userLabel="Playback Controls Container">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="165"/>
                                         <subviews>
-                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="WcW-Np-1o0" userLabel="Skip Previous Button">
+                                            <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="WcW-Np-1o0" userLabel="Skip Previous Button">
                                                 <rect key="frame" x="87" y="110" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="Dj3-Oz-opO"/>
                                                     <constraint firstAttribute="height" constant="18" id="eaL-Bt-GE4"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZSkipPrevious" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="dMs-A5-fTD">
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZSkipPrevious" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="dMs-A5-fTD">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -926,13 +926,13 @@
                                                     <action selector="playbackControlsSkipPreviousButtonPressed:" target="Gpq-yk-DCa" id="nTL-gU-egn"/>
                                                 </connections>
                                             </button>
-                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="ZPs-Yo-3I3" userLabel="Pause/Play Button">
+                                            <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="ZPs-Yo-3I3" userLabel="Pause/Play Button">
                                                 <rect key="frame" x="165" y="108" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="0he-rA-pWh"/>
                                                     <constraint firstAttribute="height" constant="20" id="HMS-vY-vZp"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZPause" imagePosition="only" alignment="center" alternateImage="AZPlay" imageScaling="proportionallyUpOrDown" inset="2" id="xmi-d6-ed1">
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZPause" imagePosition="only" alignment="center" alternateImage="AZPlay" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="xmi-d6-ed1">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -940,13 +940,13 @@
                                                     <action selector="playbackControlsPausePlayButtonPressed:" target="Gpq-yk-DCa" id="Lww-aB-nf5"/>
                                                 </connections>
                                             </button>
-                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="cK8-Om-Ff3" userLabel="Skip Next Button">
+                                            <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="cK8-Om-Ff3" userLabel="Skip Next Button">
                                                 <rect key="frame" x="245" y="110" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="Q5X-to-WqL"/>
                                                     <constraint firstAttribute="height" constant="18" id="yEw-z3-T8t"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZSkipNext" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="3jH-eC-NOo">
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZSkipNext" imagePosition="overlaps" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="3jH-eC-NOo">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -954,13 +954,13 @@
                                                     <action selector="playbackControlsSkipNextButtonPressed:" target="Gpq-yk-DCa" id="B2W-AE-kk0"/>
                                                 </connections>
                                             </button>
-                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="LYo-Cp-CAS" userLabel="Random Button">
+                                            <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="LYo-Cp-CAS" userLabel="Random Button">
                                                 <rect key="frame" x="111" y="52" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="XTD-cH-9Uk"/>
                                                     <constraint firstAttribute="width" constant="16" id="cfK-Fw-hS9"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZRandomOff" imagePosition="only" alignment="center" alternateImage="AZRandomOn" imageScaling="proportionallyUpOrDown" inset="2" id="Gnd-9V-eJA">
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZRandomOff" imagePosition="only" alignment="center" alternateImage="AZRandomOn" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="Gnd-9V-eJA">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -968,13 +968,13 @@
                                                     <action selector="playbackControlsRandomButtonPressed:" target="Gpq-yk-DCa" id="1Ww-pY-Ske"/>
                                                 </connections>
                                             </button>
-                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="QJ7-q0-S80" userLabel="Loop Button">
+                                            <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="QJ7-q0-S80" userLabel="Loop Button">
                                                 <rect key="frame" x="167" y="52" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="MTq-aN-STf"/>
                                                     <constraint firstAttribute="width" constant="16" id="aAr-Vf-Yte"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZLoopOff" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="S45-3r-WGs">
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZLoopOff" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="S45-3r-WGs">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -982,13 +982,13 @@
                                                     <action selector="playbackControlsLoopButtonPressed:" target="Gpq-yk-DCa" id="bOP-6U-glW"/>
                                                 </connections>
                                             </button>
-                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="Gnj-dx-crK" userLabel="Favourite Button">
+                                            <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="Gnj-dx-crK" userLabel="Favourite Button">
                                                 <rect key="frame" x="223" y="52" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="4ER-3e-jLB"/>
                                                     <constraint firstAttribute="width" constant="16" id="4iq-rF-4Ko"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZNotFavourite" imagePosition="left" alternateImage="AZFavourite" inset="2" id="iZc-zi-cta">
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZNotFavourite" imagePosition="left" alternateImage="AZFavourite" focusRingType="none" inset="2" id="iZc-zi-cta">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
