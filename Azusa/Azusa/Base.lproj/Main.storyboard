@@ -727,7 +727,7 @@
                                         </contentFilters>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="AZDefaultCover" id="HtS-1n-w7x"/>
                                     </imageView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="fP5-07-wCf" userLabel="Titlebar" customClass="AZGradientView" customModule="Azusa" customModuleProvider="target">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="fP5-07-wCf" userLabel="Titlebar" customClass="AZMusicPlayerTitlebarView" customModule="Azusa" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="175" width="350" height="75"/>
                                         <subviews>
                                             <customView alphaValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="ka2-gA-cf6" userLabel="Darken" customClass="AZColoredView" customModule="Azusa" customModuleProvider="target">

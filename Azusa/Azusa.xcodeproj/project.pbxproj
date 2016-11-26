@@ -16,6 +16,7 @@
 		AE2340FD1DE5227300C6D3B3 /* MITCPCommunications.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */; };
 		AE25C3221DE645D100DE4A97 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = AE25C3211DE645D100DE4A97 /* Fonts */; };
 		AE25C3241DE64EA200DE4A97 /* AZColoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE25C3231DE64EA200DE4A97 /* AZColoredView.swift */; };
+		AE423B751DEA479000777832 /* AZMusicPlayerTitlebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE423B741DEA479000777832 /* AZMusicPlayerTitlebarView.swift */; };
 		AE4820E51DE76B7B00F868CE /* AZPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4820E41DE76B7B00F868CE /* AZPreferences.swift */; };
 		AE4820E61DE7798900F868CE /* AZMusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E22301DE57102003DBC94 /* AZMusicPlayerViewController.swift */; };
 		AE4820ED1DE7934B00F868CE /* AZExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4820EC1DE7934B00F868CE /* AZExtensions.swift */; };
@@ -60,6 +61,7 @@
 		AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MITCPCommunications.swift; path = Mio/MITCPCommunications.swift; sourceTree = "<group>"; };
 		AE25C3211DE645D100DE4A97 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = Azusa/Resources/Fonts; sourceTree = "<group>"; };
 		AE25C3231DE64EA200DE4A97 /* AZColoredView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZColoredView.swift; sourceTree = "<group>"; };
+		AE423B741DEA479000777832 /* AZMusicPlayerTitlebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerTitlebarView.swift; sourceTree = "<group>"; };
 		AE4820E41DE76B7B00F868CE /* AZPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZPreferences.swift; sourceTree = "<group>"; };
 		AE4820EC1DE7934B00F868CE /* AZExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZExtensions.swift; sourceTree = "<group>"; };
 		AE6E222E1DE56E79003DBC94 /* AZAspectFillImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZAspectFillImageView.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				AE12BE351DE57B2600BAF030 /* AZGradientView.swift */,
 				AE25C3231DE64EA200DE4A97 /* AZColoredView.swift */,
 				AE11B52B1DE66C56008B2827 /* AZProgressSliderCell.swift */,
+				AE423B741DEA479000777832 /* AZMusicPlayerTitlebarView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				AE11B52C1DE66C56008B2827 /* AZProgressSliderCell.swift in Sources */,
 				AE20DE1D1DE8FFD900092F75 /* MIMPDEventSubscriber.swift in Sources */,
 				AE4820E61DE7798900F868CE /* AZMusicPlayerViewController.swift in Sources */,
+				AE423B751DEA479000777832 /* AZMusicPlayerTitlebarView.swift in Sources */,
 				AEC7E1BF1DE40F3600E1EA3A /* AppDelegate.swift in Sources */,
 				AE4820E51DE76B7B00F868CE /* AZPreferences.swift in Sources */,
 				AE6E222F1DE56E79003DBC94 /* AZAspectFillImageView.swift in Sources */,
