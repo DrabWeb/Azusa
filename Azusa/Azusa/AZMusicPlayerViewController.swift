@@ -256,26 +256,33 @@ class AZMusicPlayerViewController: NSViewController {
         
         // Connect to the MPD server
         mpd.connect({ socket in
-            self.mpd.getCurrentSong(completionHandler: { song in
-                if(song != nil) {
-                    print(song!.debugDescription);
+            self.mpd.getCurrentSong(completionHandler: { currentSong in
+                if(currentSong != nil) {
+                    print(currentSong!.debugDescription);
                     
-                    song!.file = self.mpd.musicDirectory + song!.file;
+                    currentSong!.file = self.mpd.musicDirectory + currentSong!.file;
                     
-                    self.display(song: song!);
+                    self.display(song: currentSong!);
                     
                     self.mpd.getStatus(completionHandler: { status in
                         self.display(status: status);
-                        
-                        print("\(MIUtilities.secondsToDisplayTime(Int(status.timeElapsed)))/\(MIUtilities.secondsToDisplayTime(song!.length)) (\(Int((status.timeElapsed / Float(song!.length)) * 100))%)");
-                        print(status.debugDescription);
                     });
+                }
+            });
+        });
+        
+        _ = self.mpd.socketConnection.subscribeTo(events: [.player, .options], with: { eventType in
+            self.mpd.getStatus(completionHandler: { status in
+                self.display(status: status);
+            });
+        });
+        
+        _ = self.mpd.socketConnection.subscribeTo(events: [.player], with: { eventType in
+            self.mpd.getCurrentSong(completionHandler: { currentSong in
+                if(currentSong != nil) {
+                    currentSong!.file = self.mpd.musicDirectory + currentSong!.file;
                     
-                    _ = self.mpd.socketConnection.subscribeTo(events: [.player, .options], with: { eventType in
-                        self.mpd.socketConnection.outputOf(command: "status", log: true, completionHandler: { output in
-                            self.display(status: MIStatus(string: output));
-                        });
-                    });
+                    self.display(song: currentSong!);
                 }
             });
         });
@@ -512,6 +519,8 @@ class AZMusicPlayerViewController: NSViewController {
     
     /// Displays the values from the given MIStatus object
     func display(status : MIStatus) {
+        print(status.debugDescription);
+        
         // Update the random and loop buttons
         playbackControlsRandomButton.state = (status.randomMode) ? 1 : 0;
         self.setLoop(mode: status.getLoopMode);
@@ -519,6 +528,9 @@ class AZMusicPlayerViewController: NSViewController {
         // Update the progress view
         progressCurrentTimeLabel.stringValue = MIUtilities.secondsToDisplayTime(Int(status.timeElapsed));
         progressSlider.intValue = Int32(status.timeElapsed);
+        
+        // Update the pause/play button
+        playbackControlsPausePlayButton.state = (status.playingState == .play) ? 0 : 1;
     }
     
     /// Displays the values from the given MISong object

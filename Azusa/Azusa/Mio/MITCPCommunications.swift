@@ -146,6 +146,9 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         if(!eventIdleLoopStarted) {
             // Start it
             eventSocket?.write("idle\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.eventListener.rawValue);
+            
+            // Say the loop has started
+            eventIdleLoopStarted = true;
         }
         
         // Return the subscriber object

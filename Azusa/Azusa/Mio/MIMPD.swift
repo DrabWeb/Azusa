@@ -76,9 +76,6 @@ class MIMPD {
     
     /// Toggles pause based on 'to', optional completion handler for when the command finishes(passed command output)
     func setPaused(to : Bool, completionHandler : ((String) -> ())?) {
-        // Set the pause accordingly
-        self.socketConnection.outputOf(command: "pause \((to) ? 1 : 0)", log: false, completionHandler: completionHandler);
-        
         switch(to) {
             case true:
                 print("MIMPD: Pausing song");
@@ -88,6 +85,9 @@ class MIMPD {
                 print("MIMPD: Playing song");
                 break;
         }
+        
+        // Set the pause accordingly
+        self.socketConnection.outputOf(command: "pause \((to) ? 1 : 0)", log: false, completionHandler: completionHandler);
     }
     
     /// Toggles random mode based on 'to', optional completion handler for when the command finishes(passed command output)
