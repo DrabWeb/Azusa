@@ -272,8 +272,10 @@ class AZMusicPlayerViewController: NSViewController {
                         print(status.debugDescription);
                     });
                     
-                    _ = self.mpd.socketConnection.subscribeTo(event: .player, with: { eventType in
-                        print("Player event fired");
+                    _ = self.mpd.socketConnection.subscribeTo(events: [.player, .options], with: { eventType in
+                        self.mpd.socketConnection.outputOf(command: "status", log: true, completionHandler: { output in
+                            self.display(status: MIStatus(string: output));
+                        });
                     });
                 }
             });

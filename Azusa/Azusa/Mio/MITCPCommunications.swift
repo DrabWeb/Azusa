@@ -132,12 +132,12 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         socket?.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.commandOutput.rawValue);
     }
     
-    /// Subscribes to the given event, 'subscriber' gets called with the event type when the event fires, returns the subscriber object
-    func subscribeTo(event : MIMPDEvent, with subscriber : @escaping ((MIMPDEvent) -> ())) -> MIMPDEventSubscriber {
-        print("MITCPCommunications: Subscribing to event \"\(event.rawValue)\" with \(subscriber)");
+    /// Subscribes to the given events, 'subscriber' gets called with the event type when the event fires, returns the subscriber object
+    func subscribeTo(events : [MIMPDEvent], with subscriber : @escaping ((MIMPDEvent) -> ())) -> MIMPDEventSubscriber {
+        print("MITCPCommunications: Subscribing to events \(events) with \(subscriber)");
         
         /// The event subscriber created from the passed values
-        let subscriptionObject : MIMPDEventSubscriber = MIMPDEventSubscriber(eventHandler: subscriber, subscription: event);
+        let subscriptionObject : MIMPDEventSubscriber = MIMPDEventSubscriber(eventHandler: subscriber, subscriptions: events);
         
         // Add the subscription
         eventSubscribers.append(subscriptionObject);
@@ -168,7 +168,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         
         // If removal index isn't -1...
         if(removalIndex != -1) {
-            print("MITCPCommunications: Removing \"\(subscriber.subscription)\" event subscriber \"\(subscriber.uuid)\"");
+            print("MITCPCommunications: Removing \"\(subscriber.subscriptions)\" event subscriber \"\(subscriber.uuid)\"");
             
             // Remove the event subscriber
             self.eventSubscribers.remove(at: removalIndex);
@@ -182,7 +182,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // For every event subscriber...
         for(_, currentSubscriber) in eventSubscribers.enumerated() {
             // If the subcriber's event is equal to the passed event...
-            if(currentSubscriber.subscription == event) {
+            if(currentSubscriber.subscriptions.contains(event)) {
                 // Call the subscriber's event handler
                 currentSubscriber.eventHandler?(event);
             }

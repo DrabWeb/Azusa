@@ -15,8 +15,8 @@ class MIMPDEventSubscriber {
     /// The closure to call when the event fires
     var eventHandler : ((MIMPDEvent) -> ())? = nil;
     
-    /// The event that this item is subscribed to
-    var subscription : MIMPDEvent = .player;
+    /// The events that this item is subscribed to
+    var subscriptions : [MIMPDEvent] = [];
     
     /// The UUID of this subscriber(used for comparison checks)
     var uuid : String = NSUUID().uuidString;
@@ -28,16 +28,16 @@ class MIMPDEventSubscriber {
     // Init
     
     // Init with an event handler and event type
-    init(eventHandler : @escaping ((MIMPDEvent) -> ()), subscription : MIMPDEvent) {
+    init(eventHandler : @escaping ((MIMPDEvent) -> ()), subscriptions : [MIMPDEvent]) {
         self.eventHandler = eventHandler;
-        self.subscription = subscription;
+        self.subscriptions = subscriptions;
         self.uuid = NSUUID().uuidString;
     }
     
     // Blank init
     init() {
         self.eventHandler = nil;
-        self.subscription = .player;
+        self.subscriptions = [];
         self.uuid = NSUUID().uuidString;
     }
 }
