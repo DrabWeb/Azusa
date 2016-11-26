@@ -138,8 +138,8 @@ class MIMPD {
     func getCurrentSong(completionHandler : @escaping ((MISong) -> ())) {
         print("MIMPD: Getting current song...");
         
-        if(socketConnection.socket != nil) {
-            if(socketConnection.socket!.isConnected) {
+        if(socketConnection.commandSocket != nil) {
+            if(socketConnection.commandSocket!.isConnected) {
                 socketConnection.outputOf(command: "currentsong", log: false, completionHandler: { output in
                     /// The MISong from 'output'
                     let song : MISong = MISong(string: output);

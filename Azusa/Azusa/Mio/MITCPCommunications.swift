@@ -70,8 +70,8 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     /// The port of the MPD server on 'host'
     var port : Int = -1;
     
-    /// The socket for sending/receiving data from the MPD TCP server
-    var socket : GCDAsyncSocket? = nil;
+    /// The socket for sending/receiving commands and their output from the MPD TCP server
+    var commandSocket : GCDAsyncSocket? = nil;
     
     /// The socket for catching MPD events
     var eventSocket : GCDAsyncSocket? = nil;
@@ -105,8 +105,8 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // If the host and port are set...
         if(host != "" && port != -1) {
             // Create the socket
-            if(self.socket == nil) {
-                self.socket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main);
+            if(self.commandSocket == nil) {
+                self.commandSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main);
             }
             
             // Create the event socket
@@ -124,8 +124,8 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             
             do {
                 // Connect to the server without a timeout
-                if(!socket!.isConnected) {
-                    try socket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
+                if(!commandSocket!.isConnected) {
+                    try commandSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
                 }
                 
                 if(!eventSocket!.isConnected) {
@@ -164,12 +164,12 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         /// Do we need to connect to the socket?
         var needsConnect : Bool = false;
         
-        // If the socket isn't nil...
-        if(socket != nil) {
-            // If the socket is connected...
-            if(socket!.isConnected) {
-                // Write the command to the socket
-                socket?.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.commandOutput.rawValue);
+        // If the command socket isn't nil...
+        if(commandSocket != nil) {
+            // If the command socket is connected...
+            if(commandSocket!.isConnected) {
+                // Write the command to the command socket
+                commandSocket!.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.commandOutput.rawValue);
             }
                 // If the socket is disconnected...
             else {
@@ -188,7 +188,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             // Connect to the socket
             self.connect(completionHandler: { connectedSocket in
                 // Write the command to the socket
-                self.socket!.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.commandOutput.rawValue);
+                self.commandSocket!.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.commandOutput.rawValue);
             });
         }
     }
@@ -212,12 +212,12 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         /// Do we need to connect to the socket?
         var needsConnect : Bool = false;
         
-        // If the socket isn't nil...
-        if(socket != nil) {
-            // If the socket is connected...
-            if(socket!.isConnected) {
+        // If the command socket isn't nil...
+        if(commandSocket != nil) {
+            // If the command socket is connected...
+            if(commandSocket!.isConnected) {
                 // Write the command to the socket
-                socket?.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.command.rawValue);
+                commandSocket!.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.command.rawValue);
             }
             // If the socket is disconnected...
             else {
@@ -236,7 +236,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             // Connect to the socket
             self.connect(completionHandler: { connectedSocket in
                 // Write the command to the socket
-                self.socket!.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.command.rawValue);
+                self.commandSocket!.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.command.rawValue);
             });
         }
     }
@@ -305,7 +305,21 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     /// Delegate Methods
     
     func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
-        print("MITCPCommunications: Socket disconnected with error \"\(err!.localizedDescription)\"(\((err! as NSError).code))");
+        /// The name of the socket that disconnected
+        var socketName : String = "Unknown";
+        
+        // Switch on the socket and set the appropriate name
+        if(sock == commandSocket) {
+            socketName = "Command";
+        }
+        else if(sock == eventSocket) {
+            socketName = "Event";
+        }
+        else if(sock == progressSocket) {
+            socketName = "Progress";
+        }
+        
+        print("MITCPCommunications: \(socketName) disconnected with error \"\(err!.localizedDescription)\"(\((err! as NSError).code))");
     }
     
     func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
@@ -315,11 +329,11 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         }
         
         // If the socket is the main socket...
-        if(sock == self.socket) {
+        if(sock == self.commandSocket) {
             // If the tag is the command output tag...
             if(tag == MITCPTag.commandOutput.rawValue) {
                 // Read all the data in the MPD output
-                socket?.readData(to: "\nOK\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
+                commandSocket?.readData(to: "\nOK\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
             }
             // If the tag is the command tag..
             else if(tag == MITCPTag.command.rawValue) {
@@ -359,7 +373,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         }
         
         // If the socket is the main socket...
-        if(sock == self.socket) {
+        if(sock == self.commandSocket) {
             // If the tag is MITCPTag.commandOutput(meaning we want to pass 'dataString' to the completion handler of 'outputOf')...
             if(tag == MITCPTag.commandOutput.rawValue) {
                 if(self.outputCompletionHandlers.first != nil) {
@@ -417,7 +431,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
     func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
         // If the socket is the main socket...
-        if(sock == self.socket) {
+        if(sock == self.commandSocket) {
             // Print that the connection was made
             print("MITCPCommunications: Connected to \(host):\(port)");
             
@@ -448,7 +462,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     init(host : String, port : Int) {
         self.host = host;
         self.port = port;
-        self.socket = nil;
+        self.commandSocket = nil;
     }
     
     // Blank init
@@ -457,6 +471,6 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         
         self.host = "";
         self.port = -1;
-        self.socket = nil;
+        self.commandSocket = nil;
     }
 }
