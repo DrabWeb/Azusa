@@ -292,8 +292,8 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
                 // Call the progress closure with the time elapsed(plus one because it's off for whatever reason)
                 self.progressListener?(Int(status.timeElapsed));
                 
-                // Wait a quarter of a second(so we don't use up alot of power or anything)
-                Timer.scheduledTimer(withTimeInterval: TimeInterval(0.25), repeats: false, block: { _ in
+                // Wait half a second(so we don't use up alot of power or anything)
+                Timer.scheduledTimer(withTimeInterval: TimeInterval(0.5), repeats: false, block: { _ in
                     // Continue the loop
                     self.progressSocket!.write("status\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.progress.rawValue);
                 });
