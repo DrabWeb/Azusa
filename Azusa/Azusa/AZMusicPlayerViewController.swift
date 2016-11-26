@@ -256,35 +256,13 @@ class AZMusicPlayerViewController: NSViewController {
         
         // Connect to the MPD server
         mpd.connect({ socket in
-            self.mpd.getCurrentSong(completionHandler: { currentSong in
-                if(currentSong != nil) {
-                    print(currentSong!.debugDescription);
-                    
-                    currentSong!.file = self.mpd.musicDirectory + currentSong!.file;
-                    
-                    self.display(song: currentSong!);
-                    
-                    self.mpd.getStatus(completionHandler: { status in
-                        self.display(status: status);
-                    });
-                }
-            });
+            // Display the current MPD info
+            self.displayCurrent();
         });
         
         _ = self.mpd.socketConnection.subscribeTo(events: [.player, .options], with: { eventType in
-            self.mpd.getStatus(completionHandler: { status in
-                self.display(status: status);
-            });
-        });
-        
-        _ = self.mpd.socketConnection.subscribeTo(events: [.player], with: { eventType in
-            self.mpd.getCurrentSong(completionHandler: { currentSong in
-                if(currentSong != nil) {
-                    currentSong!.file = self.mpd.musicDirectory + currentSong!.file;
-                    
-                    self.display(song: currentSong!);
-                }
-            });
+            // Display the current MPD info
+            self.displayCurrent();
         });
     }
     
@@ -517,10 +495,32 @@ class AZMusicPlayerViewController: NSViewController {
         }
     }
     
+    /// Displays all the current info from MPD(song, status, cover, etc.)
+    func displayCurrent() {
+        // Get the current playing song
+        self.mpd.getCurrentSong(completionHandler: { currentSong in
+            // If the current song isn't nil...
+            if(currentSong != nil) {
+                // Update the song's file
+                currentSong!.file = self.mpd.musicDirectory + currentSong!.file;
+                
+                // Display the song
+                self.display(song: currentSong!);
+                
+                // Get the current status
+                self.mpd.getStatus(completionHandler: { status in
+                    // Display the current status
+                    self.display(status: status);
+                });
+            }
+        });
+    }
+    
+    /// The last displayed status by display(status:)
+    var lastDisplayedStatus : MIStatus? = nil;
+    
     /// Displays the values from the given MIStatus object
     func display(status : MIStatus) {
-        print(status.debugDescription);
-        
         // Update the random and loop buttons
         playbackControlsRandomButton.state = (status.randomMode) ? 1 : 0;
         self.setLoop(mode: status.getLoopMode);
@@ -531,7 +531,13 @@ class AZMusicPlayerViewController: NSViewController {
         
         // Update the pause/play button
         playbackControlsPausePlayButton.state = (status.playingState == .play) ? 0 : 1;
+        
+        // Set lastDisplayedStatus
+        self.lastDisplayedStatus = status;
     }
+    
+    /// The last displayed song by display(song:)
+    var lastDisplayedSong : MISong? = nil;
     
     /// Displays the values from the given MISong object
     func display(song : MISong) {
@@ -545,7 +551,22 @@ class AZMusicPlayerViewController: NSViewController {
         // Update the progress view
         progressSongLengthLabel.stringValue = MIUtilities.secondsToDisplayTime(song.length);
         progressSlider.maxValue = Double(song.length);
+        
+        // If lastDisplayedSong isn't nil...
+        if(lastDisplayedSong != nil) {
+            // If the last displayed song's path isn't the same as the given song...
+            if(song.file != lastDisplayedSong!.file) {
+                // Display the song's cover image
+                display(coverImage: song.coverImage);
+            }
+        }
+        
+        // Set lastDisplayedSong
+        self.lastDisplayedSong = song;
     }
+    
+    /// The last displayed cover image by display(coverImage:)
+    var lastDisplayedCoverImage : NSImage? = nil;
     
     /// Displays the given NSImage as the cover image for this music player
     func display(coverImage : NSImage) {
@@ -575,6 +596,9 @@ class AZMusicPlayerViewController: NSViewController {
         
         // Set the blurred image view's image to the given image
         self.coverImageBlurredImageView.setAspectFillImage(coverImage);
+        
+        // Set lastDisplayedCoverImage
+        self.lastDisplayedCoverImage = coverImage;
     }
     
     /// Styles the window
