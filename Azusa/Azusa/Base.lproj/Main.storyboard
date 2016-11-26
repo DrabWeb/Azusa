@@ -808,6 +808,46 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Kka-dx-iSd" userLabel="Bottom Content">
                                 <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                                 <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="WTT-Od-TBL" userLabel="Song Info Container">
+                                        <rect key="frame" x="0.0" y="185" width="350" height="119"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="McP-we-ZyI" userLabel="Current Song Artist Label">
+                                                <rect key="frame" x="18" y="65" width="314" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="nfo-rU-8Cp"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="center" title="Loading..." id="93e-gw-XbF">
+                                                    <font key="font" size="13" name="Exo2-Regular"/>
+                                                    <color key="textColor" white="0.90092075890000001" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cQN-2I-zei" userLabel="Current Song Title Label">
+                                                <rect key="frame" x="18" y="32" width="314" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="uyl-DA-SAj"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="center" title="Loading..." id="ftV-y2-om9">
+                                                    <font key="font" size="15" name="Exo2-SemiBold"/>
+                                                    <color key="textColor" white="0.90092075890000001" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="cQN-2I-zei" firstAttribute="centerY" secondItem="WTT-Od-TBL" secondAttribute="centerY" constant="15" id="BSM-vc-Ope"/>
+                                            <constraint firstItem="McP-we-ZyI" firstAttribute="leading" secondItem="WTT-Od-TBL" secondAttribute="leading" constant="20" id="Vq7-Zq-Flf"/>
+                                            <constraint firstAttribute="trailing" secondItem="cQN-2I-zei" secondAttribute="trailing" constant="20" id="ZPr-vo-7u5"/>
+                                            <constraint firstItem="McP-we-ZyI" firstAttribute="centerY" secondItem="WTT-Od-TBL" secondAttribute="centerY" constant="-15" id="cR2-uv-HYK"/>
+                                            <constraint firstItem="cQN-2I-zei" firstAttribute="leading" secondItem="WTT-Od-TBL" secondAttribute="leading" constant="20" id="hDE-eq-9zU"/>
+                                            <constraint firstAttribute="trailing" secondItem="McP-we-ZyI" secondAttribute="trailing" constant="20" id="okf-h6-aQZ"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                <color key="value" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Fkg-nT-dAj" userLabel="Progress">
                                         <rect key="frame" x="0.0" y="165" width="350" height="20"/>
                                         <subviews>
@@ -828,7 +868,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="Bfq-mt-sLn"/>
                                                 </constraints>
-                                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="hio-yD-xek" customClass="AZProgressSliderCell" customModule="Azusa" customModuleProvider="target">
+                                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="hio-yD-xek" customClass="AZProgressSliderCell" customModule="Azusa" customModuleProvider="target">
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
                                                             <color key="value" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
@@ -971,46 +1011,6 @@
                                             <constraint firstItem="QJ7-q0-S80" firstAttribute="centerY" secondItem="OHA-Qn-g5o" secondAttribute="centerY" constant="23" id="nFZ-Wz-nYj"/>
                                             <constraint firstItem="ZPs-Yo-3I3" firstAttribute="leading" secondItem="WcW-Np-1o0" secondAttribute="trailing" constant="60" id="ucN-Hs-qfI"/>
                                         </constraints>
-                                    </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="WTT-Od-TBL" userLabel="Song Info Container">
-                                        <rect key="frame" x="0.0" y="185" width="350" height="119"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="McP-we-ZyI" userLabel="Current Song Artist Label">
-                                                <rect key="frame" x="18" y="65" width="314" height="20"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="nfo-rU-8Cp"/>
-                                                </constraints>
-                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="center" title="Artist" id="93e-gw-XbF">
-                                                    <font key="font" size="13" name="Exo2-Regular"/>
-                                                    <color key="textColor" white="0.90092075890000001" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cQN-2I-zei" userLabel="Current Song Title Label">
-                                                <rect key="frame" x="18" y="32" width="314" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="uyl-DA-SAj"/>
-                                                </constraints>
-                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="center" title="Song Title" id="ftV-y2-om9">
-                                                    <font key="font" size="15" name="Exo2-SemiBold"/>
-                                                    <color key="textColor" white="0.90092075890000001" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="cQN-2I-zei" firstAttribute="centerY" secondItem="WTT-Od-TBL" secondAttribute="centerY" constant="15" id="BSM-vc-Ope"/>
-                                            <constraint firstItem="McP-we-ZyI" firstAttribute="leading" secondItem="WTT-Od-TBL" secondAttribute="leading" constant="20" id="Vq7-Zq-Flf"/>
-                                            <constraint firstAttribute="trailing" secondItem="cQN-2I-zei" secondAttribute="trailing" constant="20" id="ZPr-vo-7u5"/>
-                                            <constraint firstItem="McP-we-ZyI" firstAttribute="centerY" secondItem="WTT-Od-TBL" secondAttribute="centerY" constant="-15" id="cR2-uv-HYK"/>
-                                            <constraint firstItem="cQN-2I-zei" firstAttribute="leading" secondItem="WTT-Od-TBL" secondAttribute="leading" constant="20" id="hDE-eq-9zU"/>
-                                            <constraint firstAttribute="trailing" secondItem="McP-we-ZyI" secondAttribute="trailing" constant="20" id="okf-h6-aQZ"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                                <color key="value" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </customView>
                                 </subviews>
                                 <constraints>

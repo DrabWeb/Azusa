@@ -9,9 +9,48 @@ import Foundation
 import CocoaAsyncSocket
 
 /// The different tags for 'GCDAsyncSocket' requests in 'MITCPCommunications'
-enum MITCPTags : Int {
+enum MITCPTag : Int {
     /// The tag for write requests made from 'outputOf'
-    case commandOutput
+    case commandOutput = 0
+    
+    /// The tag for the event listener
+    case eventListener = 1
+}
+
+/// The different MPD idle events that are supported
+enum MIMPDEvent : String {
+    /// The song database has been modified after 'update'
+    case database = "database"
+    
+    /// A database update has started or finished. If the database was modified during the update, the database event is also emitted
+    case update = "update"
+    
+    /// A stored playlist has been modified, renamed, created or deleted
+    case storedPlaylist = "stored_playlist"
+    
+    /// The current playlist has been modified
+    case playlist = "playlist"
+    
+    /// The player has been started, stopped or seeked
+    case player = "player"
+    
+    /// The volume has been changed
+    case mixer = "mixer"
+    
+    /// An audio output has been enabled or disabled
+    case output = "output"
+    
+    /// Options like repeat, random, crossfade, replay gain
+    case options = "options"
+    
+    /// The sticker database has been modified.
+    case sticker = "sticker"
+    
+    /// A client has subscribed or unsubscribed to a channel
+    case subscription = "subscription"
+    
+    /// A message was received on a channel this client is subscribed to; this event is only emitted when the queue is empty
+    case message = "message"
 }
 
 /// The class for making TCP connections and requests to MPD
@@ -28,6 +67,15 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     /// The socket for sending/receiving data from the MPD TCP server
     var socket : GCDAsyncSocket? = nil;
     
+    /// The socket for catching MPD events
+    var eventSocket : GCDAsyncSocket? = nil;
+    
+    /// Has the event idle loop started yet?
+    var eventIdleLoopStarted : Bool = false;
+    
+    /// All the event subscribers
+    var eventSubscribers : [MIMPDEventSubscriber] = [];
+    
     /// The completion handlers from 'connect'
     private var connectionCompletionHandlers : [((GCDAsyncSocket) -> ())] = [];
     
@@ -42,14 +90,18 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // If the host and port are set...
         if(host != "" && port != -1) {
             // Create the socket
-            socket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main);
+            self.socket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main);
+            
+            // Create the event socket
+            self.eventSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main);
             
             // Print what server we are connecting to
             print("MITCPCommunications: Connecting to \(host):\(port)...");
             
             do {
-                // Connect to the server with a timeout of 10
+                // Connect to the server with a timeout of 10 seconds
                 try socket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(10));
+                try eventSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(10));
                 
                 // Add the completion handler to 'connectionCompletionHandlers'
                 if(completionHandler != nil) {
@@ -75,9 +127,66 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             // Print what command we are running
             print("MITCPCommunications: Getting output of command \"\(command)\"");
         }
-        
+    
         // Write the command to the socket
-        socket?.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTags.commandOutput.rawValue);
+        socket?.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.commandOutput.rawValue);
+    }
+    
+    /// Subscribes to the given event, 'subscriber' gets called with the event type when the event fires, returns the subscriber object
+    func subscribeTo(event : MIMPDEvent, with subscriber : @escaping ((MIMPDEvent) -> ())) -> MIMPDEventSubscriber {
+        print("MITCPCommunications: Subscribing to event \"\(event.rawValue)\" with \(subscriber)");
+        
+        /// The event subscriber created from the passed values
+        let subscriptionObject : MIMPDEventSubscriber = MIMPDEventSubscriber(eventHandler: subscriber, subscription: event);
+        
+        // Add the subscription
+        eventSubscribers.append(subscriptionObject);
+        
+        // If the idle loop isn't running yet...
+        if(!eventIdleLoopStarted) {
+            // Start it
+            eventSocket?.write("idle\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.eventListener.rawValue);
+        }
+        
+        // Return the subscriber object
+        return subscriptionObject;
+    }
+    
+    /// Removes the given subscription object from the subscribers
+    func removeSubscription(_ subscriber : MIMPDEventSubscriber) {
+        /// The index of the event subscriber to remove
+        var removalIndex : Int = -1;
+        
+        // For every event subscriber...
+        for(currentIndex, currentSubscriber) in eventSubscribers.enumerated() {
+            // If the current event subscriber is equal to the given subscriber...
+            if(currentSubscriber.equals(subscriber)) {
+                // Set 'removalIndex'
+                removalIndex = currentIndex;
+            }
+        }
+        
+        // If removal index isn't -1...
+        if(removalIndex != -1) {
+            print("MITCPCommunications: Removing \"\(subscriber.subscription)\" event subscriber \"\(subscriber.uuid)\"");
+            
+            // Remove the event subscriber
+            self.eventSubscribers.remove(at: removalIndex);
+        }
+    }
+    
+    /// Handles calling the given event(e.g. managing listeners)
+    func handleEvent(event : MIMPDEvent) {
+        print("MITCPCommunications: Received event \(event)");
+        
+        // For every event subscriber...
+        for(_, currentSubscriber) in eventSubscribers.enumerated() {
+            // If the subcriber's event is equal to the passed event...
+            if(currentSubscriber.subscription == event) {
+                // Call the subscriber's event handler
+                currentSubscriber.eventHandler?(event);
+            }
+        }
     }
     
     
@@ -87,8 +196,22 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // Print the tag that was used to write the data
 //        print("MITCPCommunications: Data was written with tag \"\(tag)\"");
         
-        // Read all the data in the MPD output
-        sock.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
+        // If the socket is the main socket...
+        if(sock == self.socket) {
+            // If the tag is the command output tag...
+            if(tag == MITCPTag.commandOutput.rawValue) {
+                // Read all the data in the MPD output
+                sock.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
+            }
+        }
+        // If the socket is the event socket...
+        else if(sock == self.eventSocket) {
+            // If the tag is the event listener tag...
+            if(tag == MITCPTag.eventListener.rawValue) {
+                // Read all the data in the MPD output
+                sock.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
+            }
+        }
     }
     
     func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
@@ -98,22 +221,60 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         /// The string from 'data'
         let dataString : String = String(NSString(data: data, encoding: String.Encoding.utf8.rawValue)!);
         
-        // If the tag is MITCPTags.commandOutput(meaning we want to pass 'dataString' to the completion handler of 'outputOf')...
-        if(tag == MITCPTags.commandOutput.rawValue) {
-            if(self.outputCompletionHandlers.first != nil) {
-                // Call and remove the completion handler with 'sock'
-                self.outputCompletionHandlers.removeFirst()(dataString);
+        // If the socket is the main socket...
+        if(sock == self.socket) {
+            // If the tag is MITCPTag.commandOutput(meaning we want to pass 'dataString' to the completion handler of 'outputOf')...
+            if(tag == MITCPTag.commandOutput.rawValue) {
+                if(self.outputCompletionHandlers.first != nil) {
+                    // Call and remove the completion handler with 'sock'
+                    self.outputCompletionHandlers.removeFirst()(dataString);
+                }
+            }
+        }
+        // If the socket is the event socket...
+        if(sock == self.eventSocket) {
+            // If the tag is the event listener tag...
+            if(tag == MITCPTag.eventListener.rawValue) {
+                if(dataString.contains("changed: ")) {
+                    /// The string of the event that occured
+                    var eventString : String = dataString;
+                    
+                    // Parse out the event name
+                    eventString = eventString.replacingOccurrences(of: "changed: ", with: "");
+                    eventString = eventString.replacingOccurrences(of: "\nOK", with: "");
+                    eventString = eventString.components(separatedBy: "\n")[1];
+                    
+                    /// The parsed event
+                    let event : MIMPDEvent? = MIMPDEvent(rawValue: eventString);
+                    
+                    // If the event isn't nil...
+                    if(event != nil) {
+                        // Call the event handler with the event
+                        self.handleEvent(event: event!);
+                    }
+                }
+                
+                // Call the idle command again so we get an infinite loop
+                eventSocket?.write("idle\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.eventListener.rawValue);
             }
         }
     }
     
     func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
-        // Print that the connection was made
-        print("MITCPCommunications: Connected to \(host):\(port)");
-        
-        if(self.connectionCompletionHandlers.first != nil) {
-            // Call and remove the completion handler
-            self.connectionCompletionHandlers.removeFirst()(sock);
+        // If the socket is the main socket...
+        if(sock == self.socket) {
+            // Print that the connection was made
+            print("MITCPCommunications: Connected to \(host):\(port)");
+            
+            if(self.connectionCompletionHandlers.first != nil) {
+                // Call and remove the completion handler
+                self.connectionCompletionHandlers.removeFirst()(sock);
+            }
+        }
+        // If the socket is the event socket...
+        else if(sock == self.eventSocket) {
+            // Print that the connection was made
+            print("MITCPCommunications: Connected to event socket \(host):\(port)");
         }
     }
     

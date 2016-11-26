@@ -12,6 +12,7 @@
 		778AB413AB8D92C59EBA5D4C /* Pods_Azusa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B738081D445F81D5FED696B /* Pods_Azusa.framework */; };
 		AE11B52C1DE66C56008B2827 /* AZProgressSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE11B52B1DE66C56008B2827 /* AZProgressSliderCell.swift */; };
 		AE12BE361DE57B2600BAF030 /* AZGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE12BE351DE57B2600BAF030 /* AZGradientView.swift */; };
+		AE20DE1D1DE8FFD900092F75 /* MIMPDEventSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE20DE1C1DE8FFD900092F75 /* MIMPDEventSubscriber.swift */; };
 		AE2340FD1DE5227300C6D3B3 /* MITCPCommunications.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */; };
 		AE25C3221DE645D100DE4A97 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = AE25C3211DE645D100DE4A97 /* Fonts */; };
 		AE25C3241DE64EA200DE4A97 /* AZColoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE25C3231DE64EA200DE4A97 /* AZColoredView.swift */; };
@@ -55,6 +56,7 @@
 		9B738081D445F81D5FED696B /* Pods_Azusa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Azusa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE11B52B1DE66C56008B2827 /* AZProgressSliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZProgressSliderCell.swift; sourceTree = "<group>"; };
 		AE12BE351DE57B2600BAF030 /* AZGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZGradientView.swift; sourceTree = "<group>"; };
+		AE20DE1C1DE8FFD900092F75 /* MIMPDEventSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MIMPDEventSubscriber.swift; path = Mio/MIMPDEventSubscriber.swift; sourceTree = "<group>"; };
 		AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MITCPCommunications.swift; path = Mio/MITCPCommunications.swift; sourceTree = "<group>"; };
 		AE25C3211DE645D100DE4A97 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = Azusa/Resources/Fonts; sourceTree = "<group>"; };
 		AE25C3231DE64EA200DE4A97 /* AZColoredView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZColoredView.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			children = (
 				AED151891DE7C89100AA0D7F /* MIMPD.swift */,
 				AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */,
+				AE20DE1C1DE8FFD900092F75 /* MIMPDEventSubscriber.swift */,
 				AEC5557F1DE54062005D7640 /* MISong.swift */,
 				AED1518B1DE7EC9E00AA0D7F /* MIStatus.swift */,
 			);
@@ -557,6 +560,7 @@
 				AE12BE361DE57B2600BAF030 /* AZGradientView.swift in Sources */,
 				AED1518C1DE7EC9E00AA0D7F /* MIStatus.swift in Sources */,
 				AE11B52C1DE66C56008B2827 /* AZProgressSliderCell.swift in Sources */,
+				AE20DE1D1DE8FFD900092F75 /* MIMPDEventSubscriber.swift in Sources */,
 				AE4820E61DE7798900F868CE /* AZMusicPlayerViewController.swift in Sources */,
 				AEC7E1BF1DE40F3600E1EA3A /* AppDelegate.swift in Sources */,
 				AE4820E51DE76B7B00F868CE /* AZPreferences.swift in Sources */,

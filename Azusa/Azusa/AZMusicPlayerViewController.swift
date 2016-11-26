@@ -271,6 +271,10 @@ class AZMusicPlayerViewController: NSViewController {
                         print("\(MIUtilities.secondsToDisplayTime(Int(status.timeElapsed)))/\(MIUtilities.secondsToDisplayTime(song!.length)) (\(Int((status.timeElapsed / Float(song!.length)) * 100))%)");
                         print(status.debugDescription);
                     });
+                    
+                    _ = self.mpd.socketConnection.subscribeTo(event: .player, with: { eventType in
+                        print("Player event fired");
+                    });
                 }
             });
         });
