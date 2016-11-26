@@ -319,7 +319,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             socketName = "Progress";
         }
         
-        print("MITCPCommunications: \(socketName) disconnected with error \"\(err!.localizedDescription)\"(\((err! as NSError).code))");
+        print("MITCPCommunications: \(socketName) socket disconnected with error \"\(err!.localizedDescription)\"(\((err! as NSError).code))");
     }
     
     func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
