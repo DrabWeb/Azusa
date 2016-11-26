@@ -306,6 +306,13 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
     func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
         print("MITCPCommunications: Socket disconnected with error \"\(err!.localizedDescription)\"(\((err! as NSError).code))");
+        
+        // Reconnect to the event socket if it disconnects
+        if(sock == self.eventSocket) {
+            self.connect(completionHandler: { socket in
+                print("MITCPCommunications: Reconnected to event socket at \(self.host):\(self.port)");
+            });
+        }
     }
     
     func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
