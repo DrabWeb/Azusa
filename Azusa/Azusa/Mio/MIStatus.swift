@@ -193,7 +193,8 @@ class MIStatus: NSObject {
                     break;
                 
                 case "elapsed:":
-                    self.timeElapsed = NSString(string: content).floatValue;
+                    // Add a second to the elapsed time(it's ~1 second off because of server latency or whatever)
+                    self.timeElapsed = NSString(string: content).floatValue + 1;
                     break;
                 
                 case "nextsong:":
