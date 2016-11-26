@@ -264,8 +264,7 @@ class AZMusicPlayerViewController: NSViewController {
                     
                     self.display(song: song!);
                     
-                    self.mpd.socketConnection.outputOf(command: "status", log: true, completionHandler: { output in
-                        let status : MIStatus = MIStatus(string: output);
+                    self.mpd.getStatus(completionHandler: { status in
                         self.display(status: status);
                         
                         print("\(MIUtilities.secondsToDisplayTime(Int(status.timeElapsed)))/\(MIUtilities.secondsToDisplayTime(song!.length)) (\(Int((status.timeElapsed / Float(song!.length)) * 100))%)");

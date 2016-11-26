@@ -32,8 +32,23 @@ class MIMPD {
     /// The TCP socket connection to this MPD server
     var socketConnection : MITCPCommunications = MITCPCommunications();
     
+    /// The last received status object
+    var status : MIStatus? = nil;
+    
     
     // Functions
+    
+    /// Gets the current MIStatus object and calls the given completion handler with it
+    func getStatus(completionHandler : ((MIStatus) -> ())?) {
+        // Call and get the output of the status command
+        self.socketConnection.outputOf(command: "status", log: true, completionHandler: { output in
+            /// The MIStatus created from 'output'
+            let status : MIStatus = MIStatus(string: output);
+            
+            // Call the completion handler with the status object
+            completionHandler?(status);
+        });
+    }
     
     /// Seeks to the given time in the current song(in seconds), optional completion handler for when the command finishes(passed command output)
     func seek(to : Int, completionHandler : ((String) -> ())?) {
