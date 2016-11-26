@@ -117,7 +117,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             print("MITCPCommunications: Connecting to \(host):\(port)...");
             
             do {
-                // Connect to the server with a timeout of 10 seconds
+                // Connect to the server without a timeout
                 try socket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
                 try eventSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
                 try progressSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
@@ -232,22 +232,33 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     /// Delegate Methods
     
     func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
-        print("MITCPCommunications: Socket disconnected with error \(err?.localizedDescription)");
+        print("MITCPCommunications: Socket disconnected with error \"\(err!.localizedDescription)\"(\((err! as NSError).code))");
         
-        // If the host and port are set...
-        if(host != "" && port != -1) {
-            do {
-                // Connect to the server with a timeout of 10 seconds
-                try socket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
-                try eventSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
-                try progressSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
+        // If the error isn't "connection refused"...
+        if((err! as NSError).code != 61) {
+            // If the host and port are set...
+            if(host != "" && port != -1) {
+                do {
+                    print("MITCPCommunications: Reconnecting...");
+                    
+                    // Reconnect to the server without a timeout
+                    if(!socket!.isConnected) {
+                        try socket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
+                    }
+                    
+                    if(!eventSocket!.isConnected) {
+                        try eventSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
+                    }
+                    
+                    if(!progressSocket!.isConnected) {
+                        try progressSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
+                    }
+                }
+                catch let error as NSError {
+                    // Print the error to the log
+                    print("MITCPCommunications: Error connecting to \(host):\(port), \(error.localizedDescription)");
+                }
             }
-            catch let error as NSError {
-                // Print the error to the log
-                print("MITCPCommunications: Error connecting to \(host):\(port), \(error.localizedDescription)");
-            }
-            
-            print("MITCPCommunications: Successfully reconnected");
         }
     }
     
