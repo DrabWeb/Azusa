@@ -105,22 +105,36 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // If the host and port are set...
         if(host != "" && port != -1) {
             // Create the socket
-            self.socket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main);
+            if(self.socket == nil) {
+                self.socket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main);
+            }
             
             // Create the event socket
-            self.eventSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main);
+            if(self.eventSocket == nil) {
+                self.eventSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main);
+            }
             
             // Create the progress socket
-            self.progressSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main);
+            if(self.progressSocket == nil) {
+                self.progressSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main);
+            }
             
             // Print what server we are connecting to
             print("MITCPCommunications: Connecting to \(host):\(port)...");
             
             do {
                 // Connect to the server without a timeout
-                try socket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
-                try eventSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
-                try progressSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
+                if(!socket!.isConnected) {
+                    try socket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
+                }
+                
+                if(!eventSocket!.isConnected) {
+                    try eventSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
+                }
+                
+                if(!progressSocket!.isConnected) {
+                    try progressSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
+                }
                 
                 // Add the completion handler to 'connectionCompletionHandlers'
                 if(completionHandler != nil) {
@@ -146,9 +160,37 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             // Print what command we are running
             print("MITCPCommunications: Getting output of command \"\(command)\"");
         }
-    
-        // Write the command to the socket
-        socket?.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.commandOutput.rawValue);
+        
+        /// Do we need to connect to the socket?
+        var needsConnect : Bool = false;
+        
+        // If the socket isn't nil...
+        if(socket != nil) {
+            // If the socket is connected...
+            if(socket!.isConnected) {
+                // Write the command to the socket
+                socket?.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.commandOutput.rawValue);
+            }
+                // If the socket is disconnected...
+            else {
+                // Say we need to connect
+                needsConnect = true;
+            }
+        }
+            // If the socket is nil...
+        else {
+            // Say we need to connect
+            needsConnect = true;
+        }
+        
+        // If we need to connect to the socket...
+        if(needsConnect) {
+            // Connect to the socket
+            self.connect(completionHandler: { connectedSocket in
+                // Write the command to the socket
+                self.socket!.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.commandOutput.rawValue);
+            });
+        }
     }
     
     /// Calls the completion handler when the given command finishes
@@ -165,7 +207,38 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         }
         
         // Write the command to the socket
-        socket?.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.command.rawValue);
+//        socket?.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.command.rawValue);
+        
+        /// Do we need to connect to the socket?
+        var needsConnect : Bool = false;
+        
+        // If the socket isn't nil...
+        if(socket != nil) {
+            // If the socket is connected...
+            if(socket!.isConnected) {
+                // Write the command to the socket
+                socket?.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.command.rawValue);
+            }
+            // If the socket is disconnected...
+            else {
+                // Say we need to connect
+                needsConnect = true;
+            }
+        }
+            // If the socket is nil...
+        else {
+            // Say we need to connect
+            needsConnect = true;
+        }
+        
+        // If we need to connect to the socket...
+        if(needsConnect) {
+            // Connect to the socket
+            self.connect(completionHandler: { connectedSocket in
+                // Write the command to the socket
+                self.socket!.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.command.rawValue);
+            });
+        }
     }
     
     /// Subscribes to the given events, 'subscriber' gets called with the event type when the event fires, returns the subscriber object
@@ -233,33 +306,6 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
     func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
         print("MITCPCommunications: Socket disconnected with error \"\(err!.localizedDescription)\"(\((err! as NSError).code))");
-        
-        // If the error isn't "connection refused"...
-        if((err! as NSError).code != 61) {
-            // If the host and port are set...
-            if(host != "" && port != -1) {
-                do {
-                    print("MITCPCommunications: Reconnecting...");
-                    
-                    // Reconnect to the server without a timeout
-                    if(!socket!.isConnected) {
-                        try socket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
-                    }
-                    
-                    if(!eventSocket!.isConnected) {
-                        try eventSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
-                    }
-                    
-                    if(!progressSocket!.isConnected) {
-                        try progressSocket!.connect(toHost: host, onPort: UInt16(port), withTimeout: TimeInterval(-1));
-                    }
-                }
-                catch let error as NSError {
-                    // Print the error to the log
-                    print("MITCPCommunications: Error connecting to \(host):\(port), \(error.localizedDescription)");
-                }
-            }
-        }
     }
     
     func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
