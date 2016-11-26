@@ -433,7 +433,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // If the socket is the main socket...
         if(sock == self.commandSocket) {
             // Print that the connection was made
-            print("MITCPCommunications: Connected to \(host):\(port)");
+            print("MITCPCommunications: Connected to command socket \(host):\(port)");
             
             if(self.connectionCompletionHandlers.first != nil) {
                 // Call and remove the completion handler
