@@ -611,7 +611,7 @@ class AZMusicPlayerViewController: NSViewController {
         // Add the animation to the blurred image view
         self.coverImageBlurredImageView.layer?.add(coverBlurCrossFade, forKey: "animateContents");
         
-        Timer.scheduledTimer(withTimeInterval: TimeInterval(0.24), repeats: false, block: { _ in
+        Timer.scheduledTimer(withTimeInterval: TimeInterval(0.1), repeats: false, block: { _ in
             // Set the blurred image view's image to the given image
             self.coverImageBlurredImageView.setAspectFillImage(coverImage);
         });
