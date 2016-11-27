@@ -120,7 +120,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             }
             
             // Print what server we are connecting to
-            MILogger.log("MITCPCommunications: Connecting to \(host):\(port)...", level: .regular);
+            MILogger.log("MITCPCommunications: Connecting to \(host):\(port)...");
             
             do {
                 // Connect to the server without a timeout
@@ -143,7 +143,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             }
             catch let error as NSError {
                 // Print the error to the log
-                MILogger.log("MITCPCommunications: Error connecting to \(host):\(port), \(error.localizedDescription)", level: .regular);
+                MILogger.log("MITCPCommunications: Error connecting to \(host):\(port), \(error.localizedDescription)");
             }
         }
     }
@@ -158,7 +158,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // If we said to log the command...
         if(log) {
             // Print what command we are running
-            MILogger.log("MITCPCommunications: Getting output of command \"\(command)\"", level: .regular);
+            MILogger.log("MITCPCommunications: Getting output of command \"\(command)\"");
         }
         
         /// Do we need to connect to the socket?
@@ -203,7 +203,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // If we said to log the command...
         if(log) {
             // Print what command we are running
-            MILogger.log("MITCPCommunications: Running command \"\(command)\"", level: .regular);
+            MILogger.log("MITCPCommunications: Running command \"\(command)\"");
         }
         
         // Write the command to the socket
@@ -243,7 +243,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
     /// Subscribes to the given events, 'subscriber' gets called with the event type when the event fires, returns the subscriber object
     func subscribeTo(events : [MIMPDEvent], with subscriber : @escaping ((MIMPDEvent) -> ())) -> MIMPDEventSubscriber {
-        MILogger.log("MITCPCommunications: Subscribing to events \(events) with \(subscriber)", level: .regular);
+        MILogger.log("MITCPCommunications: Subscribing to events \(events) with \(subscriber)");
         
         /// The event subscriber created from the passed values
         let subscriptionObject : MIMPDEventSubscriber = MIMPDEventSubscriber(eventHandler: subscriber, subscriptions: events);
@@ -280,7 +280,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         
         // If removal index isn't -1...
         if(removalIndex != -1) {
-            MILogger.log("MITCPCommunications: Removing \"\(subscriber.subscriptions)\" event subscriber \"\(subscriber.uuid)\"", level: .regular);
+            MILogger.log("MITCPCommunications: Removing \"\(subscriber.subscriptions)\" event subscriber \"\(subscriber.uuid)\"");
             
             // Remove the event subscriber
             self.eventSubscribers.remove(at: removalIndex);
@@ -289,7 +289,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
     /// Handles calling the given event(e.g. managing listeners)
     func handleEvent(event : MIMPDEvent) {
-        MILogger.log("MITCPCommunications: Received event \(event)", level: .regular);
+        MILogger.log("MITCPCommunications: Received event \(event)");
         
         // For every event subscriber...
         for(_, currentSubscriber) in eventSubscribers.enumerated() {
@@ -319,7 +319,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             socketName = "Progress";
         }
         
-        MILogger.log("MITCPCommunications: \(socketName) socket disconnected with error \"\(err!.localizedDescription)\"(\((err! as NSError).code))", level: .regular);
+        MILogger.log("MITCPCommunications: \(socketName) socket disconnected with error \"\(err!.localizedDescription)\"(\((err! as NSError).code))");
     }
     
     func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
@@ -432,7 +432,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // If the socket is the main socket...
         if(sock == self.commandSocket) {
             // Print that the connection was made
-            MILogger.log("MITCPCommunications: Connected to command socket \(host):\(port)", level: .regular);
+            MILogger.log("MITCPCommunications: Connected to command socket \(host):\(port)");
             
             if(self.connectionCompletionHandlers.first != nil) {
                 // Call and remove the completion handler
@@ -442,12 +442,12 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // If the socket is the event socket...
         else if(sock == self.eventSocket) {
             // Print that the connection was made
-            MILogger.log("MITCPCommunications: Connected to event socket \(host):\(port)", level: .regular);
+            MILogger.log("MITCPCommunications: Connected to event socket \(host):\(port)");
         }
         // If the socket is the progress socket...
         else if(sock == self.progressSocket) {
             // Print that the connection was made
-            MILogger.log("MITCPCommunications: Connected to progress socket \(host):\(port)", level: .regular);
+            MILogger.log("MITCPCommunications: Connected to progress socket \(host):\(port)");
             
             // Start the progress loop
             self.progressSocket!.write("status\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.progress.rawValue);

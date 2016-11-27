@@ -38,8 +38,25 @@ class MIMPD {
     
     // Functions
     
+    /// Gets the current playlist as an array of MISongs, calls the completion handler with said array, logs the command if 'log' is true
+    func getPlaylist(log : Bool, completionHandler : (([MISong]) -> ())?) {
+        if(log) {
+            MILogger.log("MIMPD: Getting current playlist");
+        }
+        
+        // Call and get the output of the playlistinfo command
+        self.socketConnection.outputOf(command: "playlistinfo", log: log, completionHandler: { output in
+            // Call the completion handler with the MISongs created from output
+            completionHandler?(MISong.from(songList: output));
+        });
+    }
+    
     /// Gets the current MIStatus object and calls the given completion handler with it, logs the command if 'log' is true
     func getStatus(log : Bool, completionHandler : ((MIStatus) -> ())?) {
+        if(log) {
+            MILogger.log("MIMPD: Getting current status");
+        }
+        
         // Call and get the output of the status command
         self.socketConnection.outputOf(command: "status", log: log, completionHandler: { output in
             /// The MIStatus created from 'output'
@@ -55,7 +72,7 @@ class MIMPD {
     
     /// Seeks to the given time in the current song(in seconds), optional completion handler for when the command finishes(passed command output)
     func seek(to : Int, completionHandler : (() -> ())?) {
-        MILogger.log("MIMPD: Seeking to \(MIUtilities.secondsToDisplayTime(to))", level: .regular);
+        MILogger.log("MIMPD: Seeking to \(MIUtilities.secondsToDisplayTime(to))");
         
         // Seek to the given time
         self.socketConnection.run(command: "seekcur \(to)", log: false, completionHandler: completionHandler);
@@ -63,7 +80,7 @@ class MIMPD {
     
     /// Skips to the previous song in the playlist, optional completion handler for when the command finishes(passed command output)
     func skipPrevious(completionHandler : (() -> ())?) {
-        MILogger.log("MIMPD: Skipping to the previous song", level: .regular);
+        MILogger.log("MIMPD: Skipping to the previous song");
         
         // Skip to the next song
         self.socketConnection.run(command: "previous", log: false, completionHandler: completionHandler);
@@ -71,7 +88,7 @@ class MIMPD {
     
     /// Skips to the next song in the playlist, optional completion handler for when the command finishes(passed command output)
     func skipNext(completionHandler : (() -> ())?) {
-        MILogger.log("MIMPD: Skipping to the next song", level: .regular);
+        MILogger.log("MIMPD: Skipping to the next song");
         
         // Skip to the next song
         self.socketConnection.run(command: "next", log: false, completionHandler: completionHandler);
@@ -81,11 +98,11 @@ class MIMPD {
     func setPaused(to : Bool, completionHandler : (() -> ())?) {
         switch(to) {
             case true:
-                MILogger.log("MIMPD: Pausing song", level: .regular);
+                MILogger.log("MIMPD: Pausing song");
                 break;
             
             case false:
-                MILogger.log("MIMPD: Playing song", level: .regular);
+                MILogger.log("MIMPD: Playing song");
                 break;
         }
         
@@ -108,11 +125,11 @@ class MIMPD {
         
         switch(to) {
             case true:
-                MILogger.log("MIMPD: Enabling random", level: .regular);
+                MILogger.log("MIMPD: Enabling random");
                 break;
             
             case false:
-                MILogger.log("MIMPD: Disabling random", level: .regular);
+                MILogger.log("MIMPD: Disabling random");
                 break;
         }
     }
@@ -123,17 +140,17 @@ class MIMPD {
         if(to == .off) {
             self.socketConnection.run(command: "command_list_begin\nrepeat 0\nsingle 0\ncommand_list_end", log: false, completionHandler: completionHandler);
             
-            MILogger.log("MIMPD: Disabling repeat", level: .regular);
+            MILogger.log("MIMPD: Disabling repeat");
         }
         else if(to == .playlist) {
             self.socketConnection.run(command: "command_list_begin\nrepeat 1\nsingle 0\ncommand_list_end", log: false, completionHandler: completionHandler);
             
-            MILogger.log("MIMPD: Setting repeat mode to playlist", level: .regular);
+            MILogger.log("MIMPD: Setting repeat mode to playlist");
         }
         else if(to == .song) {
             self.socketConnection.run(command: "command_list_begin\nrepeat 1\nsingle 1\ncommand_list_end", log: false, completionHandler: completionHandler);
             
-            MILogger.log("MIMPD: Setting repeat mode to single", level: .regular);
+            MILogger.log("MIMPD: Setting repeat mode to single");
         }
     }
     
@@ -171,7 +188,7 @@ class MIMPD {
     
     /// Returns the current song to the given completion handler, if there is no current song it returns the placeholder song
     func getCurrentSong(completionHandler : @escaping ((MISong) -> ())) {
-        MILogger.log("MIMPD: Getting current song...", level: .regular);
+        MILogger.log("MIMPD: Getting current song...");
         
         if(socketConnection.commandSocket != nil) {
             if(socketConnection.commandSocket!.isConnected) {

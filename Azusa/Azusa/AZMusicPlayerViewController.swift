@@ -242,8 +242,14 @@ class AZMusicPlayerViewController: NSViewController {
     /// The container view for the playlist view controller
     @IBOutlet weak var playlistContainerView: NSView!
     
+    /// The view controller for the playlist view of this music player
+    var playlistViewController : AZPlaylistViewController? = nil;
+    
     /// The container view for the search view controller
     @IBOutlet weak var searchContainerView: NSView!
+    
+    /// The view controller for the search view of this music player
+    var searchViewController : AZSearchViewController? = nil;
     
     /// Is the playlist open?
     var playlistOpen : Bool = false;
@@ -271,10 +277,26 @@ class AZMusicPlayerViewController: NSViewController {
             };
         });
         
+        // Subscribe to the player, options and playlist events
         _ = self.mpd.socketConnection.subscribeTo(events: [.player, .options, .playlist], with: { eventType in
-            // Display the current MPD info
             self.displayCurrent();
         });
+        
+        // Subscribe to the playlist and player events
+        _ = self.mpd.socketConnection.subscribeTo(events: [.playlist, .player], with: { eventType in
+            // Display the current playlist
+            self.mpd.getPlaylist(log: true, completionHandler: { playlist in
+                self.playlistViewController?.displayPlaylist(playlist: playlist);
+            });
+        });
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear();
+        
+        // Get the search and playlist view controllers
+        self.playlistViewController = self.childViewControllers[0] as? AZPlaylistViewController;
+        self.searchViewController = self.childViewControllers[1] as? AZSearchViewController;
     }
     
     /// The last timer created by 'close(Playlist/Search)' for doing post-animation stuff
@@ -282,6 +304,11 @@ class AZMusicPlayerViewController: NSViewController {
     
     /// Opens the playlist view
     func openPlaylist() {
+        // Display the current playlist
+        self.mpd.getPlaylist(log: true, completionHandler: { playlist in
+            self.playlistViewController?.displayPlaylist(playlist: playlist);
+        });
+        
         // Cancel 'lastCloseAnimationTimer' in case the user is spamming the button or something
         lastCloseAnimationTimer?.invalidate();
         lastCloseAnimationTimer = nil;
