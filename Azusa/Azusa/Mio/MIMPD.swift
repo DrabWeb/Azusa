@@ -55,7 +55,7 @@ class MIMPD {
     
     /// Seeks to the given time in the current song(in seconds), optional completion handler for when the command finishes(passed command output)
     func seek(to : Int, completionHandler : (() -> ())?) {
-        print("MIMPD: Seeking to \(MIUtilities.secondsToDisplayTime(to))");
+        MILogger.log("MIMPD: Seeking to \(MIUtilities.secondsToDisplayTime(to))", level: .regular);
         
         // Seek to the given time
         self.socketConnection.run(command: "seekcur \(to)", log: false, completionHandler: completionHandler);
@@ -63,7 +63,7 @@ class MIMPD {
     
     /// Skips to the previous song in the playlist, optional completion handler for when the command finishes(passed command output)
     func skipPrevious(completionHandler : (() -> ())?) {
-        print("MIMPD: Skipping to the previous song");
+        MILogger.log("MIMPD: Skipping to the previous song", level: .regular);
         
         // Skip to the next song
         self.socketConnection.run(command: "previous", log: false, completionHandler: completionHandler);
@@ -71,7 +71,7 @@ class MIMPD {
     
     /// Skips to the next song in the playlist, optional completion handler for when the command finishes(passed command output)
     func skipNext(completionHandler : (() -> ())?) {
-        print("MIMPD: Skipping to the next song");
+        MILogger.log("MIMPD: Skipping to the next song", level: .regular);
         
         // Skip to the next song
         self.socketConnection.run(command: "next", log: false, completionHandler: completionHandler);
@@ -81,11 +81,11 @@ class MIMPD {
     func setPaused(to : Bool, completionHandler : (() -> ())?) {
         switch(to) {
             case true:
-                print("MIMPD: Pausing song");
+                MILogger.log("MIMPD: Pausing song", level: .regular);
                 break;
             
             case false:
-                print("MIMPD: Playing song");
+                MILogger.log("MIMPD: Playing song", level: .regular);
                 break;
         }
         
@@ -108,11 +108,11 @@ class MIMPD {
         
         switch(to) {
             case true:
-                print("MIMPD: Enabling random");
+                MILogger.log("MIMPD: Enabling random", level: .regular);
                 break;
             
             case false:
-                print("MIMPD: Disabling random");
+                MILogger.log("MIMPD: Disabling random", level: .regular);
                 break;
         }
     }
@@ -123,17 +123,17 @@ class MIMPD {
         if(to == .off) {
             self.socketConnection.run(command: "command_list_begin\nrepeat 0\nsingle 0\ncommand_list_end", log: false, completionHandler: completionHandler);
             
-            print("MIMPD: Disabling repeat");
+            MILogger.log("MIMPD: Disabling repeat", level: .regular);
         }
         else if(to == .playlist) {
             self.socketConnection.run(command: "command_list_begin\nrepeat 1\nsingle 0\ncommand_list_end", log: false, completionHandler: completionHandler);
             
-            print("MIMPD: Setting repeat mode to playlist");
+            MILogger.log("MIMPD: Setting repeat mode to playlist", level: .regular);
         }
         else if(to == .song) {
             self.socketConnection.run(command: "command_list_begin\nrepeat 1\nsingle 1\ncommand_list_end", log: false, completionHandler: completionHandler);
             
-            print("MIMPD: Setting repeat mode to single");
+            MILogger.log("MIMPD: Setting repeat mode to single", level: .regular);
         }
     }
     
@@ -171,7 +171,7 @@ class MIMPD {
     
     /// Returns the current song to the given completion handler, if there is no current song it returns the placeholder song
     func getCurrentSong(completionHandler : @escaping ((MISong) -> ())) {
-        print("MIMPD: Getting current song...");
+        MILogger.log("MIMPD: Getting current song...", level: .regular);
         
         if(socketConnection.commandSocket != nil) {
             if(socketConnection.commandSocket!.isConnected) {

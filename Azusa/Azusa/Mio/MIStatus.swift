@@ -119,6 +119,8 @@ class MIStatus: NSObject {
         // audio: 44100:16:2
         //
         
+        MILogger.log("MIStatus: Init with string: \"\(string)\"", level: .full);
+        
         // If there's no "state:" key...
         if(!string.contains("state:")) {
             // Set the playing state to stop

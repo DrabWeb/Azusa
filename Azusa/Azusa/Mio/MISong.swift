@@ -241,7 +241,7 @@ class MISong: NSObject {
         // Id: 47
         //
         
-        print("MISong: Init with string: \"\(string)\"");
+        MILogger.log("MISong: Init with string: \"\(string)\"", level: .full);
         
         // For every line in the given string...
         for(_, currentLine) in string.components(separatedBy: "\n").enumerated() {

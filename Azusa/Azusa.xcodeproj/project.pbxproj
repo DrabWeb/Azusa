@@ -32,6 +32,7 @@
 		AEC7E1DC1DE40F3700E1EA3A /* AzusaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1DB1DE40F3700E1EA3A /* AzusaUITests.swift */; };
 		AED1518A1DE7C89100AA0D7F /* MIMPD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED151891DE7C89100AA0D7F /* MIMPD.swift */; };
 		AED1518C1DE7EC9E00AA0D7F /* MIStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED1518B1DE7EC9E00AA0D7F /* MIStatus.swift */; };
+		AEE37BC81DEA7672002930A3 /* MILogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE37BC71DEA7672002930A3 /* MILogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		AEC7E1F91DE4100C00E1EA3A /* Azusa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Azusa-Bridging-Header.h"; sourceTree = "<group>"; };
 		AED151891DE7C89100AA0D7F /* MIMPD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MIMPD.swift; path = Mio/MIMPD.swift; sourceTree = "<group>"; };
 		AED1518B1DE7EC9E00AA0D7F /* MIStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MIStatus.swift; path = Mio/MIStatus.swift; sourceTree = "<group>"; };
+		AEE37BC71DEA7672002930A3 /* MILogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MILogger.swift; sourceTree = "<group>"; };
 		B7574045846D53593B02590C /* Pods-AzusaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaTests/Pods-AzusaTests.release.xcconfig"; sourceTree = "<group>"; };
 		D55C6E657156603734D1F603 /* Pods-Azusa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Azusa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Azusa/Pods-Azusa.release.xcconfig"; sourceTree = "<group>"; };
 		DA63A79CB83EE55853E4A1C4 /* Pods-AzusaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		AE2340FB1DE5210300C6D3B3 /* Mio */ = {
 			isa = PBXGroup;
 			children = (
+				AEE37BC61DEA7666002930A3 /* Logger */,
 				AE7584A31DE8135D00246590 /* Utilities */,
 				AEC5557C1DE5404A005D7640 /* Objects */,
 			);
@@ -261,6 +264,14 @@
 				AE2340FB1DE5210300C6D3B3 /* Mio */,
 			);
 			name = Libraries;
+			sourceTree = "<group>";
+		};
+		AEE37BC61DEA7666002930A3 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				AEE37BC71DEA7672002930A3 /* MILogger.swift */,
+			);
+			name = Logger;
 			sourceTree = "<group>";
 		};
 		C9378EFBC710E0381AF9D5DE /* Pods */ = {
@@ -575,6 +586,7 @@
 				AE2340FD1DE5227300C6D3B3 /* MITCPCommunications.swift in Sources */,
 				AED1518A1DE7C89100AA0D7F /* MIMPD.swift in Sources */,
 				AE6E22331DE57711003DBC94 /* AZRoundedCornersView.swift in Sources */,
+				AEE37BC81DEA7672002930A3 /* MILogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
