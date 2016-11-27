@@ -241,6 +241,8 @@ class MISong: NSObject {
         // Id: 47
         //
         
+        print("MISong: Init with string: \"\(string)\"");
+        
         // For every line in the given string...
         for(_, currentLine) in string.components(separatedBy: "\n").enumerated() {
             /// The prefix for this line(e.g. file:, Album:, etc.)

@@ -45,6 +45,9 @@ class MIMPD {
             /// The MIStatus created from 'output'
             let status : MIStatus = MIStatus(string: output);
             
+            // Set status
+            self.status = status;
+            
             // Call the completion handler with the status object
             completionHandler?(status);
         });
@@ -134,6 +137,38 @@ class MIMPD {
         }
     }
     
+    /// Calls the completion handler with the current song and status at the same time
+    func getCurrentSongAndStatus(completionHandler : @escaping ((MISong, MIStatus) -> ())) {
+        /// Get the output of status and currentsong
+        self.socketConnection.outputOf(command: "command_list_begin\nstatus\ncurrentsong\ncommand_list_end", log: true, completionHandler: { output in
+            /// The MISong created from 'output'
+            var song : MISong = MISong(string: output);
+            
+            /// The MIStatus created from 'output'
+            let status : MIStatus = MIStatus(string: output);
+            
+            // Set status
+            self.status = status;
+            
+            // If the song is valid...
+            if(song.valid) {
+                // Update the song's file
+                song.file = self.musicDirectory + song.file;
+                
+                // Call the completion handler
+                completionHandler(song, status);
+            }
+            // If the song is invalid...
+            else {
+                // Set 'song' to the placeholder song
+                song = MISong.placeholder();
+                
+                // Call the completion handler
+                completionHandler(song, status);
+            }
+        });
+    }
+    
     /// Returns the current song to the given completion handler, if there is no current song it returns the placeholder song
     func getCurrentSong(completionHandler : @escaping ((MISong) -> ())) {
         print("MIMPD: Getting current song...");
@@ -146,6 +181,9 @@ class MIMPD {
                     
                     // If the song is valid...
                     if(song.valid) {
+                        // Update the file path
+                        song.file = self.musicDirectory + song.file;
+                        
                         // Return the song
                         completionHandler(song);
                     }

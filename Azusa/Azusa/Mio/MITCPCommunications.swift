@@ -171,7 +171,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
                 // Write the command to the command socket
                 commandSocket!.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.commandOutput.rawValue);
             }
-                // If the socket is disconnected...
+            // If the socket is disconnected...
             else {
                 // Say we need to connect
                 needsConnect = true;

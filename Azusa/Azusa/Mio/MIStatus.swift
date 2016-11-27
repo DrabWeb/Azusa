@@ -119,6 +119,12 @@ class MIStatus: NSObject {
         // audio: 44100:16:2
         //
         
+        // If there's no "state:" key...
+        if(!string.contains("state:")) {
+            // Set the playing state to stop
+            self.playingState = .stop;
+        }
+        
         // For every line in the given string...
         for(_, currentLine) in string.components(separatedBy: "\n").enumerated() {
             /// The prefix for this line(e.g. file:, Album:, etc.)

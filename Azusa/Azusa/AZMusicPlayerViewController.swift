@@ -508,19 +508,11 @@ class AZMusicPlayerViewController: NSViewController {
     
     /// Displays all the current info from MPD(song, status, cover, etc.)
     func displayCurrent() {
-        // Get the current playing song
-        self.mpd.getCurrentSong(completionHandler: { currentSong in
-            // Update the song's file
-            currentSong.file = self.mpd.musicDirectory + currentSong.file;
-            
-            // Display the song
+        /// Get the current song and status
+        self.mpd.getCurrentSongAndStatus(completionHandler: { currentSong, status in
+            // Display the current song and status
             self.display(song: currentSong);
-            
-            // Get the current status
-            self.mpd.getStatus(log: true, completionHandler: { status in
-                // Display the current status
-                self.display(status: status);
-            });
+            self.display(status: status);
         });
     }
     
@@ -552,7 +544,7 @@ class AZMusicPlayerViewController: NSViewController {
         
         // Update the pause/play button
         playbackControlsPausePlayButton.state = (status.playingState == .play) ? 0 : 1;
-//        playbackControlsPausePlayButton.image = (status.playingState == .play) ? #imageLiteral(resourceName: "AZPause") : #imageLiteral(resourceName: "AZPlay");
+        playbackControlsPausePlayButton.image = (status.playingState == .play) ? #imageLiteral(resourceName: "AZPause") : #imageLiteral(resourceName: "AZPlay");
         
         // Set lastDisplayedStatus
         self.lastDisplayedStatus = status;
