@@ -232,10 +232,14 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             MILogger.log("MITCPCommunications: Running command \"\(command)\"");
         }
         
-        // Make sure we are connected to the command socket
-        self.guaranteeConnectionToCommandSocket(completionHandler: {
-            // Add the command to the command queue
-            self.addToQueue(command: MITCPCommandQueueItem(command: command, completionHandler: completionHandler, tag: .command));
+        // TODO: Find a better solution for this, because this is not really the best option
+        // Run the status command first(it breaks if the socket disconnects and then reconnects on this command without the status get)
+        self.outputOf(command: "status", log: false, completionHandler: { status in
+            // Make sure we are connected to the command socket
+            self.guaranteeConnectionToCommandSocket(completionHandler: {
+                // Add the command to the command queue
+                self.addToQueue(command: MITCPCommandQueueItem(command: command, completionHandler: completionHandler, tag: .command));
+            });
         });
     }
     

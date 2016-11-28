@@ -120,9 +120,6 @@ class MIMPD {
     
     /// Toggles random mode based on 'to', optional completion handler for when the command finishes(passed command output)
     func setRandomMode(to : Bool, completionHandler : (() -> ())?) {
-        // Set the random mode accordingly
-        self.socketConnection.run(command: "random \((to) ? 1 : 0)", log: false, completionHandler: completionHandler);
-        
         switch(to) {
             case true:
                 MILogger.log("MIMPD: Enabling random");
@@ -132,6 +129,9 @@ class MIMPD {
                 MILogger.log("MIMPD: Disabling random");
                 break;
         }
+        
+        // Set the random mode accordingly
+        self.socketConnection.run(command: "random \((to) ? 1 : 0)", log: false, completionHandler: completionHandler);
     }
     
     /// Sets the loop mode to the given loop mode, calls the given completion handler when the command returns(if given)

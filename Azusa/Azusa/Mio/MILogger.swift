@@ -56,7 +56,7 @@ struct MILogger {
         
         do {
             // Write the output to the given file
-            try self.output.write(toFile: file, atomically: false, encoding: String.Encoding.utf8);
+            try self.output.write(toFile: file, atomically: true, encoding: String.Encoding.utf8);
         }
         // If there is an error with saving the file...
         catch let error as NSError {
