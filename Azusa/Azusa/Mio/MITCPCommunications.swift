@@ -99,45 +99,54 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
     /// Functions
     
+    /// Calls the given completion handler while guaranteeing the command socket is connected
+    func guaranteeConnectionToCommandSocket(completionHandler : @escaping (() -> ())) {
+        /// Do we need to reconnect to the command socket?
+        var needsConnect : Bool = false;
+        
+        // If the command socket isn't nil...
+        if(commandSocket != nil) {
+            // If the command socket is connected...
+            if(commandSocket!.isConnected) {
+                // Call the completion handler
+                completionHandler();
+            }
+            // If the socket is disconnected...
+            else {
+                // Say we need to connect
+                needsConnect = true;
+            }
+        }
+        // If the socket is nil...
+        else {
+            // Say we need to connect
+            needsConnect = true;
+        }
+        
+        // If we need to connect to the socket...
+        if(needsConnect) {
+            // Connect to the socket
+            self.connect(completionHandler: { connectedSocket in
+                // Call the completion handler
+                completionHandler();
+            });
+        }
+    }
+    
     /// Runs the first item in the command queue and removes it from the array upon completion
     func runQueue() {
         // If there's at least one item in the command queue...
         if(commandQueue.first != nil && !queueInProgress) {
             MILogger.log("MITCPCommunications: Running next queue item \(self.commandQueue.first!.debugDescription)");
             
-            /// Do we need to connect to the socket?
-            var needsConnect : Bool = false;
-            
             // Say the queue is in progress
             self.queueInProgress = true;
             
-            // If the command socket isn't nil...
-            if(commandSocket != nil) {
-                // If the command socket is connected...
-                if(commandSocket!.isConnected) {
-                    // Write the command to the command socket
-                    self.commandSocket!.write("\(self.commandQueue.first!.command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: self.commandQueue.first!.tag.rawValue);
-                }
-                // If the socket is disconnected...
-                else {
-                    // Say we need to connect
-                    needsConnect = true;
-                }
-            }
-            // If the socket is nil...
-            else {
-                // Say we need to connect
-                needsConnect = true;
-            }
-            
-            // If we need to connect to the socket...
-            if(needsConnect) {
-                // Connect to the socket
-                self.connect(completionHandler: { connectedSocket in
-                    // Write the command to the command socket
-                    self.commandSocket!.write("\(self.commandQueue.first!.command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: self.commandQueue.first!.tag.rawValue);
-                });
-            }
+            // Make sure we are connected to the command socket
+            self.guaranteeConnectionToCommandSocket(completionHandler: {
+                // Write the command to the command socket
+                self.commandSocket!.write("\(self.commandQueue.first!.command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: self.commandQueue.first!.tag.rawValue);
+            });
         }
     }
     
@@ -148,11 +157,8 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // Add the command to the queue
         self.commandQueue.append(command);
         
-        // If this is the only item in the queue...
-        if(commandQueue.count == 1) {
-            // Start the initial queue run
-            runQueue();
-        }
+        // Start the queue up
+        runQueue();
     }
     
     /// Creates the TCP socket connection to the MPD server
@@ -211,8 +217,11 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             MILogger.log("MITCPCommunications: Getting output of command \"\(command)\"");
         }
         
-        // Add the command to the command queue
-        self.addToQueue(command: MITCPCommandQueueItem(command: command, completionHandler: completionHandler, tag: .commandOutput));
+        // Make sure we are connected to the command socket
+        self.guaranteeConnectionToCommandSocket(completionHandler: {
+            // Add the command to the command queue
+            self.addToQueue(command: MITCPCommandQueueItem(command: command, completionHandler: completionHandler, tag: .commandOutput));
+        });
     }
     
     /// Calls the completion handler when the given command finishes
@@ -223,8 +232,11 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             MILogger.log("MITCPCommunications: Running command \"\(command)\"");
         }
         
-        // Add the command to the command queue
-        self.addToQueue(command: MITCPCommandQueueItem(command: command, completionHandler: completionHandler, tag: .command));
+        // Make sure we are connected to the command socket
+        self.guaranteeConnectionToCommandSocket(completionHandler: {
+            // Add the command to the command queue
+            self.addToQueue(command: MITCPCommandQueueItem(command: command, completionHandler: completionHandler, tag: .command));
+        });
     }
     
     /// Subscribes to the given events, 'subscriber' gets called with the event type when the event fires, returns the subscriber object

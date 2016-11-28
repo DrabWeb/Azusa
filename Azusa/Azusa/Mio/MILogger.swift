@@ -40,11 +40,11 @@ struct MILogger {
         /// The logging level from level, but defaults to regular if it's nil
         let loggingLevel : MILoggerLevel = (level != nil) ? level! : MILoggerLevel.regular;
         
+        // Append the object to log to 'output'
+        self.output.append("\(object)\n");
+        
         // If the level given is less than or equal to the current logging level...
         if(loggingLevel.rawValue <= self.level.rawValue) {
-            // Append the object to log to 'output'
-            self.output.append("\(object)\n");
-            
             // Print the object
             print(object);
         }
