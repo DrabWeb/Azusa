@@ -91,14 +91,69 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     /// The completion handlers from 'connect'
     private var connectionCompletionHandlers : [((GCDAsyncSocket) -> ())] = [];
     
-    /// The completion handlers from 'outputOf'
-    private var outputCompletionHandlers : [(String) -> ()] = [];
+    /// The current items in the command queue
+    var commandQueue : [MITCPCommandQueueItem] = [];
     
-    /// The completion handlers from 'run'
-    private var runCommandCompletionHandlers : [() -> ()] = [];
-    
+    /// Is there currently a queue item being run?
+    var queueInProgress : Bool = false;
     
     /// Functions
+    
+    /// Runs the first item in the command queue and removes it from the array upon completion
+    func runQueue() {
+        MILogger.log("MITCPCommunications: Running next queue item");
+        
+        // If there's at least one item in the command queue...
+        if(commandQueue.first != nil && !queueInProgress) {
+            /// Do we need to connect to the socket?
+            var needsConnect : Bool = false;
+            
+            // Say the queue is in progress
+            self.queueInProgress = true;
+            
+            // If the command socket isn't nil...
+            if(commandSocket != nil) {
+                // If the command socket is connected...
+                if(commandSocket!.isConnected) {
+                    // Write the command to the command socket
+                    self.commandSocket!.write("\(self.commandQueue.first!.command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: self.commandQueue.first!.tag.rawValue);
+                }
+                // If the socket is disconnected...
+                else {
+                    // Say we need to connect
+                    needsConnect = true;
+                }
+            }
+            // If the socket is nil...
+            else {
+                // Say we need to connect
+                needsConnect = true;
+            }
+            
+            // If we need to connect to the socket...
+            if(needsConnect) {
+                // Connect to the socket
+                self.connect(completionHandler: { connectedSocket in
+                    // Write the command to the command socket
+                    self.commandSocket!.write("\(self.commandQueue.first!.command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: self.commandQueue.first!.tag.rawValue);
+                });
+            }
+        }
+    }
+    
+    /// Adds the given command to the command queue
+    func addToQueue(command : MITCPCommandQueueItem) {
+        MILogger.log("MITCPCommunications: Adding command \(command.debugDescription) to queue", level: .high);
+        
+        // Add the command to the queue
+        self.commandQueue.append(command);
+        
+        // If this is the only item in the queue...
+        if(commandQueue.count == 1) {
+            // Start the initial queue run
+            runQueue();
+        }
+    }
     
     /// Creates the TCP socket connection to the MPD server
     func connect(completionHandler : ((GCDAsyncSocket) -> ())?) {
@@ -150,95 +205,26 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
     /// Calls the completion handler with the output of the given MPD command, and logs the command if 'log' is true
     func outputOf(command : String, log : Bool, completionHandler : ((String) -> ())?) {
-        // Add the completion handler to 'outputCompletionHandlers'
-        if(completionHandler != nil) {
-            outputCompletionHandlers.append(completionHandler!);
-        }
-        
         // If we said to log the command...
         if(log) {
             // Print what command we are running
             MILogger.log("MITCPCommunications: Getting output of command \"\(command)\"");
         }
         
-        /// Do we need to connect to the socket?
-        var needsConnect : Bool = false;
-        
-        // If the command socket isn't nil...
-        if(commandSocket != nil) {
-            // If the command socket is connected...
-            if(commandSocket!.isConnected) {
-                // Write the command to the command socket
-                commandSocket!.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.commandOutput.rawValue);
-            }
-            // If the socket is disconnected...
-            else {
-                // Say we need to connect
-                needsConnect = true;
-            }
-        }
-            // If the socket is nil...
-        else {
-            // Say we need to connect
-            needsConnect = true;
-        }
-        
-        // If we need to connect to the socket...
-        if(needsConnect) {
-            // Connect to the socket
-            self.connect(completionHandler: { connectedSocket in
-                // Write the command to the socket
-                self.commandSocket!.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.commandOutput.rawValue);
-            });
-        }
+        // Add the command to the command queue
+        self.addToQueue(command: MITCPCommandQueueItem(command: command, completionHandler: completionHandler, tag: .commandOutput));
     }
     
     /// Calls the completion handler when the given command finishes
     func run(command : String, log : Bool, completionHandler : (() -> ())?) {
-        if(completionHandler != nil) {
-            // Add the completion handler to 'runCommandCompletionHandlers'
-            runCommandCompletionHandlers.append(completionHandler!);
-        }
-        
         // If we said to log the command...
         if(log) {
             // Print what command we are running
             MILogger.log("MITCPCommunications: Running command \"\(command)\"");
         }
         
-        // Write the command to the socket
-//        socket?.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.command.rawValue);
-        
-        /// Do we need to connect to the socket?
-        var needsConnect : Bool = false;
-        
-        // If the command socket isn't nil...
-        if(commandSocket != nil) {
-            // If the command socket is connected...
-            if(commandSocket!.isConnected) {
-                // Write the command to the socket
-                commandSocket!.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.command.rawValue);
-            }
-            // If the socket is disconnected...
-            else {
-                // Say we need to connect
-                needsConnect = true;
-            }
-        }
-            // If the socket is nil...
-        else {
-            // Say we need to connect
-            needsConnect = true;
-        }
-        
-        // If we need to connect to the socket...
-        if(needsConnect) {
-            // Connect to the socket
-            self.connect(completionHandler: { connectedSocket in
-                // Write the command to the socket
-                self.commandSocket!.write("\(command)\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.command.rawValue);
-            });
-        }
+        // Add the command to the command queue
+        self.addToQueue(command: MITCPCommandQueueItem(command: command, completionHandler: completionHandler, tag: .command));
     }
     
     /// Subscribes to the given events, 'subscriber' gets called with the event type when the event fires, returns the subscriber object
@@ -330,16 +316,20 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         
         // If the socket is the main socket...
         if(sock == self.commandSocket) {
-            // If the tag is the command output tag...
-            if(tag == MITCPTag.commandOutput.rawValue) {
-                // Read all the data in the MPD output
-                commandSocket?.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
-            }
-            // If the tag is the command tag..
-            else if(tag == MITCPTag.command.rawValue) {
-                if(runCommandCompletionHandlers.count > 0) {
+            if(commandQueue.first != nil) {
+                // If the tag is the command output tag...
+                if(tag == MITCPTag.commandOutput.rawValue) {
+                    // Read all the data in the MPD output
+                    commandSocket?.readData(to: "\nOK\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
+                }
+                    // If the tag is the command tag..
+                else if(tag == MITCPTag.command.rawValue) {
                     // Run the completion handler
-                    runCommandCompletionHandlers.removeFirst()();
+                    commandQueue.removeFirst().noOutputCompletionHandler?();
+                        
+                    // Say the queue is no longer in progress and run the next item in the queue
+                    self.queueInProgress = false;
+                    self.runQueue();
                 }
             }
         }
@@ -375,10 +365,13 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         if(sock == self.commandSocket) {
             // If the tag is MITCPTag.commandOutput(meaning we want to pass 'dataString' to the completion handler of 'outputOf')...
             if(tag == MITCPTag.commandOutput.rawValue) {
-                if(self.outputCompletionHandlers.first != nil) {
-                    MILogger.log("MITCPCommunications: Output completion handlers: \(self.outputCompletionHandlers)(removing first)", level: .high);
-                    // Call and remove the completion handler with 'sock'
-                    self.outputCompletionHandlers.removeFirst()(dataString);
+                if(commandQueue.first != nil) {
+                    // Run the completion handler
+                    commandQueue.removeFirst().outputCompletionHandler?(dataString);
+                    
+                    // Say the queue is no longer in progress and run the next item in the queue
+                    self.queueInProgress = false;
+                    self.runQueue();
                 }
             }
         }

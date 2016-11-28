@@ -284,10 +284,13 @@ class AZMusicPlayerViewController: NSViewController {
         
         // Subscribe to the playlist and player events
         _ = self.mpd.socketConnection.subscribeTo(events: [.playlist, .player], with: { eventType in
-            // Display the current playlist
-            self.mpd.getPlaylist(log: true, completionHandler: { playlist in
-                self.playlistViewController?.displayPlaylist(playlist: playlist);
-            });
+            // If the playlist is open...
+            if(self.playlistOpen) {
+                // Display the current playlist
+                self.mpd.getPlaylist(log: true, completionHandler: { playlist in
+                    self.playlistViewController?.displayPlaylist(playlist: playlist);
+                });
+            }
         });
     }
     
