@@ -100,7 +100,7 @@ class MIStatus: NSObject {
     // Init
     
     /// Init from a string returned by MPD
-    init(string : String) {
+    init(string : String, log : Bool = true) {
         // Example string
         //
         // volume: 75
@@ -119,7 +119,9 @@ class MIStatus: NSObject {
         // audio: 44100:16:2
         //
         
-        MILogger.log("MIStatus: Init with string: \"\(string)\"", level: .full);
+        if(log) {
+            MILogger.log("MIStatus: Init with string: \"\(string)\"", level: .full);
+        }
         
         // If there's no "state:" key...
         if(!string.contains("state:")) {

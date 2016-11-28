@@ -199,7 +199,11 @@ class MISong: NSObject {
     /// Init
     
     /// Returns an array of MISongs based on the given string(should be a playlistinfo or similar)
-    static func from(songList : String) -> [MISong] {
+    static func from(songList : String, log : Bool = true) -> [MISong] {
+        if(log) {
+            MILogger.log("MISong: Init song list with string: \"\(songList)\"", level: .full);
+        }
+        
         /// The array of MISongs to return
         var songs : [MISong] = [];
         
@@ -223,7 +227,7 @@ class MISong: NSObject {
     }
     
     /// Init from a string returned by MPD
-    init(string : String) {
+    init(string : String, log : Bool = true) {
         // Example string
         //
         // file: K-On!/K-ON MHB D1/01 Cagayake! GIRLS.mp3
@@ -241,7 +245,9 @@ class MISong: NSObject {
         // Id: 47
         //
         
-        MILogger.log("MISong: Init with string: \"\(string)\"", level: .full);
+        if(log) {
+            MILogger.log("MISong: Init with string: \"\(string)\"", level: .full);
+        }
         
         // For every line in the given string...
         for(_, currentLine) in string.components(separatedBy: "\n").enumerated() {

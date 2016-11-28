@@ -333,7 +333,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             // If the tag is the command output tag...
             if(tag == MITCPTag.commandOutput.rawValue) {
                 // Read all the data in the MPD output
-                commandSocket?.readData(to: "\nOK\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
+                commandSocket?.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
             }
             // If the tag is the command tag..
             else if(tag == MITCPTag.command.rawValue) {
@@ -414,7 +414,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             // If the tag is the progress tag...
             if(tag == MITCPTag.progress.rawValue) {
                 /// The status object created
-                let status : MIStatus = MIStatus(string: dataString);
+                let status : MIStatus = MIStatus(string: dataString, log: false);
                 
                 // Call the progress closure with the time elapsed(plus one because it's off for whatever reason)
                 self.progressListener?(Int(status.timeElapsed));
