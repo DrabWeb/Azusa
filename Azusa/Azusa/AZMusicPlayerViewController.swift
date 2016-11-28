@@ -286,6 +286,9 @@ class AZMusicPlayerViewController: NSViewController {
         _ = self.mpd.socketConnection.subscribeTo(events: [.playlist, .player], with: { eventType in
             // If the playlist is open...
             if(self.playlistOpen) {
+                // Clear the current playlist view
+                self.playlistViewController?.displayPlaylist(playlist: []);
+                
                 // Display the current playlist
                 self.mpd.getPlaylist(log: true, completionHandler: { playlist in
                     self.playlistViewController?.displayPlaylist(playlist: playlist);

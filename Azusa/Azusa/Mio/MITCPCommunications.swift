@@ -101,10 +101,10 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
     /// Runs the first item in the command queue and removes it from the array upon completion
     func runQueue() {
-        MILogger.log("MITCPCommunications: Running next queue item");
-        
         // If there's at least one item in the command queue...
         if(commandQueue.first != nil && !queueInProgress) {
+            MILogger.log("MITCPCommunications: Running next queue item \(self.commandQueue.first!.debugDescription)");
+            
             /// Do we need to connect to the socket?
             var needsConnect : Bool = false;
             
@@ -322,7 +322,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
                     // Read all the data in the MPD output
                     commandSocket?.readData(to: "\nOK\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
                 }
-                    // If the tag is the command tag..
+                // If the tag is the command tag..
                 else if(tag == MITCPTag.command.rawValue) {
                     // Run the completion handler
                     commandQueue.removeFirst().noOutputCompletionHandler?();
