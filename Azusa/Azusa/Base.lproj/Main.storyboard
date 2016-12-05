@@ -912,11 +912,11 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="8Yr-B9-TpB" userLabel="Playlist Song Count">
-                                                <rect key="frame" x="281" y="29" width="51" height="20"/>
+                                                <rect key="frame" x="296" y="29" width="36" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="RHC-oV-2El"/>
                                                 </constraints>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="X songs" id="Cni-6s-jxz">
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="#0/0" id="Cni-6s-jxz">
                                                     <font key="font" size="13" name="Exo2-MediumItalic"/>
                                                     <color key="textColor" white="0.60273437500000004" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -942,7 +942,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="450"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="60" viewBased="YES" id="beK-t1-cwE">
+                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="60" viewBased="YES" id="beK-t1-cwE" customClass="AZPlaylistTableView" customModule="Azusa" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="350" height="450"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -965,7 +965,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="350" height="60"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="KCL-tg-O3K" userLabel="Position Container">
+                                                                        <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KCL-tg-O3K" userLabel="Position Container">
                                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                                             <subviews>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SdV-Yl-wdk">
@@ -988,7 +988,7 @@
                                                                             </constraints>
                                                                         </customView>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VDD-Lo-C0M" userLabel="Song Title">
-                                                                            <rect key="frame" x="66" y="33" width="227" height="20"/>
+                                                                            <rect key="frame" x="14" y="33" width="279" height="20"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="20" id="yKl-Pq-fpH"/>
                                                                             </constraints>
@@ -999,7 +999,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HmT-vM-8sg" userLabel="Song Artist">
-                                                                            <rect key="frame" x="66" y="12" width="227" height="20"/>
+                                                                            <rect key="frame" x="14" y="12" width="279" height="20"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="20" id="jcW-s4-oQG"/>
                                                                             </constraints>
@@ -1022,6 +1022,7 @@
                                                                         </textField>
                                                                     </subviews>
                                                                     <constraints>
+                                                                        <constraint firstItem="HmT-vM-8sg" firstAttribute="leading" secondItem="MFY-eY-1Od" secondAttribute="leading" constant="16" id="1ef-OA-tF5"/>
                                                                         <constraint firstItem="VDD-Lo-C0M" firstAttribute="top" secondItem="MFY-eY-1Od" secondAttribute="top" constant="7" id="5iT-24-PLZ"/>
                                                                         <constraint firstItem="zAl-0Z-2ft" firstAttribute="leading" secondItem="VDD-Lo-C0M" secondAttribute="trailing" constant="8" id="7bD-dd-R16"/>
                                                                         <constraint firstAttribute="bottom" secondItem="KCL-tg-O3K" secondAttribute="bottom" id="DBp-CR-rcw"/>
@@ -1029,10 +1030,9 @@
                                                                         <constraint firstItem="KCL-tg-O3K" firstAttribute="top" secondItem="MFY-eY-1Od" secondAttribute="top" id="QRi-Ft-NfE"/>
                                                                         <constraint firstItem="zAl-0Z-2ft" firstAttribute="centerY" secondItem="MFY-eY-1Od" secondAttribute="centerY" constant="-2" id="VsX-Uw-ge2"/>
                                                                         <constraint firstItem="KCL-tg-O3K" firstAttribute="leading" secondItem="MFY-eY-1Od" secondAttribute="leading" id="k04-sh-SiS"/>
-                                                                        <constraint firstItem="VDD-Lo-C0M" firstAttribute="leading" secondItem="KCL-tg-O3K" secondAttribute="trailing" constant="8" id="q0Y-va-PM1"/>
-                                                                        <constraint firstItem="HmT-vM-8sg" firstAttribute="leading" secondItem="KCL-tg-O3K" secondAttribute="trailing" constant="8" id="rIV-P4-2yj"/>
                                                                         <constraint firstItem="zAl-0Z-2ft" firstAttribute="leading" secondItem="HmT-vM-8sg" secondAttribute="trailing" constant="8" id="wDf-A6-qkY"/>
                                                                         <constraint firstAttribute="trailing" secondItem="zAl-0Z-2ft" secondAttribute="trailing" constant="16" id="xdQ-bL-3Nn"/>
+                                                                        <constraint firstItem="VDD-Lo-C0M" firstAttribute="leading" secondItem="MFY-eY-1Od" secondAttribute="leading" constant="16" id="ycX-pq-HFP"/>
                                                                     </constraints>
                                                                     <connections>
                                                                         <outlet property="songArtistLabel" destination="HmT-vM-8sg" id="MMR-Xa-9r7"/>

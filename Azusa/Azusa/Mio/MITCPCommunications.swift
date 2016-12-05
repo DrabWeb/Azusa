@@ -127,8 +127,12 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         if(needsConnect) {
             // Connect to the socket
             self.connect(completionHandler: { connectedSocket in
-                // Call the completion handler
-                completionHandler();
+                // TODO: Find a better solution for this, because this is not really the best option
+                // Run the status command first(the application breaks when running a no-output command to reconnect, but this fixes that)
+                self.outputOf(command: "status", log: false, completionHandler: { status in
+                    // Call the completion handler
+                    completionHandler();
+                });
             });
         }
     }
@@ -157,8 +161,8 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // Add the command to the queue
         self.commandQueue.append(command);
         
-        // Start the queue up
-        runQueue();
+        // Start the queue up(it will automatically not run if there's already something going in the queue)
+        self.runQueue();
     }
     
     /// Creates the TCP socket connection to the MPD server
@@ -232,14 +236,10 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             MILogger.log("MITCPCommunications: Running command \"\(command)\"");
         }
         
-        // TODO: Find a better solution for this, because this is not really the best option
-        // Run the status command first(it breaks if the socket disconnects and then reconnects on this command without the status get)
-        self.outputOf(command: "status", log: false, completionHandler: { status in
-            // Make sure we are connected to the command socket
-            self.guaranteeConnectionToCommandSocket(completionHandler: {
-                // Add the command to the command queue
-                self.addToQueue(command: MITCPCommandQueueItem(command: command, completionHandler: completionHandler, tag: .command));
-            });
+        // Make sure we are connected to the command socket
+        self.guaranteeConnectionToCommandSocket(completionHandler: {
+            // Add the command to the command queue
+            self.addToQueue(command: MITCPCommandQueueItem(command: command, completionHandler: completionHandler, tag: .command));
         });
     }
     
@@ -335,14 +335,28 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             if(commandQueue.first != nil) {
                 // If the tag is the command output tag...
                 if(tag == MITCPTag.commandOutput.rawValue) {
+                    MILogger.log("MITCPCommunications: Reading output for \"\(commandQueue.first!.command)\" with tag \"Azusa.Mio.MITCPTag.\(MITCPTag(rawValue: tag)!)\"", level: .full);
+                    
+                    // I'm actually ashamed it had to come to this, but I really can't find a better fix
+                    // More commands may end up needing the same fix in the future, who knows
+                    // Also should probably do something about the face that if any one of the lines other than the last ends with "OK" it will break
+                    // So if a song title or something has that it will break
+                    
                     // Read all the data in the MPD output
-                    commandSocket?.readData(to: "\nOK\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
+                    if(commandQueue.first!.command == "playlistinfo") {
+                        commandSocket?.readData(to: "OK\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
+                    }
+                    else {
+                        commandSocket?.readData(to: "\nOK\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
+                    }
                 }
                 // If the tag is the command tag..
                 else if(tag == MITCPTag.command.rawValue) {
+                    MILogger.log("MITCPCommunications: Running completion handler for \"\(commandQueue.first!.command)\" with tag \"Azusa.Mio.MITCPTag.\(MITCPTag(rawValue: tag)!)\", queue currently is \(commandQueue)", level: .full);
+                    
                     // Run the completion handler
                     commandQueue.removeFirst().noOutputCompletionHandler?();
-                        
+                    
                     // Say the queue is no longer in progress and run the next item in the queue
                     self.queueInProgress = false;
                     self.runQueue();
@@ -382,6 +396,8 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             // If the tag is MITCPTag.commandOutput(meaning we want to pass 'dataString' to the completion handler of 'outputOf')...
             if(tag == MITCPTag.commandOutput.rawValue) {
                 if(commandQueue.first != nil) {
+                    MILogger.log("MITCPCommunications: Running \"\(commandQueue.first!.command)\" output completion handler with \"\(dataString)\"", level: .high);
+                    
                     // Run the completion handler
                     commandQueue.removeFirst().outputCompletionHandler?(dataString);
                     

@@ -74,6 +74,9 @@ class MISong: NSObject {
     /// This song's position on the playlist(if it is in the current playlist)
     var position : Int = -1;
     
+    /// This song's position relative to the current playing song(this must be set manually)
+    var relativePosition : Int = -1;
+    
     /// The ID of this song
     var id : Int = -1;
     

@@ -38,6 +38,19 @@ class MIMPD {
     
     // Functions
     
+    /// Jumps to the song at the given index in the current playlist
+    func jumpToSongInPlaylist(at : Int, log : Bool, completionHandler : (() -> ())?) {
+        if(log) {
+            MILogger.log("MIMPD: Jumping to #\(at) in current playlist");
+        }
+        
+        // Jump to the given song index
+        self.socketConnection.run(command: "seek \(at) 0", log: false, completionHandler: {
+            // Make sure the song is unpaused, and call the completion handler afterwards
+            self.setPaused(to: false, completionHandler: completionHandler);
+        });
+    }
+    
     /// Gets the current playlist as an array of MISongs, calls the completion handler with said array, logs the command if 'log' is true
     func getPlaylist(log : Bool, completionHandler : (([MISong]) -> ())?) {
         if(log) {

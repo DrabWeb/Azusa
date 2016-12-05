@@ -286,13 +286,8 @@ class AZMusicPlayerViewController: NSViewController {
         _ = self.mpd.socketConnection.subscribeTo(events: [.playlist, .player], with: { eventType in
             // If the playlist is open...
             if(self.playlistOpen) {
-                // Clear the current playlist view
-                self.playlistViewController?.displayPlaylist(playlist: []);
-                
                 // Display the current playlist
-                self.mpd.getPlaylist(log: true, completionHandler: { playlist in
-                    self.playlistViewController?.displayPlaylist(playlist: playlist);
-                });
+                self.displayCurrentPlaylist();
             }
         });
     }
@@ -311,9 +306,7 @@ class AZMusicPlayerViewController: NSViewController {
     /// Opens the playlist view
     func openPlaylist() {
         // Display the current playlist
-        self.mpd.getPlaylist(log: true, completionHandler: { playlist in
-            self.playlistViewController?.displayPlaylist(playlist: playlist);
-        });
+        displayCurrentPlaylist();
         
         // Cancel 'lastCloseAnimationTimer' in case the user is spamming the button or something
         lastCloseAnimationTimer?.invalidate();
@@ -546,6 +539,35 @@ class AZMusicPlayerViewController: NSViewController {
             // Display the current song and status
             self.display(song: currentSong);
             self.display(status: status);
+        });
+    }
+    
+    /// Displays the current playlist with the given completion handler, which is passed the displayed playlist
+    func displayCurrentPlaylist(completionHandler : (([MISong]) -> ())? = nil) {
+        self.mpd.getStatus(log: false, completionHandler: { currentStatus in
+            // Display the current playlist
+            self.mpd.getPlaylist(log: true, completionHandler: { playlist in
+                self.playlistViewController?.displayPlaylist(playlist: playlist, currentSongPosition: currentStatus.currentSongPosition, primaryActionHandler: { song in
+                    // Jump to the song
+                    self.mpd.jumpToSongInPlaylist(at: song.position, log: true, completionHandler: nil);
+                }, rightClickHandler: { song, event in
+                    /// The context menu for the right clicked playlist item
+                    let menu : NSMenu = NSMenu();
+                    
+                    // Add the menu items
+                    menu.addItem(withTitle: "Remove from playlist", action: nil, keyEquivalent: "");
+                    menu.addItem(withTitle: "Play", action: nil, keyEquivalent: "");
+                    
+                    // Make sure the context menu will be dark
+                    self.view.appearance = NSAppearance(named: NSAppearanceNameVibrantDark);
+                    
+                    // Display the context menu
+                    NSMenu.popUpContextMenu(menu, with: event, for: self.view);
+                });
+                
+                // Run the completion handler
+                completionHandler?(playlist);
+            });
         });
     }
     
