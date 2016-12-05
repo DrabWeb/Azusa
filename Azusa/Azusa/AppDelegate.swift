@@ -24,13 +24,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Run the modal, and if the user clicks save...
         if(Bool(savePanel.runModal() as NSNumber)) {
             // Save the log output to the chosen file
-            MILogger.saveTo(file: savePanel.url!.absoluteString.replacingOccurrences(of: "file://", with: ""));
+            AZLogger.saveTo(file: savePanel.url!.absoluteString.replacingOccurrences(of: "file://", with: ""));
         }
     }
     
     func applicationWillFinishLaunching(_ notification: Notification) {
         // Set the logging level
-        MILogger.level = .regular;
+        AZLogger.level = .regular;
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {

@@ -16,6 +16,7 @@
 		AE2340FD1DE5227300C6D3B3 /* MITCPCommunications.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */; };
 		AE25C3221DE645D100DE4A97 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = AE25C3211DE645D100DE4A97 /* Fonts */; };
 		AE25C3241DE64EA200DE4A97 /* AZColoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE25C3231DE64EA200DE4A97 /* AZColoredView.swift */; };
+		AE2624411DF6313D0013C4E1 /* AZLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2624401DF6313D0013C4E1 /* AZLogger.swift */; };
 		AE423B751DEA479000777832 /* AZMusicPlayerTitlebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE423B741DEA479000777832 /* AZMusicPlayerTitlebarView.swift */; };
 		AE4820E51DE76B7B00F868CE /* AZPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4820E41DE76B7B00F868CE /* AZPreferences.swift */; };
 		AE4820E61DE7798900F868CE /* AZMusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E22301DE57102003DBC94 /* AZMusicPlayerViewController.swift */; };
@@ -35,7 +36,6 @@
 		AED1518A1DE7C89100AA0D7F /* MIMPD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED151891DE7C89100AA0D7F /* MIMPD.swift */; };
 		AED1518C1DE7EC9E00AA0D7F /* MIStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED1518B1DE7EC9E00AA0D7F /* MIStatus.swift */; };
 		AEE37BCB1DEA9BC9002930A3 /* AZPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE37BCA1DEA9BC9002930A3 /* AZPlaylistViewController.swift */; };
-		AEE37BCD1DEA9C2E002930A3 /* MILogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE37BCC1DEA9C2E002930A3 /* MILogger.swift */; };
 		AEE37BCF1DEA9CDA002930A3 /* AZSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE37BCE1DEA9CDA002930A3 /* AZSearchViewController.swift */; };
 		AEE37BD21DEAAD50002930A3 /* AZPlaylistTableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE37BD11DEAAD50002930A3 /* AZPlaylistTableRowView.swift */; };
 		AEE37BD41DEAB42C002930A3 /* AZPlaylistTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE37BD31DEAB42C002930A3 /* AZPlaylistTableCellView.swift */; };
@@ -68,6 +68,7 @@
 		AE2340FC1DE5227300C6D3B3 /* MITCPCommunications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MITCPCommunications.swift; path = Mio/MITCPCommunications.swift; sourceTree = "<group>"; };
 		AE25C3211DE645D100DE4A97 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = Azusa/Resources/Fonts; sourceTree = "<group>"; };
 		AE25C3231DE64EA200DE4A97 /* AZColoredView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZColoredView.swift; sourceTree = "<group>"; };
+		AE2624401DF6313D0013C4E1 /* AZLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZLogger.swift; sourceTree = "<group>"; };
 		AE423B741DEA479000777832 /* AZMusicPlayerTitlebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerTitlebarView.swift; sourceTree = "<group>"; };
 		AE4820E41DE76B7B00F868CE /* AZPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZPreferences.swift; sourceTree = "<group>"; };
 		AE4820EC1DE7934B00F868CE /* AZExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZExtensions.swift; sourceTree = "<group>"; };
@@ -94,7 +95,6 @@
 		AED151891DE7C89100AA0D7F /* MIMPD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MIMPD.swift; path = Mio/MIMPD.swift; sourceTree = "<group>"; };
 		AED1518B1DE7EC9E00AA0D7F /* MIStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MIStatus.swift; path = Mio/MIStatus.swift; sourceTree = "<group>"; };
 		AEE37BCA1DEA9BC9002930A3 /* AZPlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZPlaylistViewController.swift; sourceTree = "<group>"; };
-		AEE37BCC1DEA9C2E002930A3 /* MILogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MILogger.swift; path = Mio/MILogger.swift; sourceTree = "<group>"; };
 		AEE37BCE1DEA9CDA002930A3 /* AZSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZSearchViewController.swift; sourceTree = "<group>"; };
 		AEE37BD11DEAAD50002930A3 /* AZPlaylistTableRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZPlaylistTableRowView.swift; sourceTree = "<group>"; };
 		AEE37BD31DEAB42C002930A3 /* AZPlaylistTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZPlaylistTableCellView.swift; sourceTree = "<group>"; };
@@ -147,11 +147,18 @@
 		AE2340FB1DE5210300C6D3B3 /* Mio */ = {
 			isa = PBXGroup;
 			children = (
-				AEE37BC61DEA7666002930A3 /* Logger */,
 				AE7584A31DE8135D00246590 /* Utilities */,
 				AEC5557C1DE5404A005D7640 /* Objects */,
 			);
 			name = Mio;
+			sourceTree = "<group>";
+		};
+		AE26243F1DF631270013C4E1 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				AE2624401DF6313D0013C4E1 /* AZLogger.swift */,
+			);
+			name = Logger;
 			sourceTree = "<group>";
 		};
 		AE4820EB1DE7933E00F868CE /* Utilities */ = {
@@ -187,6 +194,7 @@
 		AE8A658E1DE75D62002DC54A /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				AE26243F1DF631270013C4E1 /* Logger */,
 				AE8A658F1DE75D74002DC54A /* AZEnums.swift */,
 				AE4820E41DE76B7B00F868CE /* AZPreferences.swift */,
 			);
@@ -278,14 +286,6 @@
 				AE2340FB1DE5210300C6D3B3 /* Mio */,
 			);
 			name = Libraries;
-			sourceTree = "<group>";
-		};
-		AEE37BC61DEA7666002930A3 /* Logger */ = {
-			isa = PBXGroup;
-			children = (
-				AEE37BCC1DEA9C2E002930A3 /* MILogger.swift */,
-			);
-			name = Logger;
 			sourceTree = "<group>";
 		};
 		AEE37BC91DEA9BAE002930A3 /* View Controllers */ = {
@@ -607,6 +607,7 @@
 				AEC555801DE54062005D7640 /* MISong.swift in Sources */,
 				AE12BE361DE57B2600BAF030 /* AZGradientView.swift in Sources */,
 				AED1518C1DE7EC9E00AA0D7F /* MIStatus.swift in Sources */,
+				AE2624411DF6313D0013C4E1 /* AZLogger.swift in Sources */,
 				AE7D05C31DED03CF00927F42 /* AZPlaylistTableView.swift in Sources */,
 				AE11B52C1DE66C56008B2827 /* AZProgressSliderCell.swift in Sources */,
 				AE20DE1D1DE8FFD900092F75 /* MIMPDEventSubscriber.swift in Sources */,
@@ -618,7 +619,6 @@
 				AE4820E51DE76B7B00F868CE /* AZPreferences.swift in Sources */,
 				AE6E222F1DE56E79003DBC94 /* AZAspectFillImageView.swift in Sources */,
 				AE7584A51DE8136E00246590 /* MIUtilities.swift in Sources */,
-				AEE37BCD1DEA9C2E002930A3 /* MILogger.swift in Sources */,
 				AE4820ED1DE7934B00F868CE /* AZExtensions.swift in Sources */,
 				AEE37BD41DEAB42C002930A3 /* AZPlaylistTableCellView.swift in Sources */,
 				AE25C3241DE64EA200DE4A97 /* AZColoredView.swift in Sources */,

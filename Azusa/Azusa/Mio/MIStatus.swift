@@ -120,7 +120,7 @@ class MIStatus: NSObject {
         //
         
         if(log) {
-            MILogger.log("MIStatus: Init with string: \"\(string)\"", level: .full);
+            AZLogger.log("MIStatus: Init with string: \"\(string)\"", level: .full);
         }
         
         // If there's no "state:" key...

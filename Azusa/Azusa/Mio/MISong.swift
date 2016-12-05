@@ -204,7 +204,7 @@ class MISong: NSObject {
     /// Returns an array of MISongs based on the given string(should be a playlistinfo or similar)
     static func from(songList : String, log : Bool = true) -> [MISong] {
         if(log) {
-            MILogger.log("MISong: Init song list with string: \"\(songList)\"", level: .full);
+            AZLogger.log("MISong: Init song list with string: \"\(songList)\"", level: .full);
         }
         
         /// The array of MISongs to return
@@ -249,7 +249,7 @@ class MISong: NSObject {
         //
         
         if(log) {
-            MILogger.log("MISong: Init with string: \"\(string)\"", level: .full);
+            AZLogger.log("MISong: Init with string: \"\(string)\"", level: .full);
         }
         
         // For every line in the given string...

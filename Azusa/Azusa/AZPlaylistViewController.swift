@@ -67,7 +67,7 @@ class AZPlaylistViewController: NSViewController {
     
     /// Displays the given array of MISongs, with the given double click and right click handlers, and the passed current song position is used for modifying the style based on current song position
     func displayPlaylist(playlist : [MISong], currentSongPosition : Int = 0, primaryActionHandler : ((MISong) -> ())? = nil, rightClickHandler : ((MISong, NSEvent) -> ())? = nil) {
-        MILogger.log("AZPlaylistViewController: Displaying playlist with songs \(playlist)(current song is #\(currentSongPosition))");
+        AZLogger.log("AZPlaylistViewController: Displaying playlist with songs \(playlist)(current song is #\(currentSongPosition))");
         
         // Store the current scroll point if we said to restore it
         if(restoreScrollOnPlaylistDisplay) {

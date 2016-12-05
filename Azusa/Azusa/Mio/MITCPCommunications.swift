@@ -141,7 +141,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     func runQueue() {
         // If there's at least one item in the command queue...
         if(commandQueue.first != nil && !queueInProgress) {
-            MILogger.log("MITCPCommunications: Running next queue item \(self.commandQueue.first!.debugDescription)");
+            AZLogger.log("MITCPCommunications: Running next queue item \(self.commandQueue.first!.debugDescription)");
             
             // Say the queue is in progress
             self.queueInProgress = true;
@@ -156,7 +156,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
     /// Adds the given command to the command queue
     func addToQueue(command : MITCPCommandQueueItem) {
-        MILogger.log("MITCPCommunications: Adding command \(command.debugDescription) to queue", level: .high);
+        AZLogger.log("MITCPCommunications: Adding command \(command.debugDescription) to queue", level: .high);
         
         // Add the command to the queue
         self.commandQueue.append(command);
@@ -185,7 +185,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             }
             
             // Print what server we are connecting to
-            MILogger.log("MITCPCommunications: Connecting to \(host):\(port)...");
+            AZLogger.log("MITCPCommunications: Connecting to \(host):\(port)...");
             
             do {
                 // Connect to the server without a timeout
@@ -208,7 +208,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             }
             catch let error as NSError {
                 // Print the error to the log
-                MILogger.log("MITCPCommunications: Error connecting to \(host):\(port), \(error.localizedDescription)");
+                AZLogger.log("MITCPCommunications: Error connecting to \(host):\(port), \(error.localizedDescription)");
             }
         }
     }
@@ -218,7 +218,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // If we said to log the command...
         if(log) {
             // Print what command we are running
-            MILogger.log("MITCPCommunications: Getting output of command \"\(command)\"");
+            AZLogger.log("MITCPCommunications: Getting output of command \"\(command)\"");
         }
         
         // Make sure we are connected to the command socket
@@ -233,7 +233,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // If we said to log the command...
         if(log) {
             // Print what command we are running
-            MILogger.log("MITCPCommunications: Running command \"\(command)\"");
+            AZLogger.log("MITCPCommunications: Running command \"\(command)\"");
         }
         
         // Make sure we are connected to the command socket
@@ -245,7 +245,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
     /// Subscribes to the given events, 'subscriber' gets called with the event type when the event fires, returns the subscriber object
     func subscribeTo(events : [MIMPDEvent], with subscriber : @escaping ((MIMPDEvent) -> ())) -> MIMPDEventSubscriber {
-        MILogger.log("MITCPCommunications: Subscribing to events \(events) with \(subscriber)");
+        AZLogger.log("MITCPCommunications: Subscribing to events \(events) with \(subscriber)");
         
         /// The event subscriber created from the passed values
         let subscriptionObject : MIMPDEventSubscriber = MIMPDEventSubscriber(eventHandler: subscriber, subscriptions: events);
@@ -282,7 +282,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         
         // If removal index isn't -1...
         if(removalIndex != -1) {
-            MILogger.log("MITCPCommunications: Removing \"\(subscriber.subscriptions)\" event subscriber \"\(subscriber.uuid)\"");
+            AZLogger.log("MITCPCommunications: Removing \"\(subscriber.subscriptions)\" event subscriber \"\(subscriber.uuid)\"");
             
             // Remove the event subscriber
             self.eventSubscribers.remove(at: removalIndex);
@@ -291,7 +291,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
     
     /// Handles calling the given event(e.g. managing listeners)
     func handleEvent(event : MIMPDEvent) {
-        MILogger.log("MITCPCommunications: Received event \(event)");
+        AZLogger.log("MITCPCommunications: Received event \(event)");
         
         // For every event subscriber...
         for(_, currentSubscriber) in eventSubscribers.enumerated() {
@@ -321,13 +321,13 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             socketName = "Progress";
         }
         
-        MILogger.log("MITCPCommunications: \(socketName) socket disconnected with error \"\(err!.localizedDescription)\"(\((err! as NSError).code))");
+        AZLogger.log("MITCPCommunications: \(socketName) socket disconnected with error \"\(err!.localizedDescription)\"(\((err! as NSError).code))");
     }
     
     func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
         if(MITCPTag(rawValue: tag)! != .progress) {
             // Print the tag that was used to write the data
-            MILogger.log("MITCPCommunications: Data was written with tag \"Azusa.Mio.MITCPTag.\(MITCPTag(rawValue: tag)!)\"", level: .full);
+            AZLogger.log("MITCPCommunications: Data was written with tag \"Azusa.Mio.MITCPTag.\(MITCPTag(rawValue: tag)!)\"", level: .full);
         }
         
         // If the socket is the main socket...
@@ -335,7 +335,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             if(commandQueue.first != nil) {
                 // If the tag is the command output tag...
                 if(tag == MITCPTag.commandOutput.rawValue) {
-                    MILogger.log("MITCPCommunications: Reading output for \"\(commandQueue.first!.command)\" with tag \"Azusa.Mio.MITCPTag.\(MITCPTag(rawValue: tag)!)\"", level: .full);
+                    AZLogger.log("MITCPCommunications: Reading output for \"\(commandQueue.first!.command)\" with tag \"Azusa.Mio.MITCPTag.\(MITCPTag(rawValue: tag)!)\"", level: .full);
                     
                     // I'm actually ashamed it had to come to this, but I really can't find a better fix
                     // More commands may end up needing the same fix in the future, who knows
@@ -344,7 +344,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
                     
                     // Read all the data in the MPD output
                     if(commandQueue.first!.command == "playlistinfo") {
-                        commandSocket?.readData(to: "OK\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
+                        commandSocket?.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
                     }
                     else {
                         commandSocket?.readData(to: "\nOK\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
@@ -352,7 +352,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
                 }
                 // If the tag is the command tag..
                 else if(tag == MITCPTag.command.rawValue) {
-                    MILogger.log("MITCPCommunications: Running completion handler for \"\(commandQueue.first!.command)\" with tag \"Azusa.Mio.MITCPTag.\(MITCPTag(rawValue: tag)!)\", queue currently is \(commandQueue)", level: .full);
+                    AZLogger.log("MITCPCommunications: Running completion handler for \"\(commandQueue.first!.command)\" with tag \"Azusa.Mio.MITCPTag.\(MITCPTag(rawValue: tag)!)\", queue currently is \(commandQueue)", level: .full);
                     
                     // Run the completion handler
                     commandQueue.removeFirst().noOutputCompletionHandler?();
@@ -387,8 +387,8 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         
         // If the tag isn't for progress(since they will just spam up everything)
         if(MITCPTag(rawValue: tag)! != .progress) {
-            MILogger.log("MITCPCommunications: Read data written with tag \"Azusa.Mio.MITCPTag.\(MITCPTag(rawValue: tag)!)\"", level: .full);
-            MILogger.log("MITCPCommunications: Read string \"\(dataString)\"", level: .high);
+            AZLogger.log("MITCPCommunications: Read data written with tag \"Azusa.Mio.MITCPTag.\(MITCPTag(rawValue: tag)!)\"", level: .full);
+            AZLogger.log("MITCPCommunications: Read string \"\(dataString)\"", level: .high);
         }
         
         // If the socket is the main socket...
@@ -396,7 +396,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
             // If the tag is MITCPTag.commandOutput(meaning we want to pass 'dataString' to the completion handler of 'outputOf')...
             if(tag == MITCPTag.commandOutput.rawValue) {
                 if(commandQueue.first != nil) {
-                    MILogger.log("MITCPCommunications: Running \"\(commandQueue.first!.command)\" output completion handler with \"\(dataString)\"", level: .high);
+                    AZLogger.log("MITCPCommunications: Running \"\(commandQueue.first!.command)\" output completion handler with \"\(dataString)\"", level: .high);
                     
                     // Run the completion handler
                     commandQueue.removeFirst().outputCompletionHandler?(dataString);
@@ -457,7 +457,7 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // If the socket is the main socket...
         if(sock == self.commandSocket) {
             // Print that the connection was made
-            MILogger.log("MITCPCommunications: Connected to command socket \(host):\(port)");
+            AZLogger.log("MITCPCommunications: Connected to command socket \(host):\(port)");
             
             if(self.connectionCompletionHandlers.first != nil) {
                 // Call and remove the completion handler
@@ -467,12 +467,12 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
         // If the socket is the event socket...
         else if(sock == self.eventSocket) {
             // Print that the connection was made
-            MILogger.log("MITCPCommunications: Connected to event socket \(host):\(port)");
+            AZLogger.log("MITCPCommunications: Connected to event socket \(host):\(port)");
         }
         // If the socket is the progress socket...
         else if(sock == self.progressSocket) {
             // Print that the connection was made
-            MILogger.log("MITCPCommunications: Connected to progress socket \(host):\(port)");
+            AZLogger.log("MITCPCommunications: Connected to progress socket \(host):\(port)");
             
             // Start the progress loop
             self.progressSocket!.write("status\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: MITCPTag.progress.rawValue);
