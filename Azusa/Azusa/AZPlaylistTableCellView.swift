@@ -67,7 +67,7 @@ class AZPlaylistTableCellView: NSTableCellView {
         songPositionLabel.stringValue = "\(song.relativePosition)";
         songTitleLabel.stringValue = song.displayTitle;
         songArtistLabel.stringValue = "by \(song.displayArtist)";
-        songLengthLabel.stringValue = MIUtilities.secondsToDisplayTime(song.length);
+        songLengthLabel.stringValue = AZMusicUtilities.secondsToDisplayTime(song.length);
         
         // Update the alpha value based on if the song is behind the current song
         self.alphaValue = (song.relativePosition >= 0) ? 1 : 0.5;

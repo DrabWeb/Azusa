@@ -122,7 +122,7 @@ class AZMusicPlayerViewController: NSViewController {
         // If we are still dragging...
         else {
             // Set the position label
-            self.progressCurrentTimeLabel.stringValue = MIUtilities.secondsToDisplayTime(Int(sender.intValue));
+            self.progressCurrentTimeLabel.stringValue = AZMusicUtilities.secondsToDisplayTime(Int(sender.intValue));
             
             // Say we are dragging the progress slider
             draggingProgressSlider = true;
@@ -577,7 +577,7 @@ class AZMusicPlayerViewController: NSViewController {
     /// Displays the given progress(in seconds) in the progress view
     func display(progress : Int) {
         // Update the progress view
-        progressCurrentTimeLabel.stringValue = MIUtilities.secondsToDisplayTime(progress);
+        progressCurrentTimeLabel.stringValue = AZMusicUtilities.secondsToDisplayTime(progress);
         progressSlider.intValue = Int32(progress);
         
         // Set lastDisplayedProgress
@@ -618,7 +618,7 @@ class AZMusicPlayerViewController: NSViewController {
         currentSongArtistLabel.stringValue = song.displayArtist;
         
         // Update the progress view
-        progressSongLengthLabel.stringValue = MIUtilities.secondsToDisplayTime(song.length);
+        progressSongLengthLabel.stringValue = AZMusicUtilities.secondsToDisplayTime(song.length);
         progressSlider.maxValue = Double((song.length <= 0) ? 1 : song.length);
         
         // If lastDisplayedSong isn't nil...

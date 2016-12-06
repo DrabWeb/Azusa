@@ -92,7 +92,7 @@ class MIStatus: NSObject {
                 break;
         }
         
-        return "\(self): [\(playingStateString)] #\(currentSongPosition)/\(playlistLength) \(MIUtilities.secondsToDisplayTime(Int(self.timeElapsed))), next up #\(nextSongPosition)/\(playlistLength)\n" +
+        return "\(self): [\(playingStateString)] #\(currentSongPosition)/\(playlistLength) \(AZMusicUtilities.secondsToDisplayTime(Int(self.timeElapsed))), next up #\(nextSongPosition)/\(playlistLength)\n" +
                "volume: \(self.volume)%   repeat: \(self.repeatMode ? "on" : "off")   random: \(self.randomMode ? "on" : "off")   single: \(self.singleMode ? "on" : "off")   consume: \(self.consumeMode ? "on" : "off")";
     }
     

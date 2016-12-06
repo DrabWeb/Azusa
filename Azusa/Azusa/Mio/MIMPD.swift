@@ -85,7 +85,7 @@ class MIMPD {
     
     /// Seeks to the given time in the current song(in seconds), optional completion handler for when the command finishes(passed command output)
     func seek(to : Int, completionHandler : (() -> ())?) {
-        AZLogger.log("MIMPD: Seeking to \(MIUtilities.secondsToDisplayTime(to))");
+        AZLogger.log("MIMPD: Seeking to \(AZMusicUtilities.secondsToDisplayTime(to))");
         
         // Seek to the given time
         self.socketConnection.run(command: "seekcur \(to)", log: false, completionHandler: completionHandler);

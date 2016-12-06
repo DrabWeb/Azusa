@@ -337,18 +337,8 @@ class MITCPCommunications : NSObject, GCDAsyncSocketDelegate {
                 if(tag == MITCPTag.commandOutput.rawValue) {
                     AZLogger.log("MITCPCommunications: Reading output for \"\(commandQueue.first!.command)\" with tag \"Azusa.Mio.MITCPTag.\(MITCPTag(rawValue: tag)!)\"", level: .full);
                     
-                    // I'm actually ashamed it had to come to this, but I really can't find a better fix
-                    // More commands may end up needing the same fix in the future, who knows
-                    // Also should probably do something about the face that if any one of the lines other than the last ends with "OK" it will break
-                    // So if a song title or something has that it will break
-                    
                     // Read all the data in the MPD output
-                    if(commandQueue.first!.command == "playlistinfo") {
-                        commandSocket?.readData(to: "\nOK".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
-                    }
-                    else {
-                        commandSocket?.readData(to: "\nOK\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
-                    }
+                    commandSocket?.readData(to: "\nOK\n".data(using: String.Encoding.utf8)!, withTimeout: TimeInterval(-1), tag: tag);
                 }
                 // If the tag is the command tag..
                 else if(tag == MITCPTag.command.rawValue) {
