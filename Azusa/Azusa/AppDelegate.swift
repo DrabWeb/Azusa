@@ -35,6 +35,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        
+        /// The AZMusicPlayer for testing
+        let musicPlayer : AZMusicPlayer = MIMPD(host: "127.0.0.1", port: 6600, musicDirectory: "/Volumes/Storage/macOS/Music/");
+        
+        // Connect to the music player
+        musicPlayer.connect({
+            print("Connected to music player!");
+        });
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

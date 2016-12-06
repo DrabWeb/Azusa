@@ -44,6 +44,6 @@ protocol AZStatus {
     /// The current time the user is in to the current song(in seconds)
     var timeElapsed : Int { get set };
     
-    /// Returns the current repeat mode
+    /// The current repeat mode
     var repeatMode : AZRepeatMode { get set };
 }

@@ -12,11 +12,14 @@ enum AZEvent : Int {
     /// The default event, represents nothing
     case none
     
-    /// The song database has been modified after 'update'
-    case database
+    /// The music player has connected
+    case connect
     
-    /// The music datanase has been updated
-    case update
+    /// The music player has disconnected
+    case disconnect
+    
+    /// The music database has been updated
+    case database
     
     /// The current queue has been modified
     case queue
@@ -39,13 +42,19 @@ protocol AZEventSubscriber {
     /// The subscription objects to this event subscriber
     var _subscriptions : [AZEventSubscription] { get set };
     
-    /// Adds the given event subscription to this subscriber
+    /// Adds the given subscription to this subscriber
+    ///
+    /// - Parameter subscriber: The subscription to subscribe with
     func add(subscriber : AZEventSubscription);
     
-    /// Removes the given event subscription
+    /// Removes the given subscription from this subscriber
+    ///
+    /// - Parameter subscriber: The subscription to remove
     func remove(subscriber : AZEventSubscription);
     
-    /// Emits the given event for this event subscriber
+    /// Emits the given event on this subscriber
+    ///
+    /// - Parameter event: The event to emit
     func emit(event : AZEvent);
 }
 
