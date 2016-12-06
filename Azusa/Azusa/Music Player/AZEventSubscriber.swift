@@ -48,6 +48,8 @@ class AZEventSubscriber {
     ///
     /// - Parameter subscription: The subscription to subscribe with
     func add(subscription : AZEventSubscription) {
+        AZLogger.log("AZEventSubscriber: Subscribing to events \"\(subscription.events)\" with \(subscription)");
+        
         // Add the given subscriber to `_subscriptions`
         self._subscriptions.append(subscription);
     }
@@ -70,8 +72,13 @@ class AZEventSubscriber {
         
         // If `removalIndex` was set...
         if(removalIndex != -1) {
+            AZLogger.log("AZEventSubscriber: Removing event subscriber \(subscription)");
+            
             // Remove the subscription at `removalIndex` in `subscriptions`
             self._subscriptions.remove(at: removalIndex);
+        }
+        else {
+            AZLogger.log("AZEventSubscriber: Failed to remove event subscriber \(subscription), was not subscribed");
         }
     }
 
@@ -93,7 +100,7 @@ class AZEventSubscriber {
 }
 
 /// The object representing an event subscription in Mio
-class AZEventSubscription {
+class AZEventSubscription: NSObject {
     /// The events this subscription is subscribed to
     var events : [AZEvent] = [];
     
@@ -117,7 +124,9 @@ class AZEventSubscription {
         self.uuid = NSUUID().uuidString;
     }
     
-    init() {
+    override init() {
+        super.init();
+        
         self.events = [];
         self.performer = nil;
         self.uuid = NSUUID().uuidString;
