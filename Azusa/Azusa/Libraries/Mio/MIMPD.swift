@@ -10,12 +10,12 @@ import Foundation
 /// The AZMusicPlayer extension for MPD in Azusa
 class MIMPD : NSObject, AZMusicPlayer {
     /// The event subscriber for this music player
-    var eventSubscriber : MIEventSubscriber {
+    var eventSubscriber : AZEventSubscriber {
         return self._eventSubscriber;
     }
     
     /// The event subscriber object for this music player
-    private var _eventSubscriber : MIEventSubscriber = MIEventSubscriber();
+    private var _eventSubscriber : AZEventSubscriber = AZEventSubscriber();
     
     /// The MITCP object to use for interacting with MPD
     var tcp : MITCP = MITCP();
