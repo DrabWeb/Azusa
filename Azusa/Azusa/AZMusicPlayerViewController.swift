@@ -114,7 +114,7 @@ class AZMusicPlayerViewController: NSViewController {
         // If we ended dragging...
         if(endingDrag) {
             // Seek to the set time
-            self.mpd.seek(to: Int(sender.intValue), completionHandler: nil);
+//            self.mpd.seek(to: Int(sender.intValue), completionHandler: nil);
             
             // Say we aren't dragging the progress slider
             draggingProgressSlider = false;
@@ -137,15 +137,15 @@ class AZMusicPlayerViewController: NSViewController {
     
     @IBAction func playbackControlsSkipPreviousButtonPressed(_ sender: NSButton) {
         // Skip to the previous song
-        self.mpd.skipPrevious(completionHandler: nil);
+//        self.mpd.skipPrevious(completionHandler: nil);
     }
     
     /// The play/pause playback control button
     @IBOutlet weak var playbackControlsPausePlayButton: NSButton!
     
     @IBAction func playbackControlsPausePlayButtonPressed(_ sender: NSButton) {
-        // Pause/play MPD based on this button
-        self.mpd.setPaused(to: ((sender.state == 1) ? true : false), completionHandler: nil);
+        // Pause/play based on this button
+//        self.mpd.setPaused(to: ((sender.state == 1) ? true : false), completionHandler: nil);
     }
     
     /// The skip next playback control button
@@ -153,7 +153,7 @@ class AZMusicPlayerViewController: NSViewController {
     
     @IBAction func playbackControlsSkipNextButtonPressed(_ sender: NSButton) {
         // Skip to the next song
-        self.mpd.skipNext(completionHandler: nil);
+//        self.mpd.skipNext(completionHandler: nil);
     }
     
     /// The toggle random mode playback control button
@@ -161,14 +161,14 @@ class AZMusicPlayerViewController: NSViewController {
     
     @IBAction func playbackControlsRandomButtonPressed(_ sender: NSButton) {
         // Update MPD's random mode
-        self.mpd.setRandomMode(to: ((playbackControlsRandomButton.state == 1) ? true : false), completionHandler: nil);
+//        self.mpd.setRandomMode(to: ((playbackControlsRandomButton.state == 1) ? true : false), completionHandler: nil);
     }
     
     /// The loop mode playback control button
     @IBOutlet weak var playbackControlsLoopButton: NSButton!
     
     /// The current loop mode the user has selected
-    var currentLoopMode : MILoopMode = MILoopMode.off;
+    var currentLoopMode : AZRepeatMode = AZRepeatMode.off;
     
     @IBAction func playbackControlsLoopButtonPressed(_ sender: NSButton) {
         // Switch loop modes
@@ -178,17 +178,17 @@ class AZMusicPlayerViewController: NSViewController {
                 break;
             
             case .playlist:
-                self.setLoop(mode: .song);
+                self.setLoop(mode: .single);
                 break;
             
-            case .song:
+            case .single:
                 self.setLoop(mode: .off);
                 break;
         }
     }
     
     /// Changes the loop button to match the given mode
-    func displayLoop(mode : MILoopMode) {
+    func displayLoop(mode : AZRepeatMode) {
         // Switch on the mode and act accordingly
         switch(mode) {
             case .off:
@@ -199,7 +199,7 @@ class AZMusicPlayerViewController: NSViewController {
                 playbackControlsLoopButton.image = #imageLiteral(resourceName: "AZLoopPlaylist");
                 break;
             
-            case .song:
+            case .single:
                 playbackControlsLoopButton.image = #imageLiteral(resourceName: "AZLoopSong");
                 break;
         }
@@ -209,12 +209,12 @@ class AZMusicPlayerViewController: NSViewController {
     }
     
     /// Sets the loop mode to the given mode and updates the loop button to match
-    func setLoop(mode : MILoopMode) {
+    func setLoop(mode : AZRepeatMode) {
         // Display the given loop mode
         displayLoop(mode: mode);
         
-        // Update the MPD loop mode
-        self.mpd.setLoopMode(to: currentLoopMode, completionHandler: nil);
+        // Update the repeat mode
+//        self.mpd.setLoopMode(to: currentLoopMode, completionHandler: nil);
     }
     
     /// The favourite song playback control button
@@ -257,39 +257,36 @@ class AZMusicPlayerViewController: NSViewController {
     // Is search open?
     var searchOpen : Bool = false;
     
-    /// The MPD server to use
-    var mpd : MIMPD = MIMPD(address: "127.0.0.1", port: 6600, musicDirectory: "/Volumes/Storage/macOS/Music/");
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         // Style the window
         styleWindow();
         
-        // Connect to the MPD server
-        mpd.connect({ socket in
-            // Display the current MPD info
-            self.displayCurrent();
-            
-            // Set the progress listener
-            self.mpd.socketConnection.progressListener = { progress in
-                self.display(progress: progress);
-            };
-        });
-        
-        // Subscribe to the player, options and playlist events
-        _ = self.mpd.socketConnection.subscribeTo(events: [.player, .options, .playlist], with: { eventType in
-            self.displayCurrent();
-        });
-        
-        // Subscribe to the playlist and player events
-        _ = self.mpd.socketConnection.subscribeTo(events: [.playlist, .player], with: { eventType in
-            // If the playlist is open...
-            if(self.playlistOpen) {
-                // Display the current playlist
-                self.displayCurrentPlaylist();
-            }
-        });
+//        // Connect to the MPD server
+//        mpd.connect({ socket in
+//            // Display the current MPD info
+//            self.displayCurrent();
+//            
+//            // Set the progress listener
+//            self.mpd.socketConnection.progressListener = { progress in
+//                self.display(progress: progress);
+//            };
+//        });
+//        
+//        // Subscribe to the player, options and playlist events
+//        _ = self.mpd.socketConnection.subscribeTo(events: [.player, .options, .playlist], with: { eventType in
+//            self.displayCurrent();
+//        });
+//        
+//        // Subscribe to the playlist and player events
+//        _ = self.mpd.socketConnection.subscribeTo(events: [.playlist, .player], with: { eventType in
+//            // If the playlist is open...
+//            if(self.playlistOpen) {
+//                // Display the current playlist
+//                self.displayCurrentPlaylist();
+//            }
+//        });
     }
     
     override func viewWillAppear() {
@@ -534,41 +531,41 @@ class AZMusicPlayerViewController: NSViewController {
     
     /// Displays all the current info from MPD(song, status, cover, etc.)
     func displayCurrent() {
-        /// Get the current song and status
-        self.mpd.getCurrentSongAndStatus(completionHandler: { currentSong, status in
-            // Display the current song and status
-            self.display(song: currentSong);
-            self.display(status: status);
-        });
+//        /// Get the current song and status
+//        self.mpd.getCurrentSongAndStatus(completionHandler: { currentSong, status in
+//            // Display the current song and status
+//            self.display(song: currentSong);
+//            self.display(status: status);
+//        });
     }
     
     /// Displays the current playlist with the given completion handler, which is passed the displayed playlist
-    func displayCurrentPlaylist(completionHandler : (([MISong]) -> ())? = nil) {
-        self.mpd.getStatus(log: false, completionHandler: { currentStatus in
-            // Display the current playlist
-            self.mpd.getPlaylist(log: true, completionHandler: { playlist in
-                self.playlistViewController?.displayPlaylist(playlist: playlist, currentSongPosition: currentStatus.currentSongPosition, primaryActionHandler: { song in
-                    // Jump to the song
-                    self.mpd.jumpToSongInPlaylist(at: song.position, log: true, completionHandler: nil);
-                }, rightClickHandler: { song, event in
-                    /// The context menu for the right clicked playlist item
-                    let menu : NSMenu = NSMenu();
-                    
-                    // Add the menu items
-                    menu.addItem(withTitle: "Remove from playlist", action: nil, keyEquivalent: "");
-                    menu.addItem(withTitle: "Play", action: nil, keyEquivalent: "");
-                    
-                    // Make sure the context menu will be dark
-                    self.view.appearance = NSAppearance(named: NSAppearanceNameVibrantDark);
-                    
-                    // Display the context menu
-                    NSMenu.popUpContextMenu(menu, with: event, for: self.view);
-                });
-                
-                // Run the completion handler
-                completionHandler?(playlist);
-            });
-        });
+    func displayCurrentPlaylist(completionHandler : (([AZSong]) -> ())? = nil) {
+//        self.mpd.getStatus(log: false, completionHandler: { currentStatus in
+//            // Display the current playlist
+//            self.mpd.getPlaylist(log: true, completionHandler: { playlist in
+//                self.playlistViewController?.displayPlaylist(playlist: playlist, currentSongPosition: currentStatus.currentSongPosition, primaryActionHandler: { song in
+//                    // Jump to the song
+//                    self.mpd.jumpToSongInPlaylist(at: song.position, log: true, completionHandler: nil);
+//                }, rightClickHandler: { song, event in
+//                    /// The context menu for the right clicked playlist item
+//                    let menu : NSMenu = NSMenu();
+//                    
+//                    // Add the menu items
+//                    menu.addItem(withTitle: "Remove from playlist", action: nil, keyEquivalent: "");
+//                    menu.addItem(withTitle: "Play", action: nil, keyEquivalent: "");
+//                    
+//                    // Make sure the context menu will be dark
+//                    self.view.appearance = NSAppearance(named: NSAppearanceNameVibrantDark);
+//                    
+//                    // Display the context menu
+//                    NSMenu.popUpContextMenu(menu, with: event, for: self.view);
+//                });
+//                
+//                // Run the completion handler
+//                completionHandler?(playlist);
+//            });
+//        });
     }
     
     // The last displayed progress by display(progress:)
@@ -585,31 +582,31 @@ class AZMusicPlayerViewController: NSViewController {
     }
     
     /// The last displayed status by display(status:)
-    var lastDisplayedStatus : MIStatus? = nil;
+    var lastDisplayedStatus : AZStatus? = nil;
     
-    /// Displays the values from the given MIStatus object
-    func display(status : MIStatus) {
+    /// Displays the values from the given status object
+    func display(status : AZStatus) {
         // Update the random and loop buttons
-        playbackControlsRandomButton.state = (status.randomMode) ? 1 : 0;
+        playbackControlsRandomButton.state = (status.random) ? 1 : 0;
 //        playbackControlsRandomButton.image = (status.randomMode) ? #imageLiteral(resourceName: "AZRandomOn") : #imageLiteral(resourceName: "AZRandomOff");
-        self.displayLoop(mode: status.getLoopMode);
+        self.displayLoop(mode: status.repeatMode);
         
         // Display the progress
         self.display(progress: Int(status.timeElapsed));
         
         // Update the pause/play button
-        playbackControlsPausePlayButton.state = (status.playingState == .play) ? 0 : 1;
-        playbackControlsPausePlayButton.image = (status.playingState == .play) ? #imageLiteral(resourceName: "AZPause") : #imageLiteral(resourceName: "AZPlay");
+        playbackControlsPausePlayButton.state = (status.playingState == .playing) ? 0 : 1;
+        playbackControlsPausePlayButton.image = (status.playingState == .playing) ? #imageLiteral(resourceName: "AZPause") : #imageLiteral(resourceName: "AZPlay");
         
         // Set lastDisplayedStatus
         self.lastDisplayedStatus = status;
     }
     
     /// The last displayed song by display(song:)
-    var lastDisplayedSong : MISong? = nil;
+    var lastDisplayedSong : AZSong? = nil;
     
     /// Displays the values from the given MISong object
-    func display(song : MISong) {
+    func display(song : AZSong) {
         // Display the cover image
         display(coverImage: song.coverImage);
         
@@ -623,11 +620,8 @@ class AZMusicPlayerViewController: NSViewController {
         
         // If lastDisplayedSong isn't nil...
         if(lastDisplayedSong != nil) {
-            // If the last displayed song's path isn't the same as the given song...
-            if(song.file != lastDisplayedSong!.file) {
-                // Display the song's cover image
-                display(coverImage: song.coverImage);
-            }
+            // Display the song's cover image
+            display(coverImage: song.coverImage);
         }
         
         // Set lastDisplayedSong

@@ -22,13 +22,13 @@ class AZPlaylistTableCellView: NSTableCellView {
     @IBOutlet weak var songLengthLabel: NSTextField!
     
     /// The song this cell represents
-    var representedSong : MISong? = nil;
+    var representedSong : AZSong? = nil;
     
     /// The handler for when this cell is double clicked or enter is hit whole it's selected, passed the song from the cell that was clicked
-    var primaryActionHandler : ((MISong) -> ())? = nil;
+    var primaryActionHandler : ((AZSong) -> ())? = nil;
     
     /// The handler for when this cell is right clicked, passed the song and event from the cell that was clicked
-    var rightClickHandler : ((MISong, NSEvent) -> ())? = nil;
+    var rightClickHandler : ((AZSong, NSEvent) -> ())? = nil;
     
     /// The playlist view controller for the view this cell is in(optional)
     var playlistViewController : AZPlaylistViewController? = nil;
@@ -59,17 +59,17 @@ class AZPlaylistTableCellView: NSTableCellView {
     }
     
     /// Displays the data from a given MISong in this cell
-    func display(song : MISong) {
+    func display(song : AZSong) {
         // Set representedSong
         self.representedSong = song;
         
         // Update the labels
-        songPositionLabel.stringValue = "\(song.relativePosition)";
+//        songPositionLabel.stringValue = "\(song.relativePosition)";
         songTitleLabel.stringValue = song.displayTitle;
         songArtistLabel.stringValue = "by \(song.displayArtist)";
         songLengthLabel.stringValue = AZMusicUtilities.secondsToDisplayTime(song.length);
         
         // Update the alpha value based on if the song is behind the current song
-        self.alphaValue = (song.relativePosition >= 0) ? 1 : 0.5;
+//        self.alphaValue = (song.relativePosition >= 0) ? 1 : 0.5;
     }
 }

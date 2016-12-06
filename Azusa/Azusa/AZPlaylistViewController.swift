@@ -13,12 +13,12 @@ class AZPlaylistViewController: NSViewController {
     @IBOutlet weak var playlistSongCountLabel: NSTextField!
     
     /// The current playlist items being displayed in this playlist view
-    var currentPlaylistItems : [MISong] {
+    var currentPlaylistItems : [AZSong] {
         return _currentPlaylistItems;
     }
     
     /// The actual current playlist items
-    private var _currentPlaylistItems : [MISong] = [];
+    private var _currentPlaylistItems : [AZSong] = [];
     
     /// The current song position relative to _currentPlaylistItems
     var currentSongPosition : Int = -1;
@@ -30,10 +30,10 @@ class AZPlaylistViewController: NSViewController {
     @IBOutlet weak var playlistTableViewScrollView: NSScrollView!
     
     /// The last set cell primary action handler from displayPlaylist
-    var lastSetPrimaryActionHandler : ((MISong) -> ())? = nil;
+    var lastSetPrimaryActionHandler : ((AZSong) -> ())? = nil;
     
     /// The last set cell right click handler from displayPlaylist
-    var lastSetRightClickHandler : ((MISong, NSEvent) -> ())? = nil;
+    var lastSetRightClickHandler : ((AZSong, NSEvent) -> ())? = nil;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,8 +65,8 @@ class AZPlaylistViewController: NSViewController {
     /// Should the next call of displayPlaylist maintain it's scroll position?
     var restoreScrollOnPlaylistDisplay : Bool = false;
     
-    /// Displays the given array of MISongs, with the given double click and right click handlers, and the passed current song position is used for modifying the style based on current song position
-    func displayPlaylist(playlist : [MISong], currentSongPosition : Int = 0, primaryActionHandler : ((MISong) -> ())? = nil, rightClickHandler : ((MISong, NSEvent) -> ())? = nil) {
+    /// Displays the given array of songs, with the given double click and right click handlers(which are called with the song that called the event, and with right click also the mouse event), and the passed current song position is used for modifying the style based on current song position
+    func displayPlaylist(playlist : [AZSong], currentSongPosition : Int = 0, primaryActionHandler : ((AZSong) -> ())? = nil, rightClickHandler : ((AZSong, NSEvent) -> ())? = nil) {
         AZLogger.log("AZPlaylistViewController: Displaying playlist with songs \(playlist)(current song is #\(currentSongPosition))");
         
         // Store the current scroll point if we said to restore it
@@ -147,10 +147,10 @@ extension AZPlaylistViewController: NSTableViewDataSource {
             let playlistItemCellView : AZPlaylistTableCellView = cellView as! AZPlaylistTableCellView;
             
             /// The data for this cell
-            let cellData : MISong = currentPlaylistItems[row];
+            let cellData : AZSong = currentPlaylistItems[row];
             
             // Update the song's relative position
-            cellData.relativePosition =  cellData.position - self.currentSongPosition;
+//            cellData.relativePosition =  cellData.position - self.currentSongPosition;
             
             // Set the cell's right and primary action handlers
             playlistItemCellView.rightClickHandler = self.lastSetRightClickHandler;
