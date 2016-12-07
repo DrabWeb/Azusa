@@ -30,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationWillFinishLaunching(_ notification: Notification) {
         // Set the logging level
-        AZLogger.level = .regular;
+        AZLogger.level = .full;
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
