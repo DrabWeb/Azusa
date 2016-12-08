@@ -38,8 +38,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let mpd : MIMPD = MIMPD(address: "127.0.0.1", port: 6600);
         
         AZLogger.log(mpd.connect());
-        AZLogger.log(mpd.getStats().debugDescription);
-        AZLogger.log(mpd.getPlayerStatus()!.debugDescription);
+        AZLogger.log(mpd.getStats() ?? MIMPDStats());
+        AZLogger.log(mpd.getPlayerStatus() ?? MIMPDPlayerStatus());
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

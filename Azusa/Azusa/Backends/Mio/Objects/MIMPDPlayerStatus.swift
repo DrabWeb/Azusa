@@ -8,7 +8,7 @@
 import Foundation
 
 /// An object to represent the status of an MPD server(current song, volume, random, etc.)
-class MIMPDPlayerStatus : AZPlayerStatus {
+class MIMPDPlayerStatus: AZPlayerStatus {
     
     // MARK: - Properties
     
@@ -35,7 +35,7 @@ class MIMPDPlayerStatus : AZPlayerStatus {
     
     var timeElapsed : Int = 0;
     
-    var debugDescription: String {
+    var description : String {
         var playingStateString : String = "";
         
         switch(self.playingState) {
@@ -50,7 +50,7 @@ class MIMPDPlayerStatus : AZPlayerStatus {
                 break;
         }
         
-        return "\(self): [\(playingStateString)] #\(currentSongPosition)/\(queueLength) \(AZMusicUtilities.secondsToDisplayTime(self.timeElapsed))/\(AZMusicUtilities.secondsToDisplayTime(self.currentSong.duration)), next up #\(nextSongPosition)/\(queueLength)\n" +
+        return "MIMPDPlayerStatus: [\(playingStateString)] #\(currentSongPosition)/\(queueLength) \(AZMusicUtilities.secondsToDisplayTime(self.timeElapsed))/\(AZMusicUtilities.secondsToDisplayTime(self.currentSong.duration)), next up #\(nextSongPosition)/\(queueLength)\n" +
                "volume: \(self.volume)%   repeat: \(self.repeatOn ? "on" : "off")   random: \(self.randomOn ? "on" : "off")   single: \(self.singleOn ? "on" : "off")   consume: \(self.consumeOn ? "on" : "off")";
     }
 }

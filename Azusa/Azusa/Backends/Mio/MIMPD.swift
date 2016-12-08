@@ -88,7 +88,7 @@ class MIMPD {
     /// Gets the stats of this MPD server
     ///
     /// - Returns: An `MIMPDStats` object that has the current stats of this MPD server
-    func getStats() -> MIMPDStats {
+    func getStats() -> MIMPDStats? {
         // If `connection isn't nil`...
         if(self.connection != nil) {
             /// The stats object for `connection`
@@ -136,8 +136,8 @@ class MIMPD {
         else {
             AZLogger.log("MIMPD: Cannot retrieve stats, connection does not exist(run connect first)");
             
-            // Return an empty stats object
-            return MIMPDStats();
+            // Return nil
+            return nil;
         }
     }
     

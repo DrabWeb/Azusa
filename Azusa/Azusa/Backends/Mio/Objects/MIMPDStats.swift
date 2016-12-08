@@ -8,7 +8,7 @@
 import Foundation
 
 /// Represents the stats of an MPD server
-class MIMPDStats {
+class MIMPDStats: CustomStringConvertible {
     
     // MARK: - Properties
     
@@ -33,8 +33,8 @@ class MIMPDStats {
     /// The date of the last database update, or 0 if unknown
     var lastMpdDatabaseUpdate : NSDate = NSDate();
     
-    var debugDescription : String {
-        return "\(self.albumCount) albums, " +
+    var description : String {
+        return "MIMPDStats: \(self.albumCount) albums, " +
             "\(self.artistCount) artists, " +
             "\(songCount) songs, " +
             "database play time: \(AZMusicUtilities.secondsToDisplayTime(self.databasePlayTime)), " +

@@ -15,7 +15,7 @@ enum AZPlayingState : Int {
 }
 
 /// The protocol for a player status object used by Azusa
-protocol AZPlayerStatus {
+protocol AZPlayerStatus: CustomStringConvertible {
     
     // MARK: - Properties
     
@@ -48,7 +48,4 @@ protocol AZPlayerStatus {
     
     /// The current time the user is in to the current song(in seconds)
     var timeElapsed : Int { get set };
-    
-    /// The description of this song for debugging purposes, like logging
-    var debugDescription : String { get };
 }

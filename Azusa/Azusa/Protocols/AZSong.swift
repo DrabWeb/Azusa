@@ -9,7 +9,7 @@ import Foundation
 import AppKit
 
 /// The protocol for a song used by Azusa
-protocol AZSong {
+protocol AZSong: CustomStringConvertible {
     
     // MARK: - Properties
     
@@ -51,9 +51,6 @@ protocol AZSong {
     
     /// This song's position in the queue(if it's in the queue)
     var position : Int { get set };
-    
-    /// The description of this song for debugging purposes, like logging
-    var debugDescription : String { get };
     
     /// Returns the display title for this song
     var displayTitle : String { get };

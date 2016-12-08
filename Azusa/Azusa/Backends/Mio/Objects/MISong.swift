@@ -8,7 +8,7 @@
 import Foundation
 import AppKit
 
-class MISong : AZSong {
+class MISong: AZSong {
     // MARK: - Properties
     
     /// The MPD URI of this song
@@ -43,9 +43,8 @@ class MISong : AZSong {
     
     var position : Int = 0;
     
-    /// The debug description for this song
-    var debugDescription : String {
-        return "\(self): \(self.displayTitle) by \(self.displayArtist)(\(AZMusicUtilities.secondsToDisplayTime(self.duration))), in \(self.displayAlbum)";
+    var description: String {
+        return "MISong<\(self.id) - \(self.uri)>: \(self.displayTitle) by \(self.displayArtist)(\(AZMusicUtilities.secondsToDisplayTime(self.duration))), in \(self.displayAlbum)";
     }
     
     var displayTitle : String {
