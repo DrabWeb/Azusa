@@ -39,6 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         AZLogger.log(mpd.connect());
         AZLogger.log(mpd.getStats().debugDescription);
+        AZLogger.log(mpd.getPlayerStatus()!.debugDescription);
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

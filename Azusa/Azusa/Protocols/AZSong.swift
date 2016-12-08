@@ -46,11 +46,14 @@ protocol AZSong {
     /// The total count of discs for the album this song is on(if it's in a multi-disc album)
     var discCount : Int { get set };
     
-    /// The length of this song in seconds
-    var length : Int { get set };
+    /// The duration of this song in seconds
+    var duration : Int { get set };
     
     /// This song's position in the queue(if it's in the queue)
     var position : Int { get set };
+    
+    /// The description of this song for debugging purposes, like logging
+    var debugDescription : String { get };
     
     /// Returns the display title for this song
     var displayTitle : String { get };

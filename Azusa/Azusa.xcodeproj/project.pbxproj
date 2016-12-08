@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE5A63371DF9135D002301F6 /* MIMPDPlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A63361DF9135D002301F6 /* MIMPDPlayerStatus.swift */; };
+		AE5A63391DF91408002301F6 /* MISong.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A63381DF91408002301F6 /* MISong.swift */; };
 		AE602EF41DF8E8E3002225CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602EF31DF8E8E3002225CB /* AppDelegate.swift */; };
 		AE602EF61DF8E8E3002225CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602EF51DF8E8E3002225CB /* ViewController.swift */; };
 		AE602EF81DF8E8E3002225CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE602EF71DF8E8E3002225CB /* Assets.xcassets */; };
@@ -21,7 +23,7 @@
 		AE602FD01DF906EC002225CB /* MIMPDStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FCF1DF906EC002225CB /* MIMPDStats.swift */; };
 		AE602FD71DF90818002225CB /* AZMusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FD31DF90818002225CB /* AZMusicPlayer.swift */; };
 		AE602FD81DF90818002225CB /* AZSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FD41DF90818002225CB /* AZSong.swift */; };
-		AE602FD91DF90818002225CB /* AZStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FD51DF90818002225CB /* AZStatus.swift */; };
+		AE602FD91DF90818002225CB /* AZPlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FD51DF90818002225CB /* AZPlayerStatus.swift */; };
 		AE602FDC1DF90894002225CB /* AZEventSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FDB1DF90894002225CB /* AZEventSubscriber.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE5A63361DF9135D002301F6 /* MIMPDPlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMPDPlayerStatus.swift; sourceTree = "<group>"; };
+		AE5A63381DF91408002301F6 /* MISong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MISong.swift; sourceTree = "<group>"; };
 		AE602EF01DF8E8E3002225CB /* Azusa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Azusa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE602EF31DF8E8E3002225CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE602EF51DF8E8E3002225CB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,7 +115,7 @@
 		AE602FCF1DF906EC002225CB /* MIMPDStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMPDStats.swift; sourceTree = "<group>"; };
 		AE602FD31DF90818002225CB /* AZMusicPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayer.swift; sourceTree = "<group>"; };
 		AE602FD41DF90818002225CB /* AZSong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZSong.swift; sourceTree = "<group>"; };
-		AE602FD51DF90818002225CB /* AZStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZStatus.swift; sourceTree = "<group>"; };
+		AE602FD51DF90818002225CB /* AZPlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZPlayerStatus.swift; sourceTree = "<group>"; };
 		AE602FDB1DF90894002225CB /* AZEventSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZEventSubscriber.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -299,6 +303,8 @@
 			isa = PBXGroup;
 			children = (
 				AE602FCF1DF906EC002225CB /* MIMPDStats.swift */,
+				AE5A63361DF9135D002301F6 /* MIMPDPlayerStatus.swift */,
+				AE5A63381DF91408002301F6 /* MISong.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -308,7 +314,7 @@
 			children = (
 				AE602FD31DF90818002225CB /* AZMusicPlayer.swift */,
 				AE602FD41DF90818002225CB /* AZSong.swift */,
-				AE602FD51DF90818002225CB /* AZStatus.swift */,
+				AE602FD51DF90818002225CB /* AZPlayerStatus.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -455,10 +461,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE602FD91DF90818002225CB /* AZStatus.swift in Sources */,
+				AE602FD91DF90818002225CB /* AZPlayerStatus.swift in Sources */,
 				AE602FDC1DF90894002225CB /* AZEventSubscriber.swift in Sources */,
 				AE602FCD1DF90289002225CB /* AZMusicUtilities.swift in Sources */,
 				AE602FC81DF8F7D6002225CB /* AZLogger.swift in Sources */,
+				AE5A63391DF91408002301F6 /* MISong.swift in Sources */,
+				AE5A63371DF9135D002301F6 /* MIMPDPlayerStatus.swift in Sources */,
 				AE602EF61DF8E8E3002225CB /* ViewController.swift in Sources */,
 				AE602FD01DF906EC002225CB /* MIMPDStats.swift in Sources */,
 				AE602EF41DF8E8E3002225CB /* AppDelegate.swift in Sources */,

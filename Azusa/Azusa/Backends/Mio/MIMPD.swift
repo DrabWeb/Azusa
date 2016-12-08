@@ -141,8 +141,148 @@ class MIMPD {
         }
     }
     
+    /// Gets the current player status of this MPD server
+    ///
+    /// - Returns: An `MIMPDPlayerStatus` object representing the current status of this MPD server(nil if it fails)
+    func getPlayerStatus() -> MIMPDPlayerStatus? {
+        /// The player status object to return
+        var status : MIMPDPlayerStatus? = nil;
+        
+        // If the connection isn't nil...
+        if(connection != nil) {
+            // Create `status`
+            status = MIMPDPlayerStatus();
+            
+            /// The song from the current player status
+            let song = mpd_run_current_song(self.connection!);
+            
+            // If `song` isn't nil...
+            if(song != nil) {
+                // Set `status`'s current song to the `MISong` of `song`
+                status!.currentSong = self.songFromMpd(song: song!);
+                
+                /// The MPD status object from `connection`
+                let mpdStatus = mpd_run_status(self.connection!);
+                
+                // Set all the other status values
+                status!.volume = Int(mpd_status_get_volume(mpdStatus));
+                status!.randomOn = mpd_status_get_random(mpdStatus);
+                status!.repeatOn = mpd_status_get_repeat(mpdStatus);
+                status!.singleOn = mpd_status_get_single(mpdStatus);
+                status!.consumeOn = mpd_status_get_consume(mpdStatus);
+                status!.queueLength = Int(mpd_status_get_queue_length(mpdStatus));
+                status!.currentSongPosition = Int(mpd_status_get_song_pos(mpdStatus));
+                status!.nextSongPosition = Int(mpd_status_get_next_song_pos(mpdStatus));
+                status!.timeElapsed = Int(mpd_status_get_elapsed_time(mpdStatus));
+                
+                switch(mpd_status_get_state(mpdStatus)) {
+                    case MPD_STATE_PLAY:
+                        status!.playingState = .playing;
+                        break;
+                    
+                    case MPD_STATE_PAUSE:
+                        status!.playingState = .paused;
+                        break;
+                    
+                    case MPD_STATE_STOP, MPD_STATE_UNKNOWN:
+                        status!.playingState = .stopped;
+                        break;
+                    
+                    default:
+                        status!.playingState = .stopped;
+                        break;
+                }
+            }
+            // If `song` is nil...
+            else {
+                // Return nil
+                return nil;
+            }
+        }
+        // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot retrieve status, connection does not exist(run connect first)");
+        }
+        
+        // Return the player status object
+        return status;
+    }
+    
     
     // MARK: - Utilities
+    
+    /// Returns an `MISong` from an MPD song
+    ///
+    /// - Parameter song: The MPD song to get the `MISong` of
+    /// - Returns: The song from `song`
+    func songFromMpd(song: OpaquePointer) -> MISong {
+        /// The song to return
+        let returnSong : MISong = MISong();
+        
+        // Load all the values
+        
+        /// The URI object of `song`
+        let uriObject = mpd_song_get_uri(song);
+        
+        // If `uriObject` isn't nil...
+        if(uriObject != nil) {
+            /// The data of `uriObject`
+            let uriData = Data(bytesNoCopy: UnsafeMutableRawPointer(mutating: uriObject!), count: Int(strlen(uriObject)), deallocator: .none);
+            
+            // Set `returnSong`'s URI to the string from `uriData`
+            returnSong.uri = String(data: uriData, encoding: .utf8) ?? "";
+        }
+        
+        returnSong.id = Int(mpd_song_get_id(song));
+        returnSong.artist = self.tagFrom(song: song, tag: MPD_TAG_ARTIST) ?? "";
+        returnSong.album = self.tagFrom(song: song, tag: MPD_TAG_ALBUM) ?? "";
+        returnSong.albumArtist = self.tagFrom(song: song, tag: MPD_TAG_ALBUM_ARTIST) ?? "";
+        returnSong.title = self.tagFrom(song: song, tag: MPD_TAG_TITLE) ?? "";
+        returnSong.track = Int(NSString(string: self.tagFrom(song: song, tag: MPD_TAG_TRACK) ?? "").intValue);
+        returnSong.genre = self.tagFrom(song: song, tag: MPD_TAG_GENRE) ?? "";
+        returnSong.year = Int(NSString(string: self.tagFrom(song: song, tag: MPD_TAG_DATE) ?? "").intValue);
+        returnSong.composer = self.tagFrom(song: song, tag: MPD_TAG_COMPOSER) ?? "";
+        returnSong.performer = self.tagFrom(song: song, tag: MPD_TAG_PERFORMER) ?? "";
+        
+        /// The string from the output of the disc metadata, either blank or "#/#"
+        let discString = self.tagFrom(song: song, tag: MPD_TAG_DISC) ?? "";
+        
+        if(discString != "" && discString.contains("/")) {
+            returnSong.disc = Int(NSString(string: discString.components(separatedBy: "/").first!).intValue);
+            returnSong.discCount = Int(NSString(string: discString.components(separatedBy: "/").last!).intValue);
+
+        }
+        returnSong.duration = Int(mpd_song_get_duration(song));
+        returnSong.position = Int(mpd_song_get_pos(song));
+        
+        // Return the song
+        return returnSong;
+    }
+    
+    /// Gets the value of the given tag for the given MPD song
+    ///
+    /// - Parameters:
+    ///   - song: The song to get the tag value from
+    ///   - tag: The tag to get the value of
+    /// - Returns: The string value of the given tag from the given song, nil if the tag was nil
+    func tagFrom(song : OpaquePointer, tag : mpd_tag_type) -> String? {
+        /// The MPD tag object of `tag` from `song`
+        let tagObject = mpd_song_get_tag(song, tag, 0);
+        
+        // If `tagObject` isn't nil...
+        if(tagObject != nil) {
+            /// The data from `tagObject`
+            let tagData = Data(bytesNoCopy: UnsafeMutableRawPointer(mutating: tagObject!), count: Int(strlen(tagObject)), deallocator: .none);
+            
+            // Return the string from `tagData`
+            return String(data: tagData, encoding: .utf8);
+        }
+        // If `tagObject` is nil...
+        else {
+            // Return nil
+            return nil;
+        }
+    }
     
     /// Returns the error message for the given MPD connection
     ///

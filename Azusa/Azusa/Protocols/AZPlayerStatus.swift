@@ -1,5 +1,5 @@
 //
-//  AZStatus.swift
+//  AZPlayerStatus.swift
 //  Azusa
 //
 //  Created by Ushio on 12/5/16.
@@ -14,17 +14,13 @@ enum AZPlayingState : Int {
     case stopped = 2
 }
 
-/// The different looping modes that the music player can be in
-enum AZRepeatMode : Int {
-    case off = 0
-    case playlist = 1
-    case single = 2
-}
-
-/// The protocol for a status object used by Azusa
-protocol AZStatus {
+/// The protocol for a player status object used by Azusa
+protocol AZPlayerStatus {
     
     // MARK: - Properties
+    
+    /// The current playing song
+    var currentSong : AZSong { get set };
     
     /// The current volume(0 to 100)
     var volume : Int { get set };
@@ -53,6 +49,6 @@ protocol AZStatus {
     /// The current time the user is in to the current song(in seconds)
     var timeElapsed : Int { get set };
     
-    /// The current repeat mode
-    var repeatMode : AZRepeatMode { get };
+    /// The description of this song for debugging purposes, like logging
+    var debugDescription : String { get };
 }
