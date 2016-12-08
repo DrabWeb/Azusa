@@ -202,8 +202,29 @@ class MIMPD {
     ///
     /// - Returns: The current playing song as an MISong(nil if there is none)
     func getCurrentSong() -> MISong? {
-        // Return the MISong of the current song
-        return self.songFromMpd(song: mpd_run_current_song(self.connection!));
+        // If the connection isn't nil...
+        if(connection != nil) {
+            /// The MPD song object for the current song
+            let currentSongObject = mpd_run_current_song(self.connection!);
+            
+            // If `currentSongObject` isn't nil...
+            if(currentSongObject != nil) {
+                // Return the `MISong` from `currentSongObject`
+                return self.songFromMpd(song: currentSongObject!);
+            }
+            // If `currentSongObject` is nil...
+            else {
+                // Return nil
+                return nil;
+            }
+        }
+        // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot retrieve current song, connection does not exist(run connect first)");
+            
+            // Return nil
+            return nil;
+        }
     }
     
     
