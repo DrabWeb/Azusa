@@ -7,342 +7,250 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2AD5E763B10F7F0B4E61684E /* Pods_AzusaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F92BD759DAB962EFD700C981 /* Pods_AzusaUITests.framework */; };
-		53972DEAC0433850D6F03B99 /* Pods_AzusaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2678CC813C178D98EA2A33CE /* Pods_AzusaTests.framework */; };
-		778AB413AB8D92C59EBA5D4C /* Pods_Azusa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B738081D445F81D5FED696B /* Pods_Azusa.framework */; };
-		AE11B52C1DE66C56008B2827 /* AZProgressSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE11B52B1DE66C56008B2827 /* AZProgressSliderCell.swift */; };
-		AE12BE361DE57B2600BAF030 /* AZGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE12BE351DE57B2600BAF030 /* AZGradientView.swift */; };
-		AE1EBFA31DF656280062D8D6 /* MISong.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1EBFA21DF656280062D8D6 /* MISong.swift */; };
-		AE1EBFA51DF656340062D8D6 /* MIStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1EBFA41DF656340062D8D6 /* MIStatus.swift */; };
-		AE1EBFA91DF666DF0062D8D6 /* MIMPD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1EBFA81DF666DF0062D8D6 /* MIMPD.swift */; };
-		AE1EBFAD1DF6786D0062D8D6 /* MITCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1EBFAC1DF6786D0062D8D6 /* MITCP.swift */; };
-		AE25C3221DE645D100DE4A97 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = AE25C3211DE645D100DE4A97 /* Fonts */; };
-		AE25C3241DE64EA200DE4A97 /* AZColoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE25C3231DE64EA200DE4A97 /* AZColoredView.swift */; };
-		AE2624411DF6313D0013C4E1 /* AZLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2624401DF6313D0013C4E1 /* AZLogger.swift */; };
-		AE2624461DF638E80013C4E1 /* AZMusicUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2624451DF638E80013C4E1 /* AZMusicUtilities.swift */; };
-		AE423B751DEA479000777832 /* AZMusicPlayerTitlebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE423B741DEA479000777832 /* AZMusicPlayerTitlebarView.swift */; };
-		AE4820E51DE76B7B00F868CE /* AZPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4820E41DE76B7B00F868CE /* AZPreferences.swift */; };
-		AE4820E61DE7798900F868CE /* AZMusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E22301DE57102003DBC94 /* AZMusicPlayerViewController.swift */; };
-		AE4820ED1DE7934B00F868CE /* AZExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4820EC1DE7934B00F868CE /* AZExtensions.swift */; };
-		AE66A1AF1DF69D8C00773265 /* AZEventSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE66A1AB1DF69D8C00773265 /* AZEventSubscriber.swift */; };
-		AE66A1B01DF69D8C00773265 /* AZMusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE66A1AC1DF69D8C00773265 /* AZMusicPlayer.swift */; };
-		AE66A1B11DF69D8C00773265 /* AZSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE66A1AD1DF69D8C00773265 /* AZSong.swift */; };
-		AE66A1B21DF69D8C00773265 /* AZStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE66A1AE1DF69D8C00773265 /* AZStatus.swift */; };
-		AE6E222F1DE56E79003DBC94 /* AZAspectFillImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E222E1DE56E79003DBC94 /* AZAspectFillImageView.swift */; };
-		AE6E22331DE57711003DBC94 /* AZRoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6E22321DE57711003DBC94 /* AZRoundedCornersView.swift */; };
-		AE7D05C31DED03CF00927F42 /* AZPlaylistTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D05C21DED03CF00927F42 /* AZPlaylistTableView.swift */; };
-		AE8A65901DE75D74002DC54A /* AZEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8A658F1DE75D74002DC54A /* AZEnums.swift */; };
-		AEBE704B1DF79C3C008D5A04 /* MITCPCommandQueueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBE704A1DF79C3C008D5A04 /* MITCPCommandQueueItem.swift */; };
-		AEC7E1BF1DE40F3600E1EA3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1BE1DE40F3600E1EA3A /* AppDelegate.swift */; };
-		AEC7E1C31DE40F3600E1EA3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEC7E1C21DE40F3600E1EA3A /* Assets.xcassets */; };
-		AEC7E1C61DE40F3600E1EA3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEC7E1C41DE40F3600E1EA3A /* Main.storyboard */; };
-		AEC7E1D11DE40F3700E1EA3A /* AzusaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1D01DE40F3700E1EA3A /* AzusaTests.swift */; };
-		AEC7E1DC1DE40F3700E1EA3A /* AzusaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E1DB1DE40F3700E1EA3A /* AzusaUITests.swift */; };
-		AEE37BCB1DEA9BC9002930A3 /* AZPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE37BCA1DEA9BC9002930A3 /* AZPlaylistViewController.swift */; };
-		AEE37BCF1DEA9CDA002930A3 /* AZSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE37BCE1DEA9CDA002930A3 /* AZSearchViewController.swift */; };
-		AEE37BD21DEAAD50002930A3 /* AZPlaylistTableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE37BD11DEAAD50002930A3 /* AZPlaylistTableRowView.swift */; };
-		AEE37BD41DEAB42C002930A3 /* AZPlaylistTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE37BD31DEAB42C002930A3 /* AZPlaylistTableCellView.swift */; };
+		AE602EF41DF8E8E3002225CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602EF31DF8E8E3002225CB /* AppDelegate.swift */; };
+		AE602EF61DF8E8E3002225CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602EF51DF8E8E3002225CB /* ViewController.swift */; };
+		AE602EF81DF8E8E3002225CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE602EF71DF8E8E3002225CB /* Assets.xcassets */; };
+		AE602EFB1DF8E8E3002225CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE602EF91DF8E8E3002225CB /* Main.storyboard */; };
+		AE602F061DF8E8E3002225CB /* AzusaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602F051DF8E8E3002225CB /* AzusaTests.swift */; };
+		AE602F111DF8E8E3002225CB /* AzusaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602F101DF8E8E3002225CB /* AzusaUITests.swift */; };
+		AE602FC01DF8EB26002225CB /* libmpdclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE602FA11DF8EB26002225CB /* libmpdclient.a */; };
+		AE602FC11DF8EB26002225CB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = AE602FA21DF8EB26002225CB /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		AEC7E1CD1DE40F3700E1EA3A /* PBXContainerItemProxy */ = {
+		AE602F021DF8E8E3002225CB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = AEC7E1B31DE40F3600E1EA3A /* Project object */;
+			containerPortal = AE602EE81DF8E8E3002225CB /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = AEC7E1BA1DE40F3600E1EA3A;
+			remoteGlobalIDString = AE602EEF1DF8E8E3002225CB;
 			remoteInfo = Azusa;
 		};
-		AEC7E1D81DE40F3700E1EA3A /* PBXContainerItemProxy */ = {
+		AE602F0D1DF8E8E3002225CB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = AEC7E1B31DE40F3600E1EA3A /* Project object */;
+			containerPortal = AE602EE81DF8E8E3002225CB /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = AEC7E1BA1DE40F3600E1EA3A;
+			remoteGlobalIDString = AE602EEF1DF8E8E3002225CB;
 			remoteInfo = Azusa;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1092E6258CF331260EE48436 /* Pods-AzusaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaTests/Pods-AzusaTests.debug.xcconfig"; sourceTree = "<group>"; };
-		2678CC813C178D98EA2A33CE /* Pods_AzusaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AzusaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B738081D445F81D5FED696B /* Pods_Azusa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Azusa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE11B52B1DE66C56008B2827 /* AZProgressSliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZProgressSliderCell.swift; sourceTree = "<group>"; };
-		AE12BE351DE57B2600BAF030 /* AZGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZGradientView.swift; sourceTree = "<group>"; };
-		AE1EBFA21DF656280062D8D6 /* MISong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MISong.swift; path = Libraries/Mio/MISong.swift; sourceTree = "<group>"; };
-		AE1EBFA41DF656340062D8D6 /* MIStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MIStatus.swift; path = Libraries/Mio/MIStatus.swift; sourceTree = "<group>"; };
-		AE1EBFA81DF666DF0062D8D6 /* MIMPD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MIMPD.swift; path = Libraries/Mio/MIMPD.swift; sourceTree = "<group>"; };
-		AE1EBFAC1DF6786D0062D8D6 /* MITCP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MITCP.swift; path = Libraries/Mio/MITCP.swift; sourceTree = "<group>"; };
-		AE25C3211DE645D100DE4A97 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = Azusa/Resources/Fonts; sourceTree = "<group>"; };
-		AE25C3231DE64EA200DE4A97 /* AZColoredView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZColoredView.swift; sourceTree = "<group>"; };
-		AE2624401DF6313D0013C4E1 /* AZLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZLogger.swift; sourceTree = "<group>"; };
-		AE2624451DF638E80013C4E1 /* AZMusicUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicUtilities.swift; sourceTree = "<group>"; };
-		AE423B741DEA479000777832 /* AZMusicPlayerTitlebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerTitlebarView.swift; sourceTree = "<group>"; };
-		AE4820E41DE76B7B00F868CE /* AZPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZPreferences.swift; sourceTree = "<group>"; };
-		AE4820EC1DE7934B00F868CE /* AZExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZExtensions.swift; sourceTree = "<group>"; };
-		AE66A1AB1DF69D8C00773265 /* AZEventSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AZEventSubscriber.swift; path = "Music Player/AZEventSubscriber.swift"; sourceTree = "<group>"; };
-		AE66A1AC1DF69D8C00773265 /* AZMusicPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AZMusicPlayer.swift; path = "Music Player/AZMusicPlayer.swift"; sourceTree = "<group>"; };
-		AE66A1AD1DF69D8C00773265 /* AZSong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AZSong.swift; path = "Music Player/AZSong.swift"; sourceTree = "<group>"; };
-		AE66A1AE1DF69D8C00773265 /* AZStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AZStatus.swift; path = "Music Player/AZStatus.swift"; sourceTree = "<group>"; };
-		AE6E222E1DE56E79003DBC94 /* AZAspectFillImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZAspectFillImageView.swift; sourceTree = "<group>"; };
-		AE6E22301DE57102003DBC94 /* AZMusicPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerViewController.swift; sourceTree = "<group>"; };
-		AE6E22321DE57711003DBC94 /* AZRoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZRoundedCornersView.swift; sourceTree = "<group>"; };
-		AE7D05C21DED03CF00927F42 /* AZPlaylistTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZPlaylistTableView.swift; sourceTree = "<group>"; };
-		AE8A658F1DE75D74002DC54A /* AZEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZEnums.swift; sourceTree = "<group>"; };
-		AEBE704A1DF79C3C008D5A04 /* MITCPCommandQueueItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MITCPCommandQueueItem.swift; path = Libraries/Mio/MITCPCommandQueueItem.swift; sourceTree = "<group>"; };
-		AEC7E1BB1DE40F3600E1EA3A /* Azusa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Azusa.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AEC7E1BE1DE40F3600E1EA3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AEC7E1C21DE40F3600E1EA3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AEC7E1C51DE40F3600E1EA3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AEC7E1C71DE40F3600E1EA3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AEC7E1CC1DE40F3700E1EA3A /* AzusaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AzusaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AEC7E1D01DE40F3700E1EA3A /* AzusaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzusaTests.swift; sourceTree = "<group>"; };
-		AEC7E1D21DE40F3700E1EA3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AEC7E1D71DE40F3700E1EA3A /* AzusaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AzusaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AEC7E1DB1DE40F3700E1EA3A /* AzusaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzusaUITests.swift; sourceTree = "<group>"; };
-		AEC7E1DD1DE40F3700E1EA3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AEC7E1F91DE4100C00E1EA3A /* Azusa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Azusa-Bridging-Header.h"; sourceTree = "<group>"; };
-		AEE37BCA1DEA9BC9002930A3 /* AZPlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZPlaylistViewController.swift; sourceTree = "<group>"; };
-		AEE37BCE1DEA9CDA002930A3 /* AZSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZSearchViewController.swift; sourceTree = "<group>"; };
-		AEE37BD11DEAAD50002930A3 /* AZPlaylistTableRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZPlaylistTableRowView.swift; sourceTree = "<group>"; };
-		AEE37BD31DEAB42C002930A3 /* AZPlaylistTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZPlaylistTableCellView.swift; sourceTree = "<group>"; };
-		B7574045846D53593B02590C /* Pods-AzusaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaTests/Pods-AzusaTests.release.xcconfig"; sourceTree = "<group>"; };
-		D55C6E657156603734D1F603 /* Pods-Azusa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Azusa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Azusa/Pods-Azusa.release.xcconfig"; sourceTree = "<group>"; };
-		DA63A79CB83EE55853E4A1C4 /* Pods-AzusaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests.release.xcconfig"; sourceTree = "<group>"; };
-		EC5825A0A2A836D281009B23 /* Pods-Azusa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Azusa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Azusa/Pods-Azusa.debug.xcconfig"; sourceTree = "<group>"; };
-		F8DA8A57AF983F0649C01875 /* Pods-AzusaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		F92BD759DAB962EFD700C981 /* Pods_AzusaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AzusaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE602EF01DF8E8E3002225CB /* Azusa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Azusa.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE602EF31DF8E8E3002225CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AE602EF51DF8E8E3002225CB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AE602EF71DF8E8E3002225CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AE602EFA1DF8E8E3002225CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AE602EFC1DF8E8E3002225CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE602F011DF8E8E3002225CB /* AzusaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AzusaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE602F051DF8E8E3002225CB /* AzusaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzusaTests.swift; sourceTree = "<group>"; };
+		AE602F071DF8E8E3002225CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE602F0C1DF8E8E3002225CB /* AzusaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AzusaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE602F101DF8E8E3002225CB /* AzusaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzusaUITests.swift; sourceTree = "<group>"; };
+		AE602F121DF8E8E3002225CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE602F8E1DF8EB26002225CB /* async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = async.h; sourceTree = "<group>"; };
+		AE602F8F1DF8EB26002225CB /* audio_format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_format.h; sourceTree = "<group>"; };
+		AE602F901DF8EB26002225CB /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffer.h; sourceTree = "<group>"; };
+		AE602F911DF8EB26002225CB /* capabilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = capabilities.h; sourceTree = "<group>"; };
+		AE602F921DF8EB26002225CB /* client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = client.h; sourceTree = "<group>"; };
+		AE602F931DF8EB26002225CB /* compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compiler.h; sourceTree = "<group>"; };
+		AE602F941DF8EB26002225CB /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		AE602F951DF8EB26002225CB /* connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = connection.h; sourceTree = "<group>"; };
+		AE602F961DF8EB26002225CB /* database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = database.h; sourceTree = "<group>"; };
+		AE602F971DF8EB26002225CB /* directory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = directory.h; sourceTree = "<group>"; };
+		AE602F981DF8EB26002225CB /* entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entity.h; sourceTree = "<group>"; };
+		AE602F991DF8EB26002225CB /* error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = error.h; sourceTree = "<group>"; };
+		AE602F9A1DF8EB26002225CB /* fd_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fd_util.h; sourceTree = "<group>"; };
+		AE602F9B1DF8EB26002225CB /* iasync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iasync.h; sourceTree = "<group>"; };
+		AE602F9C1DF8EB26002225CB /* idle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = idle.h; sourceTree = "<group>"; };
+		AE602F9D1DF8EB26002225CB /* ierror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ierror.h; sourceTree = "<group>"; };
+		AE602F9E1DF8EB26002225CB /* internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = internal.h; sourceTree = "<group>"; };
+		AE602F9F1DF8EB26002225CB /* isend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isend.h; sourceTree = "<group>"; };
+		AE602FA01DF8EB26002225CB /* iso8601.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iso8601.h; sourceTree = "<group>"; };
+		AE602FA11DF8EB26002225CB /* libmpdclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmpdclient.a; sourceTree = "<group>"; };
+		AE602FA21DF8EB26002225CB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		AE602FA31DF8EB26002225CB /* list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = list.h; sourceTree = "<group>"; };
+		AE602FA41DF8EB26002225CB /* message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = message.h; sourceTree = "<group>"; };
+		AE602FA51DF8EB26002225CB /* mixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mixer.h; sourceTree = "<group>"; };
+		AE602FA61DF8EB26002225CB /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		AE602FA71DF8EB26002225CB /* output.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = output.h; sourceTree = "<group>"; };
+		AE602FA81DF8EB26002225CB /* pair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pair.h; sourceTree = "<group>"; };
+		AE602FA91DF8EB26002225CB /* parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
+		AE602FAA1DF8EB26002225CB /* password.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = password.h; sourceTree = "<group>"; };
+		AE602FAB1DF8EB26002225CB /* player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = player.h; sourceTree = "<group>"; };
+		AE602FAC1DF8EB26002225CB /* playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playlist.h; sourceTree = "<group>"; };
+		AE602FAD1DF8EB26002225CB /* protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = protocol.h; sourceTree = "<group>"; };
+		AE602FAE1DF8EB26002225CB /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
+		AE602FAF1DF8EB26002225CB /* quote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = quote.h; sourceTree = "<group>"; };
+		AE602FB01DF8EB26002225CB /* recv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = recv.h; sourceTree = "<group>"; };
+		AE602FB11DF8EB26002225CB /* resolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resolver.h; sourceTree = "<group>"; };
+		AE602FB21DF8EB26002225CB /* response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = response.h; sourceTree = "<group>"; };
+		AE602FB31DF8EB26002225CB /* run.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = run.h; sourceTree = "<group>"; };
+		AE602FB41DF8EB26002225CB /* search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = search.h; sourceTree = "<group>"; };
+		AE602FB51DF8EB26002225CB /* send.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = send.h; sourceTree = "<group>"; };
+		AE602FB61DF8EB26002225CB /* settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settings.h; sourceTree = "<group>"; };
+		AE602FB71DF8EB26002225CB /* socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket.h; sourceTree = "<group>"; };
+		AE602FB81DF8EB26002225CB /* song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = song.h; sourceTree = "<group>"; };
+		AE602FB91DF8EB26002225CB /* stats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stats.h; sourceTree = "<group>"; };
+		AE602FBA1DF8EB26002225CB /* status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = status.h; sourceTree = "<group>"; };
+		AE602FBB1DF8EB26002225CB /* sticker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sticker.h; sourceTree = "<group>"; };
+		AE602FBC1DF8EB26002225CB /* sync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sync.h; sourceTree = "<group>"; };
+		AE602FBD1DF8EB26002225CB /* tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tag.h; sourceTree = "<group>"; };
+		AE602FBE1DF8EB26002225CB /* uri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uri.h; sourceTree = "<group>"; };
+		AE602FBF1DF8EB26002225CB /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		AEC7E1B81DE40F3600E1EA3A /* Frameworks */ = {
+		AE602EED1DF8E8E3002225CB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				778AB413AB8D92C59EBA5D4C /* Pods_Azusa.framework in Frameworks */,
+				AE602FC01DF8EB26002225CB /* libmpdclient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AEC7E1C91DE40F3700E1EA3A /* Frameworks */ = {
+		AE602EFE1DF8E8E3002225CB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53972DEAC0433850D6F03B99 /* Pods_AzusaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AEC7E1D41DE40F3700E1EA3A /* Frameworks */ = {
+		AE602F091DF8E8E3002225CB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AD5E763B10F7F0B4E61684E /* Pods_AzusaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A1A7A10D3210FACA4103F66A /* Frameworks */ = {
+		AE602EE71DF8E8E3002225CB = {
 			isa = PBXGroup;
 			children = (
-				9B738081D445F81D5FED696B /* Pods_Azusa.framework */,
-				2678CC813C178D98EA2A33CE /* Pods_AzusaTests.framework */,
-				F92BD759DAB962EFD700C981 /* Pods_AzusaUITests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AE2340FB1DE5210300C6D3B3 /* Mio */ = {
-			isa = PBXGroup;
-			children = (
-				AE1EBFA21DF656280062D8D6 /* MISong.swift */,
-				AE1EBFA41DF656340062D8D6 /* MIStatus.swift */,
-				AE1EBFA81DF666DF0062D8D6 /* MIMPD.swift */,
-				AE1EBFAC1DF6786D0062D8D6 /* MITCP.swift */,
-				AEBE704A1DF79C3C008D5A04 /* MITCPCommandQueueItem.swift */,
-			);
-			name = Mio;
-			sourceTree = "<group>";
-		};
-		AE26243F1DF631270013C4E1 /* Logger */ = {
-			isa = PBXGroup;
-			children = (
-				AE2624401DF6313D0013C4E1 /* AZLogger.swift */,
-			);
-			name = Logger;
-			sourceTree = "<group>";
-		};
-		AE2624421DF6356A0013C4E1 /* Music Player */ = {
-			isa = PBXGroup;
-			children = (
-				AE66A1B31DF69D9D00773265 /* Protocols */,
-				AE66A1AB1DF69D8C00773265 /* AZEventSubscriber.swift */,
-			);
-			name = "Music Player";
-			sourceTree = "<group>";
-		};
-		AE4820EB1DE7933E00F868CE /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				AE4820EC1DE7934B00F868CE /* AZExtensions.swift */,
-				AE2624451DF638E80013C4E1 /* AZMusicUtilities.swift */,
-			);
-			name = Utilities;
-			sourceTree = "<group>";
-		};
-		AE66A1B31DF69D9D00773265 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				AE66A1AC1DF69D8C00773265 /* AZMusicPlayer.swift */,
-				AE66A1AD1DF69D8C00773265 /* AZSong.swift */,
-				AE66A1AE1DF69D8C00773265 /* AZStatus.swift */,
-			);
-			name = Protocols;
-			sourceTree = "<group>";
-		};
-		AE6E222D1DE56E56003DBC94 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				AEE37BD01DEAAC51002930A3 /* Playlist */,
-				AE6E222E1DE56E79003DBC94 /* AZAspectFillImageView.swift */,
-				AE6E22321DE57711003DBC94 /* AZRoundedCornersView.swift */,
-				AE12BE351DE57B2600BAF030 /* AZGradientView.swift */,
-				AE25C3231DE64EA200DE4A97 /* AZColoredView.swift */,
-				AE11B52B1DE66C56008B2827 /* AZProgressSliderCell.swift */,
-				AE423B741DEA479000777832 /* AZMusicPlayerTitlebarView.swift */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		AE8A658E1DE75D62002DC54A /* Objects */ = {
-			isa = PBXGroup;
-			children = (
-				AE26243F1DF631270013C4E1 /* Logger */,
-				AE8A658F1DE75D74002DC54A /* AZEnums.swift */,
-				AE4820E41DE76B7B00F868CE /* AZPreferences.swift */,
-			);
-			name = Objects;
-			sourceTree = "<group>";
-		};
-		AEC7E1B21DE40F3600E1EA3A = {
-			isa = PBXGroup;
-			children = (
-				AEC7E1BD1DE40F3600E1EA3A /* Azusa */,
-				AE25C3211DE645D100DE4A97 /* Fonts */,
-				AEC7E1CF1DE40F3700E1EA3A /* AzusaTests */,
-				AEC7E1DA1DE40F3700E1EA3A /* AzusaUITests */,
-				AEC7E1BC1DE40F3600E1EA3A /* Products */,
-				C9378EFBC710E0381AF9D5DE /* Pods */,
-				A1A7A10D3210FACA4103F66A /* Frameworks */,
+				AE602EF21DF8E8E3002225CB /* Azusa */,
+				AE602F8C1DF8EB26002225CB /* External */,
+				AE602F041DF8E8E3002225CB /* AzusaTests */,
+				AE602F0F1DF8E8E3002225CB /* AzusaUITests */,
+				AE602EF11DF8E8E3002225CB /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		AEC7E1BC1DE40F3600E1EA3A /* Products */ = {
+		AE602EF11DF8E8E3002225CB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AEC7E1BB1DE40F3600E1EA3A /* Azusa.app */,
-				AEC7E1CC1DE40F3700E1EA3A /* AzusaTests.xctest */,
-				AEC7E1D71DE40F3700E1EA3A /* AzusaUITests.xctest */,
+				AE602EF01DF8E8E3002225CB /* Azusa.app */,
+				AE602F011DF8E8E3002225CB /* AzusaTests.xctest */,
+				AE602F0C1DF8E8E3002225CB /* AzusaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AEC7E1BD1DE40F3600E1EA3A /* Azusa */ = {
+		AE602EF21DF8E8E3002225CB /* Azusa */ = {
 			isa = PBXGroup;
 			children = (
-				AEC7E1BE1DE40F3600E1EA3A /* AppDelegate.swift */,
-				AEC7E2041DE4104700E1EA3A /* Storyboards */,
-				AEE37BC91DEA9BAE002930A3 /* View Controllers */,
-				AE6E222D1DE56E56003DBC94 /* Views */,
-				AE4820EB1DE7933E00F868CE /* Utilities */,
-				AE8A658E1DE75D62002DC54A /* Objects */,
-				AE2624421DF6356A0013C4E1 /* Music Player */,
-				AEC7E24C1DE4295000E1EA3A /* Libraries */,
-				AEC7E1F91DE4100C00E1EA3A /* Azusa-Bridging-Header.h */,
-				AEC7E1C21DE40F3600E1EA3A /* Assets.xcassets */,
-				AEC7E1C71DE40F3600E1EA3A /* Info.plist */,
+				AE602EF31DF8E8E3002225CB /* AppDelegate.swift */,
+				AE602EF51DF8E8E3002225CB /* ViewController.swift */,
+				AE602EF71DF8E8E3002225CB /* Assets.xcassets */,
+				AE602EF91DF8E8E3002225CB /* Main.storyboard */,
+				AE602EFC1DF8E8E3002225CB /* Info.plist */,
 			);
 			path = Azusa;
 			sourceTree = "<group>";
 		};
-		AEC7E1CF1DE40F3700E1EA3A /* AzusaTests */ = {
+		AE602F041DF8E8E3002225CB /* AzusaTests */ = {
 			isa = PBXGroup;
 			children = (
-				AEC7E1D01DE40F3700E1EA3A /* AzusaTests.swift */,
-				AEC7E1D21DE40F3700E1EA3A /* Info.plist */,
+				AE602F051DF8E8E3002225CB /* AzusaTests.swift */,
+				AE602F071DF8E8E3002225CB /* Info.plist */,
 			);
 			path = AzusaTests;
 			sourceTree = "<group>";
 		};
-		AEC7E1DA1DE40F3700E1EA3A /* AzusaUITests */ = {
+		AE602F0F1DF8E8E3002225CB /* AzusaUITests */ = {
 			isa = PBXGroup;
 			children = (
-				AEC7E1DB1DE40F3700E1EA3A /* AzusaUITests.swift */,
-				AEC7E1DD1DE40F3700E1EA3A /* Info.plist */,
+				AE602F101DF8E8E3002225CB /* AzusaUITests.swift */,
+				AE602F121DF8E8E3002225CB /* Info.plist */,
 			);
 			path = AzusaUITests;
 			sourceTree = "<group>";
 		};
-		AEC7E2041DE4104700E1EA3A /* Storyboards */ = {
+		AE602F8C1DF8EB26002225CB /* External */ = {
 			isa = PBXGroup;
 			children = (
-				AEC7E1C41DE40F3600E1EA3A /* Main.storyboard */,
+				AE602F8D1DF8EB26002225CB /* libmpdclient */,
 			);
-			name = Storyboards;
+			path = External;
 			sourceTree = "<group>";
 		};
-		AEC7E24C1DE4295000E1EA3A /* Libraries */ = {
+		AE602F8D1DF8EB26002225CB /* libmpdclient */ = {
 			isa = PBXGroup;
 			children = (
-				AE2340FB1DE5210300C6D3B3 /* Mio */,
+				AE602F8E1DF8EB26002225CB /* async.h */,
+				AE602F8F1DF8EB26002225CB /* audio_format.h */,
+				AE602F901DF8EB26002225CB /* buffer.h */,
+				AE602F911DF8EB26002225CB /* capabilities.h */,
+				AE602F921DF8EB26002225CB /* client.h */,
+				AE602F931DF8EB26002225CB /* compiler.h */,
+				AE602F941DF8EB26002225CB /* config.h */,
+				AE602F951DF8EB26002225CB /* connection.h */,
+				AE602F961DF8EB26002225CB /* database.h */,
+				AE602F971DF8EB26002225CB /* directory.h */,
+				AE602F981DF8EB26002225CB /* entity.h */,
+				AE602F991DF8EB26002225CB /* error.h */,
+				AE602F9A1DF8EB26002225CB /* fd_util.h */,
+				AE602F9B1DF8EB26002225CB /* iasync.h */,
+				AE602F9C1DF8EB26002225CB /* idle.h */,
+				AE602F9D1DF8EB26002225CB /* ierror.h */,
+				AE602F9E1DF8EB26002225CB /* internal.h */,
+				AE602F9F1DF8EB26002225CB /* isend.h */,
+				AE602FA01DF8EB26002225CB /* iso8601.h */,
+				AE602FA11DF8EB26002225CB /* libmpdclient.a */,
+				AE602FA21DF8EB26002225CB /* LICENSE */,
+				AE602FA31DF8EB26002225CB /* list.h */,
+				AE602FA41DF8EB26002225CB /* message.h */,
+				AE602FA51DF8EB26002225CB /* mixer.h */,
+				AE602FA61DF8EB26002225CB /* module.modulemap */,
+				AE602FA71DF8EB26002225CB /* output.h */,
+				AE602FA81DF8EB26002225CB /* pair.h */,
+				AE602FA91DF8EB26002225CB /* parser.h */,
+				AE602FAA1DF8EB26002225CB /* password.h */,
+				AE602FAB1DF8EB26002225CB /* player.h */,
+				AE602FAC1DF8EB26002225CB /* playlist.h */,
+				AE602FAD1DF8EB26002225CB /* protocol.h */,
+				AE602FAE1DF8EB26002225CB /* queue.h */,
+				AE602FAF1DF8EB26002225CB /* quote.h */,
+				AE602FB01DF8EB26002225CB /* recv.h */,
+				AE602FB11DF8EB26002225CB /* resolver.h */,
+				AE602FB21DF8EB26002225CB /* response.h */,
+				AE602FB31DF8EB26002225CB /* run.h */,
+				AE602FB41DF8EB26002225CB /* search.h */,
+				AE602FB51DF8EB26002225CB /* send.h */,
+				AE602FB61DF8EB26002225CB /* settings.h */,
+				AE602FB71DF8EB26002225CB /* socket.h */,
+				AE602FB81DF8EB26002225CB /* song.h */,
+				AE602FB91DF8EB26002225CB /* stats.h */,
+				AE602FBA1DF8EB26002225CB /* status.h */,
+				AE602FBB1DF8EB26002225CB /* sticker.h */,
+				AE602FBC1DF8EB26002225CB /* sync.h */,
+				AE602FBD1DF8EB26002225CB /* tag.h */,
+				AE602FBE1DF8EB26002225CB /* uri.h */,
+				AE602FBF1DF8EB26002225CB /* version.h */,
 			);
-			name = Libraries;
-			sourceTree = "<group>";
-		};
-		AEE37BC91DEA9BAE002930A3 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				AE6E22301DE57102003DBC94 /* AZMusicPlayerViewController.swift */,
-				AEE37BCA1DEA9BC9002930A3 /* AZPlaylistViewController.swift */,
-				AEE37BCE1DEA9CDA002930A3 /* AZSearchViewController.swift */,
-			);
-			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		AEE37BD01DEAAC51002930A3 /* Playlist */ = {
-			isa = PBXGroup;
-			children = (
-				AEE37BD11DEAAD50002930A3 /* AZPlaylistTableRowView.swift */,
-				AEE37BD31DEAB42C002930A3 /* AZPlaylistTableCellView.swift */,
-				AE7D05C21DED03CF00927F42 /* AZPlaylistTableView.swift */,
-			);
-			name = Playlist;
-			sourceTree = "<group>";
-		};
-		C9378EFBC710E0381AF9D5DE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				EC5825A0A2A836D281009B23 /* Pods-Azusa.debug.xcconfig */,
-				D55C6E657156603734D1F603 /* Pods-Azusa.release.xcconfig */,
-				1092E6258CF331260EE48436 /* Pods-AzusaTests.debug.xcconfig */,
-				B7574045846D53593B02590C /* Pods-AzusaTests.release.xcconfig */,
-				F8DA8A57AF983F0649C01875 /* Pods-AzusaUITests.debug.xcconfig */,
-				DA63A79CB83EE55853E4A1C4 /* Pods-AzusaUITests.release.xcconfig */,
-			);
-			name = Pods;
+			path = libmpdclient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AEC7E1BA1DE40F3600E1EA3A /* Azusa */ = {
+		AE602EEF1DF8E8E3002225CB /* Azusa */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AEC7E1E01DE40F3700E1EA3A /* Build configuration list for PBXNativeTarget "Azusa" */;
+			buildConfigurationList = AE602F151DF8E8E3002225CB /* Build configuration list for PBXNativeTarget "Azusa" */;
 			buildPhases = (
-				DE88781D0EA0D46C3433C321 /* [CP] Check Pods Manifest.lock */,
-				AEC7E1B71DE40F3600E1EA3A /* Sources */,
-				AEC7E1B81DE40F3600E1EA3A /* Frameworks */,
-				AEC7E1B91DE40F3600E1EA3A /* Resources */,
-				4A43B80F2517933A01ACA7D2 /* [CP] Embed Pods Frameworks */,
-				4609561268C85868D907D239 /* [CP] Copy Pods Resources */,
+				AE602EEC1DF8E8E3002225CB /* Sources */,
+				AE602EED1DF8E8E3002225CB /* Frameworks */,
+				AE602EEE1DF8E8E3002225CB /* Resources */,
 			);
 			buildRules = (
 			);
@@ -350,79 +258,72 @@
 			);
 			name = Azusa;
 			productName = Azusa;
-			productReference = AEC7E1BB1DE40F3600E1EA3A /* Azusa.app */;
+			productReference = AE602EF01DF8E8E3002225CB /* Azusa.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AEC7E1CB1DE40F3700E1EA3A /* AzusaTests */ = {
+		AE602F001DF8E8E3002225CB /* AzusaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AEC7E1E31DE40F3700E1EA3A /* Build configuration list for PBXNativeTarget "AzusaTests" */;
+			buildConfigurationList = AE602F181DF8E8E3002225CB /* Build configuration list for PBXNativeTarget "AzusaTests" */;
 			buildPhases = (
-				A5E3646E1117F3D084A4D368 /* [CP] Check Pods Manifest.lock */,
-				AEC7E1C81DE40F3700E1EA3A /* Sources */,
-				AEC7E1C91DE40F3700E1EA3A /* Frameworks */,
-				AEC7E1CA1DE40F3700E1EA3A /* Resources */,
-				C328E2EA98C3F0FB67E825F2 /* [CP] Embed Pods Frameworks */,
-				0C564FD405C9CC2B37D9BC1D /* [CP] Copy Pods Resources */,
+				AE602EFD1DF8E8E3002225CB /* Sources */,
+				AE602EFE1DF8E8E3002225CB /* Frameworks */,
+				AE602EFF1DF8E8E3002225CB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				AEC7E1CE1DE40F3700E1EA3A /* PBXTargetDependency */,
+				AE602F031DF8E8E3002225CB /* PBXTargetDependency */,
 			);
 			name = AzusaTests;
 			productName = AzusaTests;
-			productReference = AEC7E1CC1DE40F3700E1EA3A /* AzusaTests.xctest */;
+			productReference = AE602F011DF8E8E3002225CB /* AzusaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AEC7E1D61DE40F3700E1EA3A /* AzusaUITests */ = {
+		AE602F0B1DF8E8E3002225CB /* AzusaUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AEC7E1E61DE40F3700E1EA3A /* Build configuration list for PBXNativeTarget "AzusaUITests" */;
+			buildConfigurationList = AE602F1B1DF8E8E3002225CB /* Build configuration list for PBXNativeTarget "AzusaUITests" */;
 			buildPhases = (
-				4611B9F3BD149521E5DA07A1 /* [CP] Check Pods Manifest.lock */,
-				AEC7E1D31DE40F3700E1EA3A /* Sources */,
-				AEC7E1D41DE40F3700E1EA3A /* Frameworks */,
-				AEC7E1D51DE40F3700E1EA3A /* Resources */,
-				116F6E6B2FD258FFB2065B7A /* [CP] Embed Pods Frameworks */,
-				838F78BF278069733F6BE4BE /* [CP] Copy Pods Resources */,
+				AE602F081DF8E8E3002225CB /* Sources */,
+				AE602F091DF8E8E3002225CB /* Frameworks */,
+				AE602F0A1DF8E8E3002225CB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				AEC7E1D91DE40F3700E1EA3A /* PBXTargetDependency */,
+				AE602F0E1DF8E8E3002225CB /* PBXTargetDependency */,
 			);
 			name = AzusaUITests;
 			productName = AzusaUITests;
-			productReference = AEC7E1D71DE40F3700E1EA3A /* AzusaUITests.xctest */;
+			productReference = AE602F0C1DF8E8E3002225CB /* AzusaUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		AEC7E1B31DE40F3600E1EA3A /* Project object */ = {
+		AE602EE81DF8E8E3002225CB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = DrabWeb;
 				TargetAttributes = {
-					AEC7E1BA1DE40F3600E1EA3A = {
+					AE602EEF1DF8E8E3002225CB = {
 						CreatedOnToolsVersion = 8.1;
-						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
-					AEC7E1CB1DE40F3700E1EA3A = {
+					AE602F001DF8E8E3002225CB = {
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
-						TestTargetID = AEC7E1BA1DE40F3600E1EA3A;
+						TestTargetID = AE602EEF1DF8E8E3002225CB;
 					};
-					AEC7E1D61DE40F3700E1EA3A = {
+					AE602F0B1DF8E8E3002225CB = {
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
-						TestTargetID = AEC7E1BA1DE40F3600E1EA3A;
+						TestTargetID = AE602EEF1DF8E8E3002225CB;
 					};
 				};
 			};
-			buildConfigurationList = AEC7E1B61DE40F3600E1EA3A /* Build configuration list for PBXProject "Azusa" */;
+			buildConfigurationList = AE602EEB1DF8E8E3002225CB /* Build configuration list for PBXProject "Azusa" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -430,37 +331,37 @@
 				en,
 				Base,
 			);
-			mainGroup = AEC7E1B21DE40F3600E1EA3A;
-			productRefGroup = AEC7E1BC1DE40F3600E1EA3A /* Products */;
+			mainGroup = AE602EE71DF8E8E3002225CB;
+			productRefGroup = AE602EF11DF8E8E3002225CB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AEC7E1BA1DE40F3600E1EA3A /* Azusa */,
-				AEC7E1CB1DE40F3700E1EA3A /* AzusaTests */,
-				AEC7E1D61DE40F3700E1EA3A /* AzusaUITests */,
+				AE602EEF1DF8E8E3002225CB /* Azusa */,
+				AE602F001DF8E8E3002225CB /* AzusaTests */,
+				AE602F0B1DF8E8E3002225CB /* AzusaUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AEC7E1B91DE40F3600E1EA3A /* Resources */ = {
+		AE602EEE1DF8E8E3002225CB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEC7E1C31DE40F3600E1EA3A /* Assets.xcassets in Resources */,
-				AEC7E1C61DE40F3600E1EA3A /* Main.storyboard in Resources */,
-				AE25C3221DE645D100DE4A97 /* Fonts in Resources */,
+				AE602FC11DF8EB26002225CB /* LICENSE in Resources */,
+				AE602EF81DF8E8E3002225CB /* Assets.xcassets in Resources */,
+				AE602EFB1DF8E8E3002225CB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AEC7E1CA1DE40F3700E1EA3A /* Resources */ = {
+		AE602EFF1DF8E8E3002225CB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AEC7E1D51DE40F3700E1EA3A /* Resources */ = {
+		AE602F0A1DF8E8E3002225CB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -469,215 +370,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		0C564FD405C9CC2B37D9BC1D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AzusaTests/Pods-AzusaTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		116F6E6B2FD258FFB2065B7A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4609561268C85868D907D239 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Azusa/Pods-Azusa-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4611B9F3BD149521E5DA07A1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		4A43B80F2517933A01ACA7D2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Azusa/Pods-Azusa-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		838F78BF278069733F6BE4BE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A5E3646E1117F3D084A4D368 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		C328E2EA98C3F0FB67E825F2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AzusaTests/Pods-AzusaTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DE88781D0EA0D46C3433C321 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		AEC7E1B71DE40F3600E1EA3A /* Sources */ = {
+		AE602EEC1DF8E8E3002225CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE2624461DF638E80013C4E1 /* AZMusicUtilities.swift in Sources */,
-				AE8A65901DE75D74002DC54A /* AZEnums.swift in Sources */,
-				AE1EBFA31DF656280062D8D6 /* MISong.swift in Sources */,
-				AE66A1B11DF69D8C00773265 /* AZSong.swift in Sources */,
-				AE12BE361DE57B2600BAF030 /* AZGradientView.swift in Sources */,
-				AE2624411DF6313D0013C4E1 /* AZLogger.swift in Sources */,
-				AE7D05C31DED03CF00927F42 /* AZPlaylistTableView.swift in Sources */,
-				AE11B52C1DE66C56008B2827 /* AZProgressSliderCell.swift in Sources */,
-				AE66A1B01DF69D8C00773265 /* AZMusicPlayer.swift in Sources */,
-				AEE37BCB1DEA9BC9002930A3 /* AZPlaylistViewController.swift in Sources */,
-				AEE37BCF1DEA9CDA002930A3 /* AZSearchViewController.swift in Sources */,
-				AE1EBFAD1DF6786D0062D8D6 /* MITCP.swift in Sources */,
-				AE66A1B21DF69D8C00773265 /* AZStatus.swift in Sources */,
-				AE4820E61DE7798900F868CE /* AZMusicPlayerViewController.swift in Sources */,
-				AE423B751DEA479000777832 /* AZMusicPlayerTitlebarView.swift in Sources */,
-				AEC7E1BF1DE40F3600E1EA3A /* AppDelegate.swift in Sources */,
-				AE66A1AF1DF69D8C00773265 /* AZEventSubscriber.swift in Sources */,
-				AE4820E51DE76B7B00F868CE /* AZPreferences.swift in Sources */,
-				AE6E222F1DE56E79003DBC94 /* AZAspectFillImageView.swift in Sources */,
-				AE1EBFA51DF656340062D8D6 /* MIStatus.swift in Sources */,
-				AE4820ED1DE7934B00F868CE /* AZExtensions.swift in Sources */,
-				AEBE704B1DF79C3C008D5A04 /* MITCPCommandQueueItem.swift in Sources */,
-				AEE37BD41DEAB42C002930A3 /* AZPlaylistTableCellView.swift in Sources */,
-				AE1EBFA91DF666DF0062D8D6 /* MIMPD.swift in Sources */,
-				AE25C3241DE64EA200DE4A97 /* AZColoredView.swift in Sources */,
-				AE6E22331DE57711003DBC94 /* AZRoundedCornersView.swift in Sources */,
-				AEE37BD21DEAAD50002930A3 /* AZPlaylistTableRowView.swift in Sources */,
+				AE602EF61DF8E8E3002225CB /* ViewController.swift in Sources */,
+				AE602EF41DF8E8E3002225CB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AEC7E1C81DE40F3700E1EA3A /* Sources */ = {
+		AE602EFD1DF8E8E3002225CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEC7E1D11DE40F3700E1EA3A /* AzusaTests.swift in Sources */,
+				AE602F061DF8E8E3002225CB /* AzusaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AEC7E1D31DE40F3700E1EA3A /* Sources */ = {
+		AE602F081DF8E8E3002225CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEC7E1DC1DE40F3700E1EA3A /* AzusaUITests.swift in Sources */,
+				AE602F111DF8E8E3002225CB /* AzusaUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		AEC7E1CE1DE40F3700E1EA3A /* PBXTargetDependency */ = {
+		AE602F031DF8E8E3002225CB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AEC7E1BA1DE40F3600E1EA3A /* Azusa */;
-			targetProxy = AEC7E1CD1DE40F3700E1EA3A /* PBXContainerItemProxy */;
+			target = AE602EEF1DF8E8E3002225CB /* Azusa */;
+			targetProxy = AE602F021DF8E8E3002225CB /* PBXContainerItemProxy */;
 		};
-		AEC7E1D91DE40F3700E1EA3A /* PBXTargetDependency */ = {
+		AE602F0E1DF8E8E3002225CB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AEC7E1BA1DE40F3600E1EA3A /* Azusa */;
-			targetProxy = AEC7E1D81DE40F3700E1EA3A /* PBXContainerItemProxy */;
+			target = AE602EEF1DF8E8E3002225CB /* Azusa */;
+			targetProxy = AE602F0D1DF8E8E3002225CB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AEC7E1C41DE40F3600E1EA3A /* Main.storyboard */ = {
+		AE602EF91DF8E8E3002225CB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				AEC7E1C51DE40F3600E1EA3A /* Base */,
+				AE602EFA1DF8E8E3002225CB /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -685,7 +423,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		AEC7E1DE1DE40F3700E1EA3A /* Debug */ = {
+		AE602F131DF8E8E3002225CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -703,7 +441,6 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -735,7 +472,7 @@
 			};
 			name = Debug;
 		};
-		AEC7E1DF1DE40F3700E1EA3A /* Release */ = {
+		AE602F141DF8E8E3002225CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -753,7 +490,6 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -777,46 +513,49 @@
 			};
 			name = Release;
 		};
-		AEC7E1E11DE40F3700E1EA3A /* Debug */ = {
+		AE602F161DF8E8E3002225CB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC5825A0A2A836D281009B23 /* Pods-Azusa.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Azusa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Azusa/External/mpdclient-src",
+					"$(PROJECT_DIR)/Azusa/External/libmpdclient",
+					"$(PROJECT_DIR)/External/libmpdclient",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Azusa/Azusa-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				"SWIFT_INCLUDE_PATHS[arch=*]" = "$(SRCROOT)/External/libmpdclient/";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		AEC7E1E21DE40F3700E1EA3A /* Release */ = {
+		AE602F171DF8E8E3002225CB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D55C6E657156603734D1F603 /* Pods-Azusa.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Azusa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Azusa/External/mpdclient-src",
+					"$(PROJECT_DIR)/Azusa/External/libmpdclient",
+					"$(PROJECT_DIR)/External/libmpdclient",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Azusa/Azusa-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
-		AEC7E1E41DE40F3700E1EA3A /* Debug */ = {
+		AE602F191DF8E8E3002225CB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1092E6258CF331260EE48436 /* Pods-AzusaTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AzusaTests/Info.plist;
@@ -828,11 +567,10 @@
 			};
 			name = Debug;
 		};
-		AEC7E1E51DE40F3700E1EA3A /* Release */ = {
+		AE602F1A1DF8E8E3002225CB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B7574045846D53593B02590C /* Pods-AzusaTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AzusaTests/Info.plist;
@@ -844,11 +582,10 @@
 			};
 			name = Release;
 		};
-		AEC7E1E71DE40F3700E1EA3A /* Debug */ = {
+		AE602F1C1DF8E8E3002225CB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8DA8A57AF983F0649C01875 /* Pods-AzusaUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AzusaUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -859,11 +596,10 @@
 			};
 			name = Debug;
 		};
-		AEC7E1E81DE40F3700E1EA3A /* Release */ = {
+		AE602F1D1DF8E8E3002225CB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA63A79CB83EE55853E4A1C4 /* Pods-AzusaUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AzusaUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -877,43 +613,40 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AEC7E1B61DE40F3600E1EA3A /* Build configuration list for PBXProject "Azusa" */ = {
+		AE602EEB1DF8E8E3002225CB /* Build configuration list for PBXProject "Azusa" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AEC7E1DE1DE40F3700E1EA3A /* Debug */,
-				AEC7E1DF1DE40F3700E1EA3A /* Release */,
+				AE602F131DF8E8E3002225CB /* Debug */,
+				AE602F141DF8E8E3002225CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AEC7E1E01DE40F3700E1EA3A /* Build configuration list for PBXNativeTarget "Azusa" */ = {
+		AE602F151DF8E8E3002225CB /* Build configuration list for PBXNativeTarget "Azusa" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AEC7E1E11DE40F3700E1EA3A /* Debug */,
-				AEC7E1E21DE40F3700E1EA3A /* Release */,
+				AE602F161DF8E8E3002225CB /* Debug */,
+				AE602F171DF8E8E3002225CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
-		AEC7E1E31DE40F3700E1EA3A /* Build configuration list for PBXNativeTarget "AzusaTests" */ = {
+		AE602F181DF8E8E3002225CB /* Build configuration list for PBXNativeTarget "AzusaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AEC7E1E41DE40F3700E1EA3A /* Debug */,
-				AEC7E1E51DE40F3700E1EA3A /* Release */,
+				AE602F191DF8E8E3002225CB /* Debug */,
+				AE602F1A1DF8E8E3002225CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
-		AEC7E1E61DE40F3700E1EA3A /* Build configuration list for PBXNativeTarget "AzusaUITests" */ = {
+		AE602F1B1DF8E8E3002225CB /* Build configuration list for PBXNativeTarget "AzusaUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AEC7E1E71DE40F3700E1EA3A /* Debug */,
-				AEC7E1E81DE40F3700E1EA3A /* Release */,
+				AE602F1C1DF8E8E3002225CB /* Debug */,
+				AE602F1D1DF8E8E3002225CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = AEC7E1B31DE40F3600E1EA3A /* Project object */;
+	rootObject = AE602EE81DF8E8E3002225CB /* Project object */;
 }

@@ -2,8 +2,7 @@
 //  AzusaTests.swift
 //  AzusaTests
 //
-//  Created by Ushio on 12/7/16.
-//  Copyright © 2016 DrabWeb. All rights reserved.
+//  Created by Ushio on 11/22/16.
 //
 
 import XCTest
