@@ -15,6 +15,9 @@
 		AE602F111DF8E8E3002225CB /* AzusaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602F101DF8E8E3002225CB /* AzusaUITests.swift */; };
 		AE602FC01DF8EB26002225CB /* libmpdclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE602FA11DF8EB26002225CB /* libmpdclient.a */; };
 		AE602FC11DF8EB26002225CB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = AE602FA21DF8EB26002225CB /* LICENSE */; };
+		AE602FC51DF8EDB9002225CB /* MIMPD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FC41DF8EDB9002225CB /* MIMPD.swift */; };
+		AE602FC81DF8F7D6002225CB /* AZLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FC71DF8F7D6002225CB /* AZLogger.swift */; };
+		AE602FCD1DF90289002225CB /* AZMusicUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FCC1DF90289002225CB /* AZMusicUtilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +100,9 @@
 		AE602FBD1DF8EB26002225CB /* tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tag.h; sourceTree = "<group>"; };
 		AE602FBE1DF8EB26002225CB /* uri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uri.h; sourceTree = "<group>"; };
 		AE602FBF1DF8EB26002225CB /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		AE602FC41DF8EDB9002225CB /* MIMPD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMPD.swift; sourceTree = "<group>"; };
+		AE602FC71DF8F7D6002225CB /* AZLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZLogger.swift; sourceTree = "<group>"; };
+		AE602FCC1DF90289002225CB /* AZMusicUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicUtilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,8 +157,10 @@
 			children = (
 				AE602EF31DF8E8E3002225CB /* AppDelegate.swift */,
 				AE602EF51DF8E8E3002225CB /* ViewController.swift */,
+				AE602FC91DF8F8A2002225CB /* Storyboards */,
+				AE602FC61DF8F7D0002225CB /* Utilities */,
+				AE602FC21DF8EDAD002225CB /* Backends */,
 				AE602EF71DF8E8E3002225CB /* Assets.xcassets */,
-				AE602EF91DF8E8E3002225CB /* Main.storyboard */,
 				AE602EFC1DF8E8E3002225CB /* Info.plist */,
 			);
 			path = Azusa;
@@ -239,6 +247,39 @@
 				AE602FBF1DF8EB26002225CB /* version.h */,
 			);
 			path = libmpdclient;
+			sourceTree = "<group>";
+		};
+		AE602FC21DF8EDAD002225CB /* Backends */ = {
+			isa = PBXGroup;
+			children = (
+				AE602FC31DF8EDAD002225CB /* Mio */,
+			);
+			path = Backends;
+			sourceTree = "<group>";
+		};
+		AE602FC31DF8EDAD002225CB /* Mio */ = {
+			isa = PBXGroup;
+			children = (
+				AE602FC41DF8EDB9002225CB /* MIMPD.swift */,
+			);
+			path = Mio;
+			sourceTree = "<group>";
+		};
+		AE602FC61DF8F7D0002225CB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AE602FC71DF8F7D6002225CB /* AZLogger.swift */,
+				AE602FCC1DF90289002225CB /* AZMusicUtilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		AE602FC91DF8F8A2002225CB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AE602EF91DF8E8E3002225CB /* Main.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,8 +416,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE602FCD1DF90289002225CB /* AZMusicUtilities.swift in Sources */,
+				AE602FC81DF8F7D6002225CB /* AZLogger.swift in Sources */,
 				AE602EF61DF8E8E3002225CB /* ViewController.swift in Sources */,
 				AE602EF41DF8E8E3002225CB /* AppDelegate.swift in Sources */,
+				AE602FC51DF8EDB9002225CB /* MIMPD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

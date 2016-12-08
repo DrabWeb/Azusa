@@ -1,5 +1,7 @@
 # Azusa
-An MPD frontend for macOS
+A music player frontend for macOS
 
-# Mockup
-![Mockup](https://raw.githubusercontent.com/DrabWeb/Azusa/master/Design/Azusa.png)
+Many thanks to [MPDRemote](https://github.com/Nyx0uf/MPDRemote) for showing how to use `libmpdclient` in Swift
+
+# License
+The MPD static library included is built from `libmpdclient` and is released under the revised BSD License.
