@@ -226,6 +226,33 @@ class MIMPD {
             return nil;
         }
     }
+
+    /// Gets all the songs in the current queue and returns them
+    ///
+    /// - Returns: All the `MISong`'s in the current queue
+    func getCurrentQueue() -> [MISong] {
+        /// The current queue, returned at the end
+        var currentQueue : [MISong] = [];
+        
+        // If the connection isn't nil...
+        if(connection != nil) {
+            /// The length of the currentQueue
+            let currentQueueLength : Int = Int(mpd_status_get_queue_length(mpd_run_status(self.connection!)));
+            
+            // For every index in the current queue...
+            for index in 0...(currentQueueLength - 1) {
+                // Append the song at the current index to `currentQueue`
+                currentQueue.append(self.songFromMpd(song: mpd_run_get_queue_song_pos(self.connection, UInt32(index))));
+            }
+        }
+        // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot retrieve current queue, connection does not exist(run connect first)");
+        }
+        
+        // Return `currentQueue`
+        return currentQueue;
+    }
     
     
     // MARK: - Utilities

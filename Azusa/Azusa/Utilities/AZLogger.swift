@@ -8,7 +8,7 @@
 import Foundation
 
 /// Levels of logging available to AZLogger
-enum AZLoggerLevel : Int {
+enum AZLoggerLevel: Int {
     /// Don't log anything
     case none = 0;
     

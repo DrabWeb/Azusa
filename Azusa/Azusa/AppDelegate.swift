@@ -40,6 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AZLogger.log(mpd.connect());
         AZLogger.log(mpd.getStats() ?? MIMPDStats());
         AZLogger.log(mpd.getPlayerStatus() ?? MIMPDPlayerStatus());
+        AZLogger.log(mpd.getCurrentQueue());
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
