@@ -166,27 +166,10 @@ class MIMPD {
             status!.singleOn = mpd_status_get_single(mpdStatus);
             status!.consumeOn = mpd_status_get_consume(mpdStatus);
             status!.queueLength = Int(mpd_status_get_queue_length(mpdStatus));
+            status!.playingState = self.playingStateFromMpd(state: mpd_status_get_state(mpdStatus));
             status!.currentSongPosition = Int(mpd_status_get_song_pos(mpdStatus));
             status!.nextSongPosition = Int(mpd_status_get_next_song_pos(mpdStatus));
             status!.timeElapsed = Int(mpd_status_get_elapsed_time(mpdStatus));
-            
-            switch(mpd_status_get_state(mpdStatus)) {
-            case MPD_STATE_PLAY:
-                status!.playingState = .playing;
-                break;
-                
-            case MPD_STATE_PAUSE:
-                status!.playingState = .paused;
-                break;
-                
-            case MPD_STATE_STOP, MPD_STATE_UNKNOWN:
-                status!.playingState = .stopped;
-                break;
-                
-            default:
-                status!.playingState = .stopped;
-                break;
-            }
         }
         // If the connection is nil...
         else {
@@ -259,6 +242,27 @@ class MIMPD {
     
     
     // MARK: - Utilities
+    
+    /// Returns the `AZPlayingState` from the given `mpd_state`
+    ///
+    /// - Parameter state: The `mpd_state` to get the `AZPlayingState` of
+    /// - Returns: The `AZPlayingState` of `state`
+    func playingStateFromMpd(state : mpd_state) -> AZPlayingState {
+        // Switch and return the appropriate value
+        switch(state) {
+            case MPD_STATE_PLAY:
+                return .playing;
+            
+            case MPD_STATE_PAUSE:
+                return .paused;
+            
+            case MPD_STATE_STOP, MPD_STATE_UNKNOWN:
+                return .stopped;
+            
+            default:
+                return .stopped;
+        }
+    }
     
     /// Returns an `MISong` from an MPD song
     ///
@@ -358,7 +362,7 @@ class MIMPD {
     }
     
     
-    // MARK: - Initialization and deinitialization
+    // MARK: - Initialization and Deinitialization
     
     init(address : String, port : Int) {
         self.serverAddress = address;

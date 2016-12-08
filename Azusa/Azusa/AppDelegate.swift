@@ -37,10 +37,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let mpd : MIMPD = MIMPD(address: "127.0.0.1", port: 6600);
         
-        AZLogger.log(mpd.connect());
-        AZLogger.log(mpd.getStats() ?? MIMPDStats());
-        AZLogger.log(mpd.getPlayerStatus() ?? MIMPDPlayerStatus());
-        AZLogger.log(mpd.getCurrentQueue());
+        AZLogger.log("Connection was successful: \(mpd.connect())");
+        AZLogger.log("Current song: \(mpd.getCurrentSong() ?? MISong.empty)");
+        AZLogger.log("Database stats: \(mpd.getStats() ?? MIMPDStats())");
+        AZLogger.log("Player status: \(mpd.getPlayerStatus() ?? MIMPDPlayerStatus())");
+        AZLogger.log("Queue: \(mpd.getCurrentQueue())");
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

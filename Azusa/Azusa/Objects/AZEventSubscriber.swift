@@ -134,7 +134,7 @@ class AZEventSubscription: NSObject {
     }
     
     
-    // MARK: - Initialization and deinitialization
+    // MARK: - Initialization and Deinitialization
     
     init(events : [AZEvent], performer : ((AZEvent) -> ())?) {
         self.events = events;

@@ -44,7 +44,7 @@ class MIMPDStats: CustomStringConvertible {
     }
     
     
-    // MARK: - Initialization and deinitialization
+    // MARK: - Initialization and Deinitialization
     
     init(albumCount : Int, artistCount : Int, songCount : Int, databasePlayTime : Int, mpdUptime : Int, mpdPlayTime : Int, lastMpdDatabaseUpdate : NSDate) {
         self.albumCount = albumCount;
