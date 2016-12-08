@@ -153,50 +153,39 @@ class MIMPD {
             // Create `status`
             status = MIMPDPlayerStatus();
             
-            /// The song from the current player status
-            let song = mpd_run_current_song(self.connection!);
+            // Set the current song
+            status!.currentSong = self.getCurrentSong() ?? MISong.empty;
             
-            // If `song` isn't nil...
-            if(song != nil) {
-                // Set `status`'s current song to the `MISong` of `song`
-                status!.currentSong = self.songFromMpd(song: song!);
+            /// The MPD status object from `connection`
+            let mpdStatus = mpd_run_status(self.connection!);
+            
+            // Set all the other status values
+            status!.volume = Int(mpd_status_get_volume(mpdStatus));
+            status!.randomOn = mpd_status_get_random(mpdStatus);
+            status!.repeatOn = mpd_status_get_repeat(mpdStatus);
+            status!.singleOn = mpd_status_get_single(mpdStatus);
+            status!.consumeOn = mpd_status_get_consume(mpdStatus);
+            status!.queueLength = Int(mpd_status_get_queue_length(mpdStatus));
+            status!.currentSongPosition = Int(mpd_status_get_song_pos(mpdStatus));
+            status!.nextSongPosition = Int(mpd_status_get_next_song_pos(mpdStatus));
+            status!.timeElapsed = Int(mpd_status_get_elapsed_time(mpdStatus));
+            
+            switch(mpd_status_get_state(mpdStatus)) {
+            case MPD_STATE_PLAY:
+                status!.playingState = .playing;
+                break;
                 
-                /// The MPD status object from `connection`
-                let mpdStatus = mpd_run_status(self.connection!);
+            case MPD_STATE_PAUSE:
+                status!.playingState = .paused;
+                break;
                 
-                // Set all the other status values
-                status!.volume = Int(mpd_status_get_volume(mpdStatus));
-                status!.randomOn = mpd_status_get_random(mpdStatus);
-                status!.repeatOn = mpd_status_get_repeat(mpdStatus);
-                status!.singleOn = mpd_status_get_single(mpdStatus);
-                status!.consumeOn = mpd_status_get_consume(mpdStatus);
-                status!.queueLength = Int(mpd_status_get_queue_length(mpdStatus));
-                status!.currentSongPosition = Int(mpd_status_get_song_pos(mpdStatus));
-                status!.nextSongPosition = Int(mpd_status_get_next_song_pos(mpdStatus));
-                status!.timeElapsed = Int(mpd_status_get_elapsed_time(mpdStatus));
+            case MPD_STATE_STOP, MPD_STATE_UNKNOWN:
+                status!.playingState = .stopped;
+                break;
                 
-                switch(mpd_status_get_state(mpdStatus)) {
-                    case MPD_STATE_PLAY:
-                        status!.playingState = .playing;
-                        break;
-                    
-                    case MPD_STATE_PAUSE:
-                        status!.playingState = .paused;
-                        break;
-                    
-                    case MPD_STATE_STOP, MPD_STATE_UNKNOWN:
-                        status!.playingState = .stopped;
-                        break;
-                    
-                    default:
-                        status!.playingState = .stopped;
-                        break;
-                }
-            }
-            // If `song` is nil...
-            else {
-                // Return nil
-                return nil;
+            default:
+                status!.playingState = .stopped;
+                break;
             }
         }
         // If the connection is nil...
@@ -206,6 +195,15 @@ class MIMPD {
         
         // Return the player status object
         return status;
+    }
+    
+    
+    /// Gets the current playing song and returns it as an MISong(nil if there is none)
+    ///
+    /// - Returns: The current playing song as an MISong(nil if there is none)
+    func getCurrentSong() -> MISong? {
+        // Return the MISong of the current song
+        return self.songFromMpd(song: mpd_run_current_song(self.connection!));
     }
     
     
