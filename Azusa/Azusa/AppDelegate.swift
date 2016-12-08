@@ -35,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
-        let mpd : MIMPD = MIMPD();
+        let mpd : MIMPD = MIMPD(address: "127.0.0.1", port: 6600);
         
         AZLogger.log(mpd.connect());
         AZLogger.log(mpd.getStats().debugDescription);

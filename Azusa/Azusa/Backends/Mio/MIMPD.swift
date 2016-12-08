@@ -85,6 +85,9 @@ class MIMPD {
         self.connected = false;
     }
     
+    /// Gets the stats of this MPD server
+    ///
+    /// - Returns: An `MIMPDStats` object that has the current stats of this MPD server
     func getStats() -> MIMPDStats {
         // If `connection isn't nil`...
         if(self.connection != nil) {
@@ -167,6 +170,11 @@ class MIMPD {
     
     
     // MARK: - Initialization and deinitialization
+    
+    init(address : String, port : Int) {
+        self.serverAddress = address;
+        self.serverPort = port;
+    }
     
     deinit {
         // Deinitialize this MPD object
