@@ -180,7 +180,6 @@ class MIMPD {
         return status;
     }
     
-    
     /// Gets the current playing song and returns it as an MISong(nil if there is none)
     ///
     /// - Returns: The current playing song as an MISong(nil if there is none)
@@ -240,29 +239,7 @@ class MIMPD {
         return currentQueue;
     }
     
-    
     // MARK: - Utilities
-    
-    /// Returns the `AZPlayingState` from the given `mpd_state`
-    ///
-    /// - Parameter state: The `mpd_state` to get the `AZPlayingState` of
-    /// - Returns: The `AZPlayingState` of `state`
-    func playingStateFromMpd(state : mpd_state) -> AZPlayingState {
-        // Switch and return the appropriate value
-        switch(state) {
-            case MPD_STATE_PLAY:
-                return .playing;
-            
-            case MPD_STATE_PAUSE:
-                return .paused;
-            
-            case MPD_STATE_STOP, MPD_STATE_UNKNOWN:
-                return .stopped;
-            
-            default:
-                return .stopped;
-        }
-    }
     
     /// Returns an `MISong` from an MPD song
     ///
@@ -287,24 +264,24 @@ class MIMPD {
         }
         
         returnSong.id = Int(mpd_song_get_id(song));
-        returnSong.artist = self.tagFrom(song: song, tag: MPD_TAG_ARTIST) ?? "";
-        returnSong.album = self.tagFrom(song: song, tag: MPD_TAG_ALBUM) ?? "";
-        returnSong.albumArtist = self.tagFrom(song: song, tag: MPD_TAG_ALBUM_ARTIST) ?? "";
-        returnSong.title = self.tagFrom(song: song, tag: MPD_TAG_TITLE) ?? "";
-        returnSong.track = Int(NSString(string: self.tagFrom(song: song, tag: MPD_TAG_TRACK) ?? "").intValue);
-        returnSong.genre = self.tagFrom(song: song, tag: MPD_TAG_GENRE) ?? "";
-        returnSong.year = Int(NSString(string: self.tagFrom(song: song, tag: MPD_TAG_DATE) ?? "").intValue);
-        returnSong.composer = self.tagFrom(song: song, tag: MPD_TAG_COMPOSER) ?? "";
-        returnSong.performer = self.tagFrom(song: song, tag: MPD_TAG_PERFORMER) ?? "";
+        returnSong.artist = self.tagFromMpd(song: song, tag: MPD_TAG_ARTIST) ?? "";
+        returnSong.album = self.tagFromMpd(song: song, tag: MPD_TAG_ALBUM) ?? "";
+        returnSong.albumArtist = self.tagFromMpd(song: song, tag: MPD_TAG_ALBUM_ARTIST) ?? "";
+        returnSong.title = self.tagFromMpd(song: song, tag: MPD_TAG_TITLE) ?? "";
+        returnSong.track = Int(NSString(string: self.tagFromMpd(song: song, tag: MPD_TAG_TRACK) ?? "").intValue);
+        returnSong.genre = self.tagFromMpd(song: song, tag: MPD_TAG_GENRE) ?? "";
+        returnSong.year = Int(NSString(string: self.tagFromMpd(song: song, tag: MPD_TAG_DATE) ?? "").intValue);
+        returnSong.composer = self.tagFromMpd(song: song, tag: MPD_TAG_COMPOSER) ?? "";
+        returnSong.performer = self.tagFromMpd(song: song, tag: MPD_TAG_PERFORMER) ?? "";
         
         /// The string from the output of the disc metadata, either blank or "#/#"
-        let discString = self.tagFrom(song: song, tag: MPD_TAG_DISC) ?? "";
+        let discString = self.tagFromMpd(song: song, tag: MPD_TAG_DISC) ?? "";
         
         if(discString != "" && discString.contains("/")) {
             returnSong.disc = Int(NSString(string: discString.components(separatedBy: "/").first!).intValue);
             returnSong.discCount = Int(NSString(string: discString.components(separatedBy: "/").last!).intValue);
-
         }
+        
         returnSong.duration = Int(mpd_song_get_duration(song));
         returnSong.position = Int(mpd_song_get_pos(song));
         
@@ -318,7 +295,7 @@ class MIMPD {
     ///   - song: The song to get the tag value from
     ///   - tag: The tag to get the value of
     /// - Returns: The string value of the given tag from the given song, nil if the tag was nil
-    func tagFrom(song : OpaquePointer, tag : mpd_tag_type) -> String? {
+    func tagFromMpd(song : OpaquePointer, tag : mpd_tag_type) -> String? {
         /// The MPD tag object of `tag` from `song`
         let tagObject = mpd_song_get_tag(song, tag, 0);
         
@@ -334,6 +311,27 @@ class MIMPD {
         else {
             // Return nil
             return nil;
+        }
+    }
+    
+    /// Returns the `AZPlayingState` from the given `mpd_state`
+    ///
+    /// - Parameter state: The `mpd_state` to get the `AZPlayingState` of
+    /// - Returns: The `AZPlayingState` of `state`
+    func playingStateFromMpd(state : mpd_state) -> AZPlayingState {
+        // Switch and return the appropriate value
+        switch(state) {
+        case MPD_STATE_PLAY:
+            return .playing;
+            
+        case MPD_STATE_PAUSE:
+            return .paused;
+            
+        case MPD_STATE_STOP, MPD_STATE_UNKNOWN:
+            return .stopped;
+            
+        default:
+            return .stopped;
         }
     }
     
