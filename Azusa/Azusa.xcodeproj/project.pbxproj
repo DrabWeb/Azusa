@@ -18,6 +18,11 @@
 		AE602FC51DF8EDB9002225CB /* MIMPD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FC41DF8EDB9002225CB /* MIMPD.swift */; };
 		AE602FC81DF8F7D6002225CB /* AZLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FC71DF8F7D6002225CB /* AZLogger.swift */; };
 		AE602FCD1DF90289002225CB /* AZMusicUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FCC1DF90289002225CB /* AZMusicUtilities.swift */; };
+		AE602FD01DF906EC002225CB /* MIMPDStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FCF1DF906EC002225CB /* MIMPDStats.swift */; };
+		AE602FD71DF90818002225CB /* AZMusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FD31DF90818002225CB /* AZMusicPlayer.swift */; };
+		AE602FD81DF90818002225CB /* AZSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FD41DF90818002225CB /* AZSong.swift */; };
+		AE602FD91DF90818002225CB /* AZStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FD51DF90818002225CB /* AZStatus.swift */; };
+		AE602FDC1DF90894002225CB /* AZEventSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FDB1DF90894002225CB /* AZEventSubscriber.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +108,11 @@
 		AE602FC41DF8EDB9002225CB /* MIMPD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMPD.swift; sourceTree = "<group>"; };
 		AE602FC71DF8F7D6002225CB /* AZLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZLogger.swift; sourceTree = "<group>"; };
 		AE602FCC1DF90289002225CB /* AZMusicUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicUtilities.swift; sourceTree = "<group>"; };
+		AE602FCF1DF906EC002225CB /* MIMPDStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMPDStats.swift; sourceTree = "<group>"; };
+		AE602FD31DF90818002225CB /* AZMusicPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayer.swift; sourceTree = "<group>"; };
+		AE602FD41DF90818002225CB /* AZSong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZSong.swift; sourceTree = "<group>"; };
+		AE602FD51DF90818002225CB /* AZStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZStatus.swift; sourceTree = "<group>"; };
+		AE602FDB1DF90894002225CB /* AZEventSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZEventSubscriber.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +168,9 @@
 				AE602EF31DF8E8E3002225CB /* AppDelegate.swift */,
 				AE602EF51DF8E8E3002225CB /* ViewController.swift */,
 				AE602FC91DF8F8A2002225CB /* Storyboards */,
+				AE602FDA1DF90884002225CB /* Objects */,
 				AE602FC61DF8F7D0002225CB /* Utilities */,
+				AE602FD11DF907EF002225CB /* Protocols */,
 				AE602FC21DF8EDAD002225CB /* Backends */,
 				AE602EF71DF8E8E3002225CB /* Assets.xcassets */,
 				AE602EFC1DF8E8E3002225CB /* Info.plist */,
@@ -261,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				AE602FC41DF8EDB9002225CB /* MIMPD.swift */,
+				AE602FCE1DF906DB002225CB /* Objects */,
 			);
 			path = Mio;
 			sourceTree = "<group>";
@@ -280,6 +293,32 @@
 				AE602EF91DF8E8E3002225CB /* Main.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		AE602FCE1DF906DB002225CB /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				AE602FCF1DF906EC002225CB /* MIMPDStats.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		AE602FD11DF907EF002225CB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AE602FD31DF90818002225CB /* AZMusicPlayer.swift */,
+				AE602FD41DF90818002225CB /* AZSong.swift */,
+				AE602FD51DF90818002225CB /* AZStatus.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		AE602FDA1DF90884002225CB /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				AE602FDB1DF90894002225CB /* AZEventSubscriber.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,11 +455,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE602FD91DF90818002225CB /* AZStatus.swift in Sources */,
+				AE602FDC1DF90894002225CB /* AZEventSubscriber.swift in Sources */,
 				AE602FCD1DF90289002225CB /* AZMusicUtilities.swift in Sources */,
 				AE602FC81DF8F7D6002225CB /* AZLogger.swift in Sources */,
 				AE602EF61DF8E8E3002225CB /* ViewController.swift in Sources */,
+				AE602FD01DF906EC002225CB /* MIMPDStats.swift in Sources */,
 				AE602EF41DF8E8E3002225CB /* AppDelegate.swift in Sources */,
 				AE602FC51DF8EDB9002225CB /* MIMPD.swift in Sources */,
+				AE602FD81DF90818002225CB /* AZSong.swift in Sources */,
+				AE602FD71DF90818002225CB /* AZMusicPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,8 +610,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Azusa/External/mpdclient-src",
-					"$(PROJECT_DIR)/Azusa/External/libmpdclient",
 					"$(PROJECT_DIR)/External/libmpdclient",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
@@ -586,8 +628,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Azusa/External/mpdclient-src",
-					"$(PROJECT_DIR)/Azusa/External/libmpdclient",
 					"$(PROJECT_DIR)/External/libmpdclient",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
@@ -673,6 +713,7 @@
 				AE602F171DF8E8E3002225CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE602F181DF8E8E3002225CB /* Build configuration list for PBXNativeTarget "AzusaTests" */ = {
 			isa = XCConfigurationList;
@@ -681,6 +722,7 @@
 				AE602F1A1DF8E8E3002225CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE602F1B1DF8E8E3002225CB /* Build configuration list for PBXNativeTarget "AzusaUITests" */ = {
 			isa = XCConfigurationList;
@@ -689,6 +731,7 @@
 				AE602F1D1DF8E8E3002225CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
