@@ -393,7 +393,8 @@ class MIMPD {
     ///
     /// - Parameter song: The `MISong` to add to the queue
     /// - Parameter at: The position to insert the song at(optional)
-    func addToQueue(song : MISong, at : Int = -1) {
+    /// - Returns: If the operation was successful
+    func addToQueue(song : MISong, at : Int = -1) -> Bool {
         // If the connection isn't nil...
         if(connection != nil) {
             AZLogger.log("MIMPD: Adding \(song) to queue at \(((at == -1) ? "end" : "\(at)"))");
@@ -403,19 +404,34 @@ class MIMPD {
                 // Add the song to the queue, and if it fails...
                 if(mpd_run_add_id_to(self.connection!, song.uri, UInt32(at)) == -1) {
                     AZLogger.log("MIMPD: Error queueing song, \(self.currentErrorMessage())");
+                    
+                    // Say the operation with unsuccessful
+                    return false;
                 }
+                
+                // Say the operation with successful
+                return false;
             }
             // If `at` wasn't set...
             else {
                 // Add the song to the queue, and if it fails...
                 if(mpd_run_add_id(self.connection!, song.uri) == -1) {
                     AZLogger.log("MIMPD: Error queueing song, \(self.currentErrorMessage())");
+                    
+                    // Say the operation with unsuccessful
+                    return false;
                 }
+                
+                // Say the operation with successful
+                return false;
             }
         }
         // If the connection is nil...
         else {
             AZLogger.log("MIMPD: Cannot add song to queue, connection does not exist(run connect first)");
+            
+            // Say the operation with unsuccessful
+            return false;
         }
     }
     
@@ -424,20 +440,33 @@ class MIMPD {
     /// - Parameters:
     ///   - songs: The `MISong`'s to add to the queue
     ///   - at: The position to insert the songs at(optional)
-    func addToQueue(songs : [MISong], at : Int = -1) {
+    /// - Returns: If the operation was successful
+    func addToQueue(songs : [MISong], at : Int = -1) -> Bool {
         // If the connection isn't nil...
         if(connection != nil) {
             AZLogger.log("MIMPD: Adding \(songs) to queue at \(((at == -1) ? "end" : "\(at)"))");
             
+            /// Was the queue add successful?
+            var successful : Bool = true;
+            
             // For every song in `songs`(reversed if `at` was set so it stays in the proper order)
             for(_, currentSong) in ((at > -1) ? songs.reversed() : songs).enumerated() {
-                // Add `currentSong` to the queue
-                self.addToQueue(song: currentSong, at: at);
+                // Add `currentSong` to the queue, and if it fails...
+                if(!self.addToQueue(song: currentSong, at: at)) {
+                    // Say that the queue add was unsuccessful
+                    successful = false;
+                }
             }
+            
+            // Return if the queue add was successful
+            return successful;
         }
         // If the connection is nil...
         else {
             AZLogger.log("MIMPD: Cannot add song to queue, connection does not exist(run connect first)");
+            
+            // Say the operation with unsuccessful
+            return false;
         }
     }
     
