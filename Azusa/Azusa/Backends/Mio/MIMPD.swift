@@ -52,7 +52,7 @@ class MIMPD {
         
         // If we tried to connect to the server and it wasn't successful...
         if(mpd_connection_get_error(self.connection) != MPD_ERROR_SUCCESS) {
-            AZLogger.log("MIMPD: Error connecting to server at \(address):\(port), \(self.errorMessageFor(connection: self.connection!))");
+            AZLogger.log("MIMPD: Error connecting to server at \(address):\(port), \(self.currentErrorMessage())");
             
             // Remove the connection
             self.connection = nil;
@@ -96,7 +96,7 @@ class MIMPD {
             
             // If `statsObject` is nil...
             if(statsObject == nil) {
-                AZLogger.log(self.errorMessageFor(connection: self.connection!));
+                AZLogger.log(self.currentErrorMessage());
                 
                 // Return an empty stats object
                 return MIMPDStats();
@@ -327,7 +327,7 @@ class MIMPD {
             
             // Create the search, and if it fails...
             if (!mpd_search_db_songs(self.connection!, exact)) {
-                AZLogger.log("MIMPD: Error setting search, \(self.errorMessageFor(connection: self.connection!))");
+                AZLogger.log("MIMPD: Error setting search, \(self.currentErrorMessage())");
                 
                 // Return an empty array
                 return [];
@@ -337,7 +337,7 @@ class MIMPD {
             if(tag == MPD_TAG_UNKNOWN) {
                 // Add a new any search constraint, and if it fails...
                 if (!mpd_search_add_any_tag_constraint(self.connection!, MPD_OPERATOR_DEFAULT, query)) {
-                    AZLogger.log("MIMPD: Error adding search constraint, \(self.errorMessageFor(connection: self.connection!))");
+                    AZLogger.log("MIMPD: Error adding search constraint, \(self.currentErrorMessage())");
                     
                     // Return an empty array
                     return [];
@@ -347,7 +347,7 @@ class MIMPD {
             else {
                 // Add a new search constraint for `tag`, and if it fails...
                 if (!mpd_search_add_tag_constraint(self.connection!, MPD_OPERATOR_DEFAULT, tag, query)) {
-                    AZLogger.log("MIMPD: Error adding search constraint, \(self.errorMessageFor(connection: self.connection!))");
+                    AZLogger.log("MIMPD: Error adding search constraint, \(self.currentErrorMessage())");
                     
                     // Return an empty array
                     return [];
@@ -356,7 +356,7 @@ class MIMPD {
             
             // Commit the search, and if it fails...
             if (!mpd_search_commit(self.connection!)) {
-                AZLogger.log("MIMPD: Error committing search, \(self.errorMessageFor(connection: self.connection!))");
+                AZLogger.log("MIMPD: Error committing search, \(self.currentErrorMessage())");
                 
                 // Return an empty array
                 return [];
@@ -378,7 +378,7 @@ class MIMPD {
             }
             
             if(mpd_connection_get_error(self.connection!) != MPD_ERROR_SUCCESS || !mpd_response_finish(self.connection)) {
-                AZLogger.log(self.errorMessageFor(connection: self.connection!));
+                AZLogger.log(self.currentErrorMessage());
             }
         }
         // If the connection is nil...
@@ -387,6 +387,36 @@ class MIMPD {
         }
         
         return results;
+    }
+    
+    /// Adds the given `MISong` to the queue
+    ///
+    /// - Parameter song: The `MISong` to add to the queue
+    /// - Parameter at: The position to insert the song at(optional)
+    func addToQueue(song : MISong, at : Int = -1) {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Adding \(song) to queue at \(((at == -1) ? "end" : "\(at)"))");
+            
+            // If `at` was set...
+            if(at != -1) {
+                // Add the song to the queue, and if it fails...
+                if(mpd_run_add_id_to(self.connection!, song.uri, UInt32(at)) == -1) {
+                    AZLogger.log("MIMPD: Error queueing song, \(self.currentErrorMessage())");
+                }
+            }
+            // If `at` wasn't set...
+            else {
+                // Add the song to the queue, and if it fails...
+                if(mpd_run_add_id(self.connection!, song.uri) == -1) {
+                    AZLogger.log("MIMPD: Error queueing song, \(self.currentErrorMessage())");
+                }
+            }
+        }
+        // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot add song to queue, connection does not exist(run connect first)");
+        }
     }
     
     
@@ -496,7 +526,7 @@ class MIMPD {
         
         // If retrieving all the values for `tag` is unsuccessful...
         if(!mpd_search_db_tags(self.connection!, tag) || !mpd_search_commit(self.connection!)) {
-            AZLogger.log("MIMPD: Error retrieving all values for tag \"\(tag)\", \(self.errorMessageFor(connection: self.connection!))");
+            AZLogger.log("MIMPD: Error retrieving all values for tag \"\(tag)\", \(self.currentErrorMessage())");
             
             // Return an empty array
             return [];
@@ -525,6 +555,20 @@ class MIMPD {
         
         // Return `values`
         return values;
+    }
+    
+    /// Returns the current error message
+    ///
+    /// - Returns: The current error message
+    private func currentErrorMessage() -> String {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            // Return the current error
+            return self.errorMessageFor(connection: self.connection!);
+        }
+        
+        // Default to returning a "No Error Message" message
+        return "No Error Message";
     }
     
     /// Returns the error message for the given MPD connection

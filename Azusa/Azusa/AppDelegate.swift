@@ -39,14 +39,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let mpd : MIMPD = MIMPD(address: "127.0.0.1", port: 6600);
         
         AZLogger.log("Connection was successful: \(mpd.connect())");
-        AZLogger.log("Current song: \(mpd.getCurrentSong() ?? MISong.empty)");
-        AZLogger.log("Database stats: \(mpd.getStats() ?? MIMPDStats())");
-        AZLogger.log("Player status: \(mpd.getPlayerStatus() ?? MIMPDPlayerStatus())");
-        AZLogger.log("Queue: \(mpd.getCurrentQueue())");
-        AZLogger.log("All artists: \(mpd.getAllArtists())");
-        AZLogger.log("All albums: \(mpd.getAllAlbums())");
-        AZLogger.log("All genres: \(mpd.getAllGenres())");
-        AZLogger.log(mpd.searchForSongs("team skull", within: MPD_TAG_UNKNOWN, exact: false));
+//        AZLogger.log("Current song: \(mpd.getCurrentSong() ?? MISong.empty)");
+//        AZLogger.log("Database stats: \(mpd.getStats() ?? MIMPDStats())");
+//        AZLogger.log("Player status: \(mpd.getPlayerStatus() ?? MIMPDPlayerStatus())");
+//        AZLogger.log("Queue: \(mpd.getCurrentQueue())");
+//        AZLogger.log("All artists: \(mpd.getAllArtists())");
+//        AZLogger.log("All albums: \(mpd.getAllAlbums())");
+//        AZLogger.log("All genres: \(mpd.getAllGenres())");
+//        AZLogger.log(mpd.searchForSongs("guzma", within: MPD_TAG_UNKNOWN, exact: false));
+//        mpd.addToQueue(song: mpd.searchForSongs("team skull boss", within: MPD_TAG_UNKNOWN, exact: false)[0], at: 0);
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
