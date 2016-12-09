@@ -377,7 +377,7 @@ class MIMPD {
         // For every album in the fetched albums...
         for(_, currentAlbum) in artist.albums.enumerated() {
             // Search for all the songs of this album
-            currentAlbum.songs = self.searchForSongs(currentAlbum.name, within: MPD_TAG_ALBUM, exact: true);
+            currentAlbum.songs = self.getAllSongsForAlbum(album: currentAlbum);
             
             // Update the album values to match
             currentAlbum.artist = artist;
