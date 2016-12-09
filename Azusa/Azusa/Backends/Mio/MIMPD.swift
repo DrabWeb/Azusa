@@ -180,9 +180,9 @@ class MIMPD {
         return status;
     }
     
-    /// Gets the current playing song and returns it as an MISong(nil if there is none)
+    /// Gets the current playing song and returns it as an `MISong`(nil if there is none)
     ///
-    /// - Returns: The current playing song as an MISong(nil if there is none)
+    /// - Returns: The current playing song as an `MISong`(nil if there is none)
     func getCurrentSong() -> MISong? {
         // If the connection isn't nil...
         if(connection != nil) {
@@ -211,7 +211,7 @@ class MIMPD {
 
     /// Gets all the songs in the current queue and returns them
     ///
-    /// - Returns: All the `MISong`'s in the current queue
+    /// - Returns: All the `MISong`s in the current queue
     func getCurrentQueue() -> [MISong] {
         /// The current queue, returned at the end
         var currentQueue : [MISong] = [];
@@ -241,7 +241,7 @@ class MIMPD {
     
     /// Gets all the artists in the MPD database
     ///
-    /// - Returns: An array of `AZArtist`'s containing all the artists in the MPD database(only the name is set)
+    /// - Returns: An array of `AZArtist`s containing all the artists in the MPD database(only the name is set)
     func getAllArtists() -> [AZArtist] {
         /// All the artists in the database, returned at the end
         var artists : [AZArtist] = [];
@@ -265,7 +265,7 @@ class MIMPD {
     
     /// Gets all the albums in the MPD database
     ///
-    /// - Returns: An array of `AZAlbum`'s containing all the albums in the MPD database(only the name is set)
+    /// - Returns: An array of `AZAlbum`s containing all the albums in the MPD database(only the name is set)
     func getAllAlbums() -> [AZAlbum] {
         /// All the albums in the database, returned at the end
         var albums : [AZAlbum] = [];
@@ -289,7 +289,7 @@ class MIMPD {
     
     /// Gets all the genres in the MPD database
     ///
-    /// - Returns: An array of `AZGenre`'s containing all the genres in the MPD database(only the name is set)
+    /// - Returns: An array of `AZGenre`s containing all the genres in the MPD database(only the name is set)
     func getAllGenres() -> [AZGenre] {
         /// All the genres in the database, returned at the end
         var genres : [AZGenre] = [];
@@ -431,7 +431,7 @@ class MIMPD {
     ///   - query: The string to search for
     ///   - tags: THe tags to limit the query to, `MPD_TAG_UNKNOWN` is used to denote an any search
     ///   - exact: Should the search use exact matching?
-    /// - Returns: The results of the search as an array of `MISong`'s
+    /// - Returns: The results of the search as an array of `MISong`s
     func searchForSongs(_ query : String, within tag : mpd_tag_type, exact : Bool) -> [MISong] {
         /// All the results of the search
         var results : [MISong] = [];
@@ -554,7 +554,7 @@ class MIMPD {
     /// Adds the given array of `MISong`'s to the queue
     ///
     /// - Parameters:
-    ///   - songs: The `MISong`'s to add to the queue
+    ///   - songs: The `MISong`s to add to the queue
     ///   - at: The position to insert the songs at(optional)
     /// - Returns: If the operation was successful
     func addToQueue(songs : [MISong], at : Int = -1) -> Bool {
