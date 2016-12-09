@@ -13,13 +13,13 @@ class MIMPD {
     // MARK: - Properties
     
     /// The connection to MPD for this object(`mpd_connection`)
-    var connection: OpaquePointer? = nil;
+    private var connection: OpaquePointer? = nil;
     
     /// Is this MPD object connected to a server?
     var connected : Bool = false;
     
     /// The default amount of seconds to timeout connections
-    var connectionTimeout : Int = 30;
+    private var connectionTimeout : Int = 30;
     
     /// The address of the MPD server this object should connect to
     var serverAddress : String = "127.0.0.1";
@@ -318,7 +318,7 @@ class MIMPD {
     ///
     /// - Parameter mpdSong: The MPD song to get the `MISong` of
     /// - Returns: The `MISong` of `mpdSong`
-    func songFrom(mpdSong: OpaquePointer) -> MISong {
+    private func songFrom(mpdSong: OpaquePointer) -> MISong {
         /// The song to return
         let returnSong : MISong = MISong();
         
@@ -368,7 +368,7 @@ class MIMPD {
     ///   - mpdSong: The song to get the tag value from
     ///   - tag: The tag to get the value of
     /// - Returns: The string value of the `tag` tag from `mpdSong`, nil if the tag was nil
-    func tagFrom(_ mpdSong : OpaquePointer, tag : mpd_tag_type) -> String? {
+    private func tagFrom(_ mpdSong : OpaquePointer, tag : mpd_tag_type) -> String? {
         /// The MPD tag object of `tag` from `mpdSong`
         let tagObject = mpd_song_get_tag(mpdSong, tag, 0);
         
@@ -391,7 +391,7 @@ class MIMPD {
     ///
     /// - Parameter state: The `mpd_state` to get the `AZPlayingState` of
     /// - Returns: The `AZPlayingState` of `state`
-    func playingStateFrom(mpdState : mpd_state) -> AZPlayingState {
+    private func playingStateFrom(mpdState : mpd_state) -> AZPlayingState {
         // Switch and return the appropriate value
         switch(mpdState) {
             case MPD_STATE_PLAY:
@@ -412,7 +412,7 @@ class MIMPD {
     ///
     /// - Parameter tag: The `mpd_tag_type` to get the values of
     /// - Returns: The string of all the values of `tag`
-    func getAllValues(of tag : mpd_tag_type) -> [String] {
+    private func getAllValues(of tag : mpd_tag_type) -> [String] {
         /// All the string values to return
         var values : [String] = [];
         
@@ -453,7 +453,7 @@ class MIMPD {
     ///
     /// - Parameter connection: The `mpd_connection` to get the error from
     /// - Returns: The error message, defaults to `"No Error Message"`
-    func errorMessageFor(connection: OpaquePointer) -> String {
+    private func errorMessageFor(connection: OpaquePointer) -> String {
         /// The MPD error from `connection`
         let error = mpd_connection_get_error_message(connection);
         
