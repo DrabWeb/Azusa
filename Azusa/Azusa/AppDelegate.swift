@@ -42,6 +42,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AZLogger.log("Database stats: \(mpd.getStats() ?? MIMPDStats())");
         AZLogger.log("Player status: \(mpd.getPlayerStatus() ?? MIMPDPlayerStatus())");
         AZLogger.log("Queue: \(mpd.getCurrentQueue())");
+        AZLogger.log("All artists: \(mpd.getAllArtists())");
+        AZLogger.log("All albums: \(mpd.getAllAlbums())");
+        AZLogger.log("All genres: \(mpd.getAllGenres())");
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

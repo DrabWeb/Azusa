@@ -50,6 +50,14 @@ class AZAlbum: CustomStringConvertible {
         self.songs = [];
     }
     
+    init(name : String) {
+        self.name = name;
+        self.artist = AZArtist();
+        self.genre = "";
+        self.year = -1;
+        self.songs = [];
+    }
+    
     init() {
         self.name = "";
         self.artist = AZArtist();

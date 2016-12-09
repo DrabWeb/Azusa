@@ -239,6 +239,79 @@ class MIMPD {
         return currentQueue;
     }
     
+    /// Gets all the artists in the MPD database
+    ///
+    /// - Returns: An array of `AZArtist`'s containing all the artists in the MPD database(only the name is set)
+    func getAllArtists() -> [AZArtist] {
+        /// All the artists in the database, returned at the end
+        var artists : [AZArtist] = [];
+        
+        // If the connection isn't nil...
+        if(connection != nil) {
+            // For every artist in the user's database...
+            for(_, currentArtistName) in self.getAllValues(of: MPD_TAG_ARTIST).enumerated() {
+                // Append the current artist name as an `AZArtist` to `artists`
+                artists.append(AZArtist(name: currentArtistName));
+            }
+        }
+        // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot retrieve artists, connection does not exist(run connect first)");
+        }
+        
+        // Return `artists`
+        return artists;
+    }
+    
+    /// Gets all the albums in the MPD database
+    ///
+    /// - Returns: An array of `AZAlbum`'s containing all the albums in the MPD database(only the name is set)
+    func getAllAlbums() -> [AZAlbum] {
+        /// All the albums in the database, returned at the end
+        var albums : [AZAlbum] = [];
+        
+        // If the connection isn't nil...
+        if(connection != nil) {
+            // For every album in the user's database...
+            for(_, currentAlbumName) in self.getAllValues(of: MPD_TAG_ALBUM).enumerated() {
+                // Append the current album name as an `AZAlbum` to `albums`
+                albums.append(AZAlbum(name: currentAlbumName));
+            }
+        }
+        // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot retrieve albums, connection does not exist(run connect first)");
+        }
+        
+        // Return `albums`
+        return albums;
+    }
+    
+    /// Gets all the genres in the MPD database
+    ///
+    /// - Returns: An array of `AZGenre`'s containing all the genres in the MPD database(only the name is set)
+    func getAllGenres() -> [AZGenre] {
+        /// All the genres in the database, returned at the end
+        var genres : [AZGenre] = [];
+        
+        // If the connection isn't nil...
+        if(connection != nil) {
+            // For every genre in the user's database...
+            for(_, currentGenreName) in self.getAllValues(of: MPD_TAG_GENRE).enumerated() {
+                // Append the current genre name as an `AZGenre` to `genres`
+                genres.append(AZGenre(name: currentGenreName));
+            }
+        }
+            // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot retrieve genres, connection does not exist(run connect first)");
+        }
+        
+        // Return `genres`
+        return genres;
+    }
+    
+    
     // MARK: - Utilities
     
     /// Returns an `MISong` from the given `mpd_song`
@@ -333,6 +406,47 @@ class MIMPD {
             default:
                 return .stopped;
         }
+    }
+    
+    /// Returns all the values of the given tag type in the user's database
+    ///
+    /// - Parameter tag: The `mpd_tag_type` to get the values of
+    /// - Returns: The string of all the values of `tag`
+    func getAllValues(of tag : mpd_tag_type) -> [String] {
+        /// All the string values to return
+        var values : [String] = [];
+        
+        // If retrieving all the values for `tag` is unsuccessful...
+        if(!mpd_search_db_tags(self.connection!, tag) || !mpd_search_commit(self.connection!)) {
+            AZLogger.log("MIMPD: Error retrieving all values for tag \"\(tag)\", \(self.errorMessageFor(connection: self.connection!))");
+            
+            // Return an empty array
+            return [];
+        }
+        
+        /// The key value pair for the values of `tag`
+        var tagKeyValuePair = mpd_recv_pair_tag(self.connection!, tag);
+        
+        // While `tagKeyValuePair` isn't nil...
+        while(tagKeyValuePair != nil) {
+            /// The data for the string value of the current tag value
+            let stringData : Data = Data(bytesNoCopy: UnsafeMutableRawPointer(mutating: (tagKeyValuePair?.pointee.value)!), count: Int(strlen(tagKeyValuePair?.pointee.value)), deallocator: .none);
+            
+            // If the string from `stringData` isn't nil...
+            if let string = String(data: stringData, encoding: .utf8) {
+                // Add the value to `values`
+                values.append(string);
+            }
+            
+            // Free the read tag key value pair from memory
+            mpd_return_pair(self.connection!, tagKeyValuePair);
+            
+            // Read the next key value pair from the server
+            tagKeyValuePair = mpd_recv_pair_tag(self.connection!, tag);
+        }
+        
+        // Return `values`
+        return values;
     }
     
     /// Returns the error message for the given MPD connection
