@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import MPD
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -45,6 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AZLogger.log("All artists: \(mpd.getAllArtists())");
         AZLogger.log("All albums: \(mpd.getAllAlbums())");
         AZLogger.log("All genres: \(mpd.getAllGenres())");
+        AZLogger.log(mpd.searchForSongs("team skull", within: MPD_TAG_UNKNOWN, exact: false));
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

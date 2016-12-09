@@ -302,13 +302,91 @@ class MIMPD {
                 genres.append(AZGenre(name: currentGenreName));
             }
         }
-            // If the connection is nil...
+        // If the connection is nil...
         else {
             AZLogger.log("MIMPD: Cannot retrieve genres, connection does not exist(run connect first)");
         }
         
         // Return `genres`
         return genres;
+    }
+    
+    /// Searches for songs in the database with the given paramaters
+    ///
+    /// - Parameters:
+    ///   - query: The string to search for
+    ///   - tags: THe tags to limit the query to, `MPD_TAG_UNKNOWN` is used to denote an any search
+    ///   - exact: Should the search use exact matching?
+    /// - Returns: The results of the search as an array of `MISong`'s
+    func searchForSongs(_ query : String, within tag : mpd_tag_type, exact : Bool) -> [MISong] {
+        var results : [MISong] = [];
+        
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Getting results of query \"\(query)\" within tag \(((tag == MPD_TAG_UNKNOWN) ? "Any" : String(cString: mpd_tag_name(tag))))");
+            
+            // Create the search, and if it fails...
+            if (!mpd_search_db_songs(self.connection!, exact)) {
+                AZLogger.log("MIMPD: Error setting search, \(self.errorMessageFor(connection: self.connection!))");
+                
+                // Return an empty array
+                return [];
+            }
+            
+            // If the search tag is `MPD_TAG_UNKNOWN`(meaning we want to do an any search)...
+            if(tag == MPD_TAG_UNKNOWN) {
+                // Add a new any search constraint, and if it fails...
+                if (!mpd_search_add_any_tag_constraint(self.connection!, MPD_OPERATOR_DEFAULT, query)) {
+                    AZLogger.log("MIMPD: Error adding search constraint, \(self.errorMessageFor(connection: self.connection!))");
+                    
+                    // Return an empty array
+                    return [];
+                }
+            }
+            // If the search tag is not `MPD_TAG_UNKNOWN`...
+            else {
+                // Add a new search constraint for `tag`, and if it fails...
+                if (!mpd_search_add_tag_constraint(self.connection!, MPD_OPERATOR_DEFAULT, tag, query)) {
+                    AZLogger.log("MIMPD: Error adding search constraint, \(self.errorMessageFor(connection: self.connection!))");
+                    
+                    // Return an empty array
+                    return [];
+                }
+            }
+            
+            // Commit the search, and if it fails...
+            if (!mpd_search_commit(self.connection!)) {
+                AZLogger.log("MIMPD: Error committing search, \(self.errorMessageFor(connection: self.connection!))");
+                
+                // Return an empty array
+                return [];
+            }
+            
+            /// The key value pair for the results from MPD, with name "file" so only search request key value pairs are retrieved
+            var resultsKeyValuePair = mpd_recv_pair_named(self.connection!, "file");
+            
+            // While `resultsKeyValuePair` isn't nil...
+            while(resultsKeyValuePair != nil) {
+                /// Append the `MISong` from `resultsKeyValuePair` to `results`
+                results.append(self.songFrom(mpdSong: mpd_song_begin(resultsKeyValuePair)));
+                
+                // Free the read tag key value pair from memory
+                mpd_return_pair(self.connection!, resultsKeyValuePair);
+                
+                // Read the next key value pair from the server
+                resultsKeyValuePair = mpd_recv_pair_named(self.connection!, "file");
+            }
+            
+            if(mpd_connection_get_error(self.connection!) != MPD_ERROR_SUCCESS || !mpd_response_finish(self.connection)) {
+                AZLogger.log(self.errorMessageFor(connection: self.connection!));
+            }
+        }
+        // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot search, connection does not exist(run connect first)");
+        }
+        
+        return results;
     }
     
     
