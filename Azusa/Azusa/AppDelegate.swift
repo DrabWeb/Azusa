@@ -46,8 +46,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        AZLogger.log("All artists: \(mpd.getAllArtists())");
 //        AZLogger.log("All albums: \(mpd.getAllAlbums())");
 //        AZLogger.log("All genres: \(mpd.getAllGenres())");
-//        AZLogger.log(mpd.searchForSongs("guzma", within: MPD_TAG_UNKNOWN, exact: false));
-//        mpd.addToQueue(song: mpd.searchForSongs("team skull boss", within: MPD_TAG_UNKNOWN, exact: false)[0], at: 0);
+//        AZLogger.log(mpd.addToQueue(songs: mpd.searchForSongs("team skull", within: MPD_TAG_UNKNOWN, exact: false)));
+//        mpd.addToQueue(song: mpd.searchForSongs("team skull", within: MPD_TAG_UNKNOWN, exact: false)[0], at: 0);
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

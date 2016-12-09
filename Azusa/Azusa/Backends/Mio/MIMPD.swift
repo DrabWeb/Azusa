@@ -419,6 +419,28 @@ class MIMPD {
         }
     }
     
+    /// Adds the given array of `MISong`'s to the queue
+    ///
+    /// - Parameters:
+    ///   - songs: The `MISong`'s to add to the queue
+    ///   - at: The position to insert the songs at(optional)
+    func addToQueue(songs : [MISong], at : Int = -1) {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Adding \(songs) to queue at \(((at == -1) ? "end" : "\(at)"))");
+            
+            // For every song in `songs`(reversed if `at` was set so it stays in the proper order)
+            for(_, currentSong) in ((at > -1) ? songs.reversed() : songs).enumerated() {
+                // Add `currentSong` to the queue
+                self.addToQueue(song: currentSong, at: at);
+            }
+        }
+        // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot add song to queue, connection does not exist(run connect first)");
+        }
+    }
+    
     
     // MARK: - Utilities
     
