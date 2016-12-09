@@ -311,6 +311,120 @@ class MIMPD {
         return genres;
     }
     
+    /// Gets all the albums for the given artist, also stores the albums in `artist.albums`
+    ///
+    /// - Parameter artist: The `AZArtist` to get the albums of
+    /// - Returns: All the `AZAlbum`s for the given `AZArtist`
+    func getAllAlbumsForArtist(artist : AZArtist) -> [AZAlbum] {
+        /// The albums to return
+        var albums : [AZAlbum] = [];
+        
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Getting all albums for \(artist)");
+            
+            // Create the search, and if it fails...
+            if(!mpd_search_db_tags(self.connection!, MPD_TAG_ALBUM)) {
+                AZLogger.log("MIMPD: Error setting search, \(self.currentErrorMessage())");
+                
+                // Return an empty array
+                return [];
+            }
+            
+            // Add tag constraint, and if it fails...
+            if(!mpd_search_add_tag_constraint(self.connection!, MPD_OPERATOR_DEFAULT, MPD_TAG_ARTIST, artist.name)) {
+                AZLogger.log("MIMPD: Error adding search constraint, \(self.currentErrorMessage())");
+                
+                // Return an empty array
+                return [];
+            }
+            
+            // Commit the search, and if it fails...
+            if(!mpd_search_commit(self.connection!)) {
+                AZLogger.log("MIMPD: Error committing search, \(self.currentErrorMessage())");
+                
+                // Return an empty array
+                return [];
+            }
+            
+            /// The key value pair for the results from MPD
+            var resultsKeyValuePair = mpd_recv_pair_tag(self.connection!, MPD_TAG_ALBUM);
+            
+            // While `resultsKeyValuePair` isn't nil...
+            while(resultsKeyValuePair != nil) {
+                // Add the current album to `albums`, but only the name for now
+                albums.append(AZAlbum(name: String(cString: resultsKeyValuePair!.pointee.value)));
+                
+                // Free the read tag key value pair from memory
+                mpd_return_pair(self.connection!, resultsKeyValuePair);
+                
+                // Read the next key value pair from the server
+                resultsKeyValuePair = mpd_recv_pair_tag(self.connection!, MPD_TAG_ALBUM);
+            }
+            
+            if(mpd_connection_get_error(self.connection!) != MPD_ERROR_SUCCESS || !mpd_response_finish(self.connection)) {
+                AZLogger.log(self.currentErrorMessage());
+            }
+        }
+        // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot get albums for artist, connection does not exist(run connect first)");
+        }
+        
+        // Store `albums` in the artist object's `albums` value
+        artist.albums = albums;
+        
+        // For every album in the fetched albums...
+        for(_, currentAlbum) in artist.albums.enumerated() {
+            // Search for all the songs of this album
+            currentAlbum.songs = self.searchForSongs(currentAlbum.name, within: MPD_TAG_ALBUM, exact: true);
+            
+            // Update the album values to match
+            currentAlbum.artist = artist;
+            currentAlbum.genre = currentAlbum.songs.first?.genre ?? "";
+            currentAlbum.year = currentAlbum.songs.first?.year ?? -1;
+        }
+        
+        // Return `artist.albums`
+        return artist.albums;
+    }
+    
+    /// Gets all the songs for the given album
+    ///
+    /// - Parameter album: The `AZAlbum` to get the songs of
+    /// - Returns: All the `MISong`s for the given `AZAlbum`
+    func getAllSongsForAlbum(album : AZAlbum) -> [MISong] {
+        /// The songs to return
+        var songs : [MISong] = [];
+        
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Getting all songs for album \(album)");
+            
+            // Set `songs` to all the songs that have an album tag equal to the `album`'s name
+            songs = self.searchForSongs(album.name, within: MPD_TAG_ALBUM, exact: true);
+        }
+        // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot get songs for album, connection does not exist(run connect first)");
+        }
+        
+        // Return `songs`
+        return songs;
+    }
+    
+    /// Gets all the albums for the given genre
+    ///
+    /// - Parameter genre: The `AZAGenre` to get the albums of
+    /// - Returns: All the `MISong`s for the given `AZGenre`
+    func getAllAlbumsForGenre(genre : AZGenre) -> [AZAlbum] {
+        /// The albums to return
+        let albums : [AZAlbum] = [];
+        
+        // Return `albums`
+        return albums;
+    }
+    
     /// Searches for songs in the database with the given paramaters
     ///
     /// - Parameters:
@@ -319,14 +433,15 @@ class MIMPD {
     ///   - exact: Should the search use exact matching?
     /// - Returns: The results of the search as an array of `MISong`'s
     func searchForSongs(_ query : String, within tag : mpd_tag_type, exact : Bool) -> [MISong] {
+        /// All the results of the search
         var results : [MISong] = [];
         
         // If the connection isn't nil...
         if(connection != nil) {
-            AZLogger.log("MIMPD: Getting results of query \"\(query)\" within tag \(((tag == MPD_TAG_UNKNOWN) ? "Any" : String(cString: mpd_tag_name(tag))))");
+            AZLogger.log("MIMPD: Searching for songs with query \"\(query)\" within tag \(((tag == MPD_TAG_UNKNOWN) ? "Any" : String(cString: mpd_tag_name(tag)))), exact: \(exact)");
             
             // Create the search, and if it fails...
-            if (!mpd_search_db_songs(self.connection!, exact)) {
+            if(!mpd_search_db_songs(self.connection!, exact)) {
                 AZLogger.log("MIMPD: Error setting search, \(self.currentErrorMessage())");
                 
                 // Return an empty array
@@ -336,7 +451,7 @@ class MIMPD {
             // If the search tag is `MPD_TAG_UNKNOWN`(meaning we want to do an any search)...
             if(tag == MPD_TAG_UNKNOWN) {
                 // Add a new any search constraint, and if it fails...
-                if (!mpd_search_add_any_tag_constraint(self.connection!, MPD_OPERATOR_DEFAULT, query)) {
+                if(!mpd_search_add_any_tag_constraint(self.connection!, MPD_OPERATOR_DEFAULT, query)) {
                     AZLogger.log("MIMPD: Error adding search constraint, \(self.currentErrorMessage())");
                     
                     // Return an empty array
@@ -346,7 +461,7 @@ class MIMPD {
             // If the search tag is not `MPD_TAG_UNKNOWN`...
             else {
                 // Add a new search constraint for `tag`, and if it fails...
-                if (!mpd_search_add_tag_constraint(self.connection!, MPD_OPERATOR_DEFAULT, tag, query)) {
+                if(!mpd_search_add_tag_constraint(self.connection!, MPD_OPERATOR_DEFAULT, tag, query)) {
                     AZLogger.log("MIMPD: Error adding search constraint, \(self.currentErrorMessage())");
                     
                     // Return an empty array
@@ -355,7 +470,7 @@ class MIMPD {
             }
             
             // Commit the search, and if it fails...
-            if (!mpd_search_commit(self.connection!)) {
+            if(!mpd_search_commit(self.connection!)) {
                 AZLogger.log("MIMPD: Error committing search, \(self.currentErrorMessage())");
                 
                 // Return an empty array
@@ -383,9 +498,10 @@ class MIMPD {
         }
         // If the connection is nil...
         else {
-            AZLogger.log("MIMPD: Cannot search, connection does not exist(run connect first)");
+            AZLogger.log("MIMPD: Cannot search for songs, connection does not exist(run connect first)");
         }
         
+        // Return the results
         return results;
     }
     
