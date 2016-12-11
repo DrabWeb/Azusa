@@ -27,6 +27,9 @@ class MIMPD {
     /// The port of the MPD server this object should connect to
     var serverPort : Int = 6600;
     
+    /// The music directory for this MPD server(used for getting cover art), trailing slash
+    var musicDirectory : String = "\(NSHomeDirectory())/Music/";
+    
     
     // MARK: - Functions
     
@@ -610,6 +613,8 @@ class MIMPD {
         returnSong.composer = self.tagFrom(mpdSong, tag: MPD_TAG_COMPOSER) ?? "";
         returnSong.performer = self.tagFrom(mpdSong, tag: MPD_TAG_PERFORMER) ?? "";
         
+        returnSong.file = self.musicDirectory + returnSong.uri;
+        
         /// The string from the output of the disc metadata, either blank or "#/#"
         let discString = self.tagFrom(mpdSong, tag: MPD_TAG_DISC) ?? "";
         
@@ -753,9 +758,10 @@ class MIMPD {
     
     // MARK: - Initialization and Deinitialization
     
-    init(address : String, port : Int) {
+    init(address : String, port : Int, musicDirectory : String) {
         self.serverAddress = address;
         self.serverPort = port;
+        self.musicDirectory = musicDirectory;
     }
     
     deinit {

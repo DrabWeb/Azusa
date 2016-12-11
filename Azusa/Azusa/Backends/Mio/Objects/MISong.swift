@@ -7,12 +7,16 @@
 
 import Foundation
 import AppKit
+import AVFoundation
 
 class MISong: AZSong {
     // MARK: - Properties
     
     /// The MPD URI of this song
     var uri : String = "";
+    
+    /// The path to the file of this song
+    var file : String = "";
     
     /// The MPD ID of this song
     var id : Int = 0;
@@ -77,8 +81,75 @@ class MISong: AZSong {
         return self.album.displayName;
     }
     
+    /// The cached cover, set by `coverImage`
+    private var cachedCover : NSImage? = nil;
+    
     var coverImage : NSImage {
-        return #imageLiteral(resourceName: "AZDefaultCover");
+        // If we haven't already loaded the cover image...
+        if(cachedCover == nil) {
+            /// The cover to return
+            var cover : NSImage = #imageLiteral(resourceName: "AZDefaultCover");
+            
+            /// The URL for this song's file
+            let fileUrl : URL? = URL(fileURLWithPath: self.file);
+            
+            // If 'fileUrl' isn't nil...
+            if(fileUrl != nil) {
+                /// The AVFoundation asset for this song
+                let songAsset : AVURLAsset = AVURLAsset(url: fileUrl!);
+                
+                /// The metadata items for this song(initially ID3)
+                var songMetadata : [AVMetadataItem] = songAsset.metadata(forFormat: AVMetadataFormatID3Metadata) as Array<AVMetadataItem>;
+                
+                // If the metadata is empty...
+                if(songMetadata.isEmpty) {
+                    // Load the iTunes metadata
+                    songMetadata = songAsset.metadata(forFormat: AVMetadataFormatiTunesMetadata) as Array<AVMetadataItem>;
+                }
+                
+                /// For every tag in this song's metadata...
+                for currentTag : AVMetadataItem in songMetadata {
+                    // If the current tag is the artwork tag...
+                    if(currentTag.commonKey == "artwork") {
+                        // If the current tag's data isnt nil...
+                        if(currentTag.dataValue != nil) {
+                            /// The image from this tag
+                            let tagImage : NSImage? = NSImage(data: currentTag.dataValue!);
+                            
+                            // If tagImage isnt nil...
+                            if(tagImage != nil) {
+                                // Set the cover image to tagImage
+                                cover = tagImage!;
+                            }
+                        }
+                    }
+                }
+                
+                // If the cover *still* isn't set...
+                if(cover == #imageLiteral(resourceName: "AZDefaultCover")) {
+                    /// The path to the folder this song is in
+                    let songFolderPath : String = self.file.replacingOccurrences(of: NSString(string: self.file).lastPathComponent, with: "");
+                    
+                    // Try to load a `cover.jpg` file
+                    if(FileManager.default.fileExists(atPath: songFolderPath + "cover.jpg")) {
+                        if let coverFileImage = NSImage(byReferencingFile: songFolderPath + "cover.jpg") {
+                            cover = coverFileImage;
+                        }
+                    }
+                }
+            }
+            
+            // Set `cachedCover`
+            self.cachedCover = cover;
+            
+            // Default the cover
+            return cover;
+        }
+        // If the cover has already been loaded...
+        else {
+            // Return the cached cover
+            return self.cachedCover!;
+        }
     };
     
     static var empty : AZSong {
