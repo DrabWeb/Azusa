@@ -19,7 +19,7 @@ class AZAlbum: CustomStringConvertible {
     var artist : AZArtist = AZArtist();
     
     /// The genre of this album
-    var genre : String = "";
+    var genre : AZGenre = AZGenre();
     
     /// The year this album was released
     var year : Int = -1;
@@ -27,14 +27,19 @@ class AZAlbum: CustomStringConvertible {
     /// All the songs in this album
     var songs : [AZSong] = [];
     
+    /// The user readable version of this album's name
+    var displayName : String {
+        return ((self.name != "") ? self.name : "Unknown Album");
+    }
+    
     var description : String {
-        return "AZAlbum: \(self.name) by \(self.artist.name)(\(self.genre)), \(self.songs.count) songs, released \(year)"
+        return "AZAlbum: \(self.displayName) by \(self.artist.displayName)(\(self.genre.displayName)), \(self.songs.count) songs, released \(year)"
     }
     
     
     // MARK: - Initialization and Deinitialization
     
-    init(name : String, artist : AZArtist, genre : String, year : Int) {
+    init(name : String, artist : AZArtist, genre : AZGenre, year : Int) {
         self.name = name;
         self.artist = artist;
         self.genre = genre;
@@ -45,7 +50,7 @@ class AZAlbum: CustomStringConvertible {
     init(name : String, artist : AZArtist) {
         self.name = name;
         self.artist = artist;
-        self.genre = "";
+        self.genre = AZGenre();
         self.year = -1;
         self.songs = [];
     }
@@ -53,7 +58,7 @@ class AZAlbum: CustomStringConvertible {
     init(name : String) {
         self.name = name;
         self.artist = AZArtist();
-        self.genre = "";
+        self.genre = AZGenre();
         self.year = -1;
         self.songs = [];
     }
@@ -61,7 +66,7 @@ class AZAlbum: CustomStringConvertible {
     init() {
         self.name = "";
         self.artist = AZArtist();
-        self.genre = "";
+        self.genre = AZGenre();
         self.year = -1;
         self.songs = [];
     }

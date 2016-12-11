@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE2AF77A1DFC968C00580839 /* AZMusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2AF7791DFC968C00580839 /* AZMusicPlayerViewController.swift */; };
+		AE2AF77D1DFC9A4F00580839 /* AZAspectFillImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2AF77C1DFC9A4F00580839 /* AZAspectFillImageView.swift */; };
 		AE5A63371DF9135D002301F6 /* MIMPDPlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A63361DF9135D002301F6 /* MIMPDPlayerStatus.swift */; };
 		AE5A63391DF91408002301F6 /* MISong.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A63381DF91408002301F6 /* MISong.swift */; };
 		AE602EF41DF8E8E3002225CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602EF31DF8E8E3002225CB /* AppDelegate.swift */; };
-		AE602EF61DF8E8E3002225CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602EF51DF8E8E3002225CB /* ViewController.swift */; };
 		AE602EF81DF8E8E3002225CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE602EF71DF8E8E3002225CB /* Assets.xcassets */; };
 		AE602EFB1DF8E8E3002225CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE602EF91DF8E8E3002225CB /* Main.storyboard */; };
 		AE602F061DF8E8E3002225CB /* AzusaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602F051DF8E8E3002225CB /* AzusaTests.swift */; };
@@ -48,11 +49,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE2AF7791DFC968C00580839 /* AZMusicPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerViewController.swift; sourceTree = "<group>"; };
+		AE2AF77C1DFC9A4F00580839 /* AZAspectFillImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZAspectFillImageView.swift; sourceTree = "<group>"; };
 		AE5A63361DF9135D002301F6 /* MIMPDPlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMPDPlayerStatus.swift; sourceTree = "<group>"; };
 		AE5A63381DF91408002301F6 /* MISong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MISong.swift; sourceTree = "<group>"; };
 		AE602EF01DF8E8E3002225CB /* Azusa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Azusa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE602EF31DF8E8E3002225CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AE602EF51DF8E8E3002225CB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AE602EF71DF8E8E3002225CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE602EFA1DF8E8E3002225CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE602EFC1DF8E8E3002225CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -151,6 +153,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE2AF7781DFC967D00580839 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AE2AF7791DFC968C00580839 /* AZMusicPlayerViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		AE2AF77B1DFC9A4800580839 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AE2AF77C1DFC9A4F00580839 /* AZAspectFillImageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		AE602EE71DF8E8E3002225CB = {
 			isa = PBXGroup;
 			children = (
@@ -176,9 +194,10 @@
 			isa = PBXGroup;
 			children = (
 				AE602EF31DF8E8E3002225CB /* AppDelegate.swift */,
-				AE602EF51DF8E8E3002225CB /* ViewController.swift */,
 				AE602FC91DF8F8A2002225CB /* Storyboards */,
+				AE2AF7781DFC967D00580839 /* View Controllers */,
 				AE602FDA1DF90884002225CB /* Objects */,
+				AE2AF77B1DFC9A4800580839 /* Views */,
 				AE602FC61DF8F7D0002225CB /* Utilities */,
 				AE602FD11DF907EF002225CB /* Protocols */,
 				AE602FC21DF8EDAD002225CB /* Backends */,
@@ -484,10 +503,11 @@
 				AE602FC81DF8F7D6002225CB /* AZLogger.swift in Sources */,
 				AE5A63391DF91408002301F6 /* MISong.swift in Sources */,
 				AE5A63371DF9135D002301F6 /* MIMPDPlayerStatus.swift in Sources */,
-				AE602EF61DF8E8E3002225CB /* ViewController.swift in Sources */,
+				AE2AF77D1DFC9A4F00580839 /* AZAspectFillImageView.swift in Sources */,
 				AE602FD01DF906EC002225CB /* MIMPDStats.swift in Sources */,
 				AEDC326E1DFA009700538F24 /* AZAlbum.swift in Sources */,
 				AE602EF41DF8E8E3002225CB /* AppDelegate.swift in Sources */,
+				AE2AF77A1DFC968C00580839 /* AZMusicPlayerViewController.swift in Sources */,
 				AE602FC51DF8EDB9002225CB /* MIMPD.swift in Sources */,
 				AE602FD81DF90818002225CB /* AZSong.swift in Sources */,
 				AEDC326C1DFA008C00538F24 /* AZArtist.swift in Sources */,

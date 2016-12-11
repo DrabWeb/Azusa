@@ -17,9 +17,9 @@ class MISong: AZSong {
     /// The MPD ID of this song
     var id : Int = 0;
     
-    var artist : String = "";
+    var artist : AZArtist = AZArtist();
     
-    var album : String = "";
+    var album : AZAlbum = AZAlbum();
     
     var albumArtist : String = "";
     
@@ -27,7 +27,7 @@ class MISong: AZSong {
     
     var track : Int = 0;
     
-    var genre : String = "";
+    var genre : AZGenre = AZGenre();
     
     var year : Int = 0;
     
@@ -69,30 +69,12 @@ class MISong: AZSong {
     }
     
     var displayArtist : String {
-        // If artist is set...
-        if(artist != "") {
-            // Return artist
-            return artist;
-        }
-        // If artist isn't set...
-        else {
-            // Return a string saying we don't know the artist
-            return "Unknown Artist";
-        }
+        return self.artist.displayName;
     }
     
     /// Returns the display album for this song
     var displayAlbum : String {
-        // If the album is set...
-        if(album != "") {
-            // Return album
-            return album;
-        }
-        // If the album isn't set...
-        else {
-            // Return a string saying we don't know the album
-            return "Unknown Album";
-        }
+        return self.album.displayName;
     }
     
     var coverImage : NSImage {
@@ -102,7 +84,7 @@ class MISong: AZSong {
     static var empty : AZSong {
         let song : MISong = MISong();
         
-        song.artist = "Unknown Artist";
+        song.artist = AZArtist();
         song.title = "Song Not Found";
         
         return song;

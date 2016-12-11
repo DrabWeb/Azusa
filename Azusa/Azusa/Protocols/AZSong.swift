@@ -14,10 +14,10 @@ protocol AZSong: CustomStringConvertible {
     // MARK: - Properties
     
     /// The artist of this song
-    var artist : String { get set };
+    var artist : AZArtist { get set };
     
-    /// The album of this song
-    var album : String { get set };
+    /// The album this song is in(if any)
+    var album : AZAlbum { get set };
     
     /// The artist of the album this song is in(if any)
     var albumArtist : String { get set };
@@ -29,7 +29,7 @@ protocol AZSong: CustomStringConvertible {
     var track : Int { get set };
     
     /// The genre of this song
-    var genre : String { get set };
+    var genre : AZGenre { get set };
     
     /// The year this track was released
     var year : Int { get set };

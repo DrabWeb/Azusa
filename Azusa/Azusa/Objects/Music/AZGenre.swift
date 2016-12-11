@@ -18,8 +18,13 @@ class AZGenre: CustomStringConvertible {
     /// The albums in this genre(used for caching)
     var albums : [AZAlbum] = [];
     
+    /// The user readable version of this genre's name
+    var displayName : String {
+        return ((self.name != "") ? self.name : "Unknown Genre");
+    }
+    
     var description : String {
-        return "AZGenre: \(self.name), \(self.albums.count) albums"
+        return "AZGenre: \(self.displayName), \(self.albums.count) albums"
     }
     
     

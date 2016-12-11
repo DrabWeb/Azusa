@@ -15,11 +15,16 @@ class AZArtist: CustomStringConvertible {
     /// The name of this artist
     var name : String = "";
     
-    /// The albums made by this artist
+    /// The albums made by this artist(used for caching)
     var albums : [AZAlbum] = [];
     
+    /// The user readable version of this artist's name
+    var displayName : String {
+        return ((self.name != "") ? self.name : "Unknown Artist");
+    }
+    
     var description : String {
-        return "AZArtist: \(self.name), \(self.albums.count) albums"
+        return "AZArtist: \(self.displayName), \(self.albums.count) albums"
     }
     
     

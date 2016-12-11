@@ -381,7 +381,7 @@ class MIMPD {
             
             // Update the album values to match
             currentAlbum.artist = artist;
-            currentAlbum.genre = currentAlbum.songs.first?.genre ?? "";
+            currentAlbum.genre = currentAlbum.songs.first?.genre ?? AZGenre();
             currentAlbum.year = currentAlbum.songs.first?.year ?? -1;
         }
         
@@ -411,18 +411,6 @@ class MIMPD {
         
         // Return `songs`
         return songs;
-    }
-    
-    /// Gets all the albums for the given genre
-    ///
-    /// - Parameter genre: The `AZAGenre` to get the albums of
-    /// - Returns: All the `MISong`s for the given `AZGenre`
-    func getAllAlbumsForGenre(genre : AZGenre) -> [AZAlbum] {
-        /// The albums to return
-        let albums : [AZAlbum] = [];
-        
-        // Return `albums`
-        return albums;
     }
     
     /// Searches for songs in the database with the given paramaters
@@ -612,12 +600,12 @@ class MIMPD {
         }
         
         returnSong.id = Int(mpd_song_get_id(mpdSong));
-        returnSong.artist = self.tagFrom(mpdSong, tag: MPD_TAG_ARTIST) ?? "";
-        returnSong.album = self.tagFrom(mpdSong, tag: MPD_TAG_ALBUM) ?? "";
+        returnSong.artist = AZArtist(name: self.tagFrom(mpdSong, tag: MPD_TAG_ARTIST) ?? "");
+        returnSong.album = AZAlbum(name: self.tagFrom(mpdSong, tag: MPD_TAG_ALBUM) ?? "");
         returnSong.albumArtist = self.tagFrom(mpdSong, tag: MPD_TAG_ALBUM_ARTIST) ?? "";
         returnSong.title = self.tagFrom(mpdSong, tag: MPD_TAG_TITLE) ?? "";
         returnSong.track = Int(NSString(string: self.tagFrom(mpdSong, tag: MPD_TAG_TRACK) ?? "").intValue);
-        returnSong.genre = self.tagFrom(mpdSong, tag: MPD_TAG_GENRE) ?? "";
+        returnSong.genre = AZGenre(name: self.tagFrom(mpdSong, tag: MPD_TAG_GENRE) ?? "");
         returnSong.year = Int(NSString(string: self.tagFrom(mpdSong, tag: MPD_TAG_DATE) ?? "").intValue);
         returnSong.composer = self.tagFrom(mpdSong, tag: MPD_TAG_COMPOSER) ?? "";
         returnSong.performer = self.tagFrom(mpdSong, tag: MPD_TAG_PERFORMER) ?? "";

@@ -49,7 +49,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AZLogger.log("Add to beginning of queue: \(mpd.addToQueue(songs: mpd.searchForSongs("team skull", within: MPD_TAG_UNKNOWN, exact: false)))");
         AZLogger.log("Add to beginning of queue: \(mpd.addToQueue(song: mpd.searchForSongs("team skull", within: MPD_TAG_UNKNOWN, exact: false)[0], at: 0))");
         AZLogger.log("All songs in the mikgazer vol. 1 album: \(mpd.getAllSongsForAlbum(album: AZAlbum(name: "mikgazer vol.1")))");
-        AZLogger.log("All songs for the \"Post Rock\" genre: \(mpd.getAllAlbumsForGenre(genre: AZGenre(name: "Post Rock")))");
         AZLogger.log("All albums by きのこ帝国: \(mpd.getAllAlbumsForArtist(artist: AZArtist(name: "きのこ帝国")))");
     }
 
