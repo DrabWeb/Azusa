@@ -774,7 +774,7 @@
                                         </buttonCell>
                                         <connections>
                                             <action selector="toolbarQueuePressedWithSender:" target="IaQ-hp-eUK" id="bk1-ii-ai3"/>
-                                            <segue destination="VvY-Eo-Ig4" kind="popover" popoverAnchorView="9Zm-4M-iMp" popoverBehavior="t" preferredEdge="maxY" id="x2w-Ih-wPM"/>
+                                            <segue destination="VvY-Eo-Ig4" kind="popover" popoverAnchorView="9Zm-4M-iMp" popoverBehavior="semitransient" preferredEdge="maxY" id="x2w-Ih-wPM"/>
                                         </connections>
                                     </button>
                                 </toolbarItem>
@@ -954,37 +954,76 @@
         <scene sceneID="39R-Y8-H5J">
             <objects>
                 <customObject id="iqh-Hu-WsC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController id="VvY-Eo-Ig4" userLabel="Queue View Controller" sceneMemberID="viewController">
+                <viewController id="VvY-Eo-Ig4" userLabel="Queue View Controller" customClass="AZQueueViewController" customModule="Azusa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="RL3-lh-bSp">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="330" height="250"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <tabView translatesAutoresizingMaskIntoConstraints="NO" id="0u5-g7-l6a" userLabel="Tab View">
-                                <rect key="frame" x="3" y="0.0" width="244" height="296"/>
-                                <font key="font" metaFont="system"/>
-                                <tabViewItems>
-                                    <tabViewItem label="Up Next" identifier="1" id="LuK-D4-kKz">
-                                        <view key="view" id="odk-o3-xeK">
-                                            <rect key="frame" x="10" y="33" width="224" height="250"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        </view>
-                                    </tabViewItem>
-                                    <tabViewItem label="History" identifier="2" id="JK1-S6-pA5">
-                                        <view key="view" id="2rI-Ii-vMN">
-                                            <rect key="frame" x="10" y="33" width="224" height="250"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        </view>
-                                    </tabViewItem>
-                                </tabViewItems>
-                            </tabView>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xCf-pY-a3j" userLabel="Tabs">
+                                <rect key="frame" x="95" y="216" width="141" height="25"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectOne" id="2qE-9r-12g">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="Up Next" selected="YES"/>
+                                        <segment label="History" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="tabsSelectionChanged:" target="VvY-Eo-Ig4" id="vSZ-2C-SDS"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ki-57-DAy" userLabel="Song Count Label">
+                                <rect key="frame" x="13" y="187" width="57" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="B74-ea-PfU"/>
+                                    <constraint firstAttribute="width" constant="53" id="ViJ-Vq-tkT"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="X songs" id="ev6-S8-pcF" userLabel="Cell">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w1B-BO-6Dw" userLabel="Clear Button">
+                                <rect key="frame" x="269" y="184" width="46" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="0av-Z8-1c8"/>
+                                    <constraint firstAttribute="height" constant="22" id="KQU-7t-6md"/>
+                                </constraints>
+                                <buttonCell key="cell" type="roundTextured" title="Clear" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="51O-Mg-jHh">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="clearButtonPressed:" target="VvY-Eo-Ig4" id="BuF-F5-4ve"/>
+                                </connections>
+                            </button>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="48x-PU-7MG">
+                                <rect key="frame" x="10" y="173" width="310" height="5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="5jY-eD-oKE"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="Aki-33-ovy"/>
+                                </constraints>
+                            </box>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="0u5-g7-l6a" secondAttribute="bottom" constant="10" id="4pb-CV-QdB"/>
-                            <constraint firstAttribute="trailing" secondItem="0u5-g7-l6a" secondAttribute="trailing" constant="10" id="a8I-V4-xZf"/>
-                            <constraint firstItem="0u5-g7-l6a" firstAttribute="leading" secondItem="RL3-lh-bSp" secondAttribute="leading" constant="10" id="pc3-O3-G6n"/>
-                            <constraint firstItem="0u5-g7-l6a" firstAttribute="top" secondItem="RL3-lh-bSp" secondAttribute="top" constant="10" id="wrq-SY-3zo"/>
+                            <constraint firstItem="xCf-pY-a3j" firstAttribute="centerX" secondItem="RL3-lh-bSp" secondAttribute="centerX" id="2cJ-5R-uXK"/>
+                            <constraint firstItem="48x-PU-7MG" firstAttribute="top" secondItem="w1B-BO-6Dw" secondAttribute="bottom" constant="10" id="3dV-Lv-ZvT"/>
+                            <constraint firstAttribute="trailing" secondItem="w1B-BO-6Dw" secondAttribute="trailing" constant="15" id="5le-2i-gzt"/>
+                            <constraint firstItem="3Ki-57-DAy" firstAttribute="top" secondItem="xCf-pY-a3j" secondAttribute="bottom" constant="14" id="BLH-it-BOk"/>
+                            <constraint firstItem="48x-PU-7MG" firstAttribute="top" secondItem="w1B-BO-6Dw" secondAttribute="bottom" constant="10" id="IdL-18-Y2w"/>
+                            <constraint firstItem="xCf-pY-a3j" firstAttribute="top" secondItem="RL3-lh-bSp" secondAttribute="top" constant="10" id="PWj-5u-amH"/>
+                            <constraint firstItem="3Ki-57-DAy" firstAttribute="leading" secondItem="RL3-lh-bSp" secondAttribute="leading" constant="15" id="T4m-d5-i0V"/>
+                            <constraint firstItem="48x-PU-7MG" firstAttribute="leading" secondItem="RL3-lh-bSp" secondAttribute="leading" constant="10" id="cCD-oz-pMq"/>
+                            <constraint firstItem="w1B-BO-6Dw" firstAttribute="top" secondItem="xCf-pY-a3j" secondAttribute="bottom" constant="10" id="hPm-6x-Cgc"/>
+                            <constraint firstAttribute="trailing" secondItem="48x-PU-7MG" secondAttribute="trailing" constant="10" id="wAP-w3-uja"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="clearButton" destination="w1B-BO-6Dw" id="kqb-hh-vvN"/>
+                        <outlet property="songCountLabel" destination="3Ki-57-DAy" id="RQ5-DJ-eQi"/>
+                        <outlet property="tabs" destination="xCf-pY-a3j" id="pUI-Wv-7P8"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="878" y="8"/>
