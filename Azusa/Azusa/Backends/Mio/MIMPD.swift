@@ -689,12 +689,18 @@ class MIMPD {
         if(connection != nil) {
             AZLogger.log("MIMPD: Setting paused to \(pause)");
             
-            // Run the seek command and if it fails...
-            if(!mpd_run_pause(self.connection!, pause)) {
-                AZLogger.log("MIMPD: Error setting paused to \(pause), \(self.currentErrorMessage())");
-                
-                // Say the operation was unsuccessful
-                return false;
+            // If there is a current song...
+            if let currentSong = mpd_run_current_song(self.connection!) {
+                // If the player is stopped...
+                if(self.playingStateFrom(mpdState: mpd_status_get_state(mpd_run_status(self.connection!))) == .stopped) {
+                    // Start playing the current song
+                    return self.seek(to: 0, trackPosition: Int(mpd_song_get_pos(currentSong)));
+                }
+            }
+            // If there isn't a current song...
+            else {
+                // Play the first song in the queue
+                return self.seek(to: 0, trackPosition: 0);
             }
             
             // Say the operation was successful
@@ -717,12 +723,26 @@ class MIMPD {
         if(connection != nil) {
             AZLogger.log("MIMPD: Toggling pause");
             
-            // Run the toggle pause command and if it fails...
-            if(!mpd_run_toggle_pause(self.connection!)) {
-                AZLogger.log("MIMPD: Error toggling pause, \(self.currentErrorMessage())");
+            // If there is a current song...
+            if let currentSong = mpd_run_current_song(self.connection!) {
+                // If the player is stopped...
+                if(self.playingStateFrom(mpdState: mpd_status_get_state(mpd_run_status(self.connection!))) == .stopped) {
+                    // Start playing the current song
+                    return (self.seek(to: 0, trackPosition: Int(mpd_song_get_pos(currentSong))), true);
+                }
                 
-                // Say the operation was unsuccessful
-                return (false, false);
+                // Run the toggle pause command and if it fails...
+                if(!mpd_run_toggle_pause(self.connection!)) {
+                    AZLogger.log("MIMPD: Error toggling pause, \(self.currentErrorMessage())");
+                    
+                    // Say the operation was unsuccessful
+                    return (false, false);
+                }
+            }
+            // If there isn't a current song...
+            else {
+                // Play the first song in the queue
+                return (self.seek(to: 0, trackPosition: 0), true);
             }
             
             // Say the operation was successful, and also get and return the paused state

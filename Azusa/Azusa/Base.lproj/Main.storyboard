@@ -958,59 +958,62 @@
                     <view key="view" id="RL3-lh-bSp">
                         <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <tabView translatesAutoresizingMaskIntoConstraints="NO" id="0u5-g7-l6a" userLabel="Tab View">
+                                <rect key="frame" x="3" y="0.0" width="244" height="296"/>
+                                <font key="font" metaFont="system"/>
+                                <tabViewItems>
+                                    <tabViewItem label="Up Next" identifier="1" id="LuK-D4-kKz">
+                                        <view key="view" id="odk-o3-xeK">
+                                            <rect key="frame" x="10" y="33" width="224" height="250"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="History" identifier="2" id="JK1-S6-pA5">
+                                        <view key="view" id="2rI-Ii-vMN">
+                                            <rect key="frame" x="10" y="33" width="224" height="250"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                    </tabViewItem>
+                                </tabViewItems>
+                            </tabView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="0u5-g7-l6a" secondAttribute="bottom" constant="10" id="4pb-CV-QdB"/>
+                            <constraint firstAttribute="trailing" secondItem="0u5-g7-l6a" secondAttribute="trailing" constant="10" id="a8I-V4-xZf"/>
+                            <constraint firstItem="0u5-g7-l6a" firstAttribute="leading" secondItem="RL3-lh-bSp" secondAttribute="leading" constant="10" id="pc3-O3-G6n"/>
+                            <constraint firstItem="0u5-g7-l6a" firstAttribute="top" secondItem="RL3-lh-bSp" secondAttribute="top" constant="10" id="wrq-SY-3zo"/>
+                        </constraints>
                     </view>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="878" y="8"/>
         </scene>
-        <!--Tab View Controller-->
-        <scene sceneID="dhy-Zw-tDH">
-            <objects>
-                <tabViewController id="B6C-Zr-0bU" sceneMemberID="viewController">
-                    <tabViewItems>
-                        <tabViewItem identifier="" id="TIW-tx-srS"/>
-                        <tabViewItem identifier="" id="jyO-DD-rDj"/>
-                    </tabViewItems>
-                    <tabView key="tabView" type="noTabsNoBorder" id="wch-RX-9VH">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <font key="font" metaFont="message"/>
-                        <tabViewItems/>
-                    </tabView>
-                    <connections>
-                        <segue destination="Mti-he-rfd" kind="relationship" relationship="tabItems" id="5EG-w7-PsE"/>
-                        <segue destination="Ogz-Re-ha3" kind="relationship" relationship="tabItems" id="JIe-sE-Ex1"/>
-                    </connections>
-                </tabViewController>
-                <customObject id="xJg-fk-wKG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1053" y="48"/>
-        </scene>
-        <!--View Controller-->
+        <!--Queue Up Next View Controller-->
         <scene sceneID="QVh-3E-c5B">
             <objects>
-                <viewController id="Mti-he-rfd" sceneMemberID="viewController">
+                <customObject id="8WI-w6-5vr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController title="Up Next" id="Mti-he-rfd" userLabel="Queue Up Next View Controller" sceneMemberID="viewController">
                     <view key="view" id="r1a-or-lgc">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
-                <customObject id="8WI-w6-5vr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1723" y="-133"/>
+            <point key="canvasLocation" x="1928" y="-172"/>
         </scene>
-        <!--View Controller-->
+        <!--Queue History View Controller-->
         <scene sceneID="qRy-D3-sUL">
             <objects>
-                <viewController id="Ogz-Re-ha3" sceneMemberID="viewController">
+                <customObject id="mms-46-S9Y" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController title="History" id="Ogz-Re-ha3" userLabel="Queue History View Controller" sceneMemberID="viewController">
                     <view key="view" id="OnW-Lm-Q90">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
-                <customObject id="mms-46-S9Y" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1723" y="228"/>
+            <point key="canvasLocation" x="1928" y="189"/>
         </scene>
         <!--Music Player Content View Controller-->
         <scene sceneID="P4R-pY-1xe">

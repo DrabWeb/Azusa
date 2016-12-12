@@ -114,8 +114,8 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
             
             // Add the event subscribers
             
-            // Add the player event subscriber for status updating
-            self.musicPlayer.eventSubscriber.add(subscription: AZEventSubscription(events: [.player], performer: { event in
+            // Add the player/queue event subscriber for status updating
+            self.musicPlayer.eventSubscriber.add(subscription: AZEventSubscription(events: [.player, .queue], performer: { event in
                 // Display the current status
                 self.displayCurrentStatus(completionHandler: nil);
             }));
