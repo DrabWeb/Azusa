@@ -830,8 +830,16 @@ class MIMPD {
         if(connection != nil) {
             AZLogger.log("MIMPD: Getting elapsed time and duration", level: .full);
             
-            // Return the elapsed time and duration
-            return (true, Int(mpd_status_get_elapsed_time(mpd_run_status(self.connection!))), Int(mpd_song_get_duration(mpd_run_current_song(self.connection!))));
+            // If the current song isn't nil...
+            if let currentSong = mpd_run_current_song(self.connection) {
+                // Return the elapsed time and duration
+                return (true, Int(mpd_status_get_elapsed_time(mpd_run_status(self.connection!))), Int(mpd_song_get_duration(currentSong)));
+            }
+            // If the current song is nil...
+            else {
+                // Return placeholder values
+                return (true, 0, 0)
+            }
         }
         // If the connection is nil...
         else {

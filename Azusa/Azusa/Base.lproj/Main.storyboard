@@ -755,7 +755,7 @@
                                     <slider key="view" verticalHuggingPriority="750" id="0NV-Iv-b0Q">
                                         <rect key="frame" x="0.0" y="14" width="96" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="100" tickMarkPosition="above" sliderType="linear" id="Tpt-3u-uOw"/>
+                                        <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="66.880208333333329" tickMarkPosition="above" sliderType="linear" id="Tpt-3u-uOw"/>
                                         <connections>
                                             <action selector="toolbarVolumeSliderMovedWithSender:" target="IaQ-hp-eUK" id="CnA-m1-lDO"/>
                                         </connections>
@@ -774,6 +774,7 @@
                                         </buttonCell>
                                         <connections>
                                             <action selector="toolbarQueuePressedWithSender:" target="IaQ-hp-eUK" id="bk1-ii-ai3"/>
+                                            <segue destination="VvY-Eo-Ig4" kind="popover" popoverAnchorView="9Zm-4M-iMp" popoverBehavior="t" preferredEdge="maxY" id="x2w-Ih-wPM"/>
                                         </connections>
                                     </button>
                                 </toolbarItem>
@@ -948,6 +949,68 @@
                 <customObject id="Ce5-OJ-Rhy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-363" y="537"/>
+        </scene>
+        <!--Queue View Controller-->
+        <scene sceneID="39R-Y8-H5J">
+            <objects>
+                <customObject id="iqh-Hu-WsC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController id="VvY-Eo-Ig4" userLabel="Queue View Controller" sceneMemberID="viewController">
+                    <view key="view" id="RL3-lh-bSp">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="878" y="8"/>
+        </scene>
+        <!--Tab View Controller-->
+        <scene sceneID="dhy-Zw-tDH">
+            <objects>
+                <tabViewController id="B6C-Zr-0bU" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem identifier="" id="TIW-tx-srS"/>
+                        <tabViewItem identifier="" id="jyO-DD-rDj"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="wch-RX-9VH">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <tabViewItems/>
+                    </tabView>
+                    <connections>
+                        <segue destination="Mti-he-rfd" kind="relationship" relationship="tabItems" id="5EG-w7-PsE"/>
+                        <segue destination="Ogz-Re-ha3" kind="relationship" relationship="tabItems" id="JIe-sE-Ex1"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="xJg-fk-wKG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1053" y="48"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="QVh-3E-c5B">
+            <objects>
+                <viewController id="Mti-he-rfd" sceneMemberID="viewController">
+                    <view key="view" id="r1a-or-lgc">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="8WI-w6-5vr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1723" y="-133"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qRy-D3-sUL">
+            <objects>
+                <viewController id="Ogz-Re-ha3" sceneMemberID="viewController">
+                    <view key="view" id="OnW-Lm-Q90">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="mms-46-S9Y" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1723" y="228"/>
         </scene>
         <!--Music Player Content View Controller-->
         <scene sceneID="P4R-pY-1xe">
