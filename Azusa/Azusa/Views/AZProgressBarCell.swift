@@ -36,7 +36,12 @@ class AZProgressBarCell: NSSliderCell {
         let value = CGFloat((self.doubleValue - self.minValue) / (self.maxValue - self.minValue));
         
         /// The width for the progressed part of the slider
-        let finalWidth = CGFloat(value * (self.controlView!.frame.size.width - 3));
+        var finalWidth = CGFloat(value * (self.controlView!.frame.size.width - 3));
+        
+        // Make sure `finalWidth` always exists
+        if(finalWidth.isNaN) {
+            finalWidth = 0;
+        }
         
         // Setup the progressed part's rect
         var leftRect = rect;
@@ -61,5 +66,4 @@ class AZProgressBarCell: NSSliderCell {
     override func drawKnob() {
         // Disable the knob
     }
-
 }

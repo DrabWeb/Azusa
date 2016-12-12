@@ -757,18 +757,18 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="100" tickMarkPosition="above" sliderType="linear" id="Tpt-3u-uOw"/>
                                         <connections>
-                                            <action selector="toolbarVolumeSliderChangedWithSender:" target="IaQ-hp-eUK" id="Nth-hV-5fR"/>
+                                            <action selector="toolbarVolumeSliderMovedWithSender:" target="IaQ-hp-eUK" id="CnA-m1-lDO"/>
                                         </connections>
                                     </slider>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="6DAA5447-2F45-462F-B5C6-2A726B2E1DCD" explicitItemIdentifier="Queue" label="Queue" paletteLabel="Queue" image="AZToolbarQueue" id="LuR-Vf-uKe" userLabel="Queue">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="39" height="28"/>
-                                    <size key="maxSize" width="39" height="29"/>
+                                    <size key="maxSize" width="39" height="28"/>
                                     <button key="view" verticalHuggingPriority="750" id="9Zm-4M-iMp">
                                         <rect key="frame" x="2" y="14" width="39" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="AZToolbarQueue" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mZN-cF-oZO">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="AZToolbarQueue" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mZN-cF-oZO">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -800,7 +800,7 @@
                                                         </imageView>
                                                         <slider verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="CpU-Iu-7Dw" userLabel="Progress Bar">
                                                             <rect key="frame" x="33" y="-9" width="167" height="19"/>
-                                                            <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="bJC-cv-2Rs" customClass="AZProgressBarCell" customModule="Azusa" customModuleProvider="target">
+                                                            <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="bJC-cv-2Rs" customClass="AZProgressBarCell" customModule="Azusa" customModuleProvider="target">
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
                                                                         <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
