@@ -66,6 +66,25 @@ protocol AZMusicPlayer {
     ///   - completionHandler: The completion handler to call when the operation finishes(optional)
     func setVolume(to : Int, completionHandler : (() -> ())?);
     
+    /// Gets the current queue
+    ///
+    /// - Parameter completionHandler: The completion handler to call when the operation finishes, passed an array of `AZSong`s for the queue and the position of the current song in the queue(defaults to -1 if no song is playing)
+    func getQueue(completionHandler : @escaping (([AZSong], Int) -> ()));
+    
+    /// Plays the given song if it's in the queue
+    ///
+    /// - Parameters:
+    ///   - song: The song to play
+    ///   - completionHandler: The completion handler to call when the operation finishes(optional), passed the song that was played(nil if `song` was not in the queue)
+    func playSongInQueue(_ song : AZSong, completionHandler : ((AZSong?) -> ())?);
+    
+    /// Removes the given `AZSong`s from the queue
+    ///
+    /// - Parameters:
+    ///   - songs: The `AZSong`s to remove
+    ///   - completionHandler: The completion handler to call when the operation finishes(optional)
+    func removeFromQueue(_ songs : [AZSong], completionHandler : (() -> ())?);
+    
     
     // MARK: - Initialization and Deinitialization
     

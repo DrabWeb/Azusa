@@ -158,6 +158,69 @@ class MIMusicPlayer: AZMusicPlayer {
         }
     }
     
+    func getQueue(completionHandler: @escaping (([AZSong], Int) -> ())) {
+        self.dispatchQueue.async {
+            // If `mpd` exists..
+            if(self.mpd != nil) {
+                /// All the songs in the current queue
+                let queue : [MISong] = self.mpd!.getCurrentQueue();
+                
+                /// The position of the current song in the queue
+                let currentPosition : Int = self.mpd!.getCurrentSongPosition();
+                
+                // Call the completion handler
+                DispatchQueue.main.async {
+                    completionHandler(queue, currentPosition);
+                }
+            }
+        }
+    }
+    
+    func playSongInQueue(_ song: AZSong, completionHandler: ((AZSong?) -> ())?) {
+        self.dispatchQueue.async {
+            // If `mpd` exists..
+            if(self.mpd != nil) {
+                // Seek to the song at `song`'s `position`, and if it's successful...
+                if(self.mpd!.seek(to: 0, trackPosition: song.position)) {
+                    // Get the current song, and if it isn't nil...
+                    if let currentSong = self.mpd!.getCurrentSong() {
+                        // Call the completion handler
+                        DispatchQueue.main.async {
+                            completionHandler?(currentSong);
+                        }
+                    }
+                    else {
+                        // Call the completion handler with nil
+                        DispatchQueue.main.async {
+                            completionHandler?(nil);
+                        }
+                    }
+                }
+                else {
+                    // Call the completion handler with nil
+                    DispatchQueue.main.async {
+                        completionHandler?(nil);
+                    }
+                }
+            }
+        }
+    }
+    
+    func removeFromQueue(_ songs: [AZSong], completionHandler: (() -> ())?) {
+        self.dispatchQueue.async {
+            // If `mpd` exists..
+            if(self.mpd != nil) {
+                // Remove `songs` from the queue, and if it's successful...
+                if(self.mpd!.removeFromQueue(songs: songs as! [MISong])) {
+                    // Call the completion handler
+                    DispatchQueue.main.async {
+                        completionHandler?();
+                    }
+                }
+            }
+        }
+    }
+    
     
     // MARK: - Initialization and Deinitialization
     required init(settings : [String : Any]) {

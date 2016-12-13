@@ -306,6 +306,30 @@ class MIMPD {
         return currentQueue;
     }
     
+    /// Gets the position of the current song in the queue and returns it
+    ///
+    /// - Returns: The position of the current playing song in the queue, defaults to -1
+    func getCurrentSongPosition() -> Int {
+        /// The position of the current song in the queue, returned at the end
+        var position : Int = -1;
+        
+        // If the connection isn't nil...
+        if(connection != nil) {
+            // Get the current song from MPD, and if it's not nil...
+            if let currentSong = mpd_run_current_song(self.connection!) {
+                // Set `position` to the position of `currentSong` in the queue
+                position = Int(mpd_song_get_pos(currentSong));
+            }
+        }
+        // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot retrieve current song position, connection does not exist(run connect first)");
+        }
+        
+        // Return `position`
+        return position;
+    }
+    
     /// Gets all the artists in the MPD database
     ///
     /// - Returns: An array of `AZArtist`s containing all the artists in the MPD database(only the name is set)
@@ -576,11 +600,11 @@ class MIMPD {
                 if(mpd_run_add_id_to(self.connection!, song.uri, UInt32(at)) == -1) {
                     AZLogger.log("MIMPD: Error queueing song, \(self.currentErrorMessage())");
                     
-                    // Say the operation with unsuccessful
+                    // Say the operation was unsuccessful
                     return false;
                 }
                 
-                // Say the operation with successful
+                // Say the operation was successful
                 return false;
             }
             // If `at` wasn't set...
@@ -589,11 +613,11 @@ class MIMPD {
                 if(mpd_run_add_id(self.connection!, song.uri) == -1) {
                     AZLogger.log("MIMPD: Error queueing song, \(self.currentErrorMessage())");
                     
-                    // Say the operation with unsuccessful
+                    // Say the operation was unsuccessful
                     return false;
                 }
                 
-                // Say the operation with successful
+                // Say the operation was successful
                 return false;
             }
         }
@@ -601,7 +625,7 @@ class MIMPD {
         else {
             AZLogger.log("MIMPD: Cannot add song to queue, connection does not exist(run connect first)");
             
-            // Say the operation with unsuccessful
+            // Say the operation was unsuccessful
             return false;
         }
     }
@@ -636,7 +660,69 @@ class MIMPD {
         else {
             AZLogger.log("MIMPD: Cannot add song to queue, connection does not exist(run connect first)");
             
-            // Say the operation with unsuccessful
+            // Say the operation was unsuccessful
+            return false;
+        }
+    }
+    
+    /// Removes the given `MISong` from the queue
+    ///
+    /// - Parameter song: The `MISong` to remove from the queue
+    /// - Returns: If the operation was successful
+    func removeFromQueue(song : MISong) -> Bool {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Removing \(song) from the queue");
+            
+            // Remove the song from the queue, and if it fails...
+            if(!mpd_run_delete_id(self.connection!, UInt32(song.id))) {
+                AZLogger.log("MIMPD: Error removing song, \(self.currentErrorMessage())");
+                    
+                // Say the operation was unsuccessful
+                return false;
+            }
+                
+            // Say the operation was successful
+            return false;
+        }
+        // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot remove from queue, connection does not exist(run connect first)");
+            
+            // Say the operation was unsuccessful
+            return false;
+        }
+    }
+    
+    /// Removes the given `MISong`s from the current queue
+    ///
+    /// - Parameter songs: The array of `MISong`s to remove from the queue
+    /// - Returns: If the operation was successful
+    func removeFromQueue(songs : [MISong]) -> Bool {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Removing \(songs) from the queue");
+            
+            /// Was the queue add successful?
+            var successful : Bool = true;
+            
+            // For every song in `songs`...
+            for(_, currentSong) in songs.enumerated() {
+                // Remove `currentSong` from the queue, and if it fails...
+                if(!self.removeFromQueue(song: currentSong)) {
+                    // Say that the queue remove was unsuccessful
+                    successful = false;
+                }
+            }
+            
+            // Return if the queue add was successful
+            return successful;
+        }
+        // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot remove from queue, connection does not exist(run connect first)");
+            
+            // Say the operation was unsuccessful
             return false;
         }
     }
@@ -666,7 +752,7 @@ class MIMPD {
         else {
             AZLogger.log("MIMPD: Cannot jump to \(AZMusicUtilities.secondsToDisplayTime(to)), connection does not exist(run connect first)");
             
-            // Say the operation with unsuccessful
+            // Say the operation was unsuccessful
             return false;
         }
     }
@@ -710,7 +796,7 @@ class MIMPD {
         else {
             AZLogger.log("MIMPD: Cannot set paused, connection does not exist(run connect first)");
             
-            // Say the operation with unsuccessful
+            // Say the operation was unsuccessful
             return false;
         }
     }
@@ -752,7 +838,7 @@ class MIMPD {
         else {
             AZLogger.log("MIMPD: Cannot toggle pause, connection does not exist(run connect first)");
             
-            // Say the operation with unsuccessful
+            // Say the operation was unsuccessful
             return (false, false);
         }
     }
@@ -780,7 +866,7 @@ class MIMPD {
         else {
             AZLogger.log("MIMPD: Cannot skip to previous song, connection does not exist(run connect first)");
             
-            // Say the operation with unsuccessful
+            // Say the operation was unsuccessful
             return false;
         }
     }
@@ -808,7 +894,7 @@ class MIMPD {
         else {
             AZLogger.log("MIMPD: Cannot skip to next song, connection does not exist(run connect first)");
             
-            // Say the operation with unsuccessful
+            // Say the operation was unsuccessful
             return false;
         }
     }
@@ -837,7 +923,7 @@ class MIMPD {
         else {
             AZLogger.log("MIMPD: Cannot set volume, connection does not exist(run connect first)");
             
-            // Say the operation with unsuccessful
+            // Say the operation was unsuccessful
             return false;
         }
     }
@@ -865,7 +951,7 @@ class MIMPD {
         else {
             AZLogger.log("MIMPD: Cannot retrieve elapsed/duration, connection does not exist(run connect first)");
             
-            // Say the operation with unsuccessful
+            // Say the operation was unsuccessful
             return (false, 0, 0);
         }
     }

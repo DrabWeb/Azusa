@@ -16,6 +16,9 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
     /// The window for this view controller
     var window : NSWindow? = nil;
     
+    /// The current `AZQueueViewController` for the popup queue view(if there is one)
+    var queuePopupViewController : AZQueueViewController? = nil;
+    
     
     // MARK: - Toolbar Items
     
@@ -117,7 +120,10 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
             // Add the player/queue event subscriber for status updating
             self.musicPlayer.eventSubscriber.add(subscription: AZEventSubscription(events: [.player, .queue], performer: { event in
                 // Display the current status
-                self.displayCurrentStatus(completionHandler: nil);
+                self.displayCurrentStatus();
+                
+                // Display the current queue
+                self.displayCurrentQueue();
             }));
             
             
@@ -134,7 +140,7 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
     /// Displays the current status from `musicPlayer`
     ///
     /// - Parameter completionHandler: The completion handler to call when the operation finishes(optional)
-    private func displayCurrentStatus(completionHandler : (() -> ())?) {
+    private func displayCurrentStatus(completionHandler : (() -> ())? = nil) {
         // Get the current player status
         self.musicPlayer.getPlayerStatus({ playerStatus in
             // Display the current player status
@@ -143,6 +149,28 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
             // Call the completion handler
             completionHandler?();
         });
+    }
+    
+    /// Displays the current queue in `queuePopupViewController`(if it exists)
+    ///
+    /// - Parameter completionHandler: The completion handler to call when the operation finishes(optional)
+    private func displayCurrentQueue(completionHandler : (() -> ())? = nil) {
+        // If `queuePopupViewController` isn't nil(checking here so we don't waste time getting the queue for nothing)...
+        if(self.queuePopupViewController != nil) {
+            // Get the current queue
+            self.musicPlayer.getQueue(completionHandler: { queue, currentPosition in
+                // Display it in `queuePopupViewController`
+                self.queuePopupViewController!.display(queue: queue, current: currentPosition);
+                
+                // Call the completion handler
+                completionHandler?();
+            });
+        }
+        // If `queuePopupViewController` is nil....
+        else {
+            // Just call the completion handler now
+            completionHandler?();
+        }
     }
     
     override func viewWillAppear() {
@@ -192,7 +220,7 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
         }
         
         // Do the initial status display(called here so we're sure all the toolbar items are loaded)
-        self.displayCurrentStatus(completionHandler: nil);
+        self.displayCurrentStatus();
     }
     
     /// Sets up this view controller(styling, init, etc.)
@@ -207,5 +235,57 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
         
         // Setup the music player
         self.setupMusicPlayer();
+    }
+    
+    override func presentViewController(_ viewController: NSViewController, asPopoverRelativeTo positioningRect: NSRect, of positioningView: NSView, preferredEdge: NSRectEdge, behavior: NSPopoverBehavior) {
+        super.presentViewController(viewController, asPopoverRelativeTo: positioningRect, of: positioningView, preferredEdge: preferredEdge, behavior: behavior);
+        
+        // If the view controller to present is an `AZQueueViewController`...
+        if let queueViewController = (viewController as? AZQueueViewController) {
+            // Set `queuePopupViewController` to the view controller to present
+            queuePopupViewController = queueViewController;
+            
+            // Set `queuePopupViewController`'s window
+            queuePopupViewController!.window = self.window;
+            
+            // Set the primary, secondary and remove handlers
+            queuePopupViewController!.queueTableViewPrimaryHandler = { tableView, selectedCells, event in
+                // If the `representedSong` of the first cell in `selectedCells` isn't nil...
+                if let selectedSong = selectedCells.first?.representedSong {
+                    // Play `selectedSong`
+                    self.musicPlayer.playSongInQueue(selectedSong, completionHandler: nil);
+                }
+            };
+            
+            queuePopupViewController!.queueTableViewSecondaryHandler = { tableView, selectedCells, event in
+                print("Secondary");
+            };
+            
+            queuePopupViewController!.queueTableViewRemoveHandler = { tableView, selectedCells, event in
+                /// All the songs from `selectedCells`
+                var selectedSongs : [AZSong] = [];
+                
+                // Get `selectedSongs`
+                for(_, currentCell) in selectedCells.enumerated() {
+                    selectedSongs.append(currentCell.representedSong!);
+                }
+                
+                // Remove `selectedSongs` from the queue
+                self.musicPlayer.removeFromQueue(selectedSongs, completionHandler: nil);
+            };
+            
+            // Display the current queue
+            self.displayCurrentQueue();
+        }
+    }
+    
+    override func dismissViewController(_ viewController: NSViewController) {
+        super.dismissViewController(viewController);
+        
+        // If the view controller to dismiss is `queuePopupViewController`...
+        if(viewController == self.queuePopupViewController) {
+            // Remove `queuePopupViewController`
+            self.queuePopupViewController = nil;
+        }
     }
 }

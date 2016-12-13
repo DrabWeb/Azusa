@@ -39,7 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        let mpd : MIMPD = MIMPD(address: "127.0.0.1", port: 6600, musicDirectory: "/Volumes/Storage/macOS/Music/");
 //
 //        AZLogger.log("Connection was successful: \(mpd.connect())");
-        
+//        
 //        AZLogger.log("Current song: \(mpd.getCurrentSong() ?? MISong.empty)");
 //        AZLogger.log("Database stats: \(mpd.getStats() ?? MIMPDStats())");
 //        AZLogger.log("Player status: \(mpd.getPlayerStatus() ?? MIMPDPlayerStatus())");
@@ -52,6 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        AZLogger.log("All songs in the mikgazer vol. 1 album: \(mpd.getAllSongsForAlbum(album: AZAlbum(name: "mikgazer vol.1")))");
 //        AZLogger.log("All albums by きのこ帝国: \(mpd.getAllAlbumsForArtist(artist: AZArtist(name: "きのこ帝国")))");
 //        AZLogger.log(mpd.seek(to: 60));
+//        AZLogger.log(mpd.getCurrentSongPosition());
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
