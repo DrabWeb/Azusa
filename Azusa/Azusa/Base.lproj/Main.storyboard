@@ -972,11 +972,10 @@
                                     <action selector="tabsSelectionChanged:" target="VvY-Eo-Ig4" id="vSZ-2C-SDS"/>
                                 </connections>
                             </segmentedControl>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ki-57-DAy" userLabel="Song Count Label">
-                                <rect key="frame" x="18" y="438" width="57" height="17"/>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ki-57-DAy" userLabel="Song Count Label">
+                                <rect key="frame" x="18" y="438" width="53" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="B74-ea-PfU"/>
-                                    <constraint firstAttribute="width" constant="53" id="ViJ-Vq-tkT"/>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="X songs" id="ev6-S8-pcF" userLabel="Cell">
                                     <font key="font" metaFont="system"/>
@@ -1102,7 +1101,6 @@
                             <constraint firstAttribute="trailing" secondItem="XMi-Ic-Pg7" secondAttribute="trailing" id="1Nn-we-xpd"/>
                             <constraint firstItem="xCf-pY-a3j" firstAttribute="centerX" secondItem="RL3-lh-bSp" secondAttribute="centerX" id="2cJ-5R-uXK"/>
                             <constraint firstItem="XMi-Ic-Pg7" firstAttribute="top" secondItem="48x-PU-7MG" secondAttribute="bottom" id="3Qb-ni-6Dr"/>
-                            <constraint firstItem="48x-PU-7MG" firstAttribute="top" secondItem="w1B-BO-6Dw" secondAttribute="bottom" constant="10" id="3dV-Lv-ZvT"/>
                             <constraint firstAttribute="trailing" secondItem="w1B-BO-6Dw" secondAttribute="trailing" constant="20" id="5le-2i-gzt"/>
                             <constraint firstItem="48x-PU-7MG" firstAttribute="top" secondItem="w1B-BO-6Dw" secondAttribute="bottom" constant="10" id="IdL-18-Y2w"/>
                             <constraint firstItem="xCf-pY-a3j" firstAttribute="top" secondItem="RL3-lh-bSp" secondAttribute="top" constant="10" id="PWj-5u-amH"/>
