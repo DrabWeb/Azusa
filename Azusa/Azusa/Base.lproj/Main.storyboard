@@ -1126,32 +1126,6 @@
             </objects>
             <point key="canvasLocation" x="878" y="8"/>
         </scene>
-        <!--Queue Up Next View Controller-->
-        <scene sceneID="QVh-3E-c5B">
-            <objects>
-                <customObject id="8WI-w6-5vr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController title="Up Next" id="Mti-he-rfd" userLabel="Queue Up Next View Controller" sceneMemberID="viewController">
-                    <view key="view" id="r1a-or-lgc">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="1928" y="-172"/>
-        </scene>
-        <!--Queue History View Controller-->
-        <scene sceneID="qRy-D3-sUL">
-            <objects>
-                <customObject id="mms-46-S9Y" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController title="History" id="Ogz-Re-ha3" userLabel="Queue History View Controller" sceneMemberID="viewController">
-                    <view key="view" id="OnW-Lm-Q90">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="1928" y="189"/>
-        </scene>
         <!--Music Player Content View Controller-->
         <scene sceneID="P4R-pY-1xe">
             <objects>
