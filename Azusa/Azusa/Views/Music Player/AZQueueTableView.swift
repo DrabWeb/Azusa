@@ -86,7 +86,9 @@ class AZQueueTableView: NSTableView {
         // For every selected row index...
         for(_, currentRowIndex) in self.selectedRowIndexes.enumerated() {
             // Add the `AZQueueTableCellView` of this row to `cells`
-            cells.append((self.rowView(atRow: currentRowIndex, makeIfNecessary: false)!.view(atColumn: 0) as! AZQueueTableCellView));
+            if let rowView = self.rowView(atRow: currentRowIndex, makeIfNecessary: false) {
+                cells.append(rowView.view(atColumn: 0) as! AZQueueTableCellView);
+            }
         }
         
         // Return `cells`

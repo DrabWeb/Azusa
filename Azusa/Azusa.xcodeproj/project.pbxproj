@@ -27,6 +27,7 @@
 		AE602FDC1DF90894002225CB /* AZEventSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FDB1DF90894002225CB /* AZEventSubscriber.swift */; };
 		AE98A43F1DFE23E80004F9CF /* MIMusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE98A43E1DFE23E80004F9CF /* MIMusicPlayer.swift */; };
 		AE98A4411DFE85150004F9CF /* AZQueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE98A4401DFE85150004F9CF /* AZQueueViewController.swift */; };
+		AED3093A1DFF8C9F0053AA53 /* AZCoverDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED309391DFF8C9F0053AA53 /* AZCoverDatabase.swift */; };
 		AED38A201DFF513E00F410E3 /* AZProgressBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED38A1E1DFF513E00F410E3 /* AZProgressBarCell.swift */; };
 		AED38A211DFF513E00F410E3 /* AZToolbarStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED38A1F1DFF513E00F410E3 /* AZToolbarStatusView.swift */; };
 		AED38A231DFF518300F410E3 /* AZQueueTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED38A221DFF518300F410E3 /* AZQueueTableCellView.swift */; };
@@ -129,6 +130,7 @@
 		AE602FDB1DF90894002225CB /* AZEventSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZEventSubscriber.swift; sourceTree = "<group>"; };
 		AE98A43E1DFE23E80004F9CF /* MIMusicPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMusicPlayer.swift; sourceTree = "<group>"; };
 		AE98A4401DFE85150004F9CF /* AZQueueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZQueueViewController.swift; sourceTree = "<group>"; };
+		AED309391DFF8C9F0053AA53 /* AZCoverDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZCoverDatabase.swift; sourceTree = "<group>"; };
 		AED38A1E1DFF513E00F410E3 /* AZProgressBarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZProgressBarCell.swift; sourceTree = "<group>"; };
 		AED38A1F1DFF513E00F410E3 /* AZToolbarStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZToolbarStatusView.swift; sourceTree = "<group>"; };
 		AED38A221DFF518300F410E3 /* AZQueueTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZQueueTableCellView.swift; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 				AEDC326B1DFA008C00538F24 /* AZArtist.swift */,
 				AEDC326D1DFA009700538F24 /* AZAlbum.swift */,
 				AEDC32711DFA0E0F00538F24 /* AZGenre.swift */,
+				AED309391DFF8C9F0053AA53 /* AZCoverDatabase.swift */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -460,7 +463,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = DrabWeb;
 				TargetAttributes = {
 					AE602EEF1DF8E8E3002225CB = {
@@ -551,6 +554,7 @@
 				AED38A201DFF513E00F410E3 /* AZProgressBarCell.swift in Sources */,
 				AEDC326C1DFA008C00538F24 /* AZArtist.swift in Sources */,
 				AE602FD71DF90818002225CB /* AZMusicPlayer.swift in Sources */,
+				AED3093A1DFF8C9F0053AA53 /* AZCoverDatabase.swift in Sources */,
 				AED38A251DFF6A4E00F410E3 /* AZQueueTableView.swift in Sources */,
 				AEDC32721DFA0E0F00538F24 /* AZGenre.swift in Sources */,
 			);
@@ -617,6 +621,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -666,6 +671,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

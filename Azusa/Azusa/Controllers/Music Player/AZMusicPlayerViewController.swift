@@ -267,7 +267,9 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
                 
                 // Get `selectedSongs`
                 for(_, currentCell) in selectedCells.enumerated() {
-                    selectedSongs.append(currentCell.representedSong!);
+                    if(currentCell.representedSong != nil) {
+                        selectedSongs.append(currentCell.representedSong!);
+                    }
                 }
                 
                 // Remove `selectedSongs` from the queue

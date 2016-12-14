@@ -54,7 +54,9 @@ class AZToolbarStatusView: NSView {
         AZLogger.log("AZToolbarStatusView: Displaying status \(status)", level: .full);
         
         // Display the status info
-        self.coverImageView?.setAspectFillImage(status.currentSong.coverImage);
+        status.currentSong.getCoverImage({ coverImage in
+            self.coverImageView?.setAspectFillImage(coverImage);
+        });
         
         self.songTitleLabel?.stringValue = status.currentSong.displayTitle;
         self.artistAlbumLabel?.stringValue = "\(status.currentSong.displayArtist) — \(status.currentSong.displayAlbum)";

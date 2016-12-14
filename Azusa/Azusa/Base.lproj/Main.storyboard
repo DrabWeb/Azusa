@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="hXg-Xn-Rjr">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="hXg-Xn-Rjr">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -774,7 +774,7 @@
                                         </buttonCell>
                                         <connections>
                                             <action selector="toolbarQueuePressedWithSender:" target="IaQ-hp-eUK" id="bk1-ii-ai3"/>
-                                            <segue destination="VvY-Eo-Ig4" kind="popover" popoverAnchorView="9Zm-4M-iMp" popoverBehavior="semitransient" preferredEdge="maxY" id="x2w-Ih-wPM"/>
+                                            <segue destination="VvY-Eo-Ig4" kind="popover" popoverAnchorView="9Zm-4M-iMp" popoverBehavior="t" preferredEdge="maxY" id="x2w-Ih-wPM"/>
                                         </connections>
                                     </button>
                                 </toolbarItem>
@@ -924,8 +924,8 @@
                         <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="TGI-R8-5g1"/>
                         <splitViewItem id="CYw-zO-BOD"/>
                     </splitViewItems>
-                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="2BH-Cj-pFh">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                    <splitView key="splitView" misplaced="YES" dividerStyle="thin" vertical="YES" id="2BH-Cj-pFh">
+                        <rect key="frame" x="0.0" y="0.0" width="842" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </splitView>
                     <connections>
@@ -942,13 +942,13 @@
             <objects>
                 <viewController id="bpc-CH-mas" userLabel="Music Player Sidebar View Controller" sceneMemberID="viewController">
                     <view key="view" id="2ge-VZ-Y3K">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
                 <customObject id="Ce5-OJ-Rhy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-363" y="537"/>
+            <point key="canvasLocation" x="-581" y="537"/>
         </scene>
         <!--Queue View Controller-->
         <scene sceneID="39R-Y8-H5J">
@@ -973,11 +973,11 @@
                                 </connections>
                             </segmentedControl>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ki-57-DAy" userLabel="Song Count Label">
-                                <rect key="frame" x="18" y="438" width="53" height="17"/>
+                                <rect key="frame" x="18" y="438" width="64" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="B74-ea-PfU"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="X songs" id="ev6-S8-pcF" userLabel="Cell">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Loading..." id="ev6-S8-pcF" userLabel="Cell">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1129,13 +1129,13 @@
             <objects>
                 <viewController id="1rq-R8-huZ" userLabel="Music Player Content View Controller" sceneMemberID="viewController">
                     <view key="view" id="qmO-Dh-OoT">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
                 <customObject id="oN3-PH-sRU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="662" y="537"/>
+            <point key="canvasLocation" x="843" y="537"/>
         </scene>
     </scenes>
     <resources>
