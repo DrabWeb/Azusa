@@ -85,8 +85,10 @@ class MISong: AZSong {
         AZCoverDatabase.global.get(self.album.name, completionHandler: { databaseCoverImage in
             // If the cover was already in the database...
             if(databaseCoverImage != nil) {
-                // Call the completion handler with `databaseCoverImage`
-                completionHandler(databaseCoverImage!);
+                DispatchQueue.main.async {
+                    // Call the completion handler with `databaseCoverImage`
+                    completionHandler(databaseCoverImage!);
+                }
             }
             // If the cover wasn't in the database...
             else {

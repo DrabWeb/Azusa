@@ -33,8 +33,8 @@ protocol AZMusicPlayer {
     
     /// Gets the elapsed time and duration of the current playing song, used for updating progress bars and similar
     ///
-    /// - Parameter completionHandler: The completion handler for the request, passed the elapsed time of the current song in seconds and the duration in seconds
-    func getElapsedAndDuration(_ completionHandler : @escaping ((Int, Int) -> ()));
+    /// - Parameter completionHandler: The completion handler for the request, passed the elapsed time of the current song in seconds
+    func getElapsed(_ completionHandler : @escaping ((Int) -> ()));
     
     /// Seeks to `to` in the current playing song
     ///

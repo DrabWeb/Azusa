@@ -62,18 +62,18 @@ class MIMusicPlayer: AZMusicPlayer {
         }
     }
     
-    func getElapsedAndDuration(_ completionHandler: @escaping ((Int, Int) -> ())) {
+    func getElapsed(_ completionHandler: @escaping ((Int) -> ())) {
         self.dispatchQueue.async {
             // If `mpd` exists..
             if(self.mpd != nil) {
-                /// The output of `getElapsedAndDuration`
-                let elapsedTimeAndDuration = self.mpd!.getElapsedAndDuration();
+                /// The output of `getElapsed`
+                let output = self.mpd!.getElapsed();
                 
-                // If `getElapsedAndDuration` was successful...
-                if(elapsedTimeAndDuration.0) {
-                    // Call the completion handler with `elapsedTimeAndDuration`
+                // If `getElapsed` was successful...
+                if(output.0) {
+                    // Call the completion handler with `output`
                     DispatchQueue.main.async {
-                        completionHandler((elapsedTimeAndDuration.1, elapsedTimeAndDuration.2));
+                        completionHandler(output.1);
                     }
                 }
             }

@@ -46,6 +46,9 @@ class AZToolbarStatusView: NSView {
     /// The handler for seek events from `progressBar`, passed the time in seconds to seek to
     var seekHandler : ((Int) -> ())? = nil;
     
+    /// The current `AZSong` this `AZToolbarStatusView` is displaying
+    private var currentSong : AZSong? = nil;
+    
     
     // MARK: - Functions
     
@@ -53,32 +56,35 @@ class AZToolbarStatusView: NSView {
     func display(status : AZPlayerStatus) {
         AZLogger.log("AZToolbarStatusView: Displaying status \(status)", level: .full);
         
+        // Set `currentSong`
+        self.currentSong = status.currentSong;
+        
         // Display the status info
         status.currentSong.getCoverImage({ coverImage in
-            self.coverImageView?.setAspectFillImage(coverImage);
+            autoreleasepool {
+                self.coverImageView?.setAspectFillImage(coverImage);
+            }
         });
         
         self.songTitleLabel?.stringValue = status.currentSong.displayTitle;
         self.artistAlbumLabel?.stringValue = "\(status.currentSong.displayArtist) — \(status.currentSong.displayAlbum)";
-        
-        self.display(elapsed: status.timeElapsed, duration: status.currentSong.duration);
+        self.display(elapsed: status.timeElapsed);
         
         // Set `lastDisplayedStatus`
         self.lastDisplayedStatus = status;
     }
     
-    /// Displays the given elapsed time and progress
+    /// Displays the given elapsed time and updates the duration to match `currentSong`
     ///
     /// - Parameters:
     ///   - elapsed: The elapsed time to display
-    ///   - duration: The duration to display
-    func display(elapsed : Int, duration : Int) {
+    func display(elapsed : Int) {
         // Display the given values
-        self.progressBar?.maxValue = Double(duration);
         self.progressBar?.intValue = Int32(elapsed);
+        self.progressBar?.maxValue = Double(currentSong?.duration ?? 0);
         
         self.elapsedTimeLabel?.stringValue = AZMusicUtilities.secondsToDisplayTime(elapsed);
-        self.durationTimeLabel?.stringValue = "-\(AZMusicUtilities.secondsToDisplayTime(duration - elapsed))";
+        self.durationTimeLabel?.stringValue = "-\(AZMusicUtilities.secondsToDisplayTime((self.currentSong?.duration ?? 0) - elapsed))";
     }
     
     /// Called when the user moves `progressBar`

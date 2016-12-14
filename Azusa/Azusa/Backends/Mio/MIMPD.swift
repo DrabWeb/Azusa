@@ -288,14 +288,17 @@ class MIMPD {
             /// The length of the currentQueue
             let currentQueueLength : Int = Int(mpd_status_get_queue_length(mpd_run_status(self.connection!)));
             
-            // If there is at least one song in the current queue...
-            if(currentQueueLength > 0) {
-                // For every index in the current queue...
-                for index in 0...(currentQueueLength - 1) {
-                    // Append the song at the current index to `currentQueue`
-                    currentQueue.append(self.songFrom(mpdSong: mpd_run_get_queue_song_pos(self.connection, UInt32(index))));
-                }
+            // Send the `"playlistinfo"` command
+            mpd_send_list_queue_meta(self.connection!);
+            
+            // For every song index in the current queue...
+            for _ in 0...(currentQueueLength - 1) {
+                // Get the next MPD song and add it to `currentQueue`
+                currentQueue.append(self.songFrom(mpdSong: mpd_recv_song(self.connection!)));
             }
+            
+            // Finish the `"playlistinfo"` command
+            mpd_response_finish(self.connection!);
         }
         // If the connection is nil...
         else {
@@ -890,29 +893,21 @@ class MIMPD {
     
     /// Returns the elapsed time and duration of the current song in seconds
     ///
-    /// - Returns: If the connection was successful, the elapsed time in seconds and the duration in seconds
-    func getElapsedAndDuration() -> (Bool, Int, Int) {
+    /// - Returns: If the connection was successful and the elapsed time in seconds for the current song
+    func getElapsed() -> (Bool, Int) {
         // If the connection isn't nil...
         if(connection != nil) {
-            AZLogger.log("MIMPD: Getting elapsed time and duration", level: .full);
+            AZLogger.log("MIMPD: Getting elapsed time", level: .full);
             
-            // If the current song isn't nil...
-            if let currentSong = mpd_run_current_song(self.connection) {
-                // Return the elapsed time and duration
-                return (true, Int(mpd_status_get_elapsed_time(mpd_run_status(self.connection!))), Int(mpd_song_get_duration(currentSong)));
-            }
-            // If the current song is nil...
-            else {
-                // Return placeholder values
-                return (true, 0, 0)
-            }
+            // Return that the operation was successful and the elapsed time into the current song
+            return (true, Int(mpd_status_get_elapsed_time(mpd_run_status(self.connection!))));
         }
         // If the connection is nil...
         else {
             AZLogger.log("MIMPD: Cannot retrieve elapsed/duration, connection does not exist(run connect first)");
             
             // Say the operation was unsuccessful
-            return (false, 0, 0);
+            return (false, 0);
         }
     }
     

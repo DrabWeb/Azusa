@@ -46,6 +46,9 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
     /// The `AZMusicPlayer` for this music player
     var musicPlayer : AZMusicPlayer = MIMusicPlayer(settings: ["address": "127.0.0.1", "port": 6600, "musicDirectory": "/Volumes/Storage/macOS/Music/"]);
     
+    /// The `Timer` for looping and always updating the progress in the status view
+    weak var progressTimer : Timer? = nil;
+    
     
     // MARK: - Toolbar Actions
     
@@ -128,10 +131,10 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
             
             
             // Start the progress loop
-            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { _ in
-                // Get the current elapsed time and duration
-                self.musicPlayer.getElapsedAndDuration({ output in
-                    self.toolbarStatusItem?.display(elapsed: output.0, duration: output.1);
+            self.progressTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { _ in
+                // Get the current elapsed time and display it
+                self.musicPlayer.getElapsed({ elapsed in
+                    self.toolbarStatusItem?.display(elapsed: elapsed);
                 });
             });
         });

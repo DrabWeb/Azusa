@@ -35,7 +35,9 @@ class AZQueueTableCellView: NSTableCellView {
         
         // Display the song's values
         song.getCoverImage({ coverImage in
-            self.coverImageView.setAspectFillImage(coverImage);
+            autoreleasepool {
+                self.coverImageView.setAspectFillImage(coverImage);
+            }
         });
         
         self.titleLabel.stringValue = song.displayTitle;
