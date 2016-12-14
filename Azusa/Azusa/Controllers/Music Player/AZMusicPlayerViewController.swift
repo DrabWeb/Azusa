@@ -249,29 +249,19 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
             queuePopupViewController!.window = self.window;
             
             // Set the primary, secondary and remove handlers
-            queuePopupViewController!.queueTableViewPrimaryHandler = { tableView, selectedCells, event in
-                // If the `representedSong` of the first cell in `selectedCells` isn't nil...
-                if let selectedSong = selectedCells.first?.representedSong {
+            queuePopupViewController!.queueTableViewPrimaryHandler = { tableView, selectedSongs, event in
+                // If the first item in `selectedSongs` isn't nil...
+                if let selectedSong = selectedSongs.first {
                     // Play `selectedSong`
                     self.musicPlayer.playSongInQueue(selectedSong, completionHandler: nil);
                 }
             };
             
-            queuePopupViewController!.queueTableViewSecondaryHandler = { tableView, selectedCells, event in
+            queuePopupViewController!.queueTableViewSecondaryHandler = { tableView, selectedSongs, event in
                 print("Secondary");
             };
             
-            queuePopupViewController!.queueTableViewRemoveHandler = { tableView, selectedCells, event in
-                /// All the songs from `selectedCells`
-                var selectedSongs : [AZSong] = [];
-                
-                // Get `selectedSongs`
-                for(_, currentCell) in selectedCells.enumerated() {
-                    if(currentCell.representedSong != nil) {
-                        selectedSongs.append(currentCell.representedSong!);
-                    }
-                }
-                
+            queuePopupViewController!.queueTableViewRemoveHandler = { tableView, selectedSongs, event in
                 // Remove `selectedSongs` from the queue
                 self.musicPlayer.removeFromQueue(selectedSongs, completionHandler: nil);
             };

@@ -30,6 +30,9 @@ class AZQueueTableCellView: NSTableCellView {
     ///
     /// - Parameter song: The `AZSong` to display
     func display(song : AZSong) {
+        // Set the represented song of this cell
+        self.representedSong = song;
+        
         // Display the song's values
         song.getCoverImage({ coverImage in
             self.coverImageView.setAspectFillImage(coverImage);
@@ -37,8 +40,5 @@ class AZQueueTableCellView: NSTableCellView {
         
         self.titleLabel.stringValue = song.displayTitle;
         self.artistAlbumLabel.stringValue = "\(song.displayArtist) — \(song.displayAlbum)";
-        
-        // Set the represented song
-        self.representedSong = song;
     }
 }

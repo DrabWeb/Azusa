@@ -59,18 +59,18 @@ class AZQueueViewController: NSViewController {
     
     /// The closure to call when the user either double clicks or presses enter in `queueTableView`, normally plays the clicked track
     ///
-    /// Passed `queueTableView`, the selected `AZQueueTableCellView` and the event
-    var queueTableViewPrimaryHandler : ((AZQueueTableView, [AZQueueTableCellView], NSEvent) -> ())? = nil;
+    /// Passed `queueTableView`, the selected `AZSong`s and the event
+    var queueTableViewPrimaryHandler : ((AZQueueTableView, [AZSong], NSEvent) -> ())? = nil;
     
     /// The closure to call when the user right clicks in `queueTableView`, normally shows a context menu
     ///
-    /// Passed `queueTableView`, the selected `AZQueueTableCellView` and the event
-    var queueTableViewSecondaryHandler : ((AZQueueTableView, [AZQueueTableCellView], NSEvent) -> ())? = nil;
+    /// Passed `queueTableView`, the selected `AZSong`s and the event
+    var queueTableViewSecondaryHandler : ((AZQueueTableView, [AZSong], NSEvent) -> ())? = nil;
     
     /// The closure to call when the user selects songs and presses backspace/delete in `queueTableView`, should remove the selected songs from the queue
     ///
-    /// Passed `queueTableView`, the selected `AZQueueTableCellView` and the event
-    var queueTableViewRemoveHandler : ((AZQueueTableView, [AZQueueTableCellView], NSEvent) -> ())? = nil;
+    /// Passed `queueTableView`, the selected `AZSong`s and the event
+    var queueTableViewRemoveHandler : ((AZQueueTableView, [AZSong], NSEvent) -> ())? = nil;
     
     
     // MARK: - Functions

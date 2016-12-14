@@ -665,35 +665,6 @@ class MIMPD {
         }
     }
     
-    /// Removes the given `MISong` from the queue
-    ///
-    /// - Parameter song: The `MISong` to remove from the queue
-    /// - Returns: If the operation was successful
-    func removeFromQueue(song : MISong) -> Bool {
-        // If the connection isn't nil...
-        if(connection != nil) {
-            AZLogger.log("MIMPD: Removing \(song) from the queue");
-            
-            // Remove the song from the queue, and if it fails...
-            if(!mpd_run_delete_id(self.connection!, UInt32(song.id))) {
-                AZLogger.log("MIMPD: Error removing song, \(self.currentErrorMessage())");
-                    
-                // Say the operation was unsuccessful
-                return false;
-            }
-                
-            // Say the operation was successful
-            return false;
-        }
-        // If the connection is nil...
-        else {
-            AZLogger.log("MIMPD: Cannot remove from queue, connection does not exist(run connect first)");
-            
-            // Say the operation was unsuccessful
-            return false;
-        }
-    }
-    
     /// Removes the given `MISong`s from the current queue
     ///
     /// - Parameter songs: The array of `MISong`s to remove from the queue
@@ -706,14 +677,25 @@ class MIMPD {
             /// Was the queue add successful?
             var successful : Bool = true;
             
+            // Start the command list for removing songs
+            mpd_command_list_begin(self.connection!, true);
+            
             // For every song in `songs`...
             for(_, currentSong) in songs.enumerated() {
-                // Remove `currentSong` from the queue, and if it fails...
-                if(!self.removeFromQueue(song: currentSong)) {
+                // Send the delete from queue command, and if it fails...
+                if(!mpd_send_delete_id(self.connection!, UInt32(currentSong.id))) {
+                    AZLogger.log("MIMPD: Error removing song from queue, \(self.currentErrorMessage())");
+                    
                     // Say that the queue remove was unsuccessful
                     successful = false;
                 }
             }
+            
+            // Run the queue send delete command list
+            mpd_command_list_end(self.connection!);
+            
+            // Run the actual queue delete commands, and set `successful` to if it was successful
+            successful = mpd_response_finish(self.connection!);
             
             // Return if the queue add was successful
             return successful;

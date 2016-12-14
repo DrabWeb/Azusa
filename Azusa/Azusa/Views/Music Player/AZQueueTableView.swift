@@ -14,25 +14,25 @@ class AZQueueTableView: NSTableView {
     
     /// The closure to call when the user either double clicks or presses enter on this table view, normally plays the clicked track
     ///
-    /// Passed this table view, the selected cells and the event
-    var primaryHandler : ((AZQueueTableView, [AZQueueTableCellView], NSEvent) -> ())? = nil;
+    /// Passed this table view, the selected songs and the event
+    var primaryHandler : ((AZQueueTableView, [AZSong], NSEvent) -> ())? = nil;
     
     /// The closure to call when the user either right clicks on this table view, normally shows a context menu
     ///
-    /// Passed this table view, the selected cells and the event
-    var secondaryHandler : ((AZQueueTableView, [AZQueueTableCellView], NSEvent) -> ())? = nil;
+    /// Passed this table view, the selected songs and the event
+    var secondaryHandler : ((AZQueueTableView, [AZSong], NSEvent) -> ())? = nil;
     
     /// The closure to call when the user selects songs and presses backspace/delete, should remove the selected songs from the queue
     ///
-    /// Passed this table view, the selected cells and the event
-    var removeHandler : ((AZQueueTableView, [AZQueueTableCellView], NSEvent) -> ())? = nil;
+    /// Passed this table view, the selected songs and the event
+    var removeHandler : ((AZQueueTableView, [AZSong], NSEvent) -> ())? = nil;
     
     
     // MARK: - Functions
 
     override func rightMouseDown(with event: NSEvent) {
         // Call `secondaryHandler`
-        self.secondaryHandler?(self, self.getSelectedCells(), event);
+        self.secondaryHandler?(self, self.getSelectedSongs(), event);
     }
     
     override func mouseDown(with event: NSEvent) {
@@ -50,7 +50,7 @@ class AZQueueTableView: NSTableView {
             }
             
             // Call `primaryHandler`
-            self.primaryHandler?(self, self.getSelectedCells(), event);
+            self.primaryHandler?(self, self.getSelectedSongs(), event);
         }
     }
     
@@ -62,12 +62,12 @@ class AZQueueTableView: NSTableView {
                 // Make sure if there are multiple selection to only select the first one
                 self.selectRowIndexes(IndexSet([self.selectedRowIndexes.first ?? -1]), byExtendingSelection: false);
                 
-                self.primaryHandler?(self, self.getSelectedCells(), event);
+                self.primaryHandler?(self, self.getSelectedSongs(), event);
                 break;
             
             // Backspace/delete
             case 51, 117:
-                self.removeHandler?(self, self.getSelectedCells(), event);
+                self.removeHandler?(self, self.getSelectedSongs(), event);
                 break;
             
             default:
@@ -76,22 +76,22 @@ class AZQueueTableView: NSTableView {
         }
     }
     
-    /// Gets all the selected `AZQueueTableCellView`s in this table view and returns them
+    /// Gets all the selected `AZSong`s in this table view and returns them
     ///
-    /// - Returns: All the `AZQueueTableCellView`s selected in this table view
-    func getSelectedCells() -> [AZQueueTableCellView] {
-        /// The cells to return
-        var cells : [AZQueueTableCellView] = [];
+    /// - Returns: All the `AZSong`s selected in this table view
+    func getSelectedSongs() -> [AZSong] {
+        /// The songs to return
+        var songs : [AZSong] = [];
         
         // For every selected row index...
         for(_, currentRowIndex) in self.selectedRowIndexes.enumerated() {
-            // Add the `AZQueueTableCellView` of this row to `cells`
+            // Add `representedSong` of the `AZQueueTableCellView` of this row to `songs`
             if let rowView = self.rowView(atRow: currentRowIndex, makeIfNecessary: false) {
-                cells.append(rowView.view(atColumn: 0) as! AZQueueTableCellView);
+                songs.append((rowView.view(atColumn: 0) as! AZQueueTableCellView).representedSong!);
             }
         }
         
-        // Return `cells`
-        return cells;
+        // Return `songs`
+        return songs;
     }
 }
