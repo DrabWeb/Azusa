@@ -800,7 +800,7 @@
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AZDefaultCover" id="OPA-Dz-YYo"/>
                                                         </imageView>
                                                         <slider verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="CpU-Iu-7Dw" userLabel="Progress Bar">
-                                                            <rect key="frame" x="33" y="-9" width="167" height="19"/>
+                                                            <rect key="frame" x="33" y="-12" width="167" height="19"/>
                                                             <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="bJC-cv-2Rs" customClass="AZProgressBarCell" customModule="Azusa" customModuleProvider="target">
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
@@ -861,7 +861,7 @@
                                                         <constraint firstItem="KFZ-HB-ATZ" firstAttribute="leading" secondItem="cLi-0c-CSy" secondAttribute="trailing" constant="50" id="p74-RC-eKV"/>
                                                         <constraint firstItem="cLi-0c-CSy" firstAttribute="top" secondItem="nEM-UR-cet" secondAttribute="top" id="pxD-ym-wJv"/>
                                                         <constraint firstItem="k8d-HT-htm" firstAttribute="top" secondItem="nEM-UR-cet" secondAttribute="top" constant="4" id="q85-2s-NaY"/>
-                                                        <constraint firstAttribute="bottom" secondItem="CpU-Iu-7Dw" secondAttribute="bottom" constant="-7" id="rRs-CF-mv7"/>
+                                                        <constraint firstAttribute="bottom" secondItem="CpU-Iu-7Dw" secondAttribute="bottom" constant="-10" id="rRs-CF-mv7"/>
                                                     </constraints>
                                                 </view>
                                                 <color key="borderColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

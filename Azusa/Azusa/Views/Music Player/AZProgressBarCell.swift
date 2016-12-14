@@ -24,7 +24,7 @@ class AZProgressBarCell: NSSliderCell {
     
     override func drawBar(inside aRect: NSRect, flipped: Bool) {
         /// The rect for the slider bar
-        var rect = NSRect(x: aRect.origin.x - 1, y: aRect.origin.y + 1, width: aRect.width + 2, height: aRect.height);
+        var rect = NSRect(x: aRect.origin.x - 1, y: aRect.origin.y - 2, width: aRect.width + 2, height: aRect.height);
         
         // Set the height of the slider bar
         rect.size.height = CGFloat(2);
