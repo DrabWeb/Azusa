@@ -584,52 +584,6 @@ class MIMPD {
         return results;
     }
     
-    /// Adds the given `MISong` to the queue
-    ///
-    /// - Parameter song: The `MISong` to add to the queue
-    /// - Parameter at: The position to insert the song at(optional)
-    /// - Returns: If the operation was successful
-    func addToQueue(song : MISong, at : Int = -1) -> Bool {
-        // If the connection isn't nil...
-        if(connection != nil) {
-            AZLogger.log("MIMPD: Adding \(song) to queue at \(((at == -1) ? "end" : "\(at)"))");
-            
-            // If `at` was set...
-            if(at != -1) {
-                // Add the song to the queue, and if it fails...
-                if(mpd_run_add_id_to(self.connection!, song.uri, UInt32(at)) == -1) {
-                    AZLogger.log("MIMPD: Error queueing song, \(self.currentErrorMessage())");
-                    
-                    // Say the operation was unsuccessful
-                    return false;
-                }
-                
-                // Say the operation was successful
-                return false;
-            }
-            // If `at` wasn't set...
-            else {
-                // Add the song to the queue, and if it fails...
-                if(mpd_run_add_id(self.connection!, song.uri) == -1) {
-                    AZLogger.log("MIMPD: Error queueing song, \(self.currentErrorMessage())");
-                    
-                    // Say the operation was unsuccessful
-                    return false;
-                }
-                
-                // Say the operation was successful
-                return false;
-            }
-        }
-        // If the connection is nil...
-        else {
-            AZLogger.log("MIMPD: Cannot add song to queue, connection does not exist(run connect first)");
-            
-            // Say the operation was unsuccessful
-            return false;
-        }
-    }
-    
     /// Adds the given array of `MISong`'s to the queue
     ///
     /// - Parameters:
@@ -644,14 +598,38 @@ class MIMPD {
             /// Was the queue add successful?
             var successful : Bool = true;
             
+            // Start the command list for adding song to the queue
+            mpd_command_list_begin(self.connection!, true);
+            
             // For every song in `songs`(reversed if `at` was set so it stays in the proper order)
             for(_, currentSong) in ((at > -1) ? songs.reversed() : songs).enumerated() {
-                // Add `currentSong` to the queue, and if it fails...
-                if(!self.addToQueue(song: currentSong, at: at)) {
-                    // Say that the queue add was unsuccessful
-                    successful = false;
+                // If `at` was set...
+                if(at != -1) {
+                    // Send the add to queue command, and if it fails...
+                    if(!mpd_send_add_id_to(self.connection!, currentSong.uri, UInt32(at))) {
+                        AZLogger.log("MIMPD: Error queueing song, \(self.currentErrorMessage())");
+                        
+                        // Say the operation was unsuccessful
+                        successful = false;
+                    }
+                }
+                // If `at` wasn't set...
+                else {
+                    // Send the add to queue command, and if it fails...
+                    if(!mpd_send_add_id(self.connection!, currentSong.uri)) {
+                        AZLogger.log("MIMPD: Error queueing song, \(self.currentErrorMessage())");
+                        
+                        // Say the operation was unsuccessful
+                        successful = false;
+                    }
                 }
             }
+            
+            // Run the queue add command list
+            mpd_command_list_end(self.connection!);
+            
+            // Run the actual queue add commands, and set `successful` to if it was successful
+            successful = mpd_response_finish(self.connection!);
             
             // Return if the queue add was successful
             return successful;
@@ -677,7 +655,7 @@ class MIMPD {
             /// Was the queue add successful?
             var successful : Bool = true;
             
-            // Start the command list for removing songs
+            // Start the command list for deleting songs from the queue
             mpd_command_list_begin(self.connection!, true);
             
             // For every song in `songs`...

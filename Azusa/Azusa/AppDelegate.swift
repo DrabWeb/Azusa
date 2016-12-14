@@ -39,7 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        let mpd : MIMPD = MIMPD(address: "127.0.0.1", port: 6600, musicDirectory: "/Volumes/Storage/macOS/Music/");
 //
 //        AZLogger.log("Connection was successful: \(mpd.connect())");
-//        
+//
 //        AZLogger.log("Current song: \(mpd.getCurrentSong() ?? MISong.empty)");
 //        AZLogger.log("Database stats: \(mpd.getStats() ?? MIMPDStats())");
 //        AZLogger.log("Player status: \(mpd.getPlayerStatus() ?? MIMPDPlayerStatus())");
@@ -47,8 +47,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        AZLogger.log("All artists: \(mpd.getAllArtists())");
 //        AZLogger.log("All albums: \(mpd.getAllAlbums())");
 //        AZLogger.log("All genres: \(mpd.getAllGenres())");
-//        AZLogger.log("Add to beginning of queue: \(mpd.addToQueue(songs: mpd.searchForSongs("team skull", within: MPD_TAG_UNKNOWN, exact: false)))");
-//        AZLogger.log("Add to beginning of queue: \(mpd.addToQueue(song: mpd.searchForSongs("team skull", within: MPD_TAG_UNKNOWN, exact: false)[0], at: 0))");
+//        AZLogger.log("Add to end of queue: \(mpd.addToQueue(songs: mpd.searchForSongs("team skull", within: MPD_TAG_TITLE, exact: false)))");
+//        AZLogger.log("Add to beginning of queue: \(mpd.addToQueue(songs: mpd.searchForSongs("team skull", within: MPD_TAG_TITLE, exact: false), at: 0))");
 //        AZLogger.log("All songs in the mikgazer vol. 1 album: \(mpd.getAllSongsForAlbum(album: AZAlbum(name: "mikgazer vol.1")))");
 //        AZLogger.log("All albums by きのこ帝国: \(mpd.getAllAlbumsForArtist(artist: AZArtist(name: "きのこ帝国")))");
 //        AZLogger.log(mpd.seek(to: 60));
