@@ -118,7 +118,7 @@ class MIMusicPlayer: AZMusicPlayer {
             // If `mpd` exists..
             if(self.mpd != nil) {
                 // Run skip previous, and if it was successful...
-                if(self.mpd!.skipPrevious()) {
+                if(self.mpd!.skipPreviousAndMaintainPlayingState()) {
                     // Call the completion handler
                     DispatchQueue.main.async {
                         completionHandler?();
@@ -133,7 +133,7 @@ class MIMusicPlayer: AZMusicPlayer {
             // If `mpd` exists..
             if(self.mpd != nil) {
                 // Run skip next, and if it was successful...
-                if(self.mpd!.skipNext()) {
+                if(self.mpd!.skipNextAndMaintainPlayingState()) {
                     // Call the completion handler
                     DispatchQueue.main.async {
                         completionHandler?();

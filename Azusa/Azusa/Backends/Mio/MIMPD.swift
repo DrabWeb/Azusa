@@ -207,7 +207,7 @@ class MIMPD {
     func setPaused(_ pause : Bool) -> Bool {
         // If the connection isn't nil...
         if(connection != nil) {
-            AZLogger.log("MIMPD: Setting paused to \(pause)");
+            AZLogger.log("MIMPD: \((pause == true) ? "Pausing" : "Playing")");
             
             // If there is a current song...
             if let currentSong = mpd_run_current_song(self.connection!) {
@@ -215,6 +215,14 @@ class MIMPD {
                 if(self.playingStateFrom(mpdState: mpd_status_get_state(mpd_run_status(self.connection!))) == .stopped) {
                     // Start playing the current song
                     return self.seek(to: 0, trackPosition: Int(mpd_song_get_pos(currentSong)));
+                }
+                
+                // Set if the player is paused, and if it fails...
+                if(!mpd_run_pause(self.connection!, pause)) {
+                    AZLogger.log("MIMPD: Error \((pause == true) ? "pausing" : "playing"), \(self.currentErrorMessage())");
+                    
+                    // Say the operation was unsuccessful
+                    return false;
                 }
             }
             // If there isn't a current song...
@@ -277,7 +285,7 @@ class MIMPD {
         }
     }
     
-    /// Skips to the previous song
+    /// Skips to the previous song in the queue
     ///
     /// - Returns: If the operation was successful
     func skipPrevious() -> Bool {
@@ -287,7 +295,7 @@ class MIMPD {
             
             // Run the previous command and if it fails...
             if(!mpd_run_previous(self.connection!)) {
-                AZLogger.log("MIMPD: Error skipping to the next song, \(self.currentErrorMessage())");
+                AZLogger.log("MIMPD: Error skipping to the previous song, \(self.currentErrorMessage())");
                 
                 // Say the operation was unsuccessful
                 return false;
@@ -295,6 +303,45 @@ class MIMPD {
             
             // Say the operation was successful
             return true;
+        }
+        // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot skip to previous song, connection does not exist(run connect first)");
+            
+            // Say the operation was unsuccessful
+            return false;
+        }
+    }
+    
+    /// Skips to the previous song in the queue while maintaining playing state
+    ///
+    /// - Returns: If the operation was successful
+    func skipPreviousAndMaintainPlayingState() -> Bool {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Skipping to the previous song");
+            
+            /// The current playing state of this MPD server
+            let playingState : AZPlayingState = self.playingStateFrom(mpdState: mpd_status_get_state(mpd_run_status(self.connection!)));
+            
+            // Run the previous command and if it fails...
+            if(!mpd_run_previous(self.connection!)) {
+                AZLogger.log("MIMPD: Error skipping to the previous song, \(self.currentErrorMessage())");
+                
+                // Say the operation was unsuccessful
+                return false;
+            }
+            // If the command was successful...
+            else {
+                // If the playing state was paused...
+                if(playingState == .paused) {
+                    // Keep the song paused
+                    return self.setPaused(true);
+                }
+                
+                // Default to saying the operation was successful
+                return true;
+            }
         }
         // If the connection is nil...
         else {
@@ -323,6 +370,45 @@ class MIMPD {
             
             // Say the operation was successful
             return true;
+        }
+        // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot skip to next song, connection does not exist(run connect first)");
+            
+            // Say the operation was unsuccessful
+            return false;
+        }
+    }
+    
+    /// Skips to the next song in the queue while maintaining playing state
+    ///
+    /// - Returns: If the operation was successful
+    func skipNextAndMaintainPlayingState() -> Bool {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Skipping to the next song");
+            
+            /// The current playing state of this MPD server
+            let playingState : AZPlayingState = self.playingStateFrom(mpdState: mpd_status_get_state(mpd_run_status(self.connection!)));
+            
+            // Run the next command and if it fails...
+            if(!mpd_run_next(self.connection!)) {
+                AZLogger.log("MIMPD: Error skipping to the next song, \(self.currentErrorMessage())");
+                
+                // Say the operation was unsuccessful
+                return false;
+            }
+            // If the command was successful...
+            else {
+                // If the playing state was paused...
+                if(playingState == .paused) {
+                    // Keep the song paused
+                    return self.setPaused(true);
+                }
+                
+                // Default to saying the operation was successful
+                return true;
+            }
         }
         // If the connection is nil...
         else {

@@ -28,8 +28,8 @@ class AZCoverDatabase {
     ///   - thumbnail: The thumbnail to add(resized to fit `300x300`)
     ///   - album: The name for the album this cover is for
     func add(thumbnail : NSImage, name : String) {
-        // If `name` isn't blank...
-        if(name != "") {
+        // If `name` isn't blank and `thumbnail` isn't the default cover(we don't want to cache those)...
+        if(name != "" && thumbnail != #imageLiteral(resourceName: "AZDefaultCover")) {
             // Add the given thumbnail to `thumbnails`
             self.thumbnails[name] = thumbnail.resizedTo(fit: 300);
         }
