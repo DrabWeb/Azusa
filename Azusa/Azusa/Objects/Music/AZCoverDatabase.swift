@@ -9,7 +9,7 @@ import Foundation
 import AppKit
 
 /// The global cover database for Azusa, used so covers of the same album aren't loading multiple times from disk
-struct AZCoverDatabase {
+class AZCoverDatabase {
     
     // MARK: - Variables
     
@@ -26,11 +26,11 @@ struct AZCoverDatabase {
     /// - Parameters:
     ///   - cover: The cover to add
     ///   - album: The name for the album this cover is for
-    mutating func add(cover : NSImage, name : String) {
+    func add(cover : NSImage, name : String) {
         // If `name` isn't blank...
         if(name != "") {
             // Add the given values to `covers`
-            self.covers[name] = cover;
+            self.covers[name] = cover.resizedTo(fit: 300);
         }
     }
     

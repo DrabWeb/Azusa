@@ -293,8 +293,14 @@ class MIMPD {
             
             // For every song index in the current queue...
             for _ in 0...(currentQueueLength - 1) {
-                // Get the next MPD song and add it to `currentQueue`
-                currentQueue.append(self.songFrom(mpdSong: mpd_recv_song(self.connection!)));
+                /// The next song from MPD
+                let song = mpd_recv_song(self.connection!);
+                
+                // If the song isn't nil...
+                if(song != nil) {
+                    // Add `song` as an `MISong` to `currentQueue`
+                    currentQueue.append(self.songFrom(mpdSong: song!));
+                }
             }
             
             // Finish the `"playlistinfo"` command
