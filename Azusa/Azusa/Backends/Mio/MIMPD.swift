@@ -39,6 +39,8 @@ class MIMPD {
     
     // MARK: - Functions
     
+    // MARK: - Connection
+    
     /// Connects to the server this object was set up to connect to, using `serverAddress` and `serverPort`
     ///
     /// - Returns: Returns if the connection was successful
@@ -113,6 +115,9 @@ class MIMPD {
         self.connected = false;
     }
     
+    
+    // MARK: - Idle Events
+    
     /// The while loop for catching idle events from MPD
     func idleLoop() {
         // While `idleConnection` isn't nil...
@@ -151,6 +156,502 @@ class MIMPD {
             }
         }
     }
+ 
+    
+    // MARK: - Player
+    
+    /// Gets the current player status of this MPD server
+    ///
+    /// - Returns: An `MIMPDPlayerStatus` object representing the current status of this MPD server(nil if it fails)
+    func getPlayerStatus() -> MIMPDPlayerStatus? {
+        /// The player status object to return
+        var status : MIMPDPlayerStatus? = nil;
+        
+        // If the connection isn't nil...
+        if(connection != nil) {
+            // Create `status`
+            status = MIMPDPlayerStatus();
+            
+            // Set the current song
+            status!.currentSong = self.getCurrentSong() ?? MISong.empty;
+            
+            /// The MPD status object from `connection`
+            let mpdStatus = mpd_run_status(self.connection!);
+            
+            // Set all the other status values
+            status!.volume = Int(mpd_status_get_volume(mpdStatus));
+            status!.randomOn = mpd_status_get_random(mpdStatus);
+            status!.repeatOn = mpd_status_get_repeat(mpdStatus);
+            status!.singleOn = mpd_status_get_single(mpdStatus);
+            status!.consumeOn = mpd_status_get_consume(mpdStatus);
+            status!.queueLength = Int(mpd_status_get_queue_length(mpdStatus));
+            status!.playingState = self.playingStateFrom(mpdState: mpd_status_get_state(mpdStatus));
+            status!.currentSongPosition = Int(mpd_status_get_song_pos(mpdStatus));
+            status!.nextSongPosition = Int(mpd_status_get_next_song_pos(mpdStatus));
+            status!.timeElapsed = Int(mpd_status_get_elapsed_time(mpdStatus));
+        }
+            // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot retrieve status, connection does not exist(run connect first)");
+        }
+        
+        // Return the player status object
+        return status;
+    }
+    
+    /// Sets if this MPD server is paused
+    ///
+    /// - Parameter pause: The pause state to set(`true` for play, `false` for pause)
+    /// - Returns: If the operation was successful
+    func setPaused(_ pause : Bool) -> Bool {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Setting paused to \(pause)");
+            
+            // If there is a current song...
+            if let currentSong = mpd_run_current_song(self.connection!) {
+                // If the player is stopped...
+                if(self.playingStateFrom(mpdState: mpd_status_get_state(mpd_run_status(self.connection!))) == .stopped) {
+                    // Start playing the current song
+                    return self.seek(to: 0, trackPosition: Int(mpd_song_get_pos(currentSong)));
+                }
+            }
+                // If there isn't a current song...
+            else {
+                // Play the first song in the queue
+                return self.seek(to: 0, trackPosition: 0);
+            }
+            
+            // Say the operation was successful
+            return true;
+        }
+            // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot set paused, connection does not exist(run connect first)");
+            
+            // Say the operation was unsuccessful
+            return false;
+        }
+    }
+    
+    /// Toggles pause for this MPD server
+    ///
+    /// - Returns: If the operation was successful and the paused state that was set
+    func togglePaused() -> (Bool, Bool) {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Toggling pause");
+            
+            // If there is a current song...
+            if let currentSong = mpd_run_current_song(self.connection!) {
+                // If the player is stopped...
+                if(self.playingStateFrom(mpdState: mpd_status_get_state(mpd_run_status(self.connection!))) == .stopped) {
+                    // Start playing the current song
+                    return (self.seek(to: 0, trackPosition: Int(mpd_song_get_pos(currentSong))), true);
+                }
+                
+                // Run the toggle pause command and if it fails...
+                if(!mpd_run_toggle_pause(self.connection!)) {
+                    AZLogger.log("MIMPD: Error toggling pause, \(self.currentErrorMessage())");
+                    
+                    // Say the operation was unsuccessful
+                    return (false, false);
+                }
+            }
+                // If there isn't a current song...
+            else {
+                // Play the first song in the queue
+                return (self.seek(to: 0, trackPosition: 0), true);
+            }
+            
+            // Say the operation was successful, and also get and return the paused state
+            return (true, (self.playingStateFrom(mpdState: mpd_status_get_state(mpd_run_status(self.connection!))) == .playing));
+        }
+            // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot toggle pause, connection does not exist(run connect first)");
+            
+            // Say the operation was unsuccessful
+            return (false, false);
+        }
+    }
+    
+    /// Skips to the previous song
+    ///
+    /// - Returns: If the operation was successful
+    func skipPrevious() -> Bool {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Skipping to the previous song");
+            
+            // Run the previous command and if it fails...
+            if(!mpd_run_previous(self.connection!)) {
+                AZLogger.log("MIMPD: Error skipping to the next song, \(self.currentErrorMessage())");
+                
+                // Say the operation was unsuccessful
+                return false;
+            }
+            
+            // Say the operation was successful
+            return true;
+        }
+            // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot skip to previous song, connection does not exist(run connect first)");
+            
+            // Say the operation was unsuccessful
+            return false;
+        }
+    }
+    
+    /// Skips to the next song
+    ///
+    /// - Returns: If the operation was successful
+    func skipNext() -> Bool {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Skipping to the next song");
+            
+            // Run the previous command and if it fails...
+            if(!mpd_run_next(self.connection!)) {
+                AZLogger.log("MIMPD: Error skipping to the next song, \(self.currentErrorMessage())");
+                
+                // Say the operation was unsuccessful
+                return false;
+            }
+            
+            // Say the operation was successful
+            return true;
+        }
+            // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot skip to next song, connection does not exist(run connect first)");
+            
+            // Say the operation was unsuccessful
+            return false;
+        }
+    }
+    
+    /// Sets the volume to the given value
+    ///
+    /// - Parameter to: The value to set the volume to
+    /// - Returns: If the operation was successful
+    func setVolume(to : Int) -> Bool {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Setting volume to \(to)");
+            
+            // Run the volume command and if it fails...
+            if(!mpd_run_set_volume(self.connection!, UInt32(to))) {
+                AZLogger.log("MIMPD: Error setting volume, \(self.currentErrorMessage())");
+                
+                // Say the operation was unsuccessful
+                return false;
+            }
+            
+            // Say the operation was successful
+            return true;
+        }
+            // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot set volume, connection does not exist(run connect first)");
+            
+            // Say the operation was unsuccessful
+            return false;
+        }
+    }
+    
+    /// Returns the elapsed time and duration of the current song in seconds
+    ///
+    /// - Returns: If the connection was successful and the elapsed time in seconds for the current song
+    func getElapsed() -> (Bool, Int) {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Getting elapsed time", level: .full);
+            
+            // Return that the operation was successful and the elapsed time into the current song
+            return (true, Int(mpd_status_get_elapsed_time(mpd_run_status(self.connection!))));
+        }
+            // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot retrieve elapsed/duration, connection does not exist(run connect first)");
+            
+            // Say the operation was unsuccessful
+            return (false, 0);
+        }
+    }
+    
+    /// Seeks to the given position in seconds in the song at the given queue position
+    ///
+    /// - Parameter to: The time in seconds to seek to
+    /// - Parameter trackPosition: The position of the track in
+    /// - Returns: If the operation was successful
+    func seek(to : Int, trackPosition : Int) -> Bool {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Seeking to \(AZMusicUtilities.secondsToDisplayTime(to)) in #\(trackPosition)");
+            
+            // Run the seek command and if it fails...
+            if(!mpd_run_seek_pos(self.connection!, UInt32(trackPosition), UInt32(to))) {
+                AZLogger.log("MIMPD: Error seeking to \(AZMusicUtilities.secondsToDisplayTime(to)) in #\(trackPosition), \(self.currentErrorMessage())");
+                
+                // Say the operation was unsuccessful
+                return false;
+            }
+            
+            // Say the operation was successful
+            return true;
+        }
+            // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot seek to \(AZMusicUtilities.secondsToDisplayTime(to)) in #\(trackPosition), connection does not exist(run connect first)");
+            
+            // Say the operation was unsuccessful
+            return false;
+        }
+    }
+    
+    /// Seeks to the given position in seconds in the current song
+    ///
+    /// - Parameter to: The time in seconds to seek to
+    /// - Returns: If the operation was successful
+    func seek(to : Int) -> Bool {
+        // Run `seekTo` with `seconds` and the position of the current song in the queue
+        return self.seek(to: to, trackPosition: Int(mpd_status_get_song_pos(mpd_run_status(self.connection!))));
+    }
+    
+    /// Seeks to and plays song at the given index in the queue
+    ///
+    /// - Parameter at: The position of the song in the queue to play
+    /// - Returns: If the operation was successful
+    func playSongInQueue(at : Int) -> Bool {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Playing #\(at) in queue");
+            
+            // Play the song in the queue at `at`, and if it fails...
+            if(!mpd_run_play_pos(self.connection, UInt32(at))) {
+                AZLogger.log("MIMPD: Error playing #\(at) in queue, \(self.currentErrorMessage())");
+                
+                // Say the operation was unsuccessful
+                return false;
+            }
+            
+            // Say the operation was successful
+            return true;
+        }
+            // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot play #\(at) in queue, connection does not exist(run connect first)");
+            
+            // Say the operation was unsuccessful
+            return false;
+        }
+    }
+    
+    
+    // MARK: - Queue
+    
+    /// Gets all the songs in the current queue and returns them
+    ///
+    /// - Returns: All the `MISong`s in the current queue
+    func getCurrentQueue() -> [MISong] {
+        /// The current queue, returned at the end
+        var currentQueue : [MISong] = [];
+        
+        // If the connection isn't nil...
+        if(connection != nil) {
+            /// The length of the currentQueue
+            let currentQueueLength : Int = Int(mpd_status_get_queue_length(mpd_run_status(self.connection!)));
+            
+            // Send the `"playlistinfo"` command
+            mpd_send_list_queue_meta(self.connection!);
+            
+            // If the queue has at least one song in it...
+            if(currentQueueLength > 0) {
+                // For every song index in the current queue...
+                for _ in 0...(currentQueueLength - 1) {
+                    /// The next song from MPD
+                    let song = mpd_recv_song(self.connection!);
+                    
+                    // If the song isn't nil...
+                    if(song != nil) {
+                        // Add `song` as an `MISong` to `currentQueue`
+                        currentQueue.append(self.songFrom(mpdSong: song!));
+                    }
+                }
+            }
+            
+            // Finish the `"playlistinfo"` command
+            mpd_response_finish(self.connection!);
+        }
+            // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot retrieve current queue, connection does not exist(run connect first)");
+        }
+        
+        // Return `currentQueue`
+        return currentQueue;
+    }
+    
+    /// Gets the current playing song and returns it as an `MISong`(nil if there is none)
+    ///
+    /// - Returns: The current playing song as an `MISong`(nil if there is none)
+    func getCurrentSong() -> MISong? {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            /// The MPD song object for the current song
+            let currentSongObject = mpd_run_current_song(self.connection!);
+            
+            // If `currentSongObject` isn't nil...
+            if(currentSongObject != nil) {
+                // Return the `MISong` from `currentSongObject`
+                return self.songFrom(mpdSong: currentSongObject!);
+            }
+                // If `currentSongObject` is nil...
+            else {
+                // Return nil
+                return nil;
+            }
+        }
+            // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot retrieve current song, connection does not exist(run connect first)");
+            
+            // Return nil
+            return nil;
+        }
+    }
+    
+    /// Gets the position of the current song in the queue and returns it
+    ///
+    /// - Returns: The position of the current playing song in the queue, defaults to -1
+    func getCurrentSongPosition() -> Int {
+        /// The position of the current song in the queue, returned at the end
+        var position : Int = -1;
+        
+        // If the connection isn't nil...
+        if(connection != nil) {
+            // Get the current song from MPD, and if it's not nil...
+            if let currentSong = mpd_run_current_song(self.connection!) {
+                // Set `position` to the position of `currentSong` in the queue
+                position = Int(mpd_song_get_pos(currentSong));
+            }
+        }
+            // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot retrieve current song position, connection does not exist(run connect first)");
+        }
+        
+        // Return `position`
+        return position;
+    }
+    
+    /// Adds the given array of `MISong`'s to the queue
+    ///
+    /// - Parameters:
+    ///   - songs: The `MISong`s to add to the queue
+    ///   - at: The position to insert the songs at(optional)
+    /// - Returns: If the operation was successful
+    func addToQueue(songs : [MISong], at : Int = -1) -> Bool {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Adding \(songs) to queue at \(((at == -1) ? "end" : "\(at)"))");
+            
+            /// Was the queue add successful?
+            var successful : Bool = true;
+            
+            // Start the command list for adding song to the queue
+            mpd_command_list_begin(self.connection!, true);
+            
+            // For every song in `songs`(reversed if `at` was set so it stays in the proper order)
+            for(_, currentSong) in ((at > -1) ? songs.reversed() : songs).enumerated() {
+                // If `at` was set...
+                if(at != -1) {
+                    // Send the add to queue command, and if it fails...
+                    if(!mpd_send_add_id_to(self.connection!, currentSong.uri, UInt32(at))) {
+                        AZLogger.log("MIMPD: Error queueing song, \(self.currentErrorMessage())");
+                        
+                        // Say the operation was unsuccessful
+                        successful = false;
+                    }
+                }
+                    // If `at` wasn't set...
+                else {
+                    // Send the add to queue command, and if it fails...
+                    if(!mpd_send_add_id(self.connection!, currentSong.uri)) {
+                        AZLogger.log("MIMPD: Error queueing song, \(self.currentErrorMessage())");
+                        
+                        // Say the operation was unsuccessful
+                        successful = false;
+                    }
+                }
+            }
+            
+            // Run the queue add command list
+            mpd_command_list_end(self.connection!);
+            
+            // Run the actual queue add commands, and set `successful` to if it was successful
+            successful = mpd_response_finish(self.connection!);
+            
+            // Return if the queue add was successful
+            return successful;
+        }
+            // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot add song to queue, connection does not exist(run connect first)");
+            
+            // Say the operation was unsuccessful
+            return false;
+        }
+    }
+    
+    /// Removes the given `MISong`s from the current queue
+    ///
+    /// - Parameter songs: The array of `MISong`s to remove from the queue
+    /// - Returns: If the operation was successful
+    func removeFromQueue(songs : [MISong]) -> Bool {
+        // If the connection isn't nil...
+        if(connection != nil) {
+            AZLogger.log("MIMPD: Removing \(songs) from the queue");
+            
+            /// Was the queue add successful?
+            var successful : Bool = true;
+            
+            // Start the command list for deleting songs from the queue
+            mpd_command_list_begin(self.connection!, true);
+            
+            // For every song in `songs`...
+            for(_, currentSong) in songs.enumerated() {
+                // Send the delete from queue command, and if it fails...
+                if(!mpd_send_delete_id(self.connection!, UInt32(currentSong.id))) {
+                    AZLogger.log("MIMPD: Error removing song from queue, \(self.currentErrorMessage())");
+                    
+                    // Say that the queue remove was unsuccessful
+                    successful = false;
+                }
+            }
+            
+            // Run the queue send delete command list
+            mpd_command_list_end(self.connection!);
+            
+            // Run the actual queue delete commands, and set `successful` to if it was successful
+            successful = mpd_response_finish(self.connection!);
+            
+            // Return if the queue add was successful
+            return successful;
+        }
+            // If the connection is nil...
+        else {
+            AZLogger.log("MIMPD: Cannot remove from queue, connection does not exist(run connect first)");
+            
+            // Say the operation was unsuccessful
+            return false;
+        }
+    }
+    
+    
+    // MARK: - Database
     
     /// Gets the stats of this MPD server
     ///
@@ -206,140 +707,6 @@ class MIMPD {
             // Return nil
             return nil;
         }
-    }
-    
-    /// Gets the current player status of this MPD server
-    ///
-    /// - Returns: An `MIMPDPlayerStatus` object representing the current status of this MPD server(nil if it fails)
-    func getPlayerStatus() -> MIMPDPlayerStatus? {
-        /// The player status object to return
-        var status : MIMPDPlayerStatus? = nil;
-        
-        // If the connection isn't nil...
-        if(connection != nil) {
-            // Create `status`
-            status = MIMPDPlayerStatus();
-            
-            // Set the current song
-            status!.currentSong = self.getCurrentSong() ?? MISong.empty;
-            
-            /// The MPD status object from `connection`
-            let mpdStatus = mpd_run_status(self.connection!);
-            
-            // Set all the other status values
-            status!.volume = Int(mpd_status_get_volume(mpdStatus));
-            status!.randomOn = mpd_status_get_random(mpdStatus);
-            status!.repeatOn = mpd_status_get_repeat(mpdStatus);
-            status!.singleOn = mpd_status_get_single(mpdStatus);
-            status!.consumeOn = mpd_status_get_consume(mpdStatus);
-            status!.queueLength = Int(mpd_status_get_queue_length(mpdStatus));
-            status!.playingState = self.playingStateFrom(mpdState: mpd_status_get_state(mpdStatus));
-            status!.currentSongPosition = Int(mpd_status_get_song_pos(mpdStatus));
-            status!.nextSongPosition = Int(mpd_status_get_next_song_pos(mpdStatus));
-            status!.timeElapsed = Int(mpd_status_get_elapsed_time(mpdStatus));
-        }
-        // If the connection is nil...
-        else {
-            AZLogger.log("MIMPD: Cannot retrieve status, connection does not exist(run connect first)");
-        }
-        
-        // Return the player status object
-        return status;
-    }
-    
-    /// Gets the current playing song and returns it as an `MISong`(nil if there is none)
-    ///
-    /// - Returns: The current playing song as an `MISong`(nil if there is none)
-    func getCurrentSong() -> MISong? {
-        // If the connection isn't nil...
-        if(connection != nil) {
-            /// The MPD song object for the current song
-            let currentSongObject = mpd_run_current_song(self.connection!);
-            
-            // If `currentSongObject` isn't nil...
-            if(currentSongObject != nil) {
-                // Return the `MISong` from `currentSongObject`
-                return self.songFrom(mpdSong: currentSongObject!);
-            }
-            // If `currentSongObject` is nil...
-            else {
-                // Return nil
-                return nil;
-            }
-        }
-        // If the connection is nil...
-        else {
-            AZLogger.log("MIMPD: Cannot retrieve current song, connection does not exist(run connect first)");
-            
-            // Return nil
-            return nil;
-        }
-    }
-
-    /// Gets all the songs in the current queue and returns them
-    ///
-    /// - Returns: All the `MISong`s in the current queue
-    func getCurrentQueue() -> [MISong] {
-        /// The current queue, returned at the end
-        var currentQueue : [MISong] = [];
-        
-        // If the connection isn't nil...
-        if(connection != nil) {
-            /// The length of the currentQueue
-            let currentQueueLength : Int = Int(mpd_status_get_queue_length(mpd_run_status(self.connection!)));
-            
-            // Send the `"playlistinfo"` command
-            mpd_send_list_queue_meta(self.connection!);
-            
-            // If the queue has at least one song in it...
-            if(currentQueueLength > 0) {
-                // For every song index in the current queue...
-                for _ in 0...(currentQueueLength - 1) {
-                    /// The next song from MPD
-                    let song = mpd_recv_song(self.connection!);
-                    
-                    // If the song isn't nil...
-                    if(song != nil) {
-                        // Add `song` as an `MISong` to `currentQueue`
-                        currentQueue.append(self.songFrom(mpdSong: song!));
-                    }
-                }
-            }
-            
-            // Finish the `"playlistinfo"` command
-            mpd_response_finish(self.connection!);
-        }
-        // If the connection is nil...
-        else {
-            AZLogger.log("MIMPD: Cannot retrieve current queue, connection does not exist(run connect first)");
-        }
-        
-        // Return `currentQueue`
-        return currentQueue;
-    }
-    
-    /// Gets the position of the current song in the queue and returns it
-    ///
-    /// - Returns: The position of the current playing song in the queue, defaults to -1
-    func getCurrentSongPosition() -> Int {
-        /// The position of the current song in the queue, returned at the end
-        var position : Int = -1;
-        
-        // If the connection isn't nil...
-        if(connection != nil) {
-            // Get the current song from MPD, and if it's not nil...
-            if let currentSong = mpd_run_current_song(self.connection!) {
-                // Set `position` to the position of `currentSong` in the queue
-                position = Int(mpd_song_get_pos(currentSong));
-            }
-        }
-        // If the connection is nil...
-        else {
-            AZLogger.log("MIMPD: Cannot retrieve current song position, connection does not exist(run connect first)");
-        }
-        
-        // Return `position`
-        return position;
     }
     
     /// Gets all the artists in the MPD database
@@ -594,359 +961,6 @@ class MIMPD {
         
         // Return the results
         return results;
-    }
-    
-    /// Adds the given array of `MISong`'s to the queue
-    ///
-    /// - Parameters:
-    ///   - songs: The `MISong`s to add to the queue
-    ///   - at: The position to insert the songs at(optional)
-    /// - Returns: If the operation was successful
-    func addToQueue(songs : [MISong], at : Int = -1) -> Bool {
-        // If the connection isn't nil...
-        if(connection != nil) {
-            AZLogger.log("MIMPD: Adding \(songs) to queue at \(((at == -1) ? "end" : "\(at)"))");
-            
-            /// Was the queue add successful?
-            var successful : Bool = true;
-            
-            // Start the command list for adding song to the queue
-            mpd_command_list_begin(self.connection!, true);
-            
-            // For every song in `songs`(reversed if `at` was set so it stays in the proper order)
-            for(_, currentSong) in ((at > -1) ? songs.reversed() : songs).enumerated() {
-                // If `at` was set...
-                if(at != -1) {
-                    // Send the add to queue command, and if it fails...
-                    if(!mpd_send_add_id_to(self.connection!, currentSong.uri, UInt32(at))) {
-                        AZLogger.log("MIMPD: Error queueing song, \(self.currentErrorMessage())");
-                        
-                        // Say the operation was unsuccessful
-                        successful = false;
-                    }
-                }
-                // If `at` wasn't set...
-                else {
-                    // Send the add to queue command, and if it fails...
-                    if(!mpd_send_add_id(self.connection!, currentSong.uri)) {
-                        AZLogger.log("MIMPD: Error queueing song, \(self.currentErrorMessage())");
-                        
-                        // Say the operation was unsuccessful
-                        successful = false;
-                    }
-                }
-            }
-            
-            // Run the queue add command list
-            mpd_command_list_end(self.connection!);
-            
-            // Run the actual queue add commands, and set `successful` to if it was successful
-            successful = mpd_response_finish(self.connection!);
-            
-            // Return if the queue add was successful
-            return successful;
-        }
-        // If the connection is nil...
-        else {
-            AZLogger.log("MIMPD: Cannot add song to queue, connection does not exist(run connect first)");
-            
-            // Say the operation was unsuccessful
-            return false;
-        }
-    }
-    
-    /// Removes the given `MISong`s from the current queue
-    ///
-    /// - Parameter songs: The array of `MISong`s to remove from the queue
-    /// - Returns: If the operation was successful
-    func removeFromQueue(songs : [MISong]) -> Bool {
-        // If the connection isn't nil...
-        if(connection != nil) {
-            AZLogger.log("MIMPD: Removing \(songs) from the queue");
-            
-            /// Was the queue add successful?
-            var successful : Bool = true;
-            
-            // Start the command list for deleting songs from the queue
-            mpd_command_list_begin(self.connection!, true);
-            
-            // For every song in `songs`...
-            for(_, currentSong) in songs.enumerated() {
-                // Send the delete from queue command, and if it fails...
-                if(!mpd_send_delete_id(self.connection!, UInt32(currentSong.id))) {
-                    AZLogger.log("MIMPD: Error removing song from queue, \(self.currentErrorMessage())");
-                    
-                    // Say that the queue remove was unsuccessful
-                    successful = false;
-                }
-            }
-            
-            // Run the queue send delete command list
-            mpd_command_list_end(self.connection!);
-            
-            // Run the actual queue delete commands, and set `successful` to if it was successful
-            successful = mpd_response_finish(self.connection!);
-            
-            // Return if the queue add was successful
-            return successful;
-        }
-        // If the connection is nil...
-        else {
-            AZLogger.log("MIMPD: Cannot remove from queue, connection does not exist(run connect first)");
-            
-            // Say the operation was unsuccessful
-            return false;
-        }
-    }
-    
-    /// Seeks to the given position in seconds in the song at the given queue position
-    ///
-    /// - Parameter to: The time in seconds to seek to
-    /// - Parameter trackPosition: The position of the track in
-    /// - Returns: If the operation was successful
-    func seek(to : Int, trackPosition : Int) -> Bool {
-        // If the connection isn't nil...
-        if(connection != nil) {
-            AZLogger.log("MIMPD: Seeking to \(AZMusicUtilities.secondsToDisplayTime(to)) in #\(trackPosition)");
-            
-            // Run the seek command and if it fails...
-            if(!mpd_run_seek_pos(self.connection!, UInt32(trackPosition), UInt32(to))) {
-                AZLogger.log("MIMPD: Error seeking to \(AZMusicUtilities.secondsToDisplayTime(to)) in #\(trackPosition), \(self.currentErrorMessage())");
-                
-                // Say the operation was unsuccessful
-                return false;
-            }
-            
-            // Say the operation was successful
-            return true;
-        }
-        // If the connection is nil...
-        else {
-            AZLogger.log("MIMPD: Cannot seek to \(AZMusicUtilities.secondsToDisplayTime(to)) in #\(trackPosition), connection does not exist(run connect first)");
-            
-            // Say the operation was unsuccessful
-            return false;
-        }
-    }
-    
-    /// Seeks to the given position in seconds in the current song
-    ///
-    /// - Parameter to: The time in seconds to seek to
-    /// - Returns: If the operation was successful
-    func seek(to : Int) -> Bool {
-        // Run `seekTo` with `seconds` and the position of the current song in the queue
-        return self.seek(to: to, trackPosition: Int(mpd_status_get_song_pos(mpd_run_status(self.connection!))));
-    }
-    
-    /// Seeks to and plays song at the given index in the queue
-    ///
-    /// - Parameter at: The position of the song in the queue to play
-    /// - Returns: If the operation was successful
-    func playSongInQueue(at : Int) -> Bool {
-        // If the connection isn't nil...
-        if(connection != nil) {
-            AZLogger.log("MIMPD: Playing #\(at) in queue");
-            
-            // Play the song in the queue at `at`, and if it fails...
-            if(!mpd_run_play_pos(self.connection, UInt32(at))) {
-                AZLogger.log("MIMPD: Error playing #\(at) in queue, \(self.currentErrorMessage())");
-                
-                // Say the operation was unsuccessful
-                return false;
-            }
-            
-            // Say the operation was successful
-            return true;
-        }
-        // If the connection is nil...
-        else {
-            AZLogger.log("MIMPD: Cannot play #\(at) in queue, connection does not exist(run connect first)");
-            
-            // Say the operation was unsuccessful
-            return false;
-        }
-    }
-    
-    /// Sets if this MPD server is paused
-    ///
-    /// - Parameter pause: The pause state to set(`true` for play, `false` for pause)
-    /// - Returns: If the operation was successful
-    func setPaused(_ pause : Bool) -> Bool {
-        // If the connection isn't nil...
-        if(connection != nil) {
-            AZLogger.log("MIMPD: Setting paused to \(pause)");
-            
-            // If there is a current song...
-            if let currentSong = mpd_run_current_song(self.connection!) {
-                // If the player is stopped...
-                if(self.playingStateFrom(mpdState: mpd_status_get_state(mpd_run_status(self.connection!))) == .stopped) {
-                    // Start playing the current song
-                    return self.seek(to: 0, trackPosition: Int(mpd_song_get_pos(currentSong)));
-                }
-            }
-            // If there isn't a current song...
-            else {
-                // Play the first song in the queue
-                return self.seek(to: 0, trackPosition: 0);
-            }
-            
-            // Say the operation was successful
-            return true;
-        }
-        // If the connection is nil...
-        else {
-            AZLogger.log("MIMPD: Cannot set paused, connection does not exist(run connect first)");
-            
-            // Say the operation was unsuccessful
-            return false;
-        }
-    }
-    
-    /// Toggles pause for this MPD server
-    ///
-    /// - Returns: If the operation was successful and the paused state that was set
-    func togglePaused() -> (Bool, Bool) {
-        // If the connection isn't nil...
-        if(connection != nil) {
-            AZLogger.log("MIMPD: Toggling pause");
-            
-            // If there is a current song...
-            if let currentSong = mpd_run_current_song(self.connection!) {
-                // If the player is stopped...
-                if(self.playingStateFrom(mpdState: mpd_status_get_state(mpd_run_status(self.connection!))) == .stopped) {
-                    // Start playing the current song
-                    return (self.seek(to: 0, trackPosition: Int(mpd_song_get_pos(currentSong))), true);
-                }
-                
-                // Run the toggle pause command and if it fails...
-                if(!mpd_run_toggle_pause(self.connection!)) {
-                    AZLogger.log("MIMPD: Error toggling pause, \(self.currentErrorMessage())");
-                    
-                    // Say the operation was unsuccessful
-                    return (false, false);
-                }
-            }
-            // If there isn't a current song...
-            else {
-                // Play the first song in the queue
-                return (self.seek(to: 0, trackPosition: 0), true);
-            }
-            
-            // Say the operation was successful, and also get and return the paused state
-            return (true, (self.playingStateFrom(mpdState: mpd_status_get_state(mpd_run_status(self.connection!))) == .playing));
-        }
-        // If the connection is nil...
-        else {
-            AZLogger.log("MIMPD: Cannot toggle pause, connection does not exist(run connect first)");
-            
-            // Say the operation was unsuccessful
-            return (false, false);
-        }
-    }
-    
-    /// Skips to the previous song
-    ///
-    /// - Returns: If the operation was successful
-    func skipPrevious() -> Bool {
-        // If the connection isn't nil...
-        if(connection != nil) {
-            AZLogger.log("MIMPD: Skipping to the previous song");
-            
-            // Run the previous command and if it fails...
-            if(!mpd_run_previous(self.connection!)) {
-                AZLogger.log("MIMPD: Error skipping to the next song, \(self.currentErrorMessage())");
-                
-                // Say the operation was unsuccessful
-                return false;
-            }
-            
-            // Say the operation was successful
-            return true;
-        }
-        // If the connection is nil...
-        else {
-            AZLogger.log("MIMPD: Cannot skip to previous song, connection does not exist(run connect first)");
-            
-            // Say the operation was unsuccessful
-            return false;
-        }
-    }
-    
-    /// Skips to the next song
-    ///
-    /// - Returns: If the operation was successful
-    func skipNext() -> Bool {
-        // If the connection isn't nil...
-        if(connection != nil) {
-            AZLogger.log("MIMPD: Skipping to the next song");
-            
-            // Run the previous command and if it fails...
-            if(!mpd_run_next(self.connection!)) {
-                AZLogger.log("MIMPD: Error skipping to the next song, \(self.currentErrorMessage())");
-                
-                // Say the operation was unsuccessful
-                return false;
-            }
-            
-            // Say the operation was successful
-            return true;
-        }
-        // If the connection is nil...
-        else {
-            AZLogger.log("MIMPD: Cannot skip to next song, connection does not exist(run connect first)");
-            
-            // Say the operation was unsuccessful
-            return false;
-        }
-    }
-    
-    /// Sets the volume to the given value
-    ///
-    /// - Parameter to: The value to set the volume to
-    /// - Returns: If the operation was successful
-    func setVolume(to : Int) -> Bool {
-        // If the connection isn't nil...
-        if(connection != nil) {
-            AZLogger.log("MIMPD: Setting volume to \(to)");
-            
-            // Run the volume command and if it fails...
-            if(!mpd_run_set_volume(self.connection!, UInt32(to))) {
-                AZLogger.log("MIMPD: Error setting volume, \(self.currentErrorMessage())");
-                
-                // Say the operation was unsuccessful
-                return false;
-            }
-            
-            // Say the operation was successful
-            return true;
-        }
-        // If the connection is nil...
-        else {
-            AZLogger.log("MIMPD: Cannot set volume, connection does not exist(run connect first)");
-            
-            // Say the operation was unsuccessful
-            return false;
-        }
-    }
-    
-    /// Returns the elapsed time and duration of the current song in seconds
-    ///
-    /// - Returns: If the connection was successful and the elapsed time in seconds for the current song
-    func getElapsed() -> (Bool, Int) {
-        // If the connection isn't nil...
-        if(connection != nil) {
-            AZLogger.log("MIMPD: Getting elapsed time", level: .full);
-            
-            // Return that the operation was successful and the elapsed time into the current song
-            return (true, Int(mpd_status_get_elapsed_time(mpd_run_status(self.connection!))));
-        }
-        // If the connection is nil...
-        else {
-            AZLogger.log("MIMPD: Cannot retrieve elapsed/duration, connection does not exist(run connect first)");
-            
-            // Say the operation was unsuccessful
-            return (false, 0);
-        }
     }
     
     
