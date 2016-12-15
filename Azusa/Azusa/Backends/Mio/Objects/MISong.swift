@@ -82,7 +82,7 @@ class MISong: AZSong {
     
     func getCoverImage(_ completionHandler: @escaping ((NSImage) -> ())) {
         // Try to load the cover image from the database
-        AZCoverDatabase.global.get(self.album.name, completionHandler: { databaseCoverImage in
+        AZCoverDatabase.global.get(thumbnail: self.album.name, completionHandler: { databaseCoverImage in
             // If the cover was already in the database...
             if(databaseCoverImage != nil) {
                 DispatchQueue.main.async {
@@ -145,8 +145,8 @@ class MISong: AZSong {
                         }
                     }
                     
-                    // Add the cover to the database
-                    AZCoverDatabase.global.add(cover: cover, name: self.album.name);
+                    // Add the thumbnail to the database
+                    AZCoverDatabase.global.add(thumbnail: cover, name: self.album.name);
                     
                     // Return `cover`
                     DispatchQueue.main.async {

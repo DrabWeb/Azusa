@@ -13,41 +13,41 @@ class AZCoverDatabase {
     
     // MARK: - Variables
     
+    /// The global AZCoverDatabase object
     public static var global : AZCoverDatabase = AZCoverDatabase();
     
-    /// All the covers in this database
-    private var covers : [String : NSImage] = [:];
+    /// All the thumbnails in this database
+    private var thumbnails : [String : NSImage] = [:];
     
     
     // MARK: - Functions
     
-    /// Adds the given cover to this database
+    /// Adds the given thumbnail to this database
     ///
     /// - Parameters:
-    ///   - cover: The cover to add
+    ///   - thumbnail: The thumbnail to add(resized to fit `300x300`)
     ///   - album: The name for the album this cover is for
-    func add(cover : NSImage, name : String) {
+    func add(thumbnail : NSImage, name : String) {
         // If `name` isn't blank...
         if(name != "") {
-            // Add the given values to `covers`
-            self.covers[name] = cover.resizedTo(fit: 300);
+            // Add the given thumbnail to `thumbnails`
+            self.thumbnails[name] = thumbnail.resizedTo(fit: 300);
         }
     }
     
-    
-    /// Gets the cover image for the given name
+    /// Gets the cover thumbnail for the given name
     ///
     /// - Parameters:
-    ///   - coverName: The name of the cover to get
-    ///   - completionHandler: The completion handler for when the cover is loaded, passed the cover(nil if there was no cover under `name`)
-    func get(_ coverName : String, completionHandler : @escaping ((NSImage?) -> ())) {
+    ///   - thumbnailName: The name of the thumbnail to get
+    ///   - completionHandler: The completion handler for when the thumbnail is loaded, passed the cover(nil if there was no thumbnail under `name`)
+    func get(thumbnail thumbnailName : String, completionHandler : @escaping ((NSImage?) -> ())) {
         DispatchQueue(label: "Azusa.Covers").async {
-            /// The loaded cover from `covers`
-            let cover : NSImage? = self.covers[coverName];
+            /// The loaded thumbnail from `thumbnails`
+            let thumbnailImage : NSImage? = self.thumbnails[thumbnailName];
             
-            // Call the completion handler with `cover`
+            // Call the completion handler with `thumbnailImage`
             DispatchQueue.main.async {
-                completionHandler(cover);
+                completionHandler(thumbnailImage);
             }
         }
     }

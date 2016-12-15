@@ -180,8 +180,8 @@ class MIMusicPlayer: AZMusicPlayer {
         self.dispatchQueue.async {
             // If `mpd` exists..
             if(self.mpd != nil) {
-                // Seek to the song at `song`'s `position`, and if it's successful...
-                if(self.mpd!.seek(to: 0, trackPosition: song.position)) {
+                // Play the song at `song`'s `position`, and if it's successful...
+                if(self.mpd!.playSongInQueue(at: song.position)) {
                     // Get the current song, and if it isn't nil...
                     if let currentSong = self.mpd!.getCurrentSong() {
                         // Call the completion handler
@@ -190,14 +190,12 @@ class MIMusicPlayer: AZMusicPlayer {
                         }
                     }
                     else {
-                        // Call the completion handler with nil
                         DispatchQueue.main.async {
                             completionHandler?(nil);
                         }
                     }
                 }
                 else {
-                    // Call the completion handler with nil
                     DispatchQueue.main.async {
                         completionHandler?(nil);
                     }
