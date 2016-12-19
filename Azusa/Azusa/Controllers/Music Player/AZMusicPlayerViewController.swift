@@ -99,6 +99,11 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
         self.setup();
     }
     
+    override func toggleSidebar(_ sender: Any?) {
+        // Toggle the collapsed state of the sidebar
+        self.splitViewItems[0].animator().isCollapsed = !self.splitViewItems[0].isCollapsed;
+    }
+    
     /// Displays the given `AZPlayerStatus` in the toolbar of this music player
     ///
     /// - Parameter status: The `AZPlayerStatus` to display
@@ -255,6 +260,12 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
         self.window!.styleMask.insert(NSWindowStyleMask.fullSizeContentView);
         self.window!.titleVisibility = .hidden;
         self.window!.appearance = NSAppearance(named: NSAppearanceNameVibrantLight);
+     
+        // Set the sidebar's maximum size
+        self.splitViewItems[0].maximumThickness = 500;
+        
+        // Set the content view's minimum size
+        self.splitViewItems[1].minimumThickness = 100;
         
         // Setup the music player
         self.setupMusicPlayer();
@@ -314,13 +325,13 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
             };
             
             queuePopupViewController!.shuffleHandler = {
-                // Shuffle the current queue
-                self.musicPlayer.shuffleQueue(completionHandler: nil);
+                // Shuffle the queue
+                self.shuffleQueue();
             };
             
             queuePopupViewController!.clearHandler = {
-                // Clear the current queue
-                self.musicPlayer.clearQueue(completionHandler: nil);
+                // Clear the queue
+                self.clearQueue();
             };
             
             // Display the current queue
@@ -383,6 +394,24 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
     func setVolume(_ volume : Int) {
         // Set the volume
         self.musicPlayer.setVolume(to: volume, completionHandler: nil);
+    }
+    
+    /// Jumps to and starts playing the first song in the queue
+    func jumpToFirstSong() {
+        // Jump to the first song
+        self.musicPlayer.seek(to: 0, trackPosition: 0, completionHandler: nil);
+    }
+    
+    /// Shuffles the current queue
+    func shuffleQueue() {
+        // Shuffle the queue
+        self.musicPlayer.shuffleQueue(completionHandler: nil);
+    }
+    
+    /// Clears the current queue
+    func clearQueue() {
+        // Clear the queue
+        self.musicPlayer.clearQueue(completionHandler: nil);
     }
     
     

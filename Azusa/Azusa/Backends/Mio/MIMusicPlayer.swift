@@ -103,6 +103,24 @@ class MIMusicPlayer: AZMusicPlayer {
         }
     }
     
+    func seek(to: Int, trackPosition: Int, completionHandler: (() -> ())?) {
+        self.dispatchQueue.async {
+            // If `mpd` exists..
+            if(self.mpd != nil) {
+                // Call the seek command, and if there's no errors...
+                if((try? self.mpd!.seek(to: to, trackPosition: trackPosition)) != nil) {
+                    // Call the completion handler
+                    DispatchQueue.main.async {
+                        completionHandler?();
+                    }
+                }
+                else {
+                    print("MIMusicPlayer: Error seeking, \(self.mpd!.currentError())");
+                }
+            }
+        }
+    }
+    
     func togglePaused(completionHandler: ((Bool) -> ())?) {
         self.dispatchQueue.async {
             // If `mpd` exists..

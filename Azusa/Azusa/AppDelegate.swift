@@ -51,6 +51,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /// Controls/Decrease Volume ⌘⇣
     @IBOutlet weak var menuItemDecreaseVolume: NSMenuItem!
     
+    /// Controls/Queue/Play First Song ⇧⌘1
+    @IBOutlet weak var menuItemPlayFirstSong: NSMenuItem!
+    
+    /// Controls/Queue/Shuffle Queue ⌥⌘S
+    @IBOutlet weak var menuItemShuffleQueue: NSMenuItem!
+    
+    /// Controls/Queue/Clear Queue ⇧⌘C
+    @IBOutlet weak var menuItemClearQueue: NSMenuItem!
+    
     
     // MARK: Delegate Methods
 
@@ -69,6 +78,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menuItemPrevious.action = #selector(AZMusicPlayerViewController.skipPrevious);
         menuItemIncreaseVolume.action = #selector(AZMusicPlayerViewController.increaseVolume);
         menuItemDecreaseVolume.action = #selector(AZMusicPlayerViewController.decreaseVolume);
+        menuItemPlayFirstSong.action = #selector(AZMusicPlayerViewController.jumpToFirstSong);
+        menuItemShuffleQueue.action = #selector(AZMusicPlayerViewController.shuffleQueue);
+        menuItemClearQueue.action = #selector(AZMusicPlayerViewController.clearQueue);
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

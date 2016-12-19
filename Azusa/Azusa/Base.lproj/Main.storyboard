@@ -371,7 +371,7 @@
                                         <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>
-                                                <action selector="toggleSourceList:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
+                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="zkB-uN-j9P"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
@@ -396,6 +396,21 @@
                                         <menuItem isSeparatorItem="YES" id="Als-61-Te1"/>
                                         <menuItem title="Increase Volume" keyEquivalent="" id="Cvh-ZJ-bZ9"/>
                                         <menuItem title="Decrease Volume" keyEquivalent="" id="73N-xi-K0a"/>
+                                        <menuItem isSeparatorItem="YES" id="Aht-EX-Nah"/>
+                                        <menuItem title="Queue" id="I7t-WD-h50">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Queue" id="Qw3-vF-Wl7">
+                                                <items>
+                                                    <menuItem title="Play First Song" keyEquivalent="1" id="ZWT-4a-xXz">
+                                                        <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                                    </menuItem>
+                                                    <menuItem title="Shuffle Queue" keyEquivalent="s" id="BA1-n0-Ito">
+                                                        <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                                    </menuItem>
+                                                    <menuItem title="Clear Queue" keyEquivalent="C" id="FJl-ej-lXM"/>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -444,12 +459,15 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Azusa" customModuleProvider="target">
                     <connections>
+                        <outlet property="menuItemClearQueue" destination="FJl-ej-lXM" id="TIv-hh-D3M"/>
                         <outlet property="menuItemDecreaseVolume" destination="73N-xi-K0a" id="5Xn-HO-PUe"/>
                         <outlet property="menuItemIncreaseVolume" destination="Cvh-ZJ-bZ9" id="pDu-lo-zGl"/>
                         <outlet property="menuItemNext" destination="hZP-CX-h0G" id="QXT-rg-aLW"/>
                         <outlet property="menuItemOpenQueue" destination="LmO-os-djz" id="Lq7-Th-XvR"/>
                         <outlet property="menuItemPausePlay" destination="ifk-My-k0X" id="Hfp-J0-Ofq"/>
+                        <outlet property="menuItemPlayFirstSong" destination="ZWT-4a-xXz" id="2RD-NO-cs9"/>
                         <outlet property="menuItemPrevious" destination="2YN-fr-CUR" id="JNS-wA-HvX"/>
+                        <outlet property="menuItemShuffleQueue" destination="BA1-n0-Ito" id="4z5-38-d3V"/>
                         <outlet property="menuItemStop" destination="g9j-ec-Fw3" id="uYz-HU-pGJ"/>
                     </connections>
                 </customObject>

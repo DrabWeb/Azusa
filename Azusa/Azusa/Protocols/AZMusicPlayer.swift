@@ -48,6 +48,14 @@ protocol AZMusicPlayer {
     ///   - completionHandler: The completion handler to call when the operation finishes(optional)
     func seek(to : Int, completionHandler : (() -> ())?);
     
+    /// Seeks to `to` in the song at `trackPosition` in the queue
+    ///
+    /// - Parameters:
+    ///   - to: The time in seconds to skip to
+    ///   - trackPosition: The position of the track in the queue to jump to
+    ///   - completionHandler: The completion handler to call when the operation finishes(optional)
+    func seek(to : Int, trackPosition : Int, completionHandler : (() -> ())?);
+    
     /// Toggles the paused state of this music player
     ///
     /// - Parameters:
