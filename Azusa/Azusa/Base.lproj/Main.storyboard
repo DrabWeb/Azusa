@@ -404,6 +404,7 @@
                                                     <menuItem title="Play First Song" keyEquivalent="1" id="ZWT-4a-xXz">
                                                         <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
                                                     </menuItem>
+                                                    <menuItem isSeparatorItem="YES" id="8dM-a4-ZYe"/>
                                                     <menuItem title="Shuffle Queue" keyEquivalent="s" id="BA1-n0-Ito">
                                                         <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                                     </menuItem>
