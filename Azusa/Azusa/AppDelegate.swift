@@ -30,32 +30,48 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    /// View/Open Queue ⌥⌘U
+    @IBOutlet weak var menuItemOpenQueue: NSMenuItem!
+    
+    /// Controls/Pause/Play Space
+    @IBOutlet weak var menuItemPausePlay: NSMenuItem!
+    
+    /// Controls/Stop ⌘.
+    @IBOutlet weak var menuItemStop: NSMenuItem!
+    
+    /// Controls/Next ⌘⇢
+    @IBOutlet weak var menuItemNext: NSMenuItem!
+    
+    /// Controls/Previous ⌘⇠
+    @IBOutlet weak var menuItemPrevious: NSMenuItem!
+    
+    /// Controls/Increase Volume ⌘⇡
+    @IBOutlet weak var menuItemIncreaseVolume: NSMenuItem!
+    
+    /// Controls/Decrease Volume ⌘⇣
+    @IBOutlet weak var menuItemDecreaseVolume: NSMenuItem!
+    
     
     // MARK: Delegate Methods
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
-        
-//        let mpd : MIMPD = MIMPD(address: "127.0.0.1", port: 6600, musicDirectory: "/Volumes/Storage/macOS/Music/");
-//
-//        AZLogger.log("Connection was successful: \(mpd.connect())");
-//
-//        AZLogger.log("Current song: \(mpd.getCurrentSong() ?? MISong.empty)");
-//        AZLogger.log("Database stats: \(mpd.getStats() ?? MIMPDStats())");
-//        AZLogger.log("Player status: \(mpd.getPlayerStatus() ?? MIMPDPlayerStatus())");
-//        AZLogger.log("Queue: \(mpd.getCurrentQueue())");
-//        AZLogger.log("All artists: \(mpd.getAllArtists())");
-//        AZLogger.log("All albums: \(mpd.getAllAlbums())");
-//        AZLogger.log("All genres: \(mpd.getAllGenres())");
-//        AZLogger.log("Add to end of queue: \(mpd.addToQueue(songs: mpd.searchForSongs("team skull", within: MPD_TAG_TITLE, exact: false)))");
-//        AZLogger.log("Add to beginning of queue: \(mpd.addToQueue(songs: mpd.searchForSongs("team skull", within: MPD_TAG_TITLE, exact: false), at: 0))");
-//        AZLogger.log("All songs in the mikgazer vol. 1 album: \(mpd.getAllSongsForAlbum(album: AZAlbum(name: "mikgazer vol.1")))");
-//        AZLogger.log("All albums by きのこ帝国: \(mpd.getAllAlbumsForArtist(artist: AZArtist(name: "きのこ帝国")))");
-//        AZLogger.log(mpd.seek(to: 60));
-//        AZLogger.log(mpd.getCurrentSongPosition());
+        // Setup the menu items
+        setupMenuItems();
+    }
+    
+    /// Sets up the actions for all the menu items
+    func setupMenuItems() {
+        // Setup the menu items
+        menuItemOpenQueue.action = #selector(AZMusicPlayerViewController.openQueuePopup);
+        menuItemPausePlay.action = #selector(AZMusicPlayerViewController.togglePaused);
+        menuItemStop.action = #selector(AZMusicPlayerViewController.stopPlayback);
+        menuItemNext.action = #selector(AZMusicPlayerViewController.skipNext);
+        menuItemPrevious.action = #selector(AZMusicPlayerViewController.skipPrevious);
+        menuItemIncreaseVolume.action = #selector(AZMusicPlayerViewController.increaseVolume);
+        menuItemDecreaseVolume.action = #selector(AZMusicPlayerViewController.decreaseVolume);
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+        
     }
 }

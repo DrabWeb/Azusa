@@ -21,10 +21,15 @@ protocol AZMusicPlayer {
     
     // MARK: - Functions
     
+    // MARK: - Connection
+    
     /// Starts up the connection to this music player backend and calls the given completion handler upon finishing(if given)
     ///
     /// - Parameter completionHandler: The closure to call when the connection function finishes, passed if it was successful(optional)
     func connect(_ completionHandler : ((Bool) -> ())?);
+    
+    
+    // MARK: - Player
     
     /// Gets the current `AZPlayerStatus` of this music player
     ///
@@ -49,6 +54,11 @@ protocol AZMusicPlayer {
     ///   - completionHandler: The completion handler to call when the operation finishes(optional), passed the paused state that was set
     func togglePaused(completionHandler : ((Bool) -> ())?);
     
+    /// Stops playback for this music player
+    ///
+    /// - Parameter completionHandler: The completion handler to call when the operation finishes(optional)
+    func stop(completionHandler : (() -> ())?);
+    
     /// Skips to the next song in the queue
     ///
     /// - Parameter completionHandler: The completion handler to call when the operation finishes(optional)
@@ -65,6 +75,16 @@ protocol AZMusicPlayer {
     ///   - to: The volume to set
     ///   - completionHandler: The completion handler to call when the operation finishes(optional)
     func setVolume(to : Int, completionHandler : (() -> ())?);
+    
+    /// Adds the given volume to the current volume
+    ///
+    /// - Parameters:
+    ///   - to: The value to add to the volume, relative to the current volume(-100 to 100)
+    ///   - completionHandler: The completion handler to call when the operation finishes(optional)
+    func setRelativeVolume(to : Int, completionHandler : (() -> ())?);
+    
+    
+    // MARK: - Queue
     
     /// Gets the current queue
     ///
@@ -84,6 +104,23 @@ protocol AZMusicPlayer {
     ///   - songs: The `AZSong`s to remove
     ///   - completionHandler: The completion handler to call when the operation finishes(optional)
     func removeFromQueue(_ songs : [AZSong], completionHandler : (() -> ())?);
+    
+    /// Moves the given `AZSong`s in the queue to after the current song(do not use this for adding songs to the queue after the current song, only move queued songs)
+    ///
+    /// - Parameters:
+    ///   - songs: The `AZSong`s to move to after the current song
+    ///   - completionHandler: The completion handler to call when the operation finishes(optional)
+    func moveAfterCurrent(_ songs : [AZSong], completionHandler : (() -> ())?);
+    
+    /// Shuffles the current queue
+    ///
+    /// - Parameter completionHandler: The completion handler to call when the operation finishes(optional)
+    func shuffleQueue(completionHandler : (() -> ())?);
+    
+    /// Clears the current queue
+    ///
+    /// - Parameter completionHandler: The completion handler to call when the operation finishes(optional)
+    func clearQueue(completionHandler : (() -> ())?);
     
     
     // MARK: - Initialization and Deinitialization

@@ -25,6 +25,8 @@ class MIMusicPlayer: AZMusicPlayer {
     
     // MARK: - Functions
     
+    // MARK: - Connection
+    
     func connect(_ completionHandler: ((Bool) -> ())?) {
         self.dispatchQueue.async {
             // If `mpd` exists..
@@ -51,12 +53,15 @@ class MIMusicPlayer: AZMusicPlayer {
         self.dispatchQueue.async {
             // If `mpd` exists..
             if(self.mpd != nil) {
-                // Get the `MIPlayerStatus` of `mpd`, and if it isn't nil...
-                if let playerStatus = self.mpd!.getPlayerStatus() {
+                // Get the current `MIMPDPlayerStatus` from MPD, and if it there's no errors...
+                if let playerStatus : MIMPDPlayerStatus = try? self.mpd!.getPlayerStatus() {
                     // Call the completion handler with `playerStatus`
                     DispatchQueue.main.async {
                         completionHandler(playerStatus);
                     }
+                }
+                else {
+                    print("MIMusicPlayer: Error getting player status, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -66,15 +71,15 @@ class MIMusicPlayer: AZMusicPlayer {
         self.dispatchQueue.async {
             // If `mpd` exists..
             if(self.mpd != nil) {
-                /// The output of `getElapsed`
-                let output = self.mpd!.getElapsed();
-                
-                // If `getElapsed` was successful...
-                if(output.0) {
-                    // Call the completion handler with `output`
+                // Get the current elapsed time, and if there's no errors...
+                if let elapsed : Int = try? self.mpd!.getElapsed() {
+                    // Call the completion handler with `elapsed`
                     DispatchQueue.main.async {
-                        completionHandler(output.1);
+                        completionHandler(elapsed);
                     }
+                }
+                else {
+                    print("MIMusicPlayer: Error getting elapsed time, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -84,12 +89,15 @@ class MIMusicPlayer: AZMusicPlayer {
         self.dispatchQueue.async {
             // If `mpd` exists..
             if(self.mpd != nil) {
-                // Call `seek`, and if it's successful...
-                if(self.mpd!.seek(to: to)) {
+                // Call `seek`, and if there's no errors...
+                if((try? self.mpd!.seek(to: to)) != nil) {
                     // Call the completion handler
                     DispatchQueue.main.async {
                         completionHandler?();
                     }
+                }
+                else {
+                    print("MIMusicPlayer: Error seeking, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -99,15 +107,33 @@ class MIMusicPlayer: AZMusicPlayer {
         self.dispatchQueue.async {
             // If `mpd` exists..
             if(self.mpd != nil) {
-                /// The output of `togglePaused`
-                let togglePausedResult : (Bool, Bool) = self.mpd!.togglePaused();
-                
-                // If the toggle was successful...
-                if(togglePausedResult.0) {
+                // Toggle the paused state and get the toggled to state, and if there were no errors...
+                if let pausedState : Bool = try? self.mpd!.togglePaused() {
                     // Call the completion handler
                     DispatchQueue.main.async {
-                        completionHandler?(togglePausedResult.1);
+                        completionHandler?(pausedState);
                     }
+                }
+                else {
+                    print("MIMusicPlayer: Error toggling paused state, \(self.mpd!.currentError())");
+                }
+            }
+        }
+    }
+    
+    func stop(completionHandler: (() -> ())?) {
+        self.dispatchQueue.async {
+            // If `mpd` exists..
+            if(self.mpd != nil) {
+                // Run the stop command, and if there were no errors...
+                if((try? self.mpd!.togglePaused()) != nil) {
+                    // Call the completion handler
+                    DispatchQueue.main.async {
+                        completionHandler?();
+                    }
+                }
+                else {
+                    print("MIMusicPlayer: Error stopping playback, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -117,12 +143,15 @@ class MIMusicPlayer: AZMusicPlayer {
         self.dispatchQueue.async {
             // If `mpd` exists..
             if(self.mpd != nil) {
-                // Run skip previous, and if it was successful...
-                if(self.mpd!.skipPreviousAndMaintainPlayingState()) {
+                // Run skip previous, and if there's no errors...
+                if ((try? self.mpd!.skipPreviousAndMaintainPlayingState()) != nil) {
                     // Call the completion handler
                     DispatchQueue.main.async {
                         completionHandler?();
                     }
+                }
+                else {
+                    print("MIMusicPlayer: Error skipping to the previous song, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -132,12 +161,15 @@ class MIMusicPlayer: AZMusicPlayer {
         self.dispatchQueue.async {
             // If `mpd` exists..
             if(self.mpd != nil) {
-                // Run skip next, and if it was successful...
-                if(self.mpd!.skipNextAndMaintainPlayingState()) {
+                // Run skip next, and if there's no errors...
+                if ((try? self.mpd!.skipNextAndMaintainPlayingState()) != nil) {
                     // Call the completion handler
                     DispatchQueue.main.async {
                         completionHandler?();
                     }
+                }
+                else {
+                    print("MIMusicPlayer: Error skipping to the next song, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -147,30 +179,60 @@ class MIMusicPlayer: AZMusicPlayer {
         self.dispatchQueue.async {
             // If `mpd` exists..
             if(self.mpd != nil) {
-                // Run the volume command, and if it was successful...
-                if(self.mpd!.setVolume(to: to)) {
+                // Run the volume command, and if there's no errors...
+                if((try? self.mpd!.setVolume(to: to)) != nil) {
                     // Call the completion handler
                     DispatchQueue.main.async {
                         completionHandler?();
                     }
                 }
+                else {
+                    print("MIMusicPlayer: Error setting volume, \(self.mpd!.currentError())");
+                }
             }
         }
     }
+    
+    func setRelativeVolume(to: Int, completionHandler: (() -> ())?) {
+        self.dispatchQueue.async {
+            // If `mpd` exists..
+            if(self.mpd != nil) {
+                // Run the relative volume command, and if there's no errors...
+                if((try? self.mpd!.setRelativeVolume(to: to)) != nil) {
+                    // Call the completion handler
+                    DispatchQueue.main.async {
+                        completionHandler?();
+                    }
+                }
+                else {
+                    print("MIMusicPlayer: Error setting relative volume, \(self.mpd!.currentError())");
+                }
+            }
+        }
+    }
+    
+    
+    // MARK: - Queue
     
     func getQueue(completionHandler: @escaping (([AZSong], Int) -> ())) {
         self.dispatchQueue.async {
             // If `mpd` exists..
             if(self.mpd != nil) {
-                /// All the songs in the current queue
-                let queue : [MISong] = self.mpd!.getCurrentQueue();
-                
-                /// The position of the current song in the queue
-                let currentPosition : Int = self.mpd!.getCurrentSongPosition();
-                
-                // Call the completion handler
-                DispatchQueue.main.async {
-                    completionHandler(queue, currentPosition);
+                // Get the current queue, and if there's no errors...
+                if let queue : [MISong] = try? self.mpd!.getCurrentQueue() {
+                    // Get the position of the current song in the queue, and if there's no errors...
+                    if let currentPosition : Int = try? self.mpd!.getCurrentSongPosition() {
+                        // Call the completion handler
+                        DispatchQueue.main.async {
+                            completionHandler(queue, currentPosition);
+                        }
+                    }
+                    else {
+                        print("MIMusicPlayer: Error getting current song position, \(self.mpd!.currentError())");
+                    }
+                }
+                else {
+                    print("MIMusicPlayer: Error getting queue, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -180,10 +242,10 @@ class MIMusicPlayer: AZMusicPlayer {
         self.dispatchQueue.async {
             // If `mpd` exists..
             if(self.mpd != nil) {
-                // Play the song at `song`'s `position`, and if it's successful...
-                if(self.mpd!.playSongInQueue(at: song.position)) {
-                    // Get the current song, and if it isn't nil...
-                    if let currentSong = self.mpd!.getCurrentSong() {
+                // Play the song at `song`'s `position`, and if there's no errorss...
+                if((try? self.mpd!.playSongInQueue(at: song.position)) != nil) {
+                    // Get the current song, and if there's no errors...
+                    if let currentSong : MISong? = try? self.mpd!.getCurrentSong() {
                         // Call the completion handler
                         DispatchQueue.main.async {
                             completionHandler?(currentSong);
@@ -208,12 +270,69 @@ class MIMusicPlayer: AZMusicPlayer {
         self.dispatchQueue.async {
             // If `mpd` exists..
             if(self.mpd != nil) {
-                // Remove `songs` from the queue, and if it's successful...
-                if(self.mpd!.removeFromQueue(songs: songs as! [MISong])) {
+                // Remove `songs` from the queue, and if there's no errors...
+                if((try? self.mpd!.removeFromQueue(songs: songs as! [MISong])) != nil) {
                     // Call the completion handler
                     DispatchQueue.main.async {
                         completionHandler?();
                     }
+                }
+                else {
+                    print("MIMusicPlayer: Error removing from queue, \(self.mpd!.currentError())");
+                }
+            }
+        }
+    }
+    
+    func moveAfterCurrent(_ songs: [AZSong], completionHandler: (() -> ())?) {
+        self.dispatchQueue.async {
+            // If `mpd` exists..
+            if(self.mpd != nil) {
+                // Move `songs` after the current song, and if there's no errors...
+                if((try? self.mpd!.moveAfterCurrent(songs: songs as! [MISong])) != nil) {
+                    // Call the completion handler
+                    DispatchQueue.main.async {
+                        completionHandler?();
+                    }
+                }
+                else {
+                    print("MIMusicPlayer: Error moving after the current song, \(self.mpd!.currentError())");
+                }
+            }
+        }
+    }
+    
+    func shuffleQueue(completionHandler: (() -> ())?) {
+        self.dispatchQueue.async {
+            // If `mpd` exists..
+            if(self.mpd != nil) {
+                // Shuffle the queue, and if there's no errors...
+                if((try? self.mpd!.shuffleQueue()) != nil) {
+                    // Call the completion handler
+                    DispatchQueue.main.async {
+                        completionHandler?();
+                    }
+                }
+                else {
+                    print("MIMusicPlayer: Error shuffling queue, \(self.mpd!.currentError())");
+                }
+            }
+        }
+    }
+    
+    func clearQueue(completionHandler: (() -> ())?) {
+        self.dispatchQueue.async {
+            // If `mpd` exists..
+            if(self.mpd != nil) {
+                // Clear the queue, and if there's no errors...
+                if((try? self.mpd!.clearQueue()) != nil) {
+                    // Call the completion handler
+                    DispatchQueue.main.async {
+                        completionHandler?();
+                    }
+                }
+                else {
+                    print("MIMusicPlayer: Error clearing queue, \(self.mpd!.currentError())");
                 }
             }
         }

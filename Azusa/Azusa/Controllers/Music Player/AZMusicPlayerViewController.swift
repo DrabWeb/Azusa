@@ -49,34 +49,34 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
     /// The `Timer` for looping and always updating the progress in the status view
     weak var progressTimer : Timer? = nil;
     
+    /// The last items that were right clicked in the queue popup
+    private var lastQueueContextMenuItems : [AZSong] = [];
+    
     
     // MARK: - Toolbar Actions
     
     /// Called when the user presses `toolbarSkipPreviousButton`
     @IBAction func toolbarSkipPreviousPressed(sender : NSButton) {
         // Skip to the previous song in the queue
-        self.musicPlayer.skipPrevious(completionHandler: nil);
+        self.skipPrevious();
     }
     
     /// Called when the user presses `toolbarPausePlayButton`
     @IBAction func toolbarPausePlayPressed(sender : NSButton) {
-        // Toggle pause on the music player
-        self.musicPlayer.togglePaused(completionHandler: { playing in
-            // Update the pause/play button to match the playing state
-            sender.state = (playing ? 1 : 0);
-        })
+        // Toggle the paused state
+        self.togglePaused();
     }
     
     /// Called when the user presses `toolbarSkipNextButton`
     @IBAction func toolbarSkipNextPressed(sender : NSButton) {
         // Skip to the next song in the queue
-        self.musicPlayer.skipNext(completionHandler: nil);
+        self.skipNext();
     }
     
     /// Called when the user moves `toolbarVolumeSlider`
     @IBAction func toolbarVolumeSliderMoved(sender : NSSlider) {
         // Set the volume
-        self.musicPlayer.setVolume(to: Int(sender.intValue), completionHandler: nil);
+        self.setVolume(Int(sender.intValue));
     }
     
     /// Called when the user presses `toolbarQueueButton`
@@ -129,6 +129,12 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
                 self.displayCurrentQueue();
             }));
             
+            // Add the volume event subscriber for status updating
+            self.musicPlayer.eventSubscriber.add(subscription: AZEventSubscription(events: [.volume], performer: { event in
+                // Display the current status
+                self.displayCurrentStatus();
+            }));
+            
             
             // Start the progress loop
             self.progressTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { _ in
@@ -163,7 +169,7 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
             // Get the current queue
             self.musicPlayer.getQueue(completionHandler: { queue, currentPosition in
                 // Display it in `queuePopupViewController`
-                self.queuePopupViewController!.display(queue: queue, current: currentPosition);
+                self.queuePopupViewController?.display(queue: queue, current: currentPosition);
                 
                 // Call the completion handler
                 completionHandler?();
@@ -176,49 +182,63 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
         }
     }
     
+    /// Opens the queue popup, closing the current open one if there is one
+    func openQueuePopup() {
+        // Close any already open queue popups
+        if(self.queuePopupViewController != nil) {
+            self.dismissViewController(queuePopupViewController!);
+        }
+        
+        /// The new `AZQueueViewController` to display
+        let newQueueViewController : AZQueueViewController = self.storyboard!.instantiateController(withIdentifier: "queueViewController") as! AZQueueViewController;
+        
+        // Display `AZQueueViewController` as a popup relative to `toolbarQueueButton`
+        self.presentViewController(newQueueViewController, asPopoverRelativeTo: self.toolbarQueueButton!.frame, of: self.toolbarQueueButton!, preferredEdge: .maxY, behavior: .transient);
+    }
+    
     override func viewWillAppear() {
         super.viewWillAppear();
         
         // Get all the toolbar items
         for(_, currentItem) in self.window!.toolbar!.items.enumerated() {
             switch(currentItem.itemIdentifier) {
-                case "Previous":
-                    self.toolbarSkipPreviousButton = (currentItem.view as! NSButton);
-                    break;
+            case "Previous":
+                self.toolbarSkipPreviousButton = (currentItem.view as! NSButton);
+                break;
                 
-                case "PausePlay":
-                    self.toolbarPausePlayButton = (currentItem.view as! NSButton);
-                    break;
+            case "PausePlay":
+                self.toolbarPausePlayButton = (currentItem.view as! NSButton);
+                break;
                 
-                case "Next":
-                    self.toolbarSkipNextButton = (currentItem.view as! NSButton);
-                    break;
+            case "Next":
+                self.toolbarSkipNextButton = (currentItem.view as! NSButton);
+                break;
                 
-                case "Volume":
-                    self.toolbarVolumeSlider = (currentItem.view as! NSSlider);
-                    break;
+            case "Volume":
+                self.toolbarVolumeSlider = (currentItem.view as! NSSlider);
+                break;
                 
-                case "Status":
-                    self.toolbarStatusItem = (currentItem.view as! AZToolbarStatusView);
-                    
-                    // Set the toolbar status item's seek event handler
-                    self.toolbarStatusItem!.seekHandler = { to in
-                        // Seek to the seek time
-                        self.musicPlayer.seek(to: to, completionHandler: nil);
-                    }
-                    
-                    break;
+            case "Status":
+                self.toolbarStatusItem = (currentItem.view as! AZToolbarStatusView);
                 
-                case "Queue":
-                    self.toolbarQueueButton = (currentItem.view as! NSButton);
-                    break;
+                // Set the toolbar status item's seek event handler
+                self.toolbarStatusItem!.seekHandler = { to in
+                    // Seek to the seek time
+                    self.musicPlayer.seek(to: to, completionHandler: nil);
+                }
                 
-                case "Search":
-                    self.toolbarSearchField = (currentItem.view as! NSSearchField);
-                    break;
+                break;
                 
-                default:
-                    break;
+            case "Queue":
+                self.toolbarQueueButton = (currentItem.view as! NSButton);
+                break;
+                
+            case "Search":
+                self.toolbarSearchField = (currentItem.view as! NSSearchField);
+                break;
+                
+            default:
+                break;
             }
         }
         
@@ -251,7 +271,8 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
             // Set `queuePopupViewController`'s window
             queuePopupViewController!.window = self.window;
             
-            // Set the primary, secondary and remove handlers
+            // Set the queue action handlers
+            
             queuePopupViewController!.queueTableViewPrimaryHandler = { tableView, selectedSongs, event in
                 // If the first item in `selectedSongs` isn't nil...
                 if let selectedSong = selectedSongs.first {
@@ -261,12 +282,45 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
             };
             
             queuePopupViewController!.queueTableViewSecondaryHandler = { tableView, selectedSongs, event in
-                print("Secondary");
+                // Set `lastQueueContextMenuItems`
+                self.lastQueueContextMenuItems = selectedSongs;
+                
+                // If at least one song was selected...
+                if(selectedSongs.count > 0) {
+                    /// The context menu to display
+                    let contextMenu : NSMenu = NSMenu();
+                    
+                    // Add the context menu items
+                    
+                    // Add the selected item count item and separator
+                    contextMenu.addItem(withTitle: "\(selectedSongs.count) song\((selectedSongs.count == 1) ? "" : "s")", action: nil, keyEquivalent: "");
+                    contextMenu.addItem(NSMenuItem.separator());
+                    
+                    contextMenu.addItem(withTitle: "Play", action: #selector(AZMusicPlayerViewController.queuePlay), keyEquivalent: "");
+                    contextMenu.addItem(withTitle: "Play Next", action: #selector(AZMusicPlayerViewController.queuePlayNext), keyEquivalent: "");
+                    contextMenu.addItem(withTitle: "Remove From Queue", action: #selector(AZMusicPlayerViewController.queueRemoveFromQueue), keyEquivalent: "");
+                    
+                    // Display the context menu
+                    NSMenu.popUpContextMenu(contextMenu, with: event, for: self.queuePopupViewController!.view);
+                    
+                    // Clear `lastQueueContextMenuItems`
+                    self.lastQueueContextMenuItems.removeAll();
+                }
             };
             
             queuePopupViewController!.queueTableViewRemoveHandler = { tableView, selectedSongs, event in
                 // Remove `selectedSongs` from the queue
                 self.musicPlayer.removeFromQueue(selectedSongs, completionHandler: nil);
+            };
+            
+            queuePopupViewController!.shuffleHandler = {
+                // Shuffle the current queue
+                self.musicPlayer.shuffleQueue(completionHandler: nil);
+            };
+            
+            queuePopupViewController!.clearHandler = {
+                // Clear the current queue
+                self.musicPlayer.clearQueue(completionHandler: nil);
             };
             
             // Display the current queue
@@ -282,5 +336,73 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
             // Remove `queuePopupViewController`
             self.queuePopupViewController = nil;
         }
+    }
+    
+    
+    // MARK: - Music Player Functions
+    
+    /// Toggles the paused state of `musicPlayer`
+    func togglePaused() {
+        // Toggle pause on the music player
+        self.musicPlayer.togglePaused(completionHandler: nil);
+    }
+    
+    /// Stops playback for `musicPlayer`
+    func stopPlayback() {
+        // Stop playback for the music player
+        self.musicPlayer.stop(completionHandler: nil);
+    }
+    
+    /// Skips to the next song of `musicPlayer`
+    func skipNext() {
+        // Skip to the next song
+        self.musicPlayer.skipNext(completionHandler: nil);
+    }
+    
+    /// Skips to the previous song of `musicPlayer`
+    func skipPrevious() {
+        // Skip to the next song
+        self.musicPlayer.skipPrevious(completionHandler: nil);
+    }
+    
+    /// Increases the volume of `musicPlayer` by 5
+    func increaseVolume() {
+        // Add 5 to the current volume
+        self.musicPlayer.setRelativeVolume(to: 5, completionHandler: nil);
+    }
+    
+    // Decreases the volume of `musicPlayer` by 5
+    func decreaseVolume() {
+        // Subtract 5 from the current volume
+        self.musicPlayer.setRelativeVolume(to: -5, completionHandler: nil);
+    }
+    
+    /// Sets the volume of this music player to the given value
+    ///
+    /// - Parameter volume: The volume to set to
+    func setVolume(_ volume : Int) {
+        // Set the volume
+        self.musicPlayer.setVolume(to: volume, completionHandler: nil);
+    }
+    
+    
+    // MARK: - Queue Context Menu Actions
+    
+    /// Called by the queue popup when "Play" is selected in the context menu
+    @objc private func queuePlay() {
+        // Tell the music player to play the first song in `lastQueueContextMenuItems`
+        self.musicPlayer.playSongInQueue(lastQueueContextMenuItems.first!, completionHandler: nil);
+    }
+    
+    /// Called by the queue popup when "Play Next" is selected in the context menu
+    @objc private func queuePlayNext() {
+        // Tell the music player to play the songs in `lastQueueContextMenuItems` next
+        self.musicPlayer.moveAfterCurrent(lastQueueContextMenuItems, completionHandler: nil);
+    }
+    
+    /// Called by the queue popup when "Remove From Queue" is selected in the context menu
+    @objc private func queueRemoveFromQueue() {
+        // Tell the music player to remove the songs in `lastQueueContextMenuItems` from the queue
+        self.musicPlayer.removeFromQueue(lastQueueContextMenuItems, completionHandler: nil);
     }
 }

@@ -28,12 +28,22 @@ class AZQueueViewController: NSViewController {
     /// The label for showing how many songs are in the queue in the current section(up next/history)
     @IBOutlet weak var songCountLabel: NSTextField!
     
-    /// The button for clearing the current queue section
+    /// The button for shuffling the current queue
+    @IBOutlet weak var shuffleButton: NSButton!
+    
+    /// Called when `shuffleButton` is pressed
+    @IBAction func shuffleButtonPressed(_ sender: NSButton) {
+        // Call the shuffle handler
+        self.shuffleHandler?();
+    }
+    
+    /// The button for clearing the current queue
     @IBOutlet weak var clearButton: NSButton!
     
     /// Called when `clearButton` is pressed
     @IBAction func clearButtonPressed(_ sender: NSButton) {
-        
+        // Call the clear handler
+        self.clearHandler?();
     }
     
     /// The scroll view for `queueTableView`
@@ -71,6 +81,12 @@ class AZQueueViewController: NSViewController {
     ///
     /// Passed `queueTableView`, the selected `AZSong`s and the event
     var queueTableViewRemoveHandler : ((AZQueueTableView, [AZSong], NSEvent) -> ())? = nil;
+    
+    /// The closure to call when the user presses the "shuffle" button
+    var shuffleHandler : (() -> ())? = nil;
+    
+    /// The closure to call when the user presses the "clear" button
+    var clearHandler : (() -> ())? = nil;
     
     
     // MARK: - Functions

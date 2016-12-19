@@ -31,6 +31,19 @@ class AZQueueTableView: NSTableView {
     // MARK: - Functions
 
     override func rightMouseDown(with event: NSEvent) {
+        /// The index of the row that was clicked
+        let row : Int = self.row(at: self.convert(event.locationInWindow, from: nil));
+        
+        // If there was any row under the mouse...
+        if(row != -1) {
+            // If the row that was under the mouse isn't selected...
+            if(!self.selectedRowIndexes.contains(row)) {
+                // Deselect all the other rows and only select the one under the mouse
+                self.deselectAll(self);
+                self.selectRowIndexes(IndexSet([row]), byExtendingSelection: false);
+            }
+        }
+        
         // Call `secondaryHandler`
         self.secondaryHandler?(self, self.getSelectedSongs(), event);
     }
