@@ -40,7 +40,7 @@ class MIMPDStats: CustomStringConvertible {
             "database play time: \(AZMusicUtilities.secondsToDisplayTime(self.databasePlayTime)), " +
             "MPD uptime: \(AZMusicUtilities.secondsToDisplayTime(self.mpdUptime)), " +
             "MPD play time: \(AZMusicUtilities.secondsToDisplayTime(mpdPlayTime)), " +
-        "last database update was \(self.lastMpdDatabaseUpdate)";
+            "last database update was \(self.lastMpdDatabaseUpdate)";
     }
     
     

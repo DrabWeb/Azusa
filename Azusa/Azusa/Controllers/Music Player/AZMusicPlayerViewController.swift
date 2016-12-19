@@ -371,7 +371,7 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
         self.musicPlayer.setRelativeVolume(to: 5, completionHandler: nil);
     }
     
-    // Decreases the volume of `musicPlayer` by 5
+    /// Decreases the volume of `musicPlayer` by 5
     func decreaseVolume() {
         // Subtract 5 from the current volume
         self.musicPlayer.setRelativeVolume(to: -5, completionHandler: nil);
