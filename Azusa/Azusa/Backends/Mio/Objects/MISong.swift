@@ -165,4 +165,8 @@ class MISong: AZSong {
         
         return song;
     };
+    
+    func isEmpty() -> Bool {
+        return self == MISong.empty;
+    }
 }

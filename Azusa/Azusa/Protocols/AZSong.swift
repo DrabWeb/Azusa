@@ -68,4 +68,17 @@ protocol AZSong: CustomStringConvertible {
     
     /// Returns an empty song(used for displaying that there is no song)
     static var empty : AZSong { get };
+    
+    /// Returns if this song is `empty`
+    ///
+    /// - Returns: If this song is equal to `empty`
+    func isEmpty() -> Bool;
+}
+
+func ==(lhs: AZSong, rhs: AZSong) -> Bool {
+    return (lhs.title == rhs.title) && (lhs.album.name == rhs.album.name) && (lhs.artist.name == rhs.artist.name);
+}
+
+func !=(lhs: AZSong, rhs: AZSong) -> Bool {
+    return !(lhs == rhs);
 }

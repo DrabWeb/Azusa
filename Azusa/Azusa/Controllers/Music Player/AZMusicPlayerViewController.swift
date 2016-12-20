@@ -9,7 +9,7 @@ import Foundation
 import AppKit
 
 /// The view controller for a music player in Azusa
-class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
+class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate, NSUserNotificationCenterDelegate {
     
     // MARK: - Properties
     
@@ -18,6 +18,12 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
     
     /// The current `AZQueueViewController` for the popup queue view(if there is one)
     var queuePopupViewController : AZQueueViewController? = nil;
+    
+    /// The last displayed `AZPlayerStatus` by this music player
+    private var lastDisplayedStatus : AZPlayerStatus? = nil;
+    
+    /// The last sent song changed notification
+    private var lastSongChangedNotification : NSUserNotification? = nil;
     
     
     // MARK: - Toolbar Items
@@ -97,6 +103,9 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
         
         // Run setup
         self.setup();
+        
+        // Set the notification center's delegate
+        NSUserNotificationCenter.default.delegate = self;
     }
     
     override func toggleSidebar(_ sender: Any?) {
@@ -116,6 +125,51 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
         
         // Display `status` in `toolbarStatusItem`
         self.toolbarStatusItem?.display(status: status);
+        
+        /// The last displayed `AZSong`
+        let lastDisplayedSong : AZSong? = self.lastDisplayedStatus?.currentSong;
+        
+        // If `lastDisplayedSong` isnt nil...
+        if(lastDisplayedSong != nil) {
+            // If the current song isn't the last displayed song...
+            if(status.currentSong != lastDisplayedSong!) {
+                // If the player is playing and the current song isn't an empty one...
+                if((status.playingState == .playing) && !status.currentSong.isEmpty()) {
+                    // Get the cover image for the current song
+                    status.currentSong.getCoverImage({ coverImage in
+                        /// The notification to show the current song
+                        let songChangedNotification : NSUserNotification = NSUserNotification();
+                        
+                        // Set the private keys for iTunes like behaviour, custom app icon image, no border around the identity image, and show the skip button even though it's a banner
+                        songChangedNotification.setValue(coverImage, forKey: "_identityImage");
+                        songChangedNotification.setValue(false, forKey: "_identityImageHasBorder");
+                        songChangedNotification.setValue(true, forKey: "_showsButtons");
+                        
+                        // Set the title and informative text
+                        songChangedNotification.title = status.currentSong.displayTitle;
+                        songChangedNotification.informativeText = "\(status.currentSong.displayArtist) — \(status.currentSong.displayAlbum)";
+                        
+                        // Create the skip button
+                        songChangedNotification.hasActionButton = true;
+                        songChangedNotification.actionButtonTitle = "Skip";
+                        
+                        // Remove the previous song changed notification(if there is one)
+                        if(self.lastSongChangedNotification != nil) {
+                            NSUserNotificationCenter.default.removeDeliveredNotification(self.lastSongChangedNotification!);
+                        }
+                        
+                        // Deliver the notification
+                        NSUserNotificationCenter.default.deliver(songChangedNotification);
+                        
+                        // Set `lastSongChangedNotification`
+                        self.lastSongChangedNotification = songChangedNotification;
+                    });
+                }
+            }
+        }
+        
+        // Set `lastDisplayedStatus`
+        self.lastDisplayedStatus = status;
     }
     
     /// Sets up everything related to `musicPlayer`; connection, event listeners, etc.
@@ -349,6 +403,14 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
         }
     }
     
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+        // If the clicked button was the skip button...
+        if((notification.activationType == .actionButtonClicked) && notification.actionButtonTitle == "Skip") {
+            // Skip to the next song
+            self.skipNext();
+        }
+    }
+    
     
     // MARK: - Music Player Functions
     
@@ -400,6 +462,9 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate {
     func jumpToFirstSong() {
         // Jump to the first song
         self.musicPlayer.seek(to: 0, trackPosition: 0, completionHandler: nil);
+        
+        // Make sure the player is playing
+        self.musicPlayer.setPaused(false, completionHandler: nil);
     }
     
     /// Shuffles the current queue

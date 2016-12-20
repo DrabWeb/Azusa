@@ -35,6 +35,8 @@
 		AEDC326C1DFA008C00538F24 /* AZArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC326B1DFA008C00538F24 /* AZArtist.swift */; };
 		AEDC326E1DFA009700538F24 /* AZAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC326D1DFA009700538F24 /* AZAlbum.swift */; };
 		AEDC32721DFA0E0F00538F24 /* AZGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC32711DFA0E0F00538F24 /* AZGenre.swift */; };
+		AEF6EE781E088F1F009990CB /* AZMusicPlayerSidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF6EE771E088F1F009990CB /* AZMusicPlayerSidebarViewController.swift */; };
+		AEF6EE7C1E0891EA009990CB /* AZMusicPlayerSidebarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF6EE7B1E0891EA009990CB /* AZMusicPlayerSidebarModel.swift */; };
 		AEFC79711E0210F8006DE067 /* AZImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC79701E0210F8006DE067 /* AZImageExtensions.swift */; };
 		AEFCD0741DFD40E700B51031 /* AZMusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD0731DFD40E700B51031 /* AZMusicPlayerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -139,6 +141,8 @@
 		AEDC326B1DFA008C00538F24 /* AZArtist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZArtist.swift; sourceTree = "<group>"; };
 		AEDC326D1DFA009700538F24 /* AZAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZAlbum.swift; sourceTree = "<group>"; };
 		AEDC32711DFA0E0F00538F24 /* AZGenre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZGenre.swift; sourceTree = "<group>"; };
+		AEF6EE771E088F1F009990CB /* AZMusicPlayerSidebarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerSidebarViewController.swift; sourceTree = "<group>"; };
+		AEF6EE7B1E0891EA009990CB /* AZMusicPlayerSidebarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerSidebarModel.swift; sourceTree = "<group>"; };
 		AEFC79701E0210F8006DE067 /* AZImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZImageExtensions.swift; sourceTree = "<group>"; };
 		AEFCD0731DFD40E700B51031 /* AZMusicPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -360,6 +364,7 @@
 			children = (
 				AE602FDB1DF90894002225CB /* AZEventSubscriber.swift */,
 				AEDC326A1DFA007E00538F24 /* Music */,
+				AEF6EE7A1E0891D4009990CB /* Music Player */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -386,6 +391,14 @@
 			path = Music;
 			sourceTree = "<group>";
 		};
+		AEF6EE7A1E0891D4009990CB /* Music Player */ = {
+			isa = PBXGroup;
+			children = (
+				AEF6EE7B1E0891EA009990CB /* AZMusicPlayerSidebarModel.swift */,
+			);
+			path = "Music Player";
+			sourceTree = "<group>";
+		};
 		AEFC796F1E0210E6006DE067 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,6 +420,7 @@
 			children = (
 				AEFCD0731DFD40E700B51031 /* AZMusicPlayerViewController.swift */,
 				AE98A4401DFE85150004F9CF /* AZQueueViewController.swift */,
+				AEF6EE771E088F1F009990CB /* AZMusicPlayerSidebarViewController.swift */,
 			);
 			path = "Music Player";
 			sourceTree = "<group>";
@@ -552,6 +566,7 @@
 				AE602FC81DF8F7D6002225CB /* AZLogger.swift in Sources */,
 				AE5A63391DF91408002301F6 /* MISong.swift in Sources */,
 				AE5A63371DF9135D002301F6 /* MIMPDPlayerStatus.swift in Sources */,
+				AEF6EE7C1E0891EA009990CB /* AZMusicPlayerSidebarModel.swift in Sources */,
 				AE2AF77D1DFC9A4F00580839 /* AZAspectFillImageView.swift in Sources */,
 				AE98A4411DFE85150004F9CF /* AZQueueViewController.swift in Sources */,
 				AE602FD01DF906EC002225CB /* MIMPDStats.swift in Sources */,
@@ -568,6 +583,7 @@
 				AE602FD71DF90818002225CB /* AZMusicPlayer.swift in Sources */,
 				AED3093A1DFF8C9F0053AA53 /* AZCoverDatabase.swift in Sources */,
 				AED38A251DFF6A4E00F410E3 /* AZQueueTableView.swift in Sources */,
+				AEF6EE781E088F1F009990CB /* AZMusicPlayerSidebarViewController.swift in Sources */,
 				AEDC32721DFA0E0F00538F24 /* AZGenre.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

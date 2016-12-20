@@ -139,6 +139,24 @@ class MIMusicPlayer: AZMusicPlayer {
         }
     }
     
+    func setPaused(_ paused: Bool, completionHandler: (() -> ())?) {
+        self.dispatchQueue.async {
+            // If `mpd` exists..
+            if(self.mpd != nil) {
+                // Call the pause command, and if there were no errors...
+                if((try? self.mpd!.setPaused(paused)) != nil) {
+                    // Call the completion handler
+                    DispatchQueue.main.async {
+                        completionHandler?();
+                    }
+                }
+                else {
+                    print("MIMusicPlayer: Error setting paused, \(self.mpd!.currentError())");
+                }
+            }
+        }
+    }
+    
     func stop(completionHandler: (() -> ())?) {
         self.dispatchQueue.async {
             // If `mpd` exists..

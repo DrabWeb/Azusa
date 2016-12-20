@@ -62,6 +62,13 @@ protocol AZMusicPlayer {
     ///   - completionHandler: The completion handler to call when the operation finishes(optional), passed the paused state that was set
     func togglePaused(completionHandler : ((Bool) -> ())?);
     
+    /// Sets the paused state of this music player
+    ///
+    /// - Parameters:
+    ///   - paused: The value to set paused to
+    ///   - completionHandler: The completion handler to call when the operation finishes(optional)
+    func setPaused(_ paused : Bool, completionHandler : (() -> ())?);
+    
     /// Stops playback for this music player
     ///
     /// - Parameter completionHandler: The completion handler to call when the operation finishes(optional)
