@@ -80,19 +80,27 @@ class MISong: AZSong {
         return self.album.displayName;
     }
     
-    func getCoverImage(_ completionHandler: @escaping ((NSImage) -> ())) {
+    /// Was `cancelGetCoverImage` called?
+    /// Reset after `getCoverImage` tries to call it's completion handler
+    private var cancelledGetCoverImage : Bool = false;
+    
+    func getCoverImage(_ completionHandler: ((NSImage) -> ())?) {
         // Try to load the cover image from the database
         AZCoverDatabase.global.get(thumbnail: self.album.name, completionHandler: { databaseCoverImage in
             // If the cover was already in the database...
             if(databaseCoverImage != nil) {
-                DispatchQueue.main.async {
+                // If the `getCoverImage` wasn't cancelled...
+                if(!self.cancelledGetCoverImage) {
                     // Call the completion handler with `databaseCoverImage`
-                    completionHandler(databaseCoverImage!);
+                    completionHandler?(databaseCoverImage!);
+                    
+                    // Reset `cancelledGetCoverImage`
+                    self.cancelledGetCoverImage = false;
                 }
             }
             // If the cover wasn't in the database...
             else {
-                DispatchQueue(label: "Azusa.Covers").async {
+                DispatchQueue(label: "Azusa.Mio.MISong.\(self.uri).Cover").async {
                     /// The cover to return
                     var cover : NSImage = #imageLiteral(resourceName: "AZDefaultCover");
                     
@@ -150,11 +158,23 @@ class MISong: AZSong {
                     
                     // Return `cover`
                     DispatchQueue.main.async {
-                        completionHandler(cover);
+                        // If the `getCoverImage` wasn't cancelled...
+                        if(!self.cancelledGetCoverImage) {
+                            // Reset `cancelledGetCoverImage`
+                            self.cancelledGetCoverImage = false;
+                            
+                            // Call the completion handler with `databaseCoverImage`
+                            completionHandler?(cover);
+                        }
                     }
                 }
             }
         });
+    }
+    
+    func cancelGetCoverImage() {
+        // Set `cancelledGetCoverImage` to `true` to indicate the cancel was called
+        cancelledGetCoverImage = true;
     }
     
     static var empty : AZSong {
@@ -164,9 +184,17 @@ class MISong: AZSong {
         song.title = "Song Not Found";
         
         return song;
-    };
+    }
     
     func isEmpty() -> Bool {
         return self == MISong.empty;
+    }
+    
+    
+    // MARK: - Initialization and Deinitialization
+    
+    deinit {
+        // Cancel any current cover image requests
+        self.cancelGetCoverImage();
     }
 }

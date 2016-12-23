@@ -45,14 +45,26 @@ struct AZLogger {
     ///   - object: The object to log
     ///   - level: The level this print should be
     static func log(_ object : Any, level : AZLoggerLevel = .regular) {
-        // Append the object to log to 'output'
-        self.output.append("\(object)\n");
+        /// The date formatter for the print timestamp
+        let timestampDateFormatter : DateFormatter = DateFormatter();
         
-        // If the level given is less than or equal to the current logging level...
-        if(level.rawValue <= self.level.rawValue) {
-            // Print the object
-            print(object);
-        }
+        // Set `timestampDateFormatter`'s format
+        timestampDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSSSS";
+        
+        /// The timestamp for the print message
+        let timestamp : String = timestampDateFormatter.string(from: Date());
+        
+        // Append the object to log to 'output'
+        self.output.append("\(timestamp) Azusa: \(object)\n");
+        
+        // Only print if we are in a debug build
+        #if DEBUG
+            // If the level given is less than or equal to the current logging level...
+            if(level.rawValue <= self.level.rawValue) {
+                // Print the object
+                print("\(timestamp) Azusa: \(object)");
+            }
+        #endif
     }
     
     /// Writes all the log output to the given file

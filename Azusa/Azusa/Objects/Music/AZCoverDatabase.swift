@@ -16,8 +16,8 @@ class AZCoverDatabase {
     /// The global AZCoverDatabase object
     public static var global : AZCoverDatabase = AZCoverDatabase();
     
-    /// All the thumbnails in this database
-    private var thumbnails : [String : NSImage] = [:];
+    /// The `NSCache` object for thumbnails in this cover database
+    private let thumbnailCache : NSCache = NSCache<NSString, NSImage>();
     
     
     // MARK: - Functions
@@ -30,8 +30,8 @@ class AZCoverDatabase {
     func add(thumbnail : NSImage, name : String) {
         // If `name` isn't blank and `thumbnail` isn't the default cover(we don't want to cache those)...
         if(name != "" && thumbnail != #imageLiteral(resourceName: "AZDefaultCover")) {
-            // Add the given thumbnail to `thumbnails`
-            self.thumbnails[name] = thumbnail.resizedTo(fit: 300);
+            // Add the given thumbnail to `thumbnailCache`
+            thumbnailCache.setObject(thumbnail, forKey: NSString(string: name));
         }
     }
     
@@ -43,7 +43,7 @@ class AZCoverDatabase {
     func get(thumbnail thumbnailName : String, completionHandler : @escaping ((NSImage?) -> ())) {
         DispatchQueue(label: "Azusa.Covers").async {
             /// The loaded thumbnail from `thumbnails`
-            let thumbnailImage : NSImage? = self.thumbnails[thumbnailName];
+            let thumbnailImage : NSImage? = self.thumbnailCache.object(forKey: NSString(string: thumbnailName));
             
             // Call the completion handler with `thumbnailImage`
             DispatchQueue.main.async {

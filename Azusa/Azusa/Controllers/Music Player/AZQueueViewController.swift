@@ -263,11 +263,14 @@ extension AZQueueViewController: NSTableViewDataSource {
             /// `cellView` as a `AZQueueTableCellView`
             let queueCellView : AZQueueTableCellView = cellView as! AZQueueTableCellView;
             
-            /// The data for this cell
-            let cellData : AZSong = self.queueTableViewItems[row];
-            
-            // Display `cellData` in `queueCellView`
-            queueCellView.display(song: cellData);
+            // If `queueCellView` hasn't already displayed a song...
+            if(queueCellView.representedSong == nil) {
+                /// The data for this cell
+                let cellData : AZSong = self.queueTableViewItems[row];
+                
+                // Display `cellData` in `queueCellView`
+                queueCellView.display(song: cellData);
+            }
             
             // Return the modified cell view
             return queueCellView as NSTableCellView;

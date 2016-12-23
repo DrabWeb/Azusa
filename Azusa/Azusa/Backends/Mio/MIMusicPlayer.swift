@@ -61,7 +61,7 @@ class MIMusicPlayer: AZMusicPlayer {
                     }
                 }
                 else {
-                    print("MIMusicPlayer: Error getting player status, \(self.mpd!.currentError())");
+                    AZLogger.log("MIMusicPlayer: Error getting player status, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -79,7 +79,7 @@ class MIMusicPlayer: AZMusicPlayer {
                     }
                 }
                 else {
-                    print("MIMusicPlayer: Error getting elapsed time, \(self.mpd!.currentError())");
+                    AZLogger.log("MIMusicPlayer: Error getting elapsed time, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -97,7 +97,7 @@ class MIMusicPlayer: AZMusicPlayer {
                     }
                 }
                 else {
-                    print("MIMusicPlayer: Error seeking, \(self.mpd!.currentError())");
+                    AZLogger.log("MIMusicPlayer: Error seeking, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -115,7 +115,7 @@ class MIMusicPlayer: AZMusicPlayer {
                     }
                 }
                 else {
-                    print("MIMusicPlayer: Error seeking, \(self.mpd!.currentError())");
+                    AZLogger.log("MIMusicPlayer: Error seeking, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -133,7 +133,7 @@ class MIMusicPlayer: AZMusicPlayer {
                     }
                 }
                 else {
-                    print("MIMusicPlayer: Error toggling paused state, \(self.mpd!.currentError())");
+                    AZLogger.log("MIMusicPlayer: Error toggling paused state, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -151,7 +151,7 @@ class MIMusicPlayer: AZMusicPlayer {
                     }
                 }
                 else {
-                    print("MIMusicPlayer: Error setting paused, \(self.mpd!.currentError())");
+                    AZLogger.log("MIMusicPlayer: Error setting paused, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -169,7 +169,7 @@ class MIMusicPlayer: AZMusicPlayer {
                     }
                 }
                 else {
-                    print("MIMusicPlayer: Error stopping playback, \(self.mpd!.currentError())");
+                    AZLogger.log("MIMusicPlayer: Error stopping playback, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -187,7 +187,7 @@ class MIMusicPlayer: AZMusicPlayer {
                     }
                 }
                 else {
-                    print("MIMusicPlayer: Error skipping to the previous song, \(self.mpd!.currentError())");
+                    AZLogger.log("MIMusicPlayer: Error skipping to the previous song, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -205,7 +205,7 @@ class MIMusicPlayer: AZMusicPlayer {
                     }
                 }
                 else {
-                    print("MIMusicPlayer: Error skipping to the next song, \(self.mpd!.currentError())");
+                    AZLogger.log("MIMusicPlayer: Error skipping to the next song, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -223,7 +223,7 @@ class MIMusicPlayer: AZMusicPlayer {
                     }
                 }
                 else {
-                    print("MIMusicPlayer: Error setting volume, \(self.mpd!.currentError())");
+                    AZLogger.log("MIMusicPlayer: Error setting volume, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -241,7 +241,7 @@ class MIMusicPlayer: AZMusicPlayer {
                     }
                 }
                 else {
-                    print("MIMusicPlayer: Error setting relative volume, \(self.mpd!.currentError())");
+                    AZLogger.log("MIMusicPlayer: Error setting relative volume, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -264,11 +264,11 @@ class MIMusicPlayer: AZMusicPlayer {
                         }
                     }
                     else {
-                        print("MIMusicPlayer: Error getting current song position, \(self.mpd!.currentError())");
+                        AZLogger.log("MIMusicPlayer: Error getting current song position, \(self.mpd!.currentError())");
                     }
                 }
                 else {
-                    print("MIMusicPlayer: Error getting queue, \(self.mpd!.currentError())");
+                    AZLogger.log("MIMusicPlayer: Error getting queue, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -314,7 +314,7 @@ class MIMusicPlayer: AZMusicPlayer {
                     }
                 }
                 else {
-                    print("MIMusicPlayer: Error removing from queue, \(self.mpd!.currentError())");
+                    AZLogger.log("MIMusicPlayer: Error removing from queue, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -332,7 +332,7 @@ class MIMusicPlayer: AZMusicPlayer {
                     }
                 }
                 else {
-                    print("MIMusicPlayer: Error moving after the current song, \(self.mpd!.currentError())");
+                    AZLogger.log("MIMusicPlayer: Error moving after the current song, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -350,7 +350,7 @@ class MIMusicPlayer: AZMusicPlayer {
                     }
                 }
                 else {
-                    print("MIMusicPlayer: Error shuffling queue, \(self.mpd!.currentError())");
+                    AZLogger.log("MIMusicPlayer: Error shuffling queue, \(self.mpd!.currentError())");
                 }
             }
         }
@@ -368,7 +368,7 @@ class MIMusicPlayer: AZMusicPlayer {
                     }
                 }
                 else {
-                    print("MIMusicPlayer: Error clearing queue, \(self.mpd!.currentError())");
+                    AZLogger.log("MIMusicPlayer: Error clearing queue, \(self.mpd!.currentError())");
                 }
             }
         }

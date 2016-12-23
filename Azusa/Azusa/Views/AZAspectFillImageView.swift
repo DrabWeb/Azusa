@@ -17,6 +17,9 @@ class AZAspectFillImageView: NSImageView {
         // Set the actual image so it's still accessable
         self.image = image;
         
+        // Start the `CATransaction`
+        CATransaction.begin();
+        
         // Setup the layer with smoothing, scaling, etc.
         self.wantsLayer = true;
         self.layer?.contentsGravity = kCAGravityResizeAspectFill;
@@ -25,5 +28,8 @@ class AZAspectFillImageView: NSImageView {
         self.layer?.rasterizationScale = NSScreen.main()!.backingScaleFactor * 2;
         self.layer?.shouldRasterize = true;
         self.layer?.contentsScale = NSScreen.main()!.backingScaleFactor;
+        
+        // Commit the `CATransaction`
+        CATransaction.commit();
     }
 }

@@ -214,6 +214,7 @@
 				AE602FC61DF8F7D0002225CB /* Utilities */,
 				AE602FD11DF907EF002225CB /* Protocols */,
 				AE602FC21DF8EDAD002225CB /* Backends */,
+				AEB904491E0C96120060E5AE /* Libraries */,
 				AE602EF71DF8E8E3002225CB /* Assets.xcassets */,
 				AE602EFC1DF8E8E3002225CB /* Info.plist */,
 			);
@@ -367,6 +368,13 @@
 				AEF6EE7A1E0891D4009990CB /* Music Player */,
 			);
 			path = Objects;
+			sourceTree = "<group>";
+		};
+		AEB904491E0C96120060E5AE /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Libraries;
 			sourceTree = "<group>";
 		};
 		AED38A1D1DFF513E00F410E3 /* Music Player */ = {
@@ -674,7 +682,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -754,6 +762,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/External/libmpdclient/";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
