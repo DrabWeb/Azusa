@@ -19,7 +19,7 @@ class MISong: AZSong {
     var file : String = "";
     
     /// The MPD ID of this song
-    var id : Int = 0;
+    var id : Int = -1;
     
     var artist : AZArtist = AZArtist();
     
@@ -80,103 +80,138 @@ class MISong: AZSong {
         return self.album.displayName;
     }
     
-    /// Was `cancelGetCoverImage` called?
-    /// Reset after `getCoverImage` tries to call it's completion handler
-    private var cancelledGetCoverImage : Bool = false;
+    var coverIdentifier : String {
+        if(self.album.name != "") {
+            return self.album.name;
+        }
+        else if(self.title != "") {
+            return self.title;
+        }
+        else {
+            return self.uri;
+        }
+    }
     
-    func getCoverImage(_ completionHandler: ((NSImage) -> ())?) {
-        // Try to load the cover image from the database
-        AZCoverDatabase.global.get(thumbnail: self.album.name, completionHandler: { databaseCoverImage in
-            // If the cover was already in the database...
-            if(databaseCoverImage != nil) {
-                // If the `getCoverImage` wasn't cancelled...
-                if(!self.cancelledGetCoverImage) {
-                    // Call the completion handler with `databaseCoverImage`
-                    completionHandler?(databaseCoverImage!);
+    /// Was `cancelGetThumbnailImage` called?
+    /// Reset after `getThumbnailImage` tries to call it's completion handler
+    private var cancelledGetThumbnailImage : Bool = false;
+    
+    func getThumbnailImage(_ completionHandler: @escaping ((NSImage) -> ())) {
+        // If the thumbnail wasn't already requested...
+        if(!AZCoverDatabase.global.thumbnailWasRequested(for: self.coverIdentifier)) {
+            DispatchQueue(label: "Azusa.Mio.MISong.\(self.uri).Thumbnail").async {
+                /// The thumbnail to return
+                var thumbnail : NSImage? = nil;
+                
+                /// The URL for this song's file
+                let fileUrl : URL? = URL(fileURLWithPath: self.file);
+                
+                // If 'fileUrl' isn't nil...
+                if(fileUrl != nil) {
+                    /// The AVFoundation asset for this song
+                    let songAsset : AVURLAsset = AVURLAsset(url: fileUrl!);
                     
-                    // Reset `cancelledGetCoverImage`
-                    self.cancelledGetCoverImage = false;
-                }
-            }
-            // If the cover wasn't in the database...
-            else {
-                DispatchQueue(label: "Azusa.Mio.MISong.\(self.uri).Cover").async {
-                    /// The cover to return
-                    var cover : NSImage = #imageLiteral(resourceName: "AZDefaultCover");
+                    /// The metadata items for this song(initially ID3)
+                    var songMetadata : [AVMetadataItem] = songAsset.metadata(forFormat: AVMetadataFormatID3Metadata) as Array<AVMetadataItem>;
                     
-                    /// The URL for this song's file
-                    let fileUrl : URL? = URL(fileURLWithPath: self.file);
+                    // If the metadata is empty...
+                    if(songMetadata.isEmpty) {
+                        // Load the iTunes metadata
+                        songMetadata = songAsset.metadata(forFormat: AVMetadataFormatiTunesMetadata) as Array<AVMetadataItem>;
+                    }
                     
-                    // If 'fileUrl' isn't nil...
-                    if(fileUrl != nil) {
-                        /// The AVFoundation asset for this song
-                        let songAsset : AVURLAsset = AVURLAsset(url: fileUrl!);
-                        
-                        /// The metadata items for this song(initially ID3)
-                        var songMetadata : [AVMetadataItem] = songAsset.metadata(forFormat: AVMetadataFormatID3Metadata) as Array<AVMetadataItem>;
-                        
-                        // If the metadata is empty...
-                        if(songMetadata.isEmpty) {
-                            // Load the iTunes metadata
-                            songMetadata = songAsset.metadata(forFormat: AVMetadataFormatiTunesMetadata) as Array<AVMetadataItem>;
+                    /// For every tag in this song's metadata...
+                    for currentTag : AVMetadataItem in songMetadata {
+                        // If the current tag is the artwork tag...
+                        if(currentTag.commonKey == "artwork") {
+                            // If the current tag's data isnt nil...
+                            if(currentTag.dataValue != nil) {
+                                /// The image from this tag
+                                let tagImage : NSImage? = NSImage(data: currentTag.dataValue!);
+                                
+                                // If tagImage isnt nil...
+                                if(tagImage != nil) {
+                                    // Set the thumbnail image to tagImage
+                                    thumbnail = tagImage!;
+                                }
+                            }
                         }
+                    }
+                    
+                    // If the thumbnail *still* isn't set...
+                    if(thumbnail == nil) {
+                        /// The path to the folder this song is in
+                        let songFolderPath : String = self.file.replacingOccurrences(of: NSString(string: self.file).lastPathComponent, with: "");
                         
-                        /// For every tag in this song's metadata...
-                        for currentTag : AVMetadataItem in songMetadata {
-                            // If the current tag is the artwork tag...
-                            if(currentTag.commonKey == "artwork") {
-                                // If the current tag's data isnt nil...
-                                if(currentTag.dataValue != nil) {
-                                    /// The image from this tag
-                                    let tagImage : NSImage? = NSImage(data: currentTag.dataValue!);
-                                    
-                                    // If tagImage isnt nil...
-                                    if(tagImage != nil) {
-                                        // Set the cover image to tagImage
-                                        cover = tagImage!;
+                        do {
+                            // If there is a file/directory at `songFolderPath`...
+                            if(FileManager.default.fileExists(atPath: songFolderPath)) {
+                                // For every file in `songFolderPath`...
+                                for(_, currentFile) in (try FileManager.default.contentsOfDirectory(atPath: songFolderPath)).enumerated() {
+                                    // If `currentFile` has a png or jpg extension...
+                                    if(["png", "jpg", "jpeg"].contains(NSString(string: currentFile).pathExtension)) {
+                                        // Try to load the image at `currentFile` and set `thumbnail` to it if successful
+                                        if let thumbnailFileImage = NSImage(byReferencingFile: songFolderPath + currentFile) {
+                                            thumbnail = thumbnailFileImage;
+                                        }
                                     }
                                 }
                             }
                         }
-                        
-                        // If the cover *still* isn't set...
-                        if(cover == #imageLiteral(resourceName: "AZDefaultCover")) {
-                            /// The path to the folder this song is in
-                            let songFolderPath : String = self.file.replacingOccurrences(of: NSString(string: self.file).lastPathComponent, with: "");
-                            
-                            // Try to load a `cover.jpg` file
-                            if(FileManager.default.fileExists(atPath: songFolderPath + "cover.jpg")) {
-                                if let coverFileImage = NSImage(byReferencingFile: songFolderPath + "cover.jpg") {
-                                    cover = coverFileImage;
-                                }
-                            }
-                        }
-                    }
-                    
-                    // Add the thumbnail to the database
-                    AZCoverDatabase.global.add(thumbnail: cover, name: self.album.name);
-                    
-                    // Return `cover`
-                    DispatchQueue.main.async {
-                        // If the `getCoverImage` wasn't cancelled...
-                        if(!self.cancelledGetCoverImage) {
-                            // Reset `cancelledGetCoverImage`
-                            self.cancelledGetCoverImage = false;
-                            
-                            // Call the completion handler with `databaseCoverImage`
-                            completionHandler?(cover);
+                        catch let error {
+                            AZLogger.log("MISong: Error getting thumbnail from file, \(error.localizedDescription)");
                         }
                     }
                 }
+                
+                // Resize the thumbnail image
+                if(thumbnail != nil) {
+                    thumbnail = thumbnail!.resizedTo(fit: 100);
+                }
+                
+                // Add the thumbnail to the database
+                AZCoverDatabase.global.add(thumbnail: thumbnail ?? #imageLiteral(resourceName: "AZDefaultCover"), name: self.coverIdentifier);
+                
+                // Return `thumbnail`
+                DispatchQueue.main.async {
+                    // If the `getThumbnailImage` wasn't cancelled...
+                    if(!self.cancelledGetThumbnailImage) {
+                        // Reset `cancelledGetThumbnailImage`
+                        self.cancelledGetThumbnailImage = false;
+                        
+                        // Call the completion handler with `thumbnail`
+                        completionHandler(thumbnail ?? #imageLiteral(resourceName: "AZDefaultCover"));
+                        
+                        // Release `thumbnail`
+                        thumbnail = nil;
+                    }
+                }
             }
-        });
-    }
+        }
+        // If the thumbnail was already requested...
+        else {
+            // Try to load the thumbnail image from the database
+            AZCoverDatabase.global.get(thumbnail: self.coverIdentifier, completionHandler: { databaseThumbnailImage in
+                // If the `getThumbnailImage` wasn't cancelled...
+                if(!self.cancelledGetThumbnailImage) {
+                    // Call the completion handler with `databaseThumbnailImage`
+                    completionHandler(databaseThumbnailImage);
+                    
+                    // Reset `cancelledGetThumbnailImage`
+                    self.cancelledGetThumbnailImage = false;
+                }
+            });
+        }
     
-    func cancelGetCoverImage() {
-        // Set `cancelledGetCoverImage` to `true` to indicate the cancel was called
-        cancelledGetCoverImage = true;
+        // Add the cover identifier to the requested thumbnail names
+        AZCoverDatabase.global.addNameToRequested(name: self.coverIdentifier);
     }
-    
+
+    func cancelGetThumbnailImage() {
+        // Set `cancelledGetThumbnailImage` to `true` to indicate the cancel was called
+        cancelledGetThumbnailImage = true;
+    }
+
     static var empty : AZSong {
         let song : MISong = MISong();
         
@@ -185,16 +220,20 @@ class MISong: AZSong {
         
         return song;
     }
-    
+
     func isEmpty() -> Bool {
         return self == MISong.empty;
     }
-    
-    
+
+
     // MARK: - Initialization and Deinitialization
+
+    init() {
+        
+    }
     
     deinit {
         // Cancel any current cover image requests
-        self.cancelGetCoverImage();
+        self.cancelGetThumbnailImage();
     }
 }

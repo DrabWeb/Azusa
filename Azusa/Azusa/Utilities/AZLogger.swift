@@ -49,7 +49,7 @@ struct AZLogger {
         let timestampDateFormatter : DateFormatter = DateFormatter();
         
         // Set `timestampDateFormatter`'s format
-        timestampDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSSSS";
+        timestampDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS";
         
         /// The timestamp for the print message
         let timestamp : String = timestampDateFormatter.string(from: Date());

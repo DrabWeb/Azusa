@@ -13,6 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: - Properties
     
+    
     // MARK: - Menu Items
     
     /// Azusa/Save Log

@@ -480,7 +480,7 @@
         <scene sceneID="j7I-Mb-OnV">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="hXg-Xn-Rjr" userLabel="Music Player Window Controller" sceneMemberID="viewController">
-                    <window key="window" title="Azusa" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" tabbingMode="disallowed" id="z78-jn-9gz">
+                    <window key="window" title="Azusa" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="MusicPlayer" animationBehavior="default" tabbingMode="disallowed" id="z78-jn-9gz">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="229" y="249" width="842" height="400"/>
@@ -571,7 +571,7 @@
                                 <toolbarItem implicitItemIdentifier="6DAA5447-2F45-462F-B5C6-2A726B2E1DCD" explicitItemIdentifier="Queue" label="Queue" paletteLabel="Queue" image="AZToolbarQueue" id="LuR-Vf-uKe" userLabel="Queue">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="39" height="28"/>
-                                    <size key="maxSize" width="39" height="28"/>
+                                    <size key="maxSize" width="39" height="29"/>
                                     <button key="view" verticalHuggingPriority="750" id="9Zm-4M-iMp">
                                         <rect key="frame" x="2" y="14" width="39" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -947,7 +947,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="330" height="425"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="44" viewBased="YES" id="d8L-rC-lho" userLabel="Queue Table View" customClass="AZQueueTableView" customModule="Azusa" customModuleProvider="target">
+                                        <tableView wantsLayer="YES" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="44" viewBased="YES" id="d8L-rC-lho" userLabel="Queue Table View" customClass="AZQueueTableView" customModule="Azusa" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="330" height="415"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="0.0" height="5"/>
@@ -1009,7 +1009,6 @@
                                                             <connections>
                                                                 <outlet property="artistAlbumLabel" destination="Kc5-e6-ScW" id="i2a-nP-RiL"/>
                                                                 <outlet property="coverImageView" destination="Udq-QR-Txb" id="pW5-fT-Ax2"/>
-                                                                <outlet property="textField" destination="I1E-Tr-eaL" id="CZm-Pc-hwk"/>
                                                                 <outlet property="titleLabel" destination="I1E-Tr-eaL" id="Hqn-8G-Rsd"/>
                                                             </connections>
                                                         </tableCellView>

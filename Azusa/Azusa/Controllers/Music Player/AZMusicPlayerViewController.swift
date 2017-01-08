@@ -17,7 +17,7 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate, NSU
     var window : NSWindow? = nil;
     
     /// The current `AZQueueViewController` for the popup queue view(if there is one)
-    var queuePopupViewController : AZQueueViewController? = nil;
+    private weak var queuePopupViewController : AZQueueViewController? = nil;
     
     /// The last displayed `AZPlayerStatus` by this music player
     private var lastDisplayedStatus : AZPlayerStatus? = nil;
@@ -136,13 +136,12 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate, NSU
                 // If the player is playing and the current song isn't an empty one...
                 if((status.playingState == .playing) && !status.currentSong.isEmpty()) {
                     // Get the cover image for the current song
-                    status.currentSong.getCoverImage({ coverImage in
+                    status.currentSong.getThumbnailImage({ thumbnailImage in
                         /// The notification to show the current song
                         let songChangedNotification : NSUserNotification = NSUserNotification();
                         
                         // Set the private keys for iTunes like behaviour, custom app icon image, no border around the identity image, and show the skip button even though it's a banner
-                        songChangedNotification.setValue(coverImage, forKey: "_identityImage");
-                        songChangedNotification.setValue(false, forKey: "_identityImageHasBorder");
+                        songChangedNotification.setValue(thumbnailImage, forKey: "_identityImage");
                         songChangedNotification.setValue(true, forKey: "_showsButtons");
                         
                         // Set the title and informative text

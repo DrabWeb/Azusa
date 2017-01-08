@@ -61,13 +61,16 @@ protocol AZSong: CustomStringConvertible {
     /// Returns the display album for this song
     var displayAlbum : String { get };
     
-    /// Gets the cover image for this song async, and calls the completion handler with it
-    ///
-    /// - Parameter completionHandler: The completion handler to call when the cover is loaded, passed the `NSImage` of the cover
-    func getCoverImage(_ completionHandler : ((NSImage) -> ())?);
+    /// The identifier for getting/storing this song's cover in an AZCoverDatabase
+    var coverIdentifier : String { get };
     
-    /// Cancels any current calls of `getCoverImage`, still stores the cover image but just doesn't call the completion handler
-    func cancelGetCoverImage();
+    /// Gets the thumbnail image for this song
+    ///
+    /// - Parameter completionHandler: The completion handler to call when the thumbnail is loaded, passed the cover
+    func getThumbnailImage(_ completionHandler : @escaping ((NSImage) -> ()));
+    
+    /// Cancels any current calls of `getThumbnailImage`, still stores the thumbnail image but just doesn't call the completion handler
+    func cancelGetThumbnailImage();
     
     /// Returns an empty song(used for displaying that there is no song)
     static var empty : AZSong { get };

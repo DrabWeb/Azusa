@@ -14,10 +14,16 @@ class AZCoverDatabase {
     // MARK: - Variables
     
     /// The global AZCoverDatabase object
-    public static var global : AZCoverDatabase = AZCoverDatabase();
+    static let global : AZCoverDatabase = AZCoverDatabase();
     
     /// The `NSCache` object for thumbnails in this cover database
     private let thumbnailCache : NSCache = NSCache<NSString, NSImage>();
+    
+    /// All the names of the thumbnails that have been requested by a `AZSong.getCoverImage` call
+    private var requestedThumbnailNames : [String] = [];
+    
+    /// All the `Azusa.AZCoverDatabase.CoverAdded` notification listeners from `get(thumbnail:completionHandler:)`
+    private var getThumbnailNotificationObservers : [(name : String, observer : NSObjectProtocol)] = [];
     
     
     // MARK: - Functions
@@ -32,6 +38,12 @@ class AZCoverDatabase {
         if(name != "" && thumbnail != #imageLiteral(resourceName: "AZDefaultCover")) {
             // Add the given thumbnail to `thumbnailCache`
             thumbnailCache.setObject(thumbnail, forKey: NSString(string: name));
+            
+            // Post the notification that the thumbnail was added, with the thumbnail
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "Azusa.AZCoverDatabase.ThumbnailAdded-\(name)"), object: thumbnail);
+            
+            // Remove all the notification observers from `get` under `name`
+            getThumbnailNotificationObservers = getThumbnailNotificationObservers.enumerated().filter { $0.element.name == name }.map { $0.element };
         }
     }
     
@@ -40,15 +52,46 @@ class AZCoverDatabase {
     /// - Parameters:
     ///   - thumbnailName: The name of the thumbnail to get
     ///   - completionHandler: The completion handler for when the thumbnail is loaded, passed the cover(nil if there was no thumbnail under `name`)
-    func get(thumbnail thumbnailName : String, completionHandler : @escaping ((NSImage?) -> ())) {
+    func get(thumbnail thumbnailName : String, completionHandler : @escaping ((NSImage) -> ())) {
         DispatchQueue(label: "Azusa.Covers").async {
             /// The loaded thumbnail from `thumbnails`
-            let thumbnailImage : NSImage? = self.thumbnailCache.object(forKey: NSString(string: thumbnailName));
+            var thumbnailImage : NSImage? = self.thumbnailCache.object(forKey: NSString(string: thumbnailName));
             
-            // Call the completion handler with `thumbnailImage`
-            DispatchQueue.main.async {
-                completionHandler(thumbnailImage);
+            // If the cover thumbnail already requested and `thumbnailImage` is nil...
+            if(self.thumbnailWasRequested(for: thumbnailName) && thumbnailImage == nil) {
+                // Listen for when the thumbnail loads for `thumbnailName`
+                self.getThumbnailNotificationObservers.append((thumbnailName, NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "Azusa.AZCoverDatabase.ThumbnailAdded-\(thumbnailName)"), object: nil, queue: nil) { notification in
+                    // Call the completion handler with the image from `notification`
+                    DispatchQueue.main.async {
+                        completionHandler((notification.object as? NSImage) ?? #imageLiteral(resourceName: "AZDefaultCover"));
+                    }
+                }));
+            }
+            else {
+                // Call the completion handler with `thumbnailImage`
+                DispatchQueue.main.async {
+                    completionHandler(thumbnailImage ?? #imageLiteral(resourceName: "AZDefaultCover"));
+                    
+                    thumbnailImage = nil;
+                }
             }
         }
+    }
+    
+    /// Adds the given name to the array of requested thumbnail names
+    ///
+    /// - Parameter name: The name to list
+    func addNameToRequested(name : String) {
+        if(!self.requestedThumbnailNames.contains(name)) {
+            self.requestedThumbnailNames.append(name);
+        }
+    }
+    
+    /// Was a thumbnail already requested under the given name?
+    ///
+    /// - Parameter name: The name to check under
+    /// - Returns: If the thumbnail was already requested for the given name
+    func thumbnailWasRequested(for name : String) -> Bool {
+        return requestedThumbnailNames.contains(name);
     }
 }

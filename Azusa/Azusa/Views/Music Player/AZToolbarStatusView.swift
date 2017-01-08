@@ -60,11 +60,11 @@ class AZToolbarStatusView: NSView {
         self.currentSong = status.currentSong;
         
         // Display the status info
-        status.currentSong.getCoverImage({ coverImage in
-            autoreleasepool {
-                self.coverImageView?.setAspectFillImage(coverImage);
-            }
-        });
+        if(self.lastDisplayedStatus == nil || self.lastDisplayedStatus!.currentSong != status.currentSong) {
+            status.currentSong.getThumbnailImage({ thumbnailImage in
+                self.coverImageView?.image = thumbnailImage;
+            });
+        }
         
         self.songTitleLabel?.stringValue = status.currentSong.displayTitle;
         self.artistAlbumLabel?.stringValue = "\(status.currentSong.displayArtist) — \(status.currentSong.displayAlbum)";

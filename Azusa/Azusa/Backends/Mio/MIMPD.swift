@@ -649,13 +649,10 @@ class MIMPD {
             if(currentQueueLength > 0) {
                 // For every song index in the current queue...
                 for _ in 0...(currentQueueLength - 1) {
-                    /// The next song from MPD
-                    let song = mpd_recv_song(self.connection!);
-                    
-                    // If the song isn't nil...
-                    if(song != nil) {
+                    // Get the current song in the iteration, and if it isn't nil...
+                    if let song = mpd_recv_song(self.connection!) {
                         // Add `song` as an `MISong` to `currentQueue`
-                        currentQueue.append(self.songFrom(mpdSong: song!));
+                        currentQueue.append(self.songFrom(mpdSong: song));
                     }
                     // If the song is nil...
                     else {
@@ -664,7 +661,7 @@ class MIMPD {
                     }
                 }
             }
-            
+          
             // Finish the `"playlistinfo"` command
             mpd_response_finish(self.connection!);
             

@@ -58,8 +58,14 @@ class AZQueueViewController: NSViewController {
     /// The last set queue by `display(queue:current:)`
     private var currentQueue : [AZSong] = [];
     
+    /// Was `storeUpNext` called?
+    private var storedUpNext : Bool = false;
+    
     /// The up next of `currentQueue`
     private var currentUpNext : [AZSong] = [];
+    
+    /// Was `storeHistory` called?
+    private var storedHistory : Bool = false;
     
     /// The history of `currentQueue`
     private var currentHistory : [AZSong] = [];
@@ -121,17 +127,17 @@ class AZQueueViewController: NSViewController {
         AZLogger.log("AZQueueViewController: Displaying queue with \(queue.count) songs, current is #\(current)");
         AZLogger.log("AZQueueViewController: Queue items: \"\(queue)\", current: #\(current)", level: .high);
         
+        // Reset `storedUpNext` and `storedHistory`
+        storedUpNext = false;
+        storedHistory = false;
+        
         // Set `currentQueue` and `currentSongPosition`
         self.currentQueue = queue;
         self.currentSongPosition = current;
-        
-        // Get up next and history
-        self.storeUpNext();
-        self.storeHistory();
-        
+      
         // Show the appropriate view
         self.showItemsForSelectedTab();
-        
+      
         // Make the queue table view the first responder
         self.view.window?.makeFirstResponder(self.queueTableView);
         
@@ -144,6 +150,10 @@ class AZQueueViewController: NSViewController {
     /// Displays the songs from `currentUpNext` in `queueTableView`
     func displayUpNext() {
         AZLogger.log("AZQueueViewController: Displaying up next with \(self.currentUpNext.count) songs");
+        
+        if(!storedUpNext) {
+            storeUpNext();
+        }
         
         // Set the table view to display `currentUpNext`
         self.queueTableViewItems = self.currentUpNext;
@@ -161,6 +171,10 @@ class AZQueueViewController: NSViewController {
     /// Displays the songs from `currentHistory` in `queueTableView`
     func displayHistory() {
         AZLogger.log("AZQueueViewController: Displaying history with \(self.currentHistory.count) songs");
+        
+        if(!storedHistory) {
+            storeHistory();
+        }
         
         // Set the table view to display `currentHistory`
         self.queueTableViewItems = self.currentHistory;
@@ -193,6 +207,8 @@ class AZQueueViewController: NSViewController {
             // Set `currentUpNext` to `currentQueue`
             self.currentUpNext = currentQueue;
         }
+        
+        storedUpNext = true;
     }
     
     /// Gets the history of `currentQueue` and stores it in `currentHistory`
@@ -211,6 +227,8 @@ class AZQueueViewController: NSViewController {
         
         // Reverse `currentHistory` to have the oldest queue songs on the bottom
         self.currentHistory.reverse();
+        
+        storedHistory = true;
     }
     
     /// Updates `preferredContentSize` to match `queueTableViewItems`
@@ -234,19 +252,44 @@ class AZQueueViewController: NSViewController {
     func showItemsForSelectedTab() {
         // Show up next/history based on the selected tab
         switch(self.tabs.selectedSegment) {
-        case 0:
-            self.displayUpNext();
-            break;
+            case 0:
+                self.displayUpNext();
+                break;
             
-        case 1:
-            self.displayHistory();
-            break;
+            case 1:
+                self.displayHistory();
+                break;
             
-        default:
-            break;
+            default:
+                break;
         }
     }
+    
+    deinit {
+        if(self.queueTableViewItems.count != 0) {
+            for index in 0...(self.queueTableViewItems.count - 1) {
+                if let cell : AZQueueTableCellView = (self.queueTableView.rowView(atRow: index, makeIfNecessary: false)?.view(atColumn: 0) as? AZQueueTableCellView) {
+                    cell.imageView = nil;
+                    cell.representedSong = nil;
+                }
+            }
+        }
+        
+        self.currentQueue = [];
+        self.currentUpNext = [];
+        self.currentHistory = [];
+        self.queueTableViewItems = [];
+        
+        self.clearHandler = nil;
+        self.shuffleHandler = nil;
+        self.queueTableViewRemoveHandler = nil;
+        self.queueTableViewPrimaryHandler = nil;
+        self.queueTableViewRemoveHandler = nil;
+    }
 }
+
+
+// MARK: - Extensions
 
 extension AZQueueViewController: NSTableViewDataSource {
     func numberOfRows(in aTableView: NSTableView) -> Int {
@@ -255,29 +298,23 @@ extension AZQueueViewController: NSTableViewDataSource {
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        /// The cell view for the cell we want to modify
-        let cellView: NSTableCellView = tableView.make(withIdentifier: tableColumn!.identifier, owner: nil) as! NSTableCellView;
-        
-        // If this is the main column...
-        if(tableColumn!.identifier == "Main Column") {
-            /// `cellView` as a `AZQueueTableCellView`
-            let queueCellView : AZQueueTableCellView = cellView as! AZQueueTableCellView;
+        // Instantiate a new cell for this column, and if it isn't nil...
+        if let cellView : AZQueueTableCellView = tableView.make(withIdentifier: "Main Column", owner: nil) as? AZQueueTableCellView {
+            /// The data for this cell
+            let cellData : AZSong = self.queueTableViewItems[row];
             
-            // If `queueCellView` hasn't already displayed a song...
-            if(queueCellView.representedSong == nil) {
-                /// The data for this cell
-                let cellData : AZSong = self.queueTableViewItems[row];
-                
-                // Display `cellData` in `queueCellView`
-                queueCellView.display(song: cellData);
-            }
+            // Display `cellData` in `cellView`
+            cellView.display(song: cellData);
+            
+            // Don't reuse cells
+            cellView.identifier = nil;
             
             // Return the modified cell view
-            return queueCellView as NSTableCellView;
+            return cellView;
         }
         
-        // Return the unmodified cell view, we dont need to do anything
-        return cellView;
+        // Default to returning nil
+        return nil;
     }
 }
 

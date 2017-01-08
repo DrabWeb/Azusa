@@ -12,14 +12,13 @@ extension NSImage {
     ///
     /// - Returns: The size in pixels of this image
     var pixelSize : NSSize {
-        /// The `NSBitmapImageRep` to the image
-        let imageRep : NSBitmapImageRep = (NSBitmapImageRep(data: self.tiffRepresentation!))!;
-        
-        /// The size of the image in pixels
-        let imageSize : NSSize = NSSize(width: imageRep.pixelsWide, height: imageRep.pixelsHigh);
-        
-        // Return `imageSize`
-        return imageSize;
+        return autoreleasepool { () -> CGSize in
+            if let cgImage : CGImage = self.cgImage(forProposedRect: nil, context: nil, hints: nil) {
+                return NSSize(width: cgImage.width, height: cgImage.height);
+            }
+            
+            return NSSize.zero;
+        }
     }
     
     /// Resizes this image to fit a box with the given size as width and height
@@ -80,7 +79,7 @@ extension NSImage {
         let resizedImage : NSImage = NSImage(size: resizedSize);
         
         // A reference to this image for using as the source
-        let sourceImage : NSImage = self;
+        var sourceImage : NSImage! = self;
         
         // Lock drawing focus
         resizedImage.lockFocus();
@@ -96,6 +95,9 @@ extension NSImage {
         
         // Unlock drawing focus
         resizedImage.unlockFocus();
+        
+        // Release `sourceImage` from memory
+        sourceImage = nil;
         
         // Return `resizedImage`
         return resizedImage;
