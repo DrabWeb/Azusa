@@ -13,6 +13,12 @@ class AZToolbarStatusView: NSView {
     
     // MARK: - Properties
     
+    /// The view to show when playing a song
+    @IBOutlet weak var songView : NSView!
+    
+    /// The view to show when there is no song
+    @IBOutlet weak var noSongView : NSView!
+    
     /// The box for having a background on this status view
     @IBOutlet weak var background : NSBox!
     
@@ -84,16 +90,27 @@ class AZToolbarStatusView: NSView {
         // Set `currentSong`
         self.currentSong = status.currentSong;
         
-        // Display the status info
-        if(self.lastDisplayedStatus == nil || self.lastDisplayedStatus!.currentSong != status.currentSong) {
-            status.currentSong.getThumbnailImage({ thumbnailImage in
-                self.coverImageView.image = thumbnailImage;
-            });
+        if(!status.currentSong.isEmpty()) {
+            // Show the song view
+            self.songView.isHidden = false;
+            self.noSongView.isHidden = true;
+            
+            // Display the status info
+            if(self.lastDisplayedStatus == nil || self.lastDisplayedStatus!.currentSong != status.currentSong) {
+                status.currentSong.getThumbnailImage({ thumbnailImage in
+                    self.coverImageView.image = thumbnailImage;
+                });
+            }
+            
+            self.songTitleLabel.stringValue = status.currentSong.displayTitle;
+            self.artistAlbumLabel.stringValue = "\(status.currentSong.displayArtist) — \(status.currentSong.displayAlbum)";
+            self.display(elapsed: status.timeElapsed);
         }
-        
-        self.songTitleLabel.stringValue = status.currentSong.displayTitle;
-        self.artistAlbumLabel.stringValue = "\(status.currentSong.displayArtist) — \(status.currentSong.displayAlbum)";
-        self.display(elapsed: status.timeElapsed);
+        else {
+            // Show the no song view
+            self.songView.isHidden = true;
+            self.noSongView.isHidden = false;
+        }
         
         // Set `lastDisplayedStatus`
         self.lastDisplayedStatus = status;
@@ -107,6 +124,7 @@ class AZToolbarStatusView: NSView {
         // Display the given values
         self.progressBar.intValue = Int32(elapsed);
         self.progressBar.maxValue = Double(currentSong?.duration ?? 0);
+        self.progressBar.maxValue = ((self.progressBar.maxValue == 0) ? 1 : self.progressBar.maxValue);
         
         self.elapsedTimeLabel.stringValue = AZMusicUtilities.secondsToDisplayTime(elapsed);
         self.durationTimeLabel.stringValue = "-\(AZMusicUtilities.secondsToDisplayTime((self.currentSong?.duration ?? 0) - elapsed))";
@@ -114,6 +132,10 @@ class AZToolbarStatusView: NSView {
     
     /// Initializes this view with all it's subviews and layout
     func initialize() {
+        // Hide the song and no song views
+        self.songView.isHidden = true;
+        self.noSongView.isHidden = true;
+        
         /// The appearance of the window this view is in, defaults to vibrant light if the window is nil
         let windowAppearance : NSAppearance = (self.window?.appearance ?? NSAppearance(named: NSAppearanceNameVibrantLight)!);
         
@@ -128,7 +150,7 @@ class AZToolbarStatusView: NSView {
             self.background.fillColor = NSColor(white: 1, alpha: 0.4);
             
             [leftSeparator, rightSeparator].forEach {
-                $0!.fillColor = NSColor(white: 0, alpha: 0.2);
+                $0!.alphaValue = 0.5;
             }
             
             [artistAlbumLabel, elapsedTimeLabel, durationTimeLabel].forEach {

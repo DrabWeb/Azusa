@@ -54,7 +54,7 @@ class AZProgressBarCell: NSSliderCell {
         let rect : NSRect = super.knobRect(flipped: flipped);
         
         // Return the knob rect
-        return NSMakeRect(position + 2, rect.origin.y + 5, 2, 8);
+        return NSRect(x: position + 2, y: rect.origin.y + 5, width: 2, height: 8);
     }
     
     override func barRect(flipped: Bool) -> NSRect {
