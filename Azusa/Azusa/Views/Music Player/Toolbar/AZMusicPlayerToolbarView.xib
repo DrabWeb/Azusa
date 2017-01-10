@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView autoresizesSubviews="NO" id="c22-O7-iKe" customClass="AZMusicPlayerToolbarView" customModule="Azusa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="842" height="45"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="VID-Sc-3d1" userLabel="Previous">
+                    <rect key="frame" x="81" y="8" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="9pP-JP-ANB"/>
+                        <constraint firstAttribute="width" constant="30" id="s8V-do-mjI"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZPrevious" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="2tc-Ib-BX0">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="9pO-e0-Srt" userLabel="Pause/Play">
+                    <rect key="frame" x="120" y="8" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="LYG-Ki-CJI"/>
+                        <constraint firstAttribute="width" constant="30" id="iqF-qS-SiR"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZPlay" imagePosition="only" alignment="center" alternateImage="AZPause" imageScaling="proportionallyDown" inset="2" id="nHa-km-UdK">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="ZVb-Zf-ogS" userLabel="Next">
+                    <rect key="frame" x="159" y="8" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="9Xx-ik-pRr"/>
+                        <constraint firstAttribute="height" constant="30" id="JOr-ob-59c"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZNext" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="rYD-Yd-rVB">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="eYj-lf-Yf2" userLabel="Slider Container">
+                    <rect key="frame" x="205" y="0.0" width="80" height="45"/>
+                    <subviews>
+                        <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uhD-Ju-91D" userLabel="Volume Slider">
+                            <rect key="frame" x="-10" y="13" width="99" height="19"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="95" id="fYm-Yx-Jxq"/>
+                            </constraints>
+                            <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="sOx-Q1-K4S" customClass="AZVolumeSliderCell" customModule="Azusa" customModuleProvider="target"/>
+                        </slider>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="uhD-Ju-91D" firstAttribute="centerY" secondItem="eYj-lf-Yf2" secondAttribute="centerY" id="AVJ-gU-Q7u"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="JKR-4H-V9y"/>
+                        <constraint firstAttribute="height" constant="45" id="Nmh-1G-pc0"/>
+                        <constraint firstItem="uhD-Ju-91D" firstAttribute="centerX" secondItem="eYj-lf-Yf2" secondAttribute="centerX" id="gWw-me-1g0"/>
+                    </constraints>
+                </customView>
+                <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HkS-cX-dXa" userLabel="Status View" customClass="AZToolbarStatusView" customModule="Azusa" customModuleProvider="target">
+                    <rect key="frame" x="301" y="0.0" width="240" height="45"/>
+                    <subviews>
+                        <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="x1h-nb-uDS" userLabel="Background">
+                            <rect key="frame" x="1" y="1" width="238" height="44"/>
+                            <view key="contentView" id="gck-P1-KF4">
+                                <rect key="frame" x="0.0" y="0.0" width="238" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </view>
+                            <color key="borderColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="fillColor" white="1" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
+                        </box>
+                        <view translatesAutoresizingMaskIntoConstraints="NO" id="WoK-8N-14U">
+                            <rect key="frame" x="1" y="1" width="238" height="44"/>
+                            <subviews>
+                                <imageView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="RJv-RE-pzA" userLabel="Cover Art Image View" customClass="AZAspectFillImageView" customModule="Azusa" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="RJv-RE-pzA" secondAttribute="height" multiplier="1:1" id="m2k-eQ-5Cn"/>
+                                    </constraints>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AZDefaultCover" id="aJn-Zn-sOR"/>
+                                </imageView>
+                                <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="dmq-tX-WyF" userLabel="Cover Art Separator">
+                                    <rect key="frame" x="41" y="0.0" width="5" height="43"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="1" id="dNS-2F-58k"/>
+                                    </constraints>
+                                </box>
+                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="VCH-ha-FmY">
+                                    <rect key="frame" x="52" y="24" width="178" height="16"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="16" id="mq2-uf-ASz"/>
+                                    </constraints>
+                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Song Title" id="7de-il-TxC">
+                                        <font key="font" metaFont="cellTitle"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="M0y-B3-8E4" userLabel="Elapsed Time">
+                                    <rect key="frame" x="49" y="7" width="48" height="13"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="go5-KM-ji1"/>
+                                        <constraint firstAttribute="height" constant="13" id="ziy-xy-g89"/>
+                                    </constraints>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="0:00:00" id="MdJ-Au-JSe">
+                                        <font key="font" metaFont="system" size="10"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="6Ql-if-SmN" userLabel="Artist and Album">
+                                    <rect key="frame" x="103" y="9" width="76" height="14"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="14" id="o1V-SO-PhY"/>
+                                    </constraints>
+                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Artist — Album" usesSingleLineMode="YES" id="pPO-Ae-gf0">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" tag="6" translatesAutoresizingMaskIntoConstraints="NO" id="2fb-YP-B4p" userLabel="Duration">
+                                    <rect key="frame" x="185" y="7" width="48" height="13"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="13" id="TjO-qd-kVZ"/>
+                                        <constraint firstAttribute="width" constant="44" id="am7-X9-ODB"/>
+                                    </constraints>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="-0:00:00" id="Cxf-4V-u4h">
+                                        <font key="font" metaFont="system" size="10"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <slider verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="ShM-67-u0r" userLabel="Progress Bar">
+                                    <rect key="frame" x="42" y="-7" width="198" height="19"/>
+                                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="3vD-9Q-yq4" customClass="AZProgressBarCell" customModule="Azusa" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </sliderCell>
+                                    <connections>
+                                        <action selector="progressBarMoved:" target="HkS-cX-dXa" id="EJZ-70-5fp"/>
+                                    </connections>
+                                </slider>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="ShM-67-u0r" firstAttribute="top" secondItem="2fb-YP-B4p" secondAttribute="bottom" constant="-3" id="4dL-Sm-vgT"/>
+                                <constraint firstItem="ShM-67-u0r" firstAttribute="leading" secondItem="dmq-tX-WyF" secondAttribute="trailing" id="9bY-Ix-aQn"/>
+                                <constraint firstItem="ShM-67-u0r" firstAttribute="top" secondItem="M0y-B3-8E4" secondAttribute="bottom" constant="-3" id="Bj5-1J-q3g"/>
+                                <constraint firstAttribute="bottom" secondItem="dmq-tX-WyF" secondAttribute="bottom" id="GDy-uY-gYt"/>
+                                <constraint firstItem="RJv-RE-pzA" firstAttribute="top" secondItem="WoK-8N-14U" secondAttribute="top" id="M4R-IW-VyV"/>
+                                <constraint firstItem="2fb-YP-B4p" firstAttribute="leading" secondItem="6Ql-if-SmN" secondAttribute="trailing" constant="10" id="Njx-gw-a5I"/>
+                                <constraint firstItem="ShM-67-u0r" firstAttribute="top" secondItem="6Ql-if-SmN" secondAttribute="bottom" constant="-1" id="PpZ-PZ-ty6"/>
+                                <constraint firstAttribute="bottom" secondItem="RJv-RE-pzA" secondAttribute="bottom" id="TaC-Ra-98d"/>
+                                <constraint firstItem="dmq-tX-WyF" firstAttribute="top" secondItem="WoK-8N-14U" secondAttribute="top" constant="1" id="TbA-l9-brO"/>
+                                <constraint firstItem="ShM-67-u0r" firstAttribute="leading" secondItem="RJv-RE-pzA" secondAttribute="trailing" id="XAa-om-v9y"/>
+                                <constraint firstItem="VCH-ha-FmY" firstAttribute="top" secondItem="WoK-8N-14U" secondAttribute="top" constant="4" id="Zta-KG-ukk"/>
+                                <constraint firstAttribute="trailing" secondItem="ShM-67-u0r" secondAttribute="trailing" id="ca5-Tn-fLB"/>
+                                <constraint firstItem="M0y-B3-8E4" firstAttribute="leading" secondItem="RJv-RE-pzA" secondAttribute="trailing" constant="7" id="cg9-Hk-ppz"/>
+                                <constraint firstItem="RJv-RE-pzA" firstAttribute="leading" secondItem="WoK-8N-14U" secondAttribute="leading" id="eth-dA-OR8"/>
+                                <constraint firstAttribute="bottom" secondItem="ShM-67-u0r" secondAttribute="bottom" constant="-5" id="ezH-az-pui"/>
+                                <constraint firstItem="6Ql-if-SmN" firstAttribute="leading" secondItem="M0y-B3-8E4" secondAttribute="trailing" constant="10" id="jQ0-6e-ber"/>
+                                <constraint firstAttribute="trailing" secondItem="VCH-ha-FmY" secondAttribute="trailing" constant="10" id="n3O-ue-54L"/>
+                                <constraint firstAttribute="trailing" secondItem="2fb-YP-B4p" secondAttribute="trailing" constant="7" id="sKy-27-pP5"/>
+                                <constraint firstItem="VCH-ha-FmY" firstAttribute="leading" secondItem="RJv-RE-pzA" secondAttribute="trailing" constant="10" id="shD-O0-Dtz"/>
+                            </constraints>
+                        </view>
+                        <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="vvZ-gH-nC7" userLabel="Left Separator">
+                            <rect key="frame" x="-2" y="1" width="5" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="GMr-d0-1Pz"/>
+                            </constraints>
+                        </box>
+                        <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="wgY-fB-m2w" userLabel="Right Separator">
+                            <rect key="frame" x="237" y="1" width="5" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="TS0-sa-gnL"/>
+                            </constraints>
+                        </box>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="vvZ-gH-nC7" firstAttribute="leading" secondItem="HkS-cX-dXa" secondAttribute="leading" id="0DU-4c-Lbo"/>
+                        <constraint firstItem="x1h-nb-uDS" firstAttribute="top" secondItem="HkS-cX-dXa" secondAttribute="top" id="0HE-XS-4hb"/>
+                        <constraint firstAttribute="bottom" secondItem="vvZ-gH-nC7" secondAttribute="bottom" constant="1" id="8C7-CW-kcB"/>
+                        <constraint firstAttribute="bottom" secondItem="wgY-fB-m2w" secondAttribute="bottom" constant="1" id="Qlt-Mf-tt9"/>
+                        <constraint firstAttribute="trailing" secondItem="wgY-fB-m2w" secondAttribute="trailing" id="R4J-eR-BSn"/>
+                        <constraint firstAttribute="height" constant="45" id="VfZ-RZ-gHF"/>
+                        <constraint firstItem="vvZ-gH-nC7" firstAttribute="top" secondItem="HkS-cX-dXa" secondAttribute="top" id="YNm-tH-4Yz"/>
+                        <constraint firstItem="wgY-fB-m2w" firstAttribute="top" secondItem="HkS-cX-dXa" secondAttribute="top" id="ZWf-1b-lUn"/>
+                        <constraint firstItem="wgY-fB-m2w" firstAttribute="leading" secondItem="WoK-8N-14U" secondAttribute="trailing" id="cpZ-ak-v2n"/>
+                        <constraint firstItem="WoK-8N-14U" firstAttribute="top" secondItem="HkS-cX-dXa" secondAttribute="top" id="f3j-bH-K5l"/>
+                        <constraint firstAttribute="bottom" secondItem="x1h-nb-uDS" secondAttribute="bottom" constant="1" id="gxL-NO-buq"/>
+                        <constraint firstItem="x1h-nb-uDS" firstAttribute="leading" secondItem="HkS-cX-dXa" secondAttribute="leading" constant="1" id="krI-1l-Vp7"/>
+                        <constraint firstAttribute="bottom" secondItem="WoK-8N-14U" secondAttribute="bottom" constant="1" id="odX-pK-VQY"/>
+                        <constraint firstItem="WoK-8N-14U" firstAttribute="leading" secondItem="vvZ-gH-nC7" secondAttribute="trailing" id="teD-bc-3iv"/>
+                        <constraint firstAttribute="trailing" secondItem="x1h-nb-uDS" secondAttribute="trailing" constant="1" id="zGE-Gw-Fmt"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="artistAlbumLabel" destination="6Ql-if-SmN" id="1AQ-7f-FYU"/>
+                        <outlet property="background" destination="x1h-nb-uDS" id="UGM-Tg-ySp"/>
+                        <outlet property="coverImageView" destination="RJv-RE-pzA" id="NSF-xy-mZt"/>
+                        <outlet property="durationTimeLabel" destination="2fb-YP-B4p" id="68R-Hk-u3O"/>
+                        <outlet property="elapsedTimeLabel" destination="M0y-B3-8E4" id="Ika-pP-xhd"/>
+                        <outlet property="leftSeparator" destination="vvZ-gH-nC7" id="DcW-KK-FHn"/>
+                        <outlet property="progressBar" destination="ShM-67-u0r" id="uVx-6m-u2v"/>
+                        <outlet property="rightSeparator" destination="wgY-fB-m2w" id="ySD-31-ZEH"/>
+                        <outlet property="songTitleLabel" destination="VCH-ha-FmY" id="Q0n-aZ-bEa"/>
+                    </connections>
+                </customView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="bFJ-79-Mre" userLabel="Right Container">
+                    <rect key="frame" x="541" y="0.0" width="301" height="45"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sUQ-oB-VB8">
+                            <rect key="frame" x="11" y="9" width="41" height="27"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="ocf-AV-5mw"/>
+                                <constraint firstAttribute="width" constant="41" id="olp-uA-UJK"/>
+                            </constraints>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="AZToolbarQueue" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="0UA-rE-Avo">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="lSa-Vt-6rU" userLabel="Space">
+                            <rect key="frame" x="60" y="0.0" width="17" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="0sd-Mk-Vor"/>
+                            </constraints>
+                        </customView>
+                        <searchField wantsLayer="YES" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yD-Sl-nz4">
+                            <rect key="frame" x="85" y="12" width="206" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="206" id="Uw4-B4-rcb"/>
+                            </constraints>
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" recentsAutosaveName="MusicPlayerSearchField" id="pjb-IM-l15">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </searchFieldCell>
+                        </searchField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="EUj-MP-sRY"/>
+                        <constraint firstItem="9yD-Sl-nz4" firstAttribute="leading" secondItem="lSa-Vt-6rU" secondAttribute="trailing" constant="8" id="FsK-w1-e8J"/>
+                        <constraint firstAttribute="trailing" secondItem="9yD-Sl-nz4" secondAttribute="trailing" constant="10" id="a7x-kP-YX7"/>
+                        <constraint firstItem="sUQ-oB-VB8" firstAttribute="leading" secondItem="bFJ-79-Mre" secondAttribute="leading" constant="11" id="btD-ro-Oe8"/>
+                        <constraint firstItem="lSa-Vt-6rU" firstAttribute="leading" secondItem="sUQ-oB-VB8" secondAttribute="trailing" constant="8" id="fdg-nc-TuW"/>
+                        <constraint firstAttribute="bottom" secondItem="9yD-Sl-nz4" secondAttribute="bottom" constant="12" id="lkI-Xs-vqk"/>
+                        <constraint firstAttribute="bottom" secondItem="lSa-Vt-6rU" secondAttribute="bottom" id="vhp-Hd-AXp"/>
+                        <constraint firstAttribute="bottom" secondItem="sUQ-oB-VB8" secondAttribute="bottom" constant="11" id="xw0-uG-8rg"/>
+                    </constraints>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="eYj-lf-Yf2" firstAttribute="leading" secondItem="ZVb-Zf-ogS" secondAttribute="trailing" constant="16" id="4qf-m3-ftV"/>
+                <constraint firstItem="eYj-lf-Yf2" firstAttribute="width" relation="lessThanOrEqual" secondItem="c22-O7-iKe" secondAttribute="width" multiplier="1:8" priority="500" id="AIo-Cf-9vv"/>
+                <constraint firstItem="bFJ-79-Mre" firstAttribute="leading" secondItem="HkS-cX-dXa" secondAttribute="trailing" id="CgI-w5-DrZ"/>
+                <constraint firstItem="9pO-e0-Srt" firstAttribute="leading" secondItem="VID-Sc-3d1" secondAttribute="trailing" constant="9" id="GLJ-Yn-m1Z"/>
+                <constraint firstAttribute="bottom" secondItem="9pO-e0-Srt" secondAttribute="bottom" constant="8" id="KRd-JD-ahf"/>
+                <constraint firstItem="HkS-cX-dXa" firstAttribute="width" secondItem="c22-O7-iKe" secondAttribute="width" multiplier="0.65" priority="500" id="OY0-tL-5pi"/>
+                <constraint firstAttribute="bottom" secondItem="eYj-lf-Yf2" secondAttribute="bottom" id="Prp-ie-SDR"/>
+                <constraint firstItem="ZVb-Zf-ogS" firstAttribute="leading" secondItem="9pO-e0-Srt" secondAttribute="trailing" constant="9" id="QBD-6Q-00N"/>
+                <constraint firstAttribute="bottom" secondItem="HkS-cX-dXa" secondAttribute="bottom" id="QJQ-6I-hEt"/>
+                <constraint firstAttribute="bottom" secondItem="VID-Sc-3d1" secondAttribute="bottom" constant="8" id="UxV-AF-iMP"/>
+                <constraint firstAttribute="bottom" secondItem="bFJ-79-Mre" secondAttribute="bottom" id="Y2T-1Z-4c9"/>
+                <constraint firstItem="lSa-Vt-6rU" firstAttribute="width" secondItem="c22-O7-iKe" secondAttribute="width" multiplier="1:8" priority="500" id="bay-zK-oyP"/>
+                <constraint firstItem="HkS-cX-dXa" firstAttribute="leading" secondItem="eYj-lf-Yf2" secondAttribute="trailing" constant="16" id="dc4-Qu-bNp"/>
+                <constraint firstItem="VID-Sc-3d1" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="81" id="gS6-sf-Fqt"/>
+                <constraint firstAttribute="trailing" secondItem="bFJ-79-Mre" secondAttribute="trailing" id="tGf-Ei-T3a"/>
+                <constraint firstItem="HkS-cX-dXa" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" priority="750" id="tHf-EQ-DKw"/>
+                <constraint firstAttribute="bottom" secondItem="ZVb-Zf-ogS" secondAttribute="bottom" constant="8" id="ye7-su-tXl"/>
+                <constraint firstItem="HkS-cX-dXa" firstAttribute="width" relation="lessThanOrEqual" secondItem="c22-O7-iKe" secondAttribute="width" multiplier="0.425" id="zmL-FB-t9u"/>
+            </constraints>
+            <connections>
+                <outlet property="nextButton" destination="ZVb-Zf-ogS" id="U5O-at-4bZ"/>
+                <outlet property="pausePlayButton" destination="9pO-e0-Srt" id="vv7-Rm-J2o"/>
+                <outlet property="previousButton" destination="VID-Sc-3d1" id="fLo-zx-KFO"/>
+                <outlet property="queueButton" destination="sUQ-oB-VB8" id="lAp-Z3-FZk"/>
+                <outlet property="rightContainer" destination="bFJ-79-Mre" id="a7K-Bp-jio"/>
+                <outlet property="searchField" destination="9yD-Sl-nz4" id="YOD-Z2-98v"/>
+                <outlet property="statusView" destination="HkS-cX-dXa" id="cRT-jK-foR"/>
+                <outlet property="volumeSlider" destination="uhD-Ju-91D" id="Ctx-gV-uhy"/>
+            </connections>
+            <point key="canvasLocation" x="138" y="167.5"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="AZDefaultCover" width="512" height="512"/>
+        <image name="AZNext" width="30" height="30"/>
+        <image name="AZPause" width="30" height="30"/>
+        <image name="AZPlay" width="30" height="30"/>
+        <image name="AZPrevious" width="30" height="30"/>
+        <image name="AZToolbarQueue" width="17" height="10"/>
+    </resources>
+</document>

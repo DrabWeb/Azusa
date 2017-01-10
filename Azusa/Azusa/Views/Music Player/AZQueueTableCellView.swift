@@ -41,4 +41,9 @@ class AZQueueTableCellView: NSTableCellView {
         self.titleLabel.stringValue = song.displayTitle;
         self.artistAlbumLabel.stringValue = "\(song.displayArtist) — \(song.displayAlbum)";
     }
+    
+    deinit {
+        self.coverImageView.image = nil;
+        self.representedSong = nil;
+    }
 }

@@ -78,26 +78,20 @@ extension NSImage {
         /// The resized image to return
         let resizedImage : NSImage = NSImage(size: resizedSize);
         
-        // A reference to this image for using as the source
-        var sourceImage : NSImage! = self;
-        
         // Lock drawing focus
         resizedImage.lockFocus();
         
         // Set the source image's size
-        sourceImage.size = resizedSize;
+        self.size = resizedSize;
         
         // Set image interpolation to the best quality
         NSGraphicsContext.current()!.imageInterpolation = NSImageInterpolation.high;
         
         // Draw `sourceImage` into `resizedImage`
-        sourceImage.draw(at: NSZeroPoint, from: NSRect(x: 0, y: 0, width: resizedSize.width, height: resizedSize.height), operation: .copy, fraction: 1);
+        self.draw(at: NSZeroPoint, from: NSRect(x: 0, y: 0, width: pixelSize.width, height: pixelSize.height), operation: .copy, fraction: 1);
         
         // Unlock drawing focus
         resizedImage.unlockFocus();
-        
-        // Release `sourceImage` from memory
-        sourceImage = nil;
         
         // Return `resizedImage`
         return resizedImage;

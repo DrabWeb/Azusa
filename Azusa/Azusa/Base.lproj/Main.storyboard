@@ -4,7 +4,6 @@
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -480,241 +479,15 @@
         <scene sceneID="j7I-Mb-OnV">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="hXg-Xn-Rjr" userLabel="Music Player Window Controller" sceneMemberID="viewController">
-                    <window key="window" title="Azusa" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="MusicPlayer" animationBehavior="default" tabbingMode="disallowed" id="z78-jn-9gz">
+                    <window key="window" title="Azusa" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="MusicPlayer" animationBehavior="default" tabbingMode="disallowed" id="z78-jn-9gz" customClass="WAYWindow">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="229" y="249" width="842" height="400"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1600" height="900"/>
                         <value key="minSize" type="size" width="842" height="400"/>
-                        <toolbar key="toolbar" implicitIdentifier="AAE3C5B4-BDAE-4137-9AD9-8B5B263FC075" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="JnO-GY-qL7">
-                            <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="MFn-7W-Ctz"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Uil-b1-2gn"/>
-                                <toolbarItem implicitItemIdentifier="92ACA4F6-6303-42C8-B8AB-8CBF8D31C489" explicitItemIdentifier="Search" label="Search" paletteLabel="Search" id="sFu-zf-pdQ">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="96" height="22"/>
-                                    <size key="maxSize" width="200" height="22"/>
-                                    <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="43z-6r-zEk">
-                                        <rect key="frame" x="0.0" y="14" width="96" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="WBE-CC-P18">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </searchFieldCell>
-                                        <connections>
-                                            <action selector="toolbarSearchFieldEnteredWithSender:" target="IaQ-hp-eUK" id="Kzf-4H-JsP"/>
-                                        </connections>
-                                    </searchField>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="1C6C6746-C0CD-43E3-8CE3-8A5F208CA1AE" explicitItemIdentifier="Previous" label="Previous" paletteLabel="Previous" image="AZPrevious" id="LEc-Id-aw6">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="37" height="30"/>
-                                    <size key="maxSize" width="37" height="37"/>
-                                    <button key="view" id="FRr-Js-LXR">
-                                        <rect key="frame" x="8" y="14" width="37" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZPrevious" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="vpd-Qe-MAp">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="toolbarSkipPreviousPressedWithSender:" target="IaQ-hp-eUK" id="USi-0W-yPu"/>
-                                        </connections>
-                                    </button>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="123595E4-9A65-49A6-924B-1B757F537043" explicitItemIdentifier="PausePlay" label="Pause/Play" paletteLabel="Pause/Play" image="AZPlay" id="XMe-Hh-uGB">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="37" height="37"/>
-                                    <size key="maxSize" width="37" height="37"/>
-                                    <button key="view" id="pn8-Jt-XFr">
-                                        <rect key="frame" x="14" y="14" width="37" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZPlay" imagePosition="overlaps" alignment="center" alternateImage="AZPause" imageScaling="proportionallyUpOrDown" inset="2" id="sEZ-8T-Vey">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="toolbarPausePlayPressedWithSender:" target="IaQ-hp-eUK" id="Ga3-6F-hr4"/>
-                                        </connections>
-                                    </button>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="4FD92FB4-CF31-4996-8F37-F6CDF7AE7C15" explicitItemIdentifier="Next" label="Next" paletteLabel="Next" image="AZNext" id="t3h-BR-CaG">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="37" height="30"/>
-                                    <size key="maxSize" width="37" height="37"/>
-                                    <button key="view" id="wiY-1J-IpA">
-                                        <rect key="frame" x="0.0" y="14" width="37" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AZNext" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="VcX-YG-OPy">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="toolbarSkipNextPressedWithSender:" target="IaQ-hp-eUK" id="4X9-RJ-fVg"/>
-                                        </connections>
-                                    </button>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="C4C8BCC1-1BD9-4C46-A5FC-12FD31E914B4" explicitItemIdentifier="Volume" label="Volume" paletteLabel="Volume" id="6Hv-MF-95i">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="30" height="21"/>
-                                    <size key="maxSize" width="96" height="21"/>
-                                    <slider key="view" verticalHuggingPriority="750" id="0NV-Iv-b0Q">
-                                        <rect key="frame" x="0.0" y="14" width="96" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="66.880208333333329" tickMarkPosition="above" sliderType="linear" id="Tpt-3u-uOw"/>
-                                        <connections>
-                                            <action selector="toolbarVolumeSliderMovedWithSender:" target="IaQ-hp-eUK" id="CnA-m1-lDO"/>
-                                        </connections>
-                                    </slider>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="6DAA5447-2F45-462F-B5C6-2A726B2E1DCD" explicitItemIdentifier="Queue" label="Queue" paletteLabel="Queue" image="AZToolbarQueue" id="LuR-Vf-uKe" userLabel="Queue">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="39" height="28"/>
-                                    <size key="maxSize" width="39" height="29"/>
-                                    <button key="view" verticalHuggingPriority="750" id="9Zm-4M-iMp">
-                                        <rect key="frame" x="2" y="14" width="39" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="AZToolbarQueue" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mZN-cF-oZO">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="toolbarQueuePressedWithSender:" target="IaQ-hp-eUK" id="bk1-ii-ai3"/>
-                                            <segue destination="VvY-Eo-Ig4" kind="popover" identifier="" popoverAnchorView="9Zm-4M-iMp" popoverBehavior="t" preferredEdge="maxY" id="x2w-Ih-wPM"/>
-                                        </connections>
-                                    </button>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="EA7E5564-8640-4D07-85FD-3F573FFE890B" explicitItemIdentifier="Status" label="Status" paletteLabel="Status" tag="-1" id="kqD-AX-yZe">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="100" height="36"/>
-                                    <size key="maxSize" width="650" height="38"/>
-                                    <customView key="view" id="tc0-oy-G6B" customClass="AZToolbarStatusView" customModule="Azusa" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="14" width="200" height="36"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="dnZ-c9-egX" userLabel="Background">
-                                                <rect key="frame" x="1" y="1" width="198" height="35"/>
-                                                <view key="contentView" id="nEM-UR-cet">
-                                                    <rect key="frame" x="0.0" y="0.0" width="198" height="35"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <subviews>
-                                                        <imageView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="cLi-0c-CSy" userLabel="Cover Art Image View" customClass="AZAspectFillImageView" customModule="Azusa" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="cLi-0c-CSy" secondAttribute="height" multiplier="1:1" id="edc-R9-dBU"/>
-                                                            </constraints>
-                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AZDefaultCover" id="OPA-Dz-YYo"/>
-                                                        </imageView>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="k8d-HT-htm">
-                                                            <rect key="frame" x="37" y="17" width="159" height="14"/>
-                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Song Title" id="kj9-mC-L1t">
-                                                                <font key="font" metaFont="smallSystem"/>
-                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                        </textField>
-                                                        <textField verticalHuggingPriority="750" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="97U-Ul-4Pr" userLabel="Elapsed Time">
-                                                            <rect key="frame" x="39" y="6" width="35" height="11"/>
-                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="00:00" id="YCX-YQ-Noe">
-                                                                <font key="font" metaFont="miniSystem"/>
-                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                        </textField>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="KFZ-HB-ATZ" userLabel="Artist and Album">
-                                                            <rect key="frame" x="80" y="6" width="73" height="11"/>
-                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Artist — Album" usesSingleLineMode="YES" id="xj6-UW-g3g">
-                                                                <font key="font" metaFont="miniSystem"/>
-                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                        </textField>
-                                                        <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" tag="6" translatesAutoresizingMaskIntoConstraints="NO" id="qZZ-eb-5PS" userLabel="Duration">
-                                                            <rect key="frame" x="159" y="6" width="35" height="11"/>
-                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="-00:00" id="S7g-x3-cKJ">
-                                                                <font key="font" metaFont="miniSystem"/>
-                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                        </textField>
-                                                        <slider verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="CpU-Iu-7Dw" userLabel="Progress Bar">
-                                                            <rect key="frame" x="33" y="-12" width="167" height="19"/>
-                                                            <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="bJC-cv-2Rs" customClass="AZProgressBarCell" customModule="Azusa" customModuleProvider="target">
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
-                                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </sliderCell>
-                                                        </slider>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="KFZ-HB-ATZ" firstAttribute="leading" secondItem="97U-Ul-4Pr" secondAttribute="trailing" constant="10" id="0zl-vt-Kuh"/>
-                                                        <constraint firstAttribute="trailing" secondItem="k8d-HT-htm" secondAttribute="trailing" constant="4" id="1of-5d-b6h"/>
-                                                        <constraint firstAttribute="bottom" secondItem="qZZ-eb-5PS" secondAttribute="bottom" constant="6" id="384-9L-YUI"/>
-                                                        <constraint firstAttribute="bottom" secondItem="97U-Ul-4Pr" secondAttribute="bottom" constant="6" id="Bzf-2p-SWm"/>
-                                                        <constraint firstAttribute="bottom" secondItem="cLi-0c-CSy" secondAttribute="bottom" id="ITM-1G-nhd"/>
-                                                        <constraint firstItem="qZZ-eb-5PS" firstAttribute="leading" secondItem="KFZ-HB-ATZ" secondAttribute="trailing" constant="10" id="IpH-kv-3C0"/>
-                                                        <constraint firstAttribute="trailing" secondItem="CpU-Iu-7Dw" secondAttribute="trailing" id="J6K-XD-5zO"/>
-                                                        <constraint firstItem="CpU-Iu-7Dw" firstAttribute="leading" secondItem="cLi-0c-CSy" secondAttribute="trailing" id="M4R-XU-1w2"/>
-                                                        <constraint firstItem="cLi-0c-CSy" firstAttribute="leading" secondItem="nEM-UR-cet" secondAttribute="leading" id="QUS-Bn-gWP"/>
-                                                        <constraint firstItem="qZZ-eb-5PS" firstAttribute="width" secondItem="97U-Ul-4Pr" secondAttribute="width" id="Qnb-zs-HcD"/>
-                                                        <constraint firstAttribute="trailing" secondItem="qZZ-eb-5PS" secondAttribute="trailing" constant="6" id="RMR-29-C7e"/>
-                                                        <constraint firstItem="97U-Ul-4Pr" firstAttribute="leading" secondItem="cLi-0c-CSy" secondAttribute="trailing" constant="6" id="dKS-tO-QrQ"/>
-                                                        <constraint firstItem="k8d-HT-htm" firstAttribute="leading" secondItem="cLi-0c-CSy" secondAttribute="trailing" constant="4" id="jtE-XM-9dx"/>
-                                                        <constraint firstAttribute="bottom" secondItem="KFZ-HB-ATZ" secondAttribute="bottom" constant="6" id="oKA-w8-xG5"/>
-                                                        <constraint firstItem="cLi-0c-CSy" firstAttribute="top" secondItem="nEM-UR-cet" secondAttribute="top" id="pxD-ym-wJv"/>
-                                                        <constraint firstItem="k8d-HT-htm" firstAttribute="top" secondItem="nEM-UR-cet" secondAttribute="top" constant="4" id="q85-2s-NaY"/>
-                                                        <constraint firstAttribute="bottom" secondItem="CpU-Iu-7Dw" secondAttribute="bottom" constant="-10" id="rRs-CF-mv7"/>
-                                                    </constraints>
-                                                </view>
-                                                <color key="borderColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <color key="fillColor" white="1" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
-                                            </box>
-                                            <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="nxT-Gf-2Pn" userLabel="Left Separator">
-                                                <rect key="frame" x="-2" y="1" width="5" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="1" id="kjI-5U-pgK"/>
-                                                </constraints>
-                                            </box>
-                                            <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="eMV-5J-6Zx" userLabel="Right Separator">
-                                                <rect key="frame" x="197" y="1" width="5" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="1" id="snW-6m-bPW"/>
-                                                </constraints>
-                                            </box>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="eMV-5J-6Zx" secondAttribute="bottom" constant="1" id="Bfe-HZ-wK3"/>
-                                            <constraint firstAttribute="bottom" secondItem="dnZ-c9-egX" secondAttribute="bottom" constant="1" id="DV6-G3-bmp"/>
-                                            <constraint firstItem="dnZ-c9-egX" firstAttribute="top" secondItem="tc0-oy-G6B" secondAttribute="top" id="MB1-Wr-8rP"/>
-                                            <constraint firstItem="nxT-Gf-2Pn" firstAttribute="leading" secondItem="tc0-oy-G6B" secondAttribute="leading" id="N21-Y6-iz8"/>
-                                            <constraint firstItem="eMV-5J-6Zx" firstAttribute="top" secondItem="tc0-oy-G6B" secondAttribute="top" id="NNF-oH-uDj"/>
-                                            <constraint firstItem="nxT-Gf-2Pn" firstAttribute="top" secondItem="tc0-oy-G6B" secondAttribute="top" id="SxT-BT-bYz"/>
-                                            <constraint firstItem="dnZ-c9-egX" firstAttribute="leading" secondItem="tc0-oy-G6B" secondAttribute="leading" constant="1" id="U87-a3-1bM"/>
-                                            <constraint firstAttribute="bottom" secondItem="nxT-Gf-2Pn" secondAttribute="bottom" constant="1" id="Ump-1n-pjc"/>
-                                            <constraint firstAttribute="trailing" secondItem="dnZ-c9-egX" secondAttribute="trailing" constant="1" id="XLt-rC-Jis"/>
-                                            <constraint firstAttribute="trailing" secondItem="eMV-5J-6Zx" secondAttribute="trailing" id="lph-Rt-I8z"/>
-                                        </constraints>
-                                    </customView>
-                                </toolbarItem>
-                            </allowedToolbarItems>
-                            <defaultToolbarItems>
-                                <toolbarItem reference="LEc-Id-aw6"/>
-                                <toolbarItem reference="XMe-Hh-uGB"/>
-                                <toolbarItem reference="t3h-BR-CaG"/>
-                                <toolbarItem reference="6Hv-MF-95i"/>
-                                <toolbarItem reference="Uil-b1-2gn"/>
-                                <toolbarItem reference="kqD-AX-yZe"/>
-                                <toolbarItem reference="LuR-Vf-uKe"/>
-                                <toolbarItem reference="Uil-b1-2gn"/>
-                                <toolbarItem reference="sFu-zf-pdQ"/>
-                            </defaultToolbarItems>
-                        </toolbar>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="centerTrafficLightButtons" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </window>
                     <connections>
                         <segue destination="Gm4-2K-pe0" kind="relationship" relationship="window.shadowedContentViewController" id="qtO-QZ-VkY"/>
@@ -732,7 +505,7 @@
                         <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="TGI-R8-5g1"/>
                         <splitViewItem id="CYw-zO-BOD"/>
                     </splitViewItems>
-                    <splitView key="splitView" misplaced="YES" dividerStyle="thin" vertical="YES" id="2BH-Cj-pFh">
+                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="2BH-Cj-pFh">
                         <rect key="frame" x="0.0" y="0.0" width="842" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </splitView>
@@ -1079,11 +852,6 @@
     </scenes>
     <resources>
         <image name="AZDefaultCover" width="512" height="512"/>
-        <image name="AZNext" width="37" height="37"/>
-        <image name="AZPause" width="37" height="37"/>
-        <image name="AZPlay" width="60" height="60"/>
-        <image name="AZPrevious" width="37" height="37"/>
-        <image name="AZToolbarQueue" width="17" height="11"/>
         <image name="NSActionTemplate" width="14" height="14"/>
     </resources>
 </document>

@@ -14,7 +14,10 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate, NSU
     // MARK: - Properties
     
     /// The window for this view controller
-    var window : NSWindow? = nil;
+    var window : WAYWindow! = nil;
+    
+    /// The toolbar for this music player
+    var toolbar : AZMusicPlayerToolbarView! = nil;
     
     /// The current `AZQueueViewController` for the popup queue view(if there is one)
     private weak var queuePopupViewController : AZQueueViewController? = nil;
@@ -24,30 +27,6 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate, NSU
     
     /// The last sent song changed notification
     private var lastSongChangedNotification : NSUserNotification? = nil;
-    
-    
-    // MARK: - Toolbar Items
-    
-    /// The toolbar button for skipping to the previous song
-    var toolbarSkipPreviousButton: NSButton? = nil;
-    
-    /// The toolbar button for pausing/playing
-    var toolbarPausePlayButton: NSButton? = nil;
-    
-    /// The toolbar button for skipping to the next song
-    var toolbarSkipNextButton: NSButton? = nil;
-    
-    /// The toolbar slider for controlling the volume
-    var toolbarVolumeSlider: NSSlider? = nil;
-    
-    /// The `AZToolbarStatusView` item for the toolbar of this music player
-    var toolbarStatusItem : AZToolbarStatusView? = nil;
-    
-    /// The toolbar button for displaying the queue popup
-    var toolbarQueueButton: NSButton? = nil;
-    
-    /// The toolbar search field for searching for songs
-    var toolbarSearchField: NSSearchField? = nil;
     
     /// The `AZMusicPlayer` for this music player
     var musicPlayer : AZMusicPlayer = MIMusicPlayer(settings: ["address": "127.0.0.1", "port": 6600, "musicDirectory": "/Volumes/Storage/macOS/Music/"]);
@@ -62,36 +41,37 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate, NSU
     // MARK: - Toolbar Actions
     
     /// Called when the user presses `toolbarSkipPreviousButton`
-    @IBAction func toolbarSkipPreviousPressed(sender : NSButton) {
+    func toolbarSkipPreviousPressed(sender : NSButton) {
         // Skip to the previous song in the queue
         self.skipPrevious();
     }
     
     /// Called when the user presses `toolbarPausePlayButton`
-    @IBAction func toolbarPausePlayPressed(sender : NSButton) {
+    func toolbarPausePlayPressed(sender : NSButton) {
         // Toggle the paused state
         self.togglePaused();
     }
     
     /// Called when the user presses `toolbarSkipNextButton`
-    @IBAction func toolbarSkipNextPressed(sender : NSButton) {
+    func toolbarSkipNextPressed(sender : NSButton) {
         // Skip to the next song in the queue
         self.skipNext();
     }
     
     /// Called when the user moves `toolbarVolumeSlider`
-    @IBAction func toolbarVolumeSliderMoved(sender : NSSlider) {
+    func toolbarVolumeSliderMoved(sender : NSSlider) {
         // Set the volume
         self.setVolume(Int(sender.intValue));
     }
     
     /// Called when the user presses `toolbarQueueButton`
-    @IBAction func toolbarQueuePressed(sender : NSButton) {
-        
+    func toolbarQueuePressed(sender : NSButton) {
+        // Open the queue popup
+        openQueuePopup();
     }
     
     /// Called when text is entered into `toolbarSearchField`
-    @IBAction func toolbarSearchFieldEntered(sender : NSSearchField) {
+    func toolbarSearchFieldEntered(sender : NSSearchField) {
         
     }
     
@@ -120,11 +100,12 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate, NSU
         AZLogger.log("AZMusicPlayerViewController: Displaying status \(status)", level: .full);
         
         // Update the toolbar items
-        self.toolbarPausePlayButton?.state = ((status.playingState == .playing) ? 1 : 0);
-        self.toolbarVolumeSlider?.intValue = Int32(status.volume);
+        self.toolbar.pausePlayButton.state = ((status.playingState == .playing) ? 1 : 0);
+        self.toolbar.pausePlayButton.image = ((toolbar.pausePlayButton.state == 0) ? #imageLiteral(resourceName: "AZPlay") : #imageLiteral(resourceName: "AZPause"));
+        self.toolbar.volumeSlider.intValue = Int32(status.volume);
         
         // Display `status` in `toolbarStatusItem`
-        self.toolbarStatusItem?.display(status: status);
+        self.toolbar.statusView.display(status: status);
         
         /// The last displayed `AZSong`
         let lastDisplayedSong : AZSong? = self.lastDisplayedStatus?.currentSong;
@@ -198,7 +179,7 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate, NSU
             self.progressTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { _ in
                 // Get the current elapsed time and display it
                 self.musicPlayer.getElapsed({ elapsed in
-                    self.toolbarStatusItem?.display(elapsed: elapsed);
+                    self.toolbar.statusView.display(elapsed: elapsed);
                 });
             });
         });
@@ -251,69 +232,63 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate, NSU
         let newQueueViewController : AZQueueViewController = self.storyboard!.instantiateController(withIdentifier: "queueViewController") as! AZQueueViewController;
         
         // Display `AZQueueViewController` as a popup relative to `toolbarQueueButton`
-        self.presentViewController(newQueueViewController, asPopoverRelativeTo: self.toolbarQueueButton!.frame, of: self.toolbarQueueButton!, preferredEdge: .maxY, behavior: .transient);
+        self.presentViewController(newQueueViewController, asPopoverRelativeTo: self.toolbar.queueButton.bounds, of: self.toolbar.queueButton, preferredEdge: .maxY, behavior: .transient);
     }
     
     override func viewWillAppear() {
         super.viewWillAppear();
         
-        // Get all the toolbar items
-        for(_, currentItem) in self.window!.toolbar!.items.enumerated() {
-            switch(currentItem.itemIdentifier) {
-            case "Previous":
-                self.toolbarSkipPreviousButton = (currentItem.view as! NSButton);
-                break;
-                
-            case "PausePlay":
-                self.toolbarPausePlayButton = (currentItem.view as! NSButton);
-                break;
-                
-            case "Next":
-                self.toolbarSkipNextButton = (currentItem.view as! NSButton);
-                break;
-                
-            case "Volume":
-                self.toolbarVolumeSlider = (currentItem.view as! NSSlider);
-                break;
-                
-            case "Status":
-                self.toolbarStatusItem = (currentItem.view as! AZToolbarStatusView);
-                
-                // Set the toolbar status item's seek event handler
-                self.toolbarStatusItem!.seekHandler = { to in
-                    // Seek to the seek time
-                    self.musicPlayer.seek(to: to, completionHandler: nil);
-                }
-                
-                break;
-                
-            case "Queue":
-                self.toolbarQueueButton = (currentItem.view as! NSButton);
-                break;
-                
-            case "Search":
-                self.toolbarSearchField = (currentItem.view as! NSSearchField);
-                break;
-                
-            default:
-                break;
-            }
-        }
-        
         // Do the initial status display(called here so we're sure all the toolbar items are loaded)
         self.displayCurrentStatus();
+    }
+    
+    /// Creates a new `AZMusicPlayerToolbarView` and attaches it to this view
+    func createToolbar() {
+        /// The top level items of the newly loaded `AZMusicPlayerToolbarView` nib
+        var topLevelItems : NSArray = [];
+        
+        // Load the `AZMusicPlayerToolbarView` nib into `topLevelItems`
+        Bundle.main.loadNibNamed("AZMusicPlayerToolbarView", owner: nil, topLevelObjects: &topLevelItems);
+        
+        // Get the titlebar view of this window, and if it isn't nil...
+        if let titlebarView = self.window.standardWindowButton(.closeButton)?.superview {
+            // Get the `AZMusicPlayerToolbarView` from `topLevelItems`
+            topLevelItems.forEach {
+                if let toolbarView = ($0 as? AZMusicPlayerToolbarView) {
+                    // Add the toolbar to this window
+                    self.toolbar = toolbarView;
+                    titlebarView.addSubview(toolbar);
+                    toolbarView.setFrameSize(NSSize(width: titlebarView.frame.size.width, height: 45));
+                    
+                    // Setup the toolbar item actions
+                    self.toolbar.previousButton.action = #selector(AZMusicPlayerViewController.toolbarSkipPreviousPressed(sender:));
+                    self.toolbar.pausePlayButton.action = #selector(AZMusicPlayerViewController.toolbarPausePlayPressed(sender:));
+                    self.toolbar.nextButton.action = #selector(AZMusicPlayerViewController.toolbarSkipNextPressed(sender:));
+                    self.toolbar.volumeSlider.action = #selector(AZMusicPlayerViewController.toolbarVolumeSliderMoved(sender:));
+                    self.toolbar.queueButton.action = #selector(AZMusicPlayerViewController.toolbarQueuePressed(sender:));
+                    self.toolbar.searchField.action = #selector(AZMusicPlayerViewController.toolbarSearchFieldEntered(sender:));
+                    
+                    self.toolbar.statusView.seekHandler = { position in
+                        self.musicPlayer.seek(to: position, completionHandler: nil);
+                    }
+                }
+            }
+        }
     }
     
     /// Sets up this view controller(styling, init, etc.)
     func setup() {
         // Get the window of this view controller
-        self.window = NSApp.windows.last!;
+        self.window = (NSApp.windows.last! as! WAYWindow);
         
         // Style the window
-        self.window!.styleMask.insert(NSWindowStyleMask.fullSizeContentView);
-        self.window!.titleVisibility = .hidden;
-        self.window!.appearance = NSAppearance(named: NSAppearanceNameVibrantLight);
-     
+        self.window.styleMask.insert(NSWindowStyleMask.fullSizeContentView);
+        self.window.titleVisibility = .hidden;
+        self.window.appearance = NSAppearance(named: NSAppearanceNameVibrantLight);
+        self.window.titleBarHeight = 45;
+        self.window.trafficLightButtonsTopMargin = 0;
+        self.window.trafficLightButtonsLeftMargin = 12;
+        
         // Set the sidebar's maximum size
         self.splitViewItems[0].maximumThickness = 500;
         
@@ -322,6 +297,9 @@ class AZMusicPlayerViewController: NSSplitViewController, NSToolbarDelegate, NSU
         
         // Setup the music player
         self.setupMusicPlayer();
+        
+        // Create the toolbar
+        createToolbar();
     }
     
     override func presentViewController(_ viewController: NSViewController, asPopoverRelativeTo positioningRect: NSRect, of positioningView: NSView, preferredEdge: NSRectEdge, behavior: NSPopoverBehavior) {

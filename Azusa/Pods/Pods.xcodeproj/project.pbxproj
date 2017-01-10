@@ -1,0 +1,672 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D95CB12BB6F7E1169910A0E90D6DDF8 /* Pods-Azusa-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B3A40C2D2D0944AAF722CAB517013E /* Pods-Azusa-dummy.m */; };
+		52E4BEEF5AAFA867A7FEEB4F74E277F5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */; };
+		60063F6015E4238A02BF1FBED52D2ECD /* Pods-AzusaUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 24A31361798A4B1A82679F9611347D10 /* Pods-AzusaUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		613DA8B1BC51A6CEC07B019F820886EA /* Pods-AzusaTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 12672BD8F6D35BD68F3CB0DE63FB6C03 /* Pods-AzusaTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C631E491A86853B95F6481DC823B122F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */; };
+		E6DA6177575CC240DF6477F04C73E8D1 /* Pods-AzusaUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E3BC70E731D998FDCB1C6B4DDCB1FB /* Pods-AzusaUITests-dummy.m */; };
+		E7904043C2E70BDF6A50F624C06B44C9 /* Pods-AzusaTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CC7CB59E5960E0F69C53B59E882C74 /* Pods-AzusaTests-dummy.m */; };
+		EA90E88640308BA45B45382BE84EDF90 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */; };
+		ECBAD66DAABF11B7DC24B1D770D76CFA /* Pods-Azusa-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A217CBA97858FA9409AC84B6B911EC23 /* Pods-Azusa-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		02D45A12042D5D1B901D29C00C5CD781 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BC8DFF33952E918526D762C896BE889 /* Pods-Azusa-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Azusa-acknowledgements.markdown"; sourceTree = "<group>"; };
+		100FAD9EC54D392B0E1C3EB7D8723A1A /* Pods-AzusaUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AzusaUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		12672BD8F6D35BD68F3CB0DE63FB6C03 /* Pods-AzusaTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AzusaTests-umbrella.h"; sourceTree = "<group>"; };
+		1D49E5147A1E8C178DF5577FA4571814 /* Pods-AzusaUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AzusaUITests-resources.sh"; sourceTree = "<group>"; };
+		20019A4C41B4AC8D66DBF4C63AF377A1 /* Pods_AzusaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AzusaTests.framework; path = "Pods-AzusaTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		24A31361798A4B1A82679F9611347D10 /* Pods-AzusaUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AzusaUITests-umbrella.h"; sourceTree = "<group>"; };
+		270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		32CFE9909A1C235B964CC12A030FBA20 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F91E4801BE3661541FAB2BDA7FA8AC2 /* Pods-Azusa-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Azusa-resources.sh"; sourceTree = "<group>"; };
+		3FAB4F41511BA96CE32BCC8A3304A753 /* Pods-AzusaTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AzusaTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		4909290D99F59B7293CCAE516652D689 /* Pods-Azusa-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Azusa-frameworks.sh"; sourceTree = "<group>"; };
+		4922ECEFA845A8E0B8EB4DF708A77E42 /* Pods-Azusa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Azusa.release.xcconfig"; sourceTree = "<group>"; };
+		500932372F21B0C243DD3F2244D46D41 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		541C470BF58258615C6C46458D649F39 /* Pods-AzusaUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AzusaUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		55CC7CB59E5960E0F69C53B59E882C74 /* Pods-AzusaTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AzusaTests-dummy.m"; sourceTree = "<group>"; };
+		5D25718702F60F0A03E00F02A1AFEB6B /* Pods-AzusaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AzusaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6E735300A539B23946304C2E3FC2F9DE /* Pods-AzusaTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AzusaTests-frameworks.sh"; sourceTree = "<group>"; };
+		764CB1AE562D360BF3DCB2215E03630A /* Pods-AzusaTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-AzusaTests.modulemap"; sourceTree = "<group>"; };
+		8A1EE3862C493EC45108C746E23AA450 /* Pods-AzusaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AzusaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		96B6B1E9420CE59FEDB975CB4413E013 /* Pods-AzusaUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AzusaUITests-frameworks.sh"; sourceTree = "<group>"; };
+		97E3BC70E731D998FDCB1C6B4DDCB1FB /* Pods-AzusaUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AzusaUITests-dummy.m"; sourceTree = "<group>"; };
+		9A4A00B2A105AAAB60E3F0DE6193FD70 /* Pods-Azusa-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Azusa-acknowledgements.plist"; sourceTree = "<group>"; };
+		9C080532FB4026697A8D07C3C6C2446F /* Pods-Azusa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Azusa.debug.xcconfig"; sourceTree = "<group>"; };
+		A217CBA97858FA9409AC84B6B911EC23 /* Pods-Azusa-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Azusa-umbrella.h"; sourceTree = "<group>"; };
+		A7B3A40C2D2D0944AAF722CAB517013E /* Pods-Azusa-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Azusa-dummy.m"; sourceTree = "<group>"; };
+		B479FE96DDFEE49E551341995EE6FF6B /* Pods_Azusa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Azusa.framework; path = "Pods-Azusa.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5CD2DF307E33C711DA0F2265BE00E80 /* Pods-AzusaTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AzusaTests-resources.sh"; sourceTree = "<group>"; };
+		BF4AE973F172E0E926D2BE58C18B78E2 /* Pods-Azusa.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Azusa.modulemap"; sourceTree = "<group>"; };
+		D95F97D8636CB0CE5525423AE77360A6 /* Pods-AzusaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AzusaTests.release.xcconfig"; sourceTree = "<group>"; };
+		E0F7CB508FD5396597EF3C1272E6240B /* Pods-AzusaTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AzusaTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		E5704022268E5A414A2F19435E78BA92 /* Pods-AzusaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AzusaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EB29D4FDF6086D3F07F98EAB94E84EF2 /* Pods-AzusaUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-AzusaUITests.modulemap"; sourceTree = "<group>"; };
+		F93A6051500A3FC4AE766E61A4CC54B3 /* Pods_AzusaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AzusaUITests.framework; path = "Pods-AzusaUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22F95845558EC287E1F477695AB6107F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52E4BEEF5AAFA867A7FEEB4F74E277F5 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A1B168A440274B2A2F34DE188F7BAA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C631E491A86853B95F6481DC823B122F /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80DE22BF3AB8E72D5AAFC27470BA1725 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA90E88640308BA45B45382BE84EDF90 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04C068A18C5413F804A2959126093416 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		22CAD1CFE1777FE2D543CE63CB6ACACA /* Pods-AzusaTests */ = {
+			isa = PBXGroup;
+			children = (
+				32CFE9909A1C235B964CC12A030FBA20 /* Info.plist */,
+				764CB1AE562D360BF3DCB2215E03630A /* Pods-AzusaTests.modulemap */,
+				E0F7CB508FD5396597EF3C1272E6240B /* Pods-AzusaTests-acknowledgements.markdown */,
+				3FAB4F41511BA96CE32BCC8A3304A753 /* Pods-AzusaTests-acknowledgements.plist */,
+				55CC7CB59E5960E0F69C53B59E882C74 /* Pods-AzusaTests-dummy.m */,
+				6E735300A539B23946304C2E3FC2F9DE /* Pods-AzusaTests-frameworks.sh */,
+				B5CD2DF307E33C711DA0F2265BE00E80 /* Pods-AzusaTests-resources.sh */,
+				12672BD8F6D35BD68F3CB0DE63FB6C03 /* Pods-AzusaTests-umbrella.h */,
+				8A1EE3862C493EC45108C746E23AA450 /* Pods-AzusaTests.debug.xcconfig */,
+				D95F97D8636CB0CE5525423AE77360A6 /* Pods-AzusaTests.release.xcconfig */,
+			);
+			name = "Pods-AzusaTests";
+			path = "Target Support Files/Pods-AzusaTests";
+			sourceTree = "<group>";
+		};
+		26BA7D6F4E1870B845BE1B70910BA33A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B479FE96DDFEE49E551341995EE6FF6B /* Pods_Azusa.framework */,
+				20019A4C41B4AC8D66DBF4C63AF377A1 /* Pods_AzusaTests.framework */,
+				F93A6051500A3FC4AE766E61A4CC54B3 /* Pods_AzusaUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		39E9EE8210D861DFD82346C1F5EB7218 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04C068A18C5413F804A2959126093416 /* OS X */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7D0739E76DD061FD8B0F0E7B6FEBD343 /* Pods-AzusaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				02D45A12042D5D1B901D29C00C5CD781 /* Info.plist */,
+				EB29D4FDF6086D3F07F98EAB94E84EF2 /* Pods-AzusaUITests.modulemap */,
+				541C470BF58258615C6C46458D649F39 /* Pods-AzusaUITests-acknowledgements.markdown */,
+				100FAD9EC54D392B0E1C3EB7D8723A1A /* Pods-AzusaUITests-acknowledgements.plist */,
+				97E3BC70E731D998FDCB1C6B4DDCB1FB /* Pods-AzusaUITests-dummy.m */,
+				96B6B1E9420CE59FEDB975CB4413E013 /* Pods-AzusaUITests-frameworks.sh */,
+				1D49E5147A1E8C178DF5577FA4571814 /* Pods-AzusaUITests-resources.sh */,
+				24A31361798A4B1A82679F9611347D10 /* Pods-AzusaUITests-umbrella.h */,
+				5D25718702F60F0A03E00F02A1AFEB6B /* Pods-AzusaUITests.debug.xcconfig */,
+				E5704022268E5A414A2F19435E78BA92 /* Pods-AzusaUITests.release.xcconfig */,
+			);
+			name = "Pods-AzusaUITests";
+			path = "Target Support Files/Pods-AzusaUITests";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				39E9EE8210D861DFD82346C1F5EB7218 /* Frameworks */,
+				26BA7D6F4E1870B845BE1B70910BA33A /* Products */,
+				E17752C3B815A390B6C41AE84FC0F4F0 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		96993779862CCFFD473775F22C6D8750 /* Pods-Azusa */ = {
+			isa = PBXGroup;
+			children = (
+				500932372F21B0C243DD3F2244D46D41 /* Info.plist */,
+				BF4AE973F172E0E926D2BE58C18B78E2 /* Pods-Azusa.modulemap */,
+				0BC8DFF33952E918526D762C896BE889 /* Pods-Azusa-acknowledgements.markdown */,
+				9A4A00B2A105AAAB60E3F0DE6193FD70 /* Pods-Azusa-acknowledgements.plist */,
+				A7B3A40C2D2D0944AAF722CAB517013E /* Pods-Azusa-dummy.m */,
+				4909290D99F59B7293CCAE516652D689 /* Pods-Azusa-frameworks.sh */,
+				3F91E4801BE3661541FAB2BDA7FA8AC2 /* Pods-Azusa-resources.sh */,
+				A217CBA97858FA9409AC84B6B911EC23 /* Pods-Azusa-umbrella.h */,
+				9C080532FB4026697A8D07C3C6C2446F /* Pods-Azusa.debug.xcconfig */,
+				4922ECEFA845A8E0B8EB4DF708A77E42 /* Pods-Azusa.release.xcconfig */,
+			);
+			name = "Pods-Azusa";
+			path = "Target Support Files/Pods-Azusa";
+			sourceTree = "<group>";
+		};
+		E17752C3B815A390B6C41AE84FC0F4F0 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				96993779862CCFFD473775F22C6D8750 /* Pods-Azusa */,
+				22CAD1CFE1777FE2D543CE63CB6ACACA /* Pods-AzusaTests */,
+				7D0739E76DD061FD8B0F0E7B6FEBD343 /* Pods-AzusaUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3F8D425C5574253C531FEB7F661A6BD4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60063F6015E4238A02BF1FBED52D2ECD /* Pods-AzusaUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7605E0B8641AEC3D4927A54721018B46 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECBAD66DAABF11B7DC24B1D770D76CFA /* Pods-Azusa-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8DC58C873BBB81A7253927DB9D22ADA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				613DA8B1BC51A6CEC07B019F820886EA /* Pods-AzusaTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C364813E356DB1287C7D14A7ED7D88BF /* Pods-Azusa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 29A388A8618302E6641B334F2B5C00DE /* Build configuration list for PBXNativeTarget "Pods-Azusa" */;
+			buildPhases = (
+				5115F4E8FABBD07D53B05D471CE9BF4A /* Sources */,
+				80DE22BF3AB8E72D5AAFC27470BA1725 /* Frameworks */,
+				7605E0B8641AEC3D4927A54721018B46 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Azusa";
+			productName = "Pods-Azusa";
+			productReference = B479FE96DDFEE49E551341995EE6FF6B /* Pods_Azusa.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E62250D9C26A1F5EF3D7FE06046D9595 /* Pods-AzusaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D490BDDEFAD529DB1050D9F61ED9FF79 /* Build configuration list for PBXNativeTarget "Pods-AzusaUITests" */;
+			buildPhases = (
+				D9F444C022AC6DAD9833D8533824431E /* Sources */,
+				6A1B168A440274B2A2F34DE188F7BAA7 /* Frameworks */,
+				3F8D425C5574253C531FEB7F661A6BD4 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-AzusaUITests";
+			productName = "Pods-AzusaUITests";
+			productReference = F93A6051500A3FC4AE766E61A4CC54B3 /* Pods_AzusaUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F00FD7224CAEDEC6CBF23D64B0D021C4 /* Pods-AzusaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3636BF2120A9B53E24200305802235D4 /* Build configuration list for PBXNativeTarget "Pods-AzusaTests" */;
+			buildPhases = (
+				056EDE02D4AE0B97E332C85C07AA112B /* Sources */,
+				22F95845558EC287E1F477695AB6107F /* Frameworks */,
+				E8DC58C873BBB81A7253927DB9D22ADA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-AzusaTests";
+			productName = "Pods-AzusaTests";
+			productReference = 20019A4C41B4AC8D66DBF4C63AF377A1 /* Pods_AzusaTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 26BA7D6F4E1870B845BE1B70910BA33A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C364813E356DB1287C7D14A7ED7D88BF /* Pods-Azusa */,
+				F00FD7224CAEDEC6CBF23D64B0D021C4 /* Pods-AzusaTests */,
+				E62250D9C26A1F5EF3D7FE06046D9595 /* Pods-AzusaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		056EDE02D4AE0B97E332C85C07AA112B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7904043C2E70BDF6A50F624C06B44C9 /* Pods-AzusaTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5115F4E8FABBD07D53B05D471CE9BF4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D95CB12BB6F7E1169910A0E90D6DDF8 /* Pods-Azusa-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9F444C022AC6DAD9833D8533824431E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6DA6177575CC240DF6477F04C73E8D1 /* Pods-AzusaUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1AE15A87138EA87766F400FA2249ED08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D25718702F60F0A03E00F02A1AFEB6B /* Pods-AzusaUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-AzusaUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MODULEMAP_FILE = "Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_AzusaUITests;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		34342BBF37D3A9ED85FF2EB654934920 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		3B2944C0E94123BB7E10D73EA63D2EA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D95F97D8636CB0CE5525423AE77360A6 /* Pods-AzusaTests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-AzusaTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MODULEMAP_FILE = "Target Support Files/Pods-AzusaTests/Pods-AzusaTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_AzusaTests;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5E5D0B7DE67954C5EA898C2AAE02E32C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C080532FB4026697A8D07C3C6C2446F /* Pods-Azusa.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Azusa/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MODULEMAP_FILE = "Target Support Files/Pods-Azusa/Pods-Azusa.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Azusa;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BD78B25FD72F49F7301795BD511E8D4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4922ECEFA845A8E0B8EB4DF708A77E42 /* Pods-Azusa.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Azusa/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MODULEMAP_FILE = "Target Support Files/Pods-Azusa/Pods-Azusa.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Azusa;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BF71686DA7E0F8779C9DED708CC58571 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5704022268E5A414A2F19435E78BA92 /* Pods-AzusaUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-AzusaUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MODULEMAP_FILE = "Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_AzusaUITests;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C6360BEB0E04FBA7D649BC76CA465ACF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A1EE3862C493EC45108C746E23AA450 /* Pods-AzusaTests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-AzusaTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MODULEMAP_FILE = "Target Support Files/Pods-AzusaTests/Pods-AzusaTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_AzusaTests;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F6FC88CB717F413199C282718D2DC09F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		29A388A8618302E6641B334F2B5C00DE /* Build configuration list for PBXNativeTarget "Pods-Azusa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E5D0B7DE67954C5EA898C2AAE02E32C /* Debug */,
+				BD78B25FD72F49F7301795BD511E8D4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34342BBF37D3A9ED85FF2EB654934920 /* Debug */,
+				F6FC88CB717F413199C282718D2DC09F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3636BF2120A9B53E24200305802235D4 /* Build configuration list for PBXNativeTarget "Pods-AzusaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6360BEB0E04FBA7D649BC76CA465ACF /* Debug */,
+				3B2944C0E94123BB7E10D73EA63D2EA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D490BDDEFAD529DB1050D9F61ED9FF79 /* Build configuration list for PBXNativeTarget "Pods-AzusaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1AE15A87138EA87766F400FA2249ED08 /* Debug */,
+				BF71686DA7E0F8779C9DED708CC58571 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

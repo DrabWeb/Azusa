@@ -266,15 +266,6 @@ class AZQueueViewController: NSViewController {
     }
     
     deinit {
-        if(self.queueTableViewItems.count != 0) {
-            for index in 0...(self.queueTableViewItems.count - 1) {
-                if let cell : AZQueueTableCellView = (self.queueTableView.rowView(atRow: index, makeIfNecessary: false)?.view(atColumn: 0) as? AZQueueTableCellView) {
-                    cell.imageView = nil;
-                    cell.representedSong = nil;
-                }
-            }
-        }
-        
         self.currentQueue = [];
         self.currentUpNext = [];
         self.currentHistory = [];
@@ -300,11 +291,8 @@ extension AZQueueViewController: NSTableViewDataSource {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         // Instantiate a new cell for this column, and if it isn't nil...
         if let cellView : AZQueueTableCellView = tableView.make(withIdentifier: "Main Column", owner: nil) as? AZQueueTableCellView {
-            /// The data for this cell
-            let cellData : AZSong = self.queueTableViewItems[row];
-            
-            // Display `cellData` in `cellView`
-            cellView.display(song: cellData);
+            // Display the song at `row` in `cellView`
+            cellView.display(song: self.queueTableViewItems[row]);
             
             // Don't reuse cells
             cellView.identifier = nil;

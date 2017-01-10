@@ -84,9 +84,6 @@ class MISong: AZSong {
         if(self.album.name != "") {
             return self.album.name;
         }
-        else if(self.title != "") {
-            return self.title;
-        }
         else {
             return self.uri;
         }
@@ -126,17 +123,16 @@ class MISong: AZSong {
                         if(currentTag.commonKey == "artwork") {
                             // If the current tag's data isnt nil...
                             if(currentTag.dataValue != nil) {
-                                /// The image from this tag
-                                let tagImage : NSImage? = NSImage(data: currentTag.dataValue!);
-                                
-                                // If tagImage isnt nil...
-                                if(tagImage != nil) {
-                                    // Set the thumbnail image to tagImage
-                                    thumbnail = tagImage!;
+                                // Get the image from the current tag's data, and if it isn't nil...
+                                if let tagImage = NSImage(data: currentTag.dataValue!) {
+                                    // Set the thumbnail image to `tagImage`
+                                    thumbnail = tagImage;
                                 }
                             }
                         }
                     }
+                    
+                    songMetadata = [];
                     
                     // If the thumbnail *still* isn't set...
                     if(thumbnail == nil) {
@@ -165,10 +161,8 @@ class MISong: AZSong {
                 }
                 
                 // Resize the thumbnail image
-                if(thumbnail != nil) {
-                    thumbnail = thumbnail!.resizedTo(fit: 100);
-                }
-                
+                thumbnail = thumbnail?.resizedTo(fit: 100);
+                    
                 // Add the thumbnail to the database
                 AZCoverDatabase.global.add(thumbnail: thumbnail ?? #imageLiteral(resourceName: "AZDefaultCover"), name: self.coverIdentifier);
                 

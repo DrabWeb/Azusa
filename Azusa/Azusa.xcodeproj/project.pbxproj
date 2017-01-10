@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		365584465681754B39AB2F76 /* Pods_Azusa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D7D6908FF45860FCE40E70 /* Pods_Azusa.framework */; };
+		63B2E3C1852F3FAB435DB8D3 /* Pods_Azusa_AzusaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8E74CB10E92694EC1CA13F /* Pods_Azusa_AzusaTests.framework */; };
+		79300E65A5FC66D4D7B5756E /* Pods_AzusaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87980E1FE99B4E409C9A68D3 /* Pods_AzusaUITests.framework */; };
+		82F685E783B3F5C538261B18 /* Pods_AzusaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D54715146391BE5584F2FBD /* Pods_AzusaTests.framework */; };
+		AE1643C81E22D154001624BC /* AZVolumeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1643C71E22D154001624BC /* AZVolumeSlider.swift */; };
 		AE2AF77D1DFC9A4F00580839 /* AZAspectFillImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2AF77C1DFC9A4F00580839 /* AZAspectFillImageView.swift */; };
+		AE4C9B461E230CA600E2FD4C /* WAYWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4C9B451E230CA600E2FD4C /* WAYWindow.m */; };
 		AE5A63371DF9135D002301F6 /* MIMPDPlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A63361DF9135D002301F6 /* MIMPDPlayerStatus.swift */; };
 		AE5A63391DF91408002301F6 /* MISong.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A63381DF91408002301F6 /* MISong.swift */; };
 		AE602EF41DF8E8E3002225CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602EF31DF8E8E3002225CB /* AppDelegate.swift */; };
@@ -25,6 +31,9 @@
 		AE602FD81DF90818002225CB /* AZSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FD41DF90818002225CB /* AZSong.swift */; };
 		AE602FD91DF90818002225CB /* AZPlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FD51DF90818002225CB /* AZPlayerStatus.swift */; };
 		AE602FDC1DF90894002225CB /* AZEventSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602FDB1DF90894002225CB /* AZEventSubscriber.swift */; };
+		AE88619D1E245F6300EBB23E /* AZMusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE88619C1E245F6300EBB23E /* AZMusicPlayerViewController.swift */; };
+		AE8861A11E24706700EBB23E /* AZMusicPlayerToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8861A01E24706700EBB23E /* AZMusicPlayerToolbarView.swift */; };
+		AE8861A31E24707000EBB23E /* AZMusicPlayerToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE8861A21E24707000EBB23E /* AZMusicPlayerToolbarView.xib */; };
 		AE98A43F1DFE23E80004F9CF /* MIMusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE98A43E1DFE23E80004F9CF /* MIMusicPlayer.swift */; };
 		AE98A4411DFE85150004F9CF /* AZQueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE98A4401DFE85150004F9CF /* AZQueueViewController.swift */; };
 		AED3093A1DFF8C9F0053AA53 /* AZCoverDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED309391DFF8C9F0053AA53 /* AZCoverDatabase.swift */; };
@@ -38,7 +47,6 @@
 		AEF6EE781E088F1F009990CB /* AZMusicPlayerSidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF6EE771E088F1F009990CB /* AZMusicPlayerSidebarViewController.swift */; };
 		AEF6EE7C1E0891EA009990CB /* AZMusicPlayerSidebarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF6EE7B1E0891EA009990CB /* AZMusicPlayerSidebarModel.swift */; };
 		AEFC79711E0210F8006DE067 /* AZImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC79701E0210F8006DE067 /* AZImageExtensions.swift */; };
-		AEFCD0741DFD40E700B51031 /* AZMusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD0731DFD40E700B51031 /* AZMusicPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +67,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11ACCD5CA55D2672DB574D6D /* Pods-AzusaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaTests/Pods-AzusaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3265FB410C534305FE0B5C5C /* Pods-AzusaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5A106C4C9D9148717FAE70A8 /* Pods-Azusa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Azusa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Azusa/Pods-Azusa.release.xcconfig"; sourceTree = "<group>"; };
+		73B3D87199DA99DE2192B385 /* Pods-Azusa-AzusaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Azusa-AzusaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Azusa-AzusaTests/Pods-Azusa-AzusaTests.release.xcconfig"; sourceTree = "<group>"; };
+		74963163B4BE4F7B4349A80E /* Pods-AzusaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		87980E1FE99B4E409C9A68D3 /* Pods_AzusaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AzusaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87FF1DE3125EAFEFE628D835 /* Pods-AzusaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AzusaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AzusaTests/Pods-AzusaTests.release.xcconfig"; sourceTree = "<group>"; };
+		9D54715146391BE5584F2FBD /* Pods_AzusaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AzusaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7D7D6908FF45860FCE40E70 /* Pods_Azusa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Azusa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A91C1207D0B3C8600F32B875 /* Pods-Azusa-AzusaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Azusa-AzusaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Azusa-AzusaTests/Pods-Azusa-AzusaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE1643C71E22D154001624BC /* AZVolumeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZVolumeSlider.swift; sourceTree = "<group>"; };
 		AE2AF77C1DFC9A4F00580839 /* AZAspectFillImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZAspectFillImageView.swift; sourceTree = "<group>"; };
+		AE4C9B441E230CA600E2FD4C /* WAYWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAYWindow.h; sourceTree = "<group>"; };
+		AE4C9B451E230CA600E2FD4C /* WAYWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAYWindow.m; sourceTree = "<group>"; };
+		AE4C9B491E230D7100E2FD4C /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		AE5A63361DF9135D002301F6 /* MIMPDPlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMPDPlayerStatus.swift; sourceTree = "<group>"; };
 		AE5A63381DF91408002301F6 /* MISong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MISong.swift; sourceTree = "<group>"; };
 		AE602EF01DF8E8E3002225CB /* Azusa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Azusa.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +153,11 @@
 		AE602FD41DF90818002225CB /* AZSong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZSong.swift; sourceTree = "<group>"; };
 		AE602FD51DF90818002225CB /* AZPlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZPlayerStatus.swift; sourceTree = "<group>"; };
 		AE602FDB1DF90894002225CB /* AZEventSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZEventSubscriber.swift; sourceTree = "<group>"; };
+		AE88619C1E245F6300EBB23E /* AZMusicPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerViewController.swift; sourceTree = "<group>"; };
+		AE8861A01E24706700EBB23E /* AZMusicPlayerToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerToolbarView.swift; sourceTree = "<group>"; };
+		AE8861A21E24707000EBB23E /* AZMusicPlayerToolbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AZMusicPlayerToolbarView.xib; sourceTree = "<group>"; };
+		AE89205F1E22BA0900287BC7 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "../../../../../../../Users/Ushio/Library/Developer/Xcode/DerivedData/Azusa-gwwlwviopzahorfmvlntlfdbtlxj/Build/Products/Debug/Realm/Realm.framework"; sourceTree = "<group>"; };
+		AE8920611E22BA0C00287BC7 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../../../../../../Users/Ushio/Library/Developer/Xcode/DerivedData/Azusa-gwwlwviopzahorfmvlntlfdbtlxj/Build/Products/Debug/RealmSwift/RealmSwift.framework"; sourceTree = "<group>"; };
 		AE98A43E1DFE23E80004F9CF /* MIMusicPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMusicPlayer.swift; sourceTree = "<group>"; };
 		AE98A4401DFE85150004F9CF /* AZQueueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZQueueViewController.swift; sourceTree = "<group>"; };
 		AED309391DFF8C9F0053AA53 /* AZCoverDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZCoverDatabase.swift; sourceTree = "<group>"; };
@@ -144,7 +171,8 @@
 		AEF6EE771E088F1F009990CB /* AZMusicPlayerSidebarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerSidebarViewController.swift; sourceTree = "<group>"; };
 		AEF6EE7B1E0891EA009990CB /* AZMusicPlayerSidebarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerSidebarModel.swift; sourceTree = "<group>"; };
 		AEFC79701E0210F8006DE067 /* AZImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZImageExtensions.swift; sourceTree = "<group>"; };
-		AEFCD0731DFD40E700B51031 /* AZMusicPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerViewController.swift; sourceTree = "<group>"; };
+		C64ABF1DA741679B201AE7CD /* Pods-Azusa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Azusa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Azusa/Pods-Azusa.debug.xcconfig"; sourceTree = "<group>"; };
+		FE8E74CB10E92694EC1CA13F /* Pods_Azusa_AzusaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Azusa_AzusaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE602FC01DF8EB26002225CB /* libmpdclient.a in Frameworks */,
+				365584465681754B39AB2F76 /* Pods_Azusa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +189,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82F685E783B3F5C538261B18 /* Pods_AzusaTests.framework in Frameworks */,
+				63B2E3C1852F3FAB435DB8D3 /* Pods_Azusa_AzusaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,19 +198,45 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79300E65A5FC66D4D7B5756E /* Pods_AzusaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8CB3CB6A6551E44444744B99 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C64ABF1DA741679B201AE7CD /* Pods-Azusa.debug.xcconfig */,
+				5A106C4C9D9148717FAE70A8 /* Pods-Azusa.release.xcconfig */,
+				11ACCD5CA55D2672DB574D6D /* Pods-AzusaTests.debug.xcconfig */,
+				87FF1DE3125EAFEFE628D835 /* Pods-AzusaTests.release.xcconfig */,
+				3265FB410C534305FE0B5C5C /* Pods-AzusaUITests.debug.xcconfig */,
+				74963163B4BE4F7B4349A80E /* Pods-AzusaUITests.release.xcconfig */,
+				A91C1207D0B3C8600F32B875 /* Pods-Azusa-AzusaTests.debug.xcconfig */,
+				73B3D87199DA99DE2192B385 /* Pods-Azusa-AzusaTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AE2AF77B1DFC9A4800580839 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				AED38A1D1DFF513E00F410E3 /* Music Player */,
 				AE2AF77C1DFC9A4F00580839 /* AZAspectFillImageView.swift */,
+				AE1643C71E22D154001624BC /* AZVolumeSlider.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AE4C9B431E230CA600E2FD4C /* WAYWindow */ = {
+			isa = PBXGroup;
+			children = (
+				AE4C9B441E230CA600E2FD4C /* WAYWindow.h */,
+				AE4C9B451E230CA600E2FD4C /* WAYWindow.m */,
+			);
+			path = WAYWindow;
 			sourceTree = "<group>";
 		};
 		AE602EE71DF8E8E3002225CB = {
@@ -190,6 +247,8 @@
 				AE602F041DF8E8E3002225CB /* AzusaTests */,
 				AE602F0F1DF8E8E3002225CB /* AzusaUITests */,
 				AE602EF11DF8E8E3002225CB /* Products */,
+				8CB3CB6A6551E44444744B99 /* Pods */,
+				B4BD049CF57E20E8F681CDFF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -216,6 +275,7 @@
 				AE602FC21DF8EDAD002225CB /* Backends */,
 				AEB904491E0C96120060E5AE /* Libraries */,
 				AE602EF71DF8E8E3002225CB /* Assets.xcassets */,
+				AE4C9B491E230D7100E2FD4C /* Bridging-Header.h */,
 				AE602EFC1DF8E8E3002225CB /* Info.plist */,
 			);
 			path = Azusa;
@@ -370,9 +430,19 @@
 			path = Objects;
 			sourceTree = "<group>";
 		};
+		AE88619F1E24703800EBB23E /* Toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				AE8861A01E24706700EBB23E /* AZMusicPlayerToolbarView.swift */,
+				AE8861A21E24707000EBB23E /* AZMusicPlayerToolbarView.xib */,
+			);
+			path = Toolbar;
+			sourceTree = "<group>";
+		};
 		AEB904491E0C96120060E5AE /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				AE4C9B431E230CA600E2FD4C /* WAYWindow */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -380,6 +450,7 @@
 		AED38A1D1DFF513E00F410E3 /* Music Player */ = {
 			isa = PBXGroup;
 			children = (
+				AE88619F1E24703800EBB23E /* Toolbar */,
 				AED38A1E1DFF513E00F410E3 /* AZProgressBarCell.swift */,
 				AED38A1F1DFF513E00F410E3 /* AZToolbarStatusView.swift */,
 				AED38A221DFF518300F410E3 /* AZQueueTableCellView.swift */,
@@ -426,11 +497,24 @@
 		AEFCD0711DFD40D900B51031 /* Music Player */ = {
 			isa = PBXGroup;
 			children = (
-				AEFCD0731DFD40E700B51031 /* AZMusicPlayerViewController.swift */,
+				AE88619C1E245F6300EBB23E /* AZMusicPlayerViewController.swift */,
 				AE98A4401DFE85150004F9CF /* AZQueueViewController.swift */,
 				AEF6EE771E088F1F009990CB /* AZMusicPlayerSidebarViewController.swift */,
 			);
 			path = "Music Player";
+			sourceTree = "<group>";
+		};
+		B4BD049CF57E20E8F681CDFF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AE8920611E22BA0C00287BC7 /* RealmSwift.framework */,
+				AE89205F1E22BA0900287BC7 /* Realm.framework */,
+				A7D7D6908FF45860FCE40E70 /* Pods_Azusa.framework */,
+				9D54715146391BE5584F2FBD /* Pods_AzusaTests.framework */,
+				87980E1FE99B4E409C9A68D3 /* Pods_AzusaUITests.framework */,
+				FE8E74CB10E92694EC1CA13F /* Pods_Azusa_AzusaTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,9 +524,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE602F151DF8E8E3002225CB /* Build configuration list for PBXNativeTarget "Azusa" */;
 			buildPhases = (
+				0F1D8D8E2CC055CA503D8D61 /* [CP] Check Pods Manifest.lock */,
 				AE602EEC1DF8E8E3002225CB /* Sources */,
 				AE602EED1DF8E8E3002225CB /* Frameworks */,
 				AE602EEE1DF8E8E3002225CB /* Resources */,
+				FC7A8DBD507D46083F3DF887 /* [CP] Embed Pods Frameworks */,
+				1640B2279E8960D2DC11F349 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -457,9 +544,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE602F181DF8E8E3002225CB /* Build configuration list for PBXNativeTarget "AzusaTests" */;
 			buildPhases = (
+				034907C64D4C473F86BF55D0 /* [CP] Check Pods Manifest.lock */,
 				AE602EFD1DF8E8E3002225CB /* Sources */,
 				AE602EFE1DF8E8E3002225CB /* Frameworks */,
 				AE602EFF1DF8E8E3002225CB /* Resources */,
+				22E5C584E61DC4F57A20EC62 /* [CP] Embed Pods Frameworks */,
+				B7861A2E4346C750B442E43E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -475,9 +565,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE602F1B1DF8E8E3002225CB /* Build configuration list for PBXNativeTarget "AzusaUITests" */;
 			buildPhases = (
+				20F22844BD51D73DAAF0D83B /* [CP] Check Pods Manifest.lock */,
 				AE602F081DF8E8E3002225CB /* Sources */,
 				AE602F091DF8E8E3002225CB /* Frameworks */,
 				AE602F0A1DF8E8E3002225CB /* Resources */,
+				634A8A1DD140FADB9A199233 /* [CP] Embed Pods Frameworks */,
+				32AB391807305677E5D9AE7F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -540,6 +633,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE8861A31E24707000EBB23E /* AZMusicPlayerToolbarView.xib in Resources */,
 				AE602FC11DF8EB26002225CB /* LICENSE in Resources */,
 				AE602EF81DF8E8E3002225CB /* Assets.xcassets in Resources */,
 				AE602EFB1DF8E8E3002225CB /* Main.storyboard in Resources */,
@@ -562,6 +656,144 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		034907C64D4C473F86BF55D0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0F1D8D8E2CC055CA503D8D61 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1640B2279E8960D2DC11F349 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Azusa/Pods-Azusa-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		20F22844BD51D73DAAF0D83B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		22E5C584E61DC4F57A20EC62 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AzusaTests/Pods-AzusaTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		32AB391807305677E5D9AE7F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		634A8A1DD140FADB9A199233 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AzusaUITests/Pods-AzusaUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7861A2E4346C750B442E43E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AzusaTests/Pods-AzusaTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC7A8DBD507D46083F3DF887 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Azusa/Pods-Azusa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AE602EEC1DF8E8E3002225CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -577,11 +809,13 @@
 				AEF6EE7C1E0891EA009990CB /* AZMusicPlayerSidebarModel.swift in Sources */,
 				AE2AF77D1DFC9A4F00580839 /* AZAspectFillImageView.swift in Sources */,
 				AE98A4411DFE85150004F9CF /* AZQueueViewController.swift in Sources */,
+				AE8861A11E24706700EBB23E /* AZMusicPlayerToolbarView.swift in Sources */,
 				AE602FD01DF906EC002225CB /* MIMPDStats.swift in Sources */,
 				AEDC326E1DFA009700538F24 /* AZAlbum.swift in Sources */,
+				AE88619D1E245F6300EBB23E /* AZMusicPlayerViewController.swift in Sources */,
 				AE602EF41DF8E8E3002225CB /* AppDelegate.swift in Sources */,
 				AE602FC51DF8EDB9002225CB /* MIMPD.swift in Sources */,
-				AEFCD0741DFD40E700B51031 /* AZMusicPlayerViewController.swift in Sources */,
+				AE4C9B461E230CA600E2FD4C /* WAYWindow.m in Sources */,
 				AE98A43F1DFE23E80004F9CF /* MIMusicPlayer.swift in Sources */,
 				AE602FD81DF90818002225CB /* AZSong.swift in Sources */,
 				AEFC79711E0210F8006DE067 /* AZImageExtensions.swift in Sources */,
@@ -590,6 +824,7 @@
 				AEDC326C1DFA008C00538F24 /* AZArtist.swift in Sources */,
 				AE602FD71DF90818002225CB /* AZMusicPlayer.swift in Sources */,
 				AED3093A1DFF8C9F0053AA53 /* AZCoverDatabase.swift in Sources */,
+				AE1643C81E22D154001624BC /* AZVolumeSlider.swift in Sources */,
 				AED38A251DFF6A4E00F410E3 /* AZQueueTableView.swift in Sources */,
 				AEF6EE781E088F1F009990CB /* AZMusicPlayerSidebarViewController.swift in Sources */,
 				AEDC32721DFA0E0F00538F24 /* AZGenre.swift in Sources */,
@@ -733,7 +968,9 @@
 		};
 		AE602F161DF8E8E3002225CB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C64ABF1DA741679B201AE7CD /* Pods-Azusa.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Azusa/Info.plist;
@@ -745,13 +982,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"SWIFT_INCLUDE_PATHS[arch=*]" = "$(SRCROOT)/External/libmpdclient/";
+				SWIFT_OBJC_BRIDGING_HEADER = "Azusa/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		AE602F171DF8E8E3002225CB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A106C4C9D9148717FAE70A8 /* Pods-Azusa.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Azusa/Info.plist;
@@ -763,14 +1003,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/External/libmpdclient/";
+				SWIFT_OBJC_BRIDGING_HEADER = "Azusa/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		AE602F191DF8E8E3002225CB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11ACCD5CA55D2672DB574D6D /* Pods-AzusaTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AzusaTests/Info.plist;
@@ -784,8 +1026,9 @@
 		};
 		AE602F1A1DF8E8E3002225CB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87FF1DE3125EAFEFE628D835 /* Pods-AzusaTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AzusaTests/Info.plist;
@@ -799,8 +1042,9 @@
 		};
 		AE602F1C1DF8E8E3002225CB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3265FB410C534305FE0B5C5C /* Pods-AzusaUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AzusaUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -813,8 +1057,9 @@
 		};
 		AE602F1D1DF8E8E3002225CB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74963163B4BE4F7B4349A80E /* Pods-AzusaUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AzusaUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
