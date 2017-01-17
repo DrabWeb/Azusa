@@ -8,7 +8,7 @@
 import Foundation
 
 /// The object to represent an artist in the user's music collection
-class AZArtist: CustomStringConvertible {
+class AZArtist: Equatable, CustomStringConvertible {
     
     // MARK: - Properties
     
@@ -25,6 +25,13 @@ class AZArtist: CustomStringConvertible {
     
     var description : String {
         return "AZArtist: \(self.displayName), \(self.albums.count) albums"
+    }
+    
+    
+    // MARK: - Functions
+    
+    static func ==(lhs : AZArtist, rhs : AZArtist) -> Bool {
+        return lhs.name == rhs.name;
     }
     
     

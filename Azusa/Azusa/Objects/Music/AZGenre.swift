@@ -8,7 +8,7 @@
 import Foundation
 
 /// The object to represent a music genre
-class AZGenre: CustomStringConvertible {
+class AZGenre: Equatable, CustomStringConvertible {
     
     // MARK: - Properties
     
@@ -25,6 +25,13 @@ class AZGenre: CustomStringConvertible {
     
     var description : String {
         return "AZGenre: \(self.displayName), \(self.albums.count) albums"
+    }
+    
+    
+    // MARK: - Functions
+    
+    static func ==(lhs : AZGenre, rhs : AZGenre) -> Bool {
+        return lhs.name == rhs.name;
     }
     
     

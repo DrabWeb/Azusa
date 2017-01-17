@@ -7,7 +7,7 @@
 
 import Cocoa
 
-/// THe view controller for the sidebar of a 
+/// The view controller for the sidebar of a music player
 class AZMusicPlayerSidebarViewController: NSViewController {
 
     /// The outline view for the sidebar of a `AZMusicPlayerViewController`
@@ -20,7 +20,8 @@ class AZMusicPlayerSidebarViewController: NSViewController {
             AZMusicPlayerSidebarSectionItem(title: "Artists", icon: NSImage(named: "NSSmartBadgeTemplate")!),
             AZMusicPlayerSidebarSectionItem(title: "Albums", icon: NSImage(named: "NSSmartBadgeTemplate")!),
             AZMusicPlayerSidebarSectionItem(title: "Songs", icon: NSImage(named: "NSSmartBadgeTemplate")!),
-            AZMusicPlayerSidebarSectionItem(title: "Genres", icon: NSImage(named: "NSSmartBadgeTemplate")!)
+            AZMusicPlayerSidebarSectionItem(title: "Genres", icon: NSImage(named: "NSSmartBadgeTemplate")!),
+            AZMusicPlayerSidebarSectionItem(title: "Files", icon: NSImage(named: "NSSmartBadgeTemplate")!)
         ]),
         AZMusicPlayerSidebarSection(title: "Playlists", items: [])
     ];

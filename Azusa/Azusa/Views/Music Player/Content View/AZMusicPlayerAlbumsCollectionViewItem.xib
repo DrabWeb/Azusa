@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AZMusicPlayerAlbumsCollectionViewItem" customModule="Azusa" customModuleProvider="target">
+            <connections>
+                <outlet property="headerLabel" destination="5hi-56-Kwu" id="xuZ-MY-hVY"/>
+                <outlet property="imageView" destination="gBc-df-wnI" id="RmU-bg-7YX"/>
+                <outlet property="imageViewTopConstraint" destination="TMe-3M-aI2" id="4Ij-Nm-TwX"/>
+                <outlet property="subHeaderLabel" destination="MzD-42-GAI" id="xC7-QW-mob"/>
+                <outlet property="textField" destination="5hi-56-Kwu" id="maf-sS-zSf"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView wantsLayer="YES" id="Hz6-mo-xeY" userLabel="Item">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="240"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="6NU-fm-AN1" userLabel="Image Container">
+                    <rect key="frame" x="10" y="50" width="180" height="180"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="gBc-df-wnI" customClass="AZRoundDarkEdgedImageView" customModule="Azusa" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="AZDefaultCover" id="riX-PI-bbb"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="gBc-df-wnI" firstAttribute="leading" secondItem="6NU-fm-AN1" secondAttribute="leading" id="1Zt-Sl-1Te"/>
+                        <constraint firstAttribute="trailing" secondItem="gBc-df-wnI" secondAttribute="trailing" id="HM7-Jk-Wk0"/>
+                        <constraint firstItem="gBc-df-wnI" firstAttribute="top" secondItem="6NU-fm-AN1" secondAttribute="top" id="I2T-q5-PyT"/>
+                        <constraint firstAttribute="width" secondItem="6NU-fm-AN1" secondAttribute="height" multiplier="1:1" id="PGR-ZP-8hQ"/>
+                        <constraint firstAttribute="bottom" secondItem="gBc-df-wnI" secondAttribute="bottom" id="dBI-s0-OAY"/>
+                    </constraints>
+                    <shadow key="shadow" blurRadius="5">
+                        <size key="offset" width="0.0" height="-10"/>
+                        <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </shadow>
+                </customView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" alphaValue="0.5" allowsExpansionToolTips="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MzD-42-GAI" userLabel="Sub-Header">
+                    <rect key="frame" x="8" y="8" width="184" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="5LD-yy-LuF"/>
+                    </constraints>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Sub-header" id="Jo2-rL-L9H">
+                        <font key="font" metaFont="cellTitle"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hi-56-Kwu" userLabel="Header">
+                    <rect key="frame" x="8" y="26" width="184" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="MX7-au-5Mi"/>
+                    </constraints>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Header" id="DMw-XQ-pHc">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="6NU-fm-AN1" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="CSy-Zo-ehZ"/>
+                <constraint firstItem="6NU-fm-AN1" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="10" id="TMe-3M-aI2"/>
+                <constraint firstAttribute="trailing" secondItem="MzD-42-GAI" secondAttribute="trailing" constant="10" id="UjO-58-Cey"/>
+                <constraint firstItem="MzD-42-GAI" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="Y1Q-Sn-Ws2"/>
+                <constraint firstAttribute="trailing" secondItem="5hi-56-Kwu" secondAttribute="trailing" constant="10" id="cqW-QS-VkN"/>
+                <constraint firstAttribute="trailing" secondItem="6NU-fm-AN1" secondAttribute="trailing" constant="10" id="hwi-bu-gO7"/>
+                <constraint firstItem="5hi-56-Kwu" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="198" id="jaO-oV-HtZ"/>
+                <constraint firstItem="MzD-42-GAI" firstAttribute="top" secondItem="5hi-56-Kwu" secondAttribute="bottom" constant="3" id="sI2-fx-nkQ"/>
+                <constraint firstItem="5hi-56-Kwu" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="sL2-MY-5LT"/>
+            </constraints>
+        </customView>
+        <collectionViewItem id="7D5-7R-1Kf" customClass="AZMusicPlayerAlbumsCollectionViewItem" customModule="Azusa" customModuleProvider="target"/>
+    </objects>
+    <resources>
+        <image name="AZDefaultCover" width="512" height="512"/>
+    </resources>
+</document>

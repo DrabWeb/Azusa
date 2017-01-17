@@ -119,7 +119,7 @@ class MIMPD {
         
         // Start the idle loop on a background queue
         DispatchQueue.global(qos: .background).async {
-            self.idleLoop();
+            self.idle();
         }
         
         // Say that this object is connected
@@ -148,7 +148,7 @@ class MIMPD {
     // MARK: - Idle Events
     
     /// The while loop for catching idle events from MPD
-    func idleLoop() {
+    private func idle() {
         // While `idleConnection` isn't nil...
         while(self.idleConnection != nil) {
             /// The current event from MPD
@@ -577,10 +577,13 @@ class MIMPD {
         if(connection != nil) {
             AZLogger.log("MIMPD: Seeking to \(AZMusicUtilities.secondsToDisplayTime(to)) in #\(trackPosition)");
             
-            // Run the seek command and if it fails...
-            if(!mpd_run_seek_pos(self.connection!, UInt32(trackPosition), UInt32(to))) {
-                // Throw the current error
-                throw self.currentError();
+            // If `to` is in range of the queue...
+            if(trackPosition < (try self.getQueueLength())) {
+                // Run the seek command and if it fails...
+                if(!mpd_run_seek_pos(self.connection!, UInt32(trackPosition), UInt32(to))) {
+                    // Throw the current error
+                    throw self.currentError();
+                }
             }
         }
         // If the connection is nil...
@@ -1103,7 +1106,7 @@ class MIMPD {
     
     /// Gets all the albums in the MPD database
     ///
-    /// - Returns: An array of `AZAlbum`s containing all the albums in the MPD database(only the name is set)
+    /// - Returns: An array of `AZAlbum`s containing all the albums in the MPD database
     /// - Throws: An `MIMPDError`
     func getAllAlbums() throws -> [AZAlbum] {
         // If the connection isn't nil...
@@ -1115,6 +1118,14 @@ class MIMPD {
             for(_, currentAlbumName) in self.getAllValues(of: MPD_TAG_ALBUM).enumerated() {
                 // Append the current album name as an `AZAlbum` to `albums`
                 albums.append(AZAlbum(name: currentAlbumName));
+                
+                do {
+                    // Get all the songs for the album
+                    albums.last!.songs = try self.getAllSongsFor(album: albums.last!);
+                }
+                catch let error as MIMPDError {
+                    throw error;
+                }
             }
             
             // Return `albums`
@@ -1158,7 +1169,7 @@ class MIMPD {
     /// - Parameter artist: The `AZArtist` to get the albums of
     /// - Returns: All the `AZAlbum`s for the given `AZArtist`
     /// - Throws: An `MIMPDError`
-    func getAllAlbumsForArtist(artist : AZArtist) throws -> [AZAlbum] {
+    func getAllAlbumsFor(artist : AZArtist) throws -> [AZAlbum] {
         // If the connection isn't nil...
         if(connection != nil) {
             AZLogger.log("MIMPD: Getting all albums for \(artist)");
@@ -1212,12 +1223,7 @@ class MIMPD {
             for(_, currentAlbum) in artist.albums.enumerated() {
                 do {
                     // Search for all the songs of this album
-                    currentAlbum.songs = try self.getAllSongsForAlbum(album: currentAlbum);
-                    
-                    // Update the album values to match
-                    currentAlbum.artist = artist;
-                    currentAlbum.genre = currentAlbum.songs.first?.genre ?? AZGenre();
-                    currentAlbum.year = currentAlbum.songs.first?.year ?? -1;
+                    currentAlbum.songs = try self.getAllSongsFor(album: currentAlbum);
                 }
                 catch let error as MIMPDError {
                     throw error;
@@ -1239,14 +1245,14 @@ class MIMPD {
     /// - Parameter album: The `AZAlbum` to get the songs of
     /// - Returns: All the `MISong`s for the given `AZAlbum`
     /// - Throws: An `MIMPDError`
-    func getAllSongsForAlbum(album : AZAlbum) throws -> [MISong] {
+    func getAllSongsFor(album : AZAlbum) throws -> [MISong] {
         // If the connection isn't nil...
         if(connection != nil) {
             AZLogger.log("MIMPD: Getting all songs for album \(album)");
             
             do {
                 // Return all the songs that have an album tag equal to the `album`'s name
-                return try self.searchForSongs(album.name, within: MPD_TAG_ALBUM, exact: true);
+                return try self.searchForSongs(with: album.name, within: MPD_TAG_ALBUM, exact: true);
             }
             catch let error as MIMPDError {
                 throw error;
@@ -1263,11 +1269,11 @@ class MIMPD {
     ///
     /// - Parameters:
     ///   - query: The string to search for
-    ///   - tags: THe tags to limit the query to, `MPD_TAG_UNKNOWN` is used to denote an any search
+    ///   - tags: The tags to limit the query to, `MPD_TAG_UNKNOWN` is used to denote an any search
     ///   - exact: Should the search use exact matching?
     /// - Returns: The results of the search as an array of `MISong`s
     /// - Throws: An `MIMPDError`
-    func searchForSongs(_ query : String, within tag : mpd_tag_type, exact : Bool) throws -> [MISong] {
+    func searchForSongs(with query : String, within tag : mpd_tag_type, exact : Bool) throws -> [MISong] {
         // If the connection isn't nil...
         if(connection != nil) {
             AZLogger.log("MIMPD: Searching for songs with query \"\(query)\" within tag \(((tag == MPD_TAG_UNKNOWN) ? "Any" : String(cString: mpd_tag_name(tag)))), exact: \(exact)");
@@ -1305,18 +1311,15 @@ class MIMPD {
             }
             
             /// The key value pair for the results from MPD, with name "file" so only search request key value pairs are retrieved
-            var resultsKeyValuePair = mpd_recv_pair_named(self.connection!, "file");
+            var song = mpd_recv_song(self.connection!);
             
             // While `resultsKeyValuePair` isn't nil...
-            while(resultsKeyValuePair != nil) {
-                /// Append the `MISong` from `resultsKeyValuePair` to `results`
-                results.append(self.songFrom(mpdSong: mpd_song_begin(resultsKeyValuePair)));
+            while(song != nil) {
+                /// Append the `MISong` from `song` to `results`
+                results.append(self.songFrom(mpdSong: song!));
                 
-                // Free the read tag key value pair from memory
-                mpd_return_pair(self.connection!, resultsKeyValuePair);
-                
-                // Read the next key value pair from the server
-                resultsKeyValuePair = mpd_recv_pair_named(self.connection!, "file");
+                // Read the next song from the server
+                song = mpd_recv_song(self.connection!);
             }
             
             // If there was any errors...

@@ -66,8 +66,13 @@ protocol AZSong: CustomStringConvertible {
     
     /// Gets the thumbnail image for this song
     ///
-    /// - Parameter completionHandler: The completion handler to call when the thumbnail is loaded, passed the cover
+    /// - Parameter completionHandler: The completion handler to call when the thumbnail is loaded, passed the thumbnail
     func getThumbnailImage(_ completionHandler : @escaping ((NSImage) -> ()));
+    
+    /// Gets the cover image for this song
+    ///
+    /// - Parameter completionHandler: The completion handler to call when the cover is loaded, passed the cover
+    func getCoverImage(_ completionHandler : @escaping ((NSImage) -> ()));
     
     /// Cancels any current calls of `getThumbnailImage`, still stores the thumbnail image but just doesn't call the completion handler
     func cancelGetThumbnailImage();

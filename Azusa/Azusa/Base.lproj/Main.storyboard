@@ -532,7 +532,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="400"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="22" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" indentationMarkerFollowsCell="NO" outlineTableColumn="c8R-aQ-LKW" id="7qQ-Ld-qw0" userLabel="Sidebar Outline View">
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="22" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" indentationMarkerFollowsCell="NO" outlineTableColumn="c8R-aQ-LKW" id="7qQ-Ld-qw0" userLabel="Sidebar Outline View">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="400"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -557,7 +557,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wPc-Sf-I3L">
-                                                                    <rect key="frame" x="6" y="3" width="191" height="14"/>
+                                                                    <rect key="frame" x="9" y="4" width="188" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Library" id="1mu-OL-Vrq">
                                                                         <font key="font" metaFont="smallSystemBold"/>
                                                                         <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -567,8 +567,8 @@
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="wPc-Sf-I3L" secondAttribute="trailing" constant="2" id="Abj-iG-DCO"/>
-                                                                <constraint firstItem="wPc-Sf-I3L" firstAttribute="top" secondItem="lbP-w3-OMJ" secondAttribute="top" id="FZM-5C-wzx"/>
-                                                                <constraint firstItem="wPc-Sf-I3L" firstAttribute="leading" secondItem="lbP-w3-OMJ" secondAttribute="leading" constant="8" id="Sxr-gn-XkO"/>
+                                                                <constraint firstItem="wPc-Sf-I3L" firstAttribute="top" secondItem="lbP-w3-OMJ" secondAttribute="top" constant="-1" id="FZM-5C-wzx"/>
+                                                                <constraint firstItem="wPc-Sf-I3L" firstAttribute="leading" secondItem="lbP-w3-OMJ" secondAttribute="leading" constant="11" id="Sxr-gn-XkO"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="textField" destination="wPc-Sf-I3L" id="xVa-yN-tNe"/>
@@ -579,14 +579,14 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <imageView translatesAutoresizingMaskIntoConstraints="NO" id="RnZ-wf-J9V">
-                                                                    <rect key="frame" x="8" y="0.0" width="22" height="22"/>
+                                                                    <rect key="frame" x="13" y="0.0" width="22" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="RnZ-wf-J9V" secondAttribute="height" multiplier="1:1" id="pr1-LE-7CA"/>
                                                                     </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" imageScaling="proportionallyDown" image="NSActionTemplate" id="q5Y-UI-Hkg"/>
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="EPE-AZ-64x">
-                                                                    <rect key="frame" x="35" y="2" width="162" height="17"/>
+                                                                    <rect key="frame" x="42" y="2" width="155" height="17"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="17" id="SBN-Qy-Mri"/>
                                                                     </constraints>
@@ -600,8 +600,8 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="EPE-AZ-64x" secondAttribute="trailing" constant="2" id="GVQ-ef-XRJ"/>
                                                                 <constraint firstAttribute="bottom" secondItem="RnZ-wf-J9V" secondAttribute="bottom" id="OuR-MV-HHZ"/>
-                                                                <constraint firstItem="RnZ-wf-J9V" firstAttribute="leading" secondItem="6V3-Rc-Chp" secondAttribute="leading" constant="8" id="g5n-ri-X2a"/>
-                                                                <constraint firstItem="EPE-AZ-64x" firstAttribute="leading" secondItem="RnZ-wf-J9V" secondAttribute="trailing" constant="7" id="hYV-D1-PCA"/>
+                                                                <constraint firstItem="RnZ-wf-J9V" firstAttribute="leading" secondItem="6V3-Rc-Chp" secondAttribute="leading" constant="13" id="g5n-ri-X2a"/>
+                                                                <constraint firstItem="EPE-AZ-64x" firstAttribute="leading" secondItem="RnZ-wf-J9V" secondAttribute="trailing" constant="9" id="hYV-D1-PCA"/>
                                                                 <constraint firstItem="RnZ-wf-J9V" firstAttribute="top" secondItem="6V3-Rc-Chp" secondAttribute="top" id="u3I-eG-BYq"/>
                                                                 <constraint firstItem="EPE-AZ-64x" firstAttribute="centerY" secondItem="6V3-Rc-Chp" secondAttribute="centerY" id="wj4-K1-ZYb"/>
                                                             </constraints>
@@ -839,11 +839,50 @@
         <!--Music Player Content View Controller-->
         <scene sceneID="P4R-pY-1xe">
             <objects>
-                <viewController id="1rq-R8-huZ" userLabel="Music Player Content View Controller" sceneMemberID="viewController">
+                <viewController id="1rq-R8-huZ" userLabel="Music Player Content View Controller" customClass="AZMusicPlayerContentViewController" customModule="Azusa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="qmO-Dh-OoT">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dch-Sq-THM" userLabel="Scroll View - Albums Collection View">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="400"/>
+                                <clipView key="contentView" drawsBackground="NO" id="fpt-3y-WKg">
+                                    <rect key="frame" x="0.0" y="0.0" width="450" height="400"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView selectable="YES" allowsMultipleSelection="YES" id="zrm-Sj-FvR" userLabel="Albums Collection View">
+                                            <rect key="frame" x="0.0" y="0.0" width="450" height="400"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <collectionViewLayout key="collectionViewLayout" id="DSi-rb-Gbe" customClass="AZExpandableCollectionViewLayout" customModule="Azusa" customModuleProvider="target"/>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="1rq-R8-huZ" id="vFC-Yy-5NX"/>
+                                                <outlet property="delegate" destination="1rq-R8-huZ" id="3HA-2f-NgQ"/>
+                                            </connections>
+                                        </collectionView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="9Nc-Oe-YFY">
+                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="BHQ-zO-Wxc">
+                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Dch-Sq-THM" secondAttribute="trailing" id="DCc-Yn-Thm"/>
+                            <constraint firstItem="Dch-Sq-THM" firstAttribute="leading" secondItem="qmO-Dh-OoT" secondAttribute="leading" id="dL9-wC-WO2"/>
+                            <constraint firstItem="Dch-Sq-THM" firstAttribute="top" secondItem="qmO-Dh-OoT" secondAttribute="top" id="eDj-xp-rTk"/>
+                            <constraint firstAttribute="bottom" secondItem="Dch-Sq-THM" secondAttribute="bottom" id="knG-Dk-tWx"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="albumsCollectionView" destination="zrm-Sj-FvR" id="24V-nK-TKG"/>
+                    </connections>
                 </viewController>
                 <customObject id="oN3-PH-sRU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
