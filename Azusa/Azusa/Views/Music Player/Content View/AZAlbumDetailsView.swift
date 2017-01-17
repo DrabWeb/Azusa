@@ -13,7 +13,7 @@ class AZAlbumDetailsView: NSView {
     // MARK: - Properties
     
     /// The height for `AZAlbumDetailsView`s
-    static var height : CGFloat = 488;
+    static var height : CGFloat = 498;
     
     /// The album this view is displaying
     var representedAlbum : AZAlbum? = nil;

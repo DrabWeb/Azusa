@@ -76,6 +76,9 @@ class AZExpandableCollectionViewLayout: NSCollectionViewFlowLayout {
                 if(previousSelectionIndexPaths.first != firstSelectionIndexPath) {
                     if let selectedItem = self.collectionView?.item(at: firstSelectionIndexPath) {
                         displayExpansionItem?(onNewRow, selectedItem, firstSelectionIndexPath.item);
+                        
+                        // Scroll the expansion item to visible
+                        self.collectionView?.scrollToVisible(NSRect(x: 0, y: selectedItemY + (expansionHeight / 2), width: self.collectionView?.bounds.width ?? 0, height: expansionHeight));
                     }
                 }
             }

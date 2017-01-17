@@ -56,7 +56,7 @@ class AZMusicPlayerContentViewController: NSViewController {
                 self.albumsCollectionView.superview!.removeConstraint(self.currentAlbumDetailsViewTopConstraint!);
             }
             
-            self.currentAlbumDetailsViewTopConstraint = NSLayoutConstraint(item: self.currentAlbumDetailsView!, attribute: .top, relatedBy: .equal, toItem: collectionViewItem.view, attribute: .bottom, multiplier: 1, constant: 10);
+            self.currentAlbumDetailsViewTopConstraint = NSLayoutConstraint(item: self.currentAlbumDetailsView!, attribute: .top, relatedBy: .equal, toItem: collectionViewItem.view, attribute: .bottom, multiplier: 1, constant: 0);
             
             self.albumsCollectionView.superview!.addConstraint(self.currentAlbumDetailsViewTopConstraint!);
             
