@@ -16,6 +16,9 @@ class AZRoundDarkEdgedImageView: NSImageView {
         self.layer?.cornerRadius = 5;
         self.layer?.masksToBounds = true;
         
+        // Set the background color
+        self.layer?.backgroundColor = NSColor.white.cgColor;
+        
         /// The path for the dark edge stroke
         let strokePath : NSBezierPath = NSBezierPath(roundedRect: self.bounds, xRadius: 5, yRadius: 5);
         

@@ -13,13 +13,16 @@ class AZAlbumDetailsView: NSView {
     // MARK: - Properties
     
     /// The height for `AZAlbumDetailsView`s
-    static var height : CGFloat = 498;
+    static var height : CGFloat = 490;
     
     /// The album this view is displaying
     var representedAlbum : AZAlbum? = nil;
     
     
     /// MARK: - IBOutlets
+    
+    /// The popup triangle for showing which album this view is attached to
+    @IBOutlet weak var popupTriangle: AZPopupTriangleView!
     
     /// The image view for displaying the album's cover image
     @IBOutlet weak var coverImageView: AZRoundDarkEdgedImageView!
@@ -39,6 +42,13 @@ class AZAlbumDetailsView: NSView {
     /// The table view for displaying the songs of this album
     @IBOutlet weak var songsTableView: NSTableView!
     
+    
+    // MARK: - Functions
+    
+    override func mouseDown(with event: NSEvent) {
+        // Take mouse down so the user can't accidentally deselect collection view items when clicking this view
+    }
+    
     /// Displays the given album in this view
     ///
     /// - Parameter album: The `AZAlbum` to display
@@ -53,7 +63,12 @@ class AZAlbumDetailsView: NSView {
         });
         
         /// The duration of the album in hours, seconds and minutes
-        let durationInHoursMinutesSeconds : (Int, Int, Int) = AZMusicUtilities.hoursMinutesSeconds(from: album.duration);
+        var durationInHoursMinutesSeconds : (Int, Int, Int) = AZMusicUtilities.hoursMinutesSeconds(from: album.duration);
+        
+        // Round up the seconds and add them to minutes
+        if(durationInHoursMinutesSeconds.2 > 10) {
+            durationInHoursMinutesSeconds.1 += 1;
+        }
         
         var durationLabel : String = "";
         
@@ -65,6 +80,7 @@ class AZAlbumDetailsView: NSView {
         }
         
         self.durationDetailsLabel.stringValue = "\(album.songs.count) song\((album.songs.count > 1) ? "s" : ""), \(durationLabel)";
+        self.durationDetailsLabel.toolTip = AZMusicUtilities.secondsToDisplayTime(album.duration);
         
         self.albumTitleLabel.stringValue = album.displayName;
         self.albumArtistLabel.stringValue = album.displayArtists(shorten: false);

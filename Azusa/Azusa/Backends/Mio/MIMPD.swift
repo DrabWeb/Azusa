@@ -578,7 +578,7 @@ class MIMPD {
             AZLogger.log("MIMPD: Seeking to \(AZMusicUtilities.secondsToDisplayTime(to)) in #\(trackPosition)");
             
             // If `to` is in range of the queue...
-            if(trackPosition < (try self.getQueueLength())) {
+            if(trackPosition < (try self.getQueueLength()) && trackPosition >= 0) {
                 // Run the seek command and if it fails...
                 if(!mpd_run_seek_pos(self.connection!, UInt32(trackPosition), UInt32(to))) {
                     // Throw the current error

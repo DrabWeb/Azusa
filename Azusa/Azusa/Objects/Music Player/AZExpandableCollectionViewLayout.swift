@@ -56,20 +56,16 @@ class AZExpandableCollectionViewLayout: NSCollectionViewFlowLayout {
                 var onNewRow : Bool = false;
                 
                 // Get `selectedItemY`
-                attributes.forEach { attribute in
-                    if(attribute.indexPath == firstSelectionIndexPath) {
-                        // Set `onNewRow`
-                        onNewRow = (selectedItemY != attribute.frame.origin.y);
-                        
-                        selectedItemY = attribute.frame.origin.y;
-                    }
+                if let selectedItemAttribute = super.layoutAttributesForItem(at: firstSelectionIndexPath) {
+                    // Set `onNewRow`
+                    onNewRow = (selectedItemY != selectedItemAttribute.frame.origin.y);
+                    
+                    selectedItemY = selectedItemAttribute.frame.origin.y;
                 }
                 
                 // Update the item positions below the expansion view so they are positioned below it
-                attributes.forEach { attribute in
-                    if(attribute.frame.origin.y > selectedItemY) {
-                        attribute.frame.origin = NSPoint(x: attribute.frame.origin.x, y: attribute.frame.origin.y + expansionHeight);
-                    }
+                attributes.filter({ $0.frame.origin.y > selectedItemY }).forEach { attribute in
+                    attribute.frame.origin = NSPoint(x: attribute.frame.origin.x, y: attribute.frame.origin.y + expansionHeight);
                 }
                 
                 // Display the expansion item, but only if the selection is on a new item
@@ -77,10 +73,13 @@ class AZExpandableCollectionViewLayout: NSCollectionViewFlowLayout {
                     if let selectedItem = self.collectionView?.item(at: firstSelectionIndexPath) {
                         displayExpansionItem?(onNewRow, selectedItem, firstSelectionIndexPath.item);
                         
-                        // Scroll the expansion item to visible
+                        // Scroll the expansion view to visible
                         self.collectionView?.scrollToVisible(NSRect(x: 0, y: selectedItemY + (expansionHeight / 2), width: self.collectionView?.bounds.width ?? 0, height: expansionHeight));
                     }
                 }
+                
+                // Fixes an issue where there would be random spaces on some rows
+                super.invalidateLayout();
             }
         }
         // If there are no or multiple items selected...

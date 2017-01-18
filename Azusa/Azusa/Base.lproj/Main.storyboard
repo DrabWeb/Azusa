@@ -857,7 +857,7 @@
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
                                                 <outlet property="dataSource" destination="1rq-R8-huZ" id="vFC-Yy-5NX"/>
-                                                <outlet property="delegate" destination="1rq-R8-huZ" id="3HA-2f-NgQ"/>
+                                                <outlet property="delegate" destination="1rq-R8-huZ" id="5l9-ql-fte"/>
                                             </connections>
                                         </collectionView>
                                     </subviews>

@@ -294,9 +294,6 @@ extension AZQueueViewController: NSTableViewDataSource {
             // Display the song at `row` in `cellView`
             cellView.display(song: self.queueTableViewItems[row]);
             
-            // Don't reuse cells
-            cellView.identifier = nil;
-            
             // Return the modified cell view
             return cellView;
         }

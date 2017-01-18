@@ -25,18 +25,18 @@ class AZMusicPlayerAlbumsCollectionViewItem: NSCollectionViewItem {
     var isRaised : Bool = false;
     
     /// The `AZAlbum` this item represents
-    var item : AZAlbum? {
+    var representedAlbum : AZAlbum? {
         didSet {
             // Only display the item if the view is loaded
             guard isViewLoaded else { return };
             
             // Display the model's data
-            self.item!.getThumbnailImage({ thumbnail in
+            self.representedAlbum!.getThumbnailImage({ thumbnail in
                 self.imageView!.image = thumbnail;
             });
             
-            self.headerLabel.stringValue = item!.displayName;
-            self.subHeaderLabel.stringValue = item!.displayArtists(shorten: true);
+            self.headerLabel.stringValue = representedAlbum!.displayName;
+            self.subHeaderLabel.stringValue = representedAlbum!.displayArtists(shorten: true);
         }
     }
     
@@ -54,6 +54,13 @@ class AZMusicPlayerAlbumsCollectionViewItem: NSCollectionViewItem {
         
         // Do the initial shadow hide
         self.imageView!.superview!.layer!.shadowOpacity = 0;
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse();
+        
+        // Reset the image view's image
+        self.imageView?.image = #imageLiteral(resourceName: "AZDefaultCover");
     }
     
     /// Sets if this item is raised

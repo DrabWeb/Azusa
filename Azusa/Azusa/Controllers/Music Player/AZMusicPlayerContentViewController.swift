@@ -18,10 +18,13 @@ class AZMusicPlayerContentViewController: NSViewController {
     var albumsCollectionViewItems : [AZAlbum] = [];
     
     /// The current displaying `AZAlbumDetailsView` in the albums collection view
-    private var currentAlbumDetailsView : AZAlbumDetailsView? = nil;
+    var currentAlbumDetailsView : AZAlbumDetailsView? = nil;
     
     /// The top constraint for `currentAlbumDetailsView`
     private var currentAlbumDetailsViewTopConstraint : NSLayoutConstraint? = nil;
+    
+    /// The constraint for centering the X position of the popup triangle of the current album details view relative to the selected album
+    private var currentAlbumDetailsViewPopupTriangleCenterConstraint : NSLayoutConstraint? = nil;
     
     
     // MARK: - Functions
@@ -51,17 +54,11 @@ class AZMusicPlayerContentViewController: NSViewController {
                                                                      NSLayoutConstraint(item: self.currentAlbumDetailsView!, attribute: .trailing, relatedBy: .equal, toItem: self.albumsCollectionView.superview!, attribute: .trailing, multiplier: 1, constant: 0)]);
             }
             
-            // Creat the top constraint
-            if(self.currentAlbumDetailsViewTopConstraint != nil) {
-                self.albumsCollectionView.superview!.removeConstraint(self.currentAlbumDetailsViewTopConstraint!);
-            }
+            // Readjust the album details view's constraints
+            self.readjustAlbumDetailsViewConstraints(with: collectionViewItem);
             
-            self.currentAlbumDetailsViewTopConstraint = NSLayoutConstraint(item: self.currentAlbumDetailsView!, attribute: .top, relatedBy: .equal, toItem: collectionViewItem.view, attribute: .bottom, multiplier: 1, constant: 0);
-            
-            self.albumsCollectionView.superview!.addConstraint(self.currentAlbumDetailsViewTopConstraint!);
-            
-            // Set the layout's expansion size
-            (self.albumsCollectionView.collectionViewLayout as? AZExpandableCollectionViewLayout)?.expansionHeight = self.currentAlbumDetailsView!.bounds.height;
+            // Make sure the album details view is visible
+            self.currentAlbumDetailsView!.isHidden = false;
             
             // Display the album in the details view
             self.currentAlbumDetailsView!.display(album: self.albumsCollectionViewItems[index], fade: !onNewRow);
@@ -93,9 +90,52 @@ class AZMusicPlayerContentViewController: NSViewController {
                 context.allowsImplicitAnimation = true;
                 context.duration = 0.15;
                 
+                // Don't allow reuse of selected items so their visual states are kept
+                self.albumsCollectionView.selectionIndexPaths.forEach {
+                    self.albumsCollectionView.item(at: $0)?.identifier = "";
+                }
+                
                 albumsCollectionView.collectionViewLayout!.invalidateLayout();
                 self.view.window?.layoutIfNeeded();
             }, completionHandler: nil);
+        }
+    }
+    
+    override func viewWillLayout() {
+        super.viewWillLayout()
+        
+        self.albumsCollectionView.collectionViewLayout?.invalidateLayout();
+    }
+    
+    /// Readjusts the current album details view's top and center X constraints relative to `collectionViewItem`
+    ///
+    /// - Parameter collectionViewItem: The `NSCollectionViewItem` to constraint to
+    func readjustAlbumDetailsViewConstraints(with collectionViewItem : NSCollectionViewItem) {
+        if(self.currentAlbumDetailsView != nil) {
+            if(self.albumsCollectionView.selectionIndexPaths.count == 1) {
+                collectionViewItem.identifier = "";
+                
+                // Create the top constraint
+                if(self.currentAlbumDetailsViewTopConstraint != nil) {
+                    self.albumsCollectionView.superview!.removeConstraint(self.currentAlbumDetailsViewTopConstraint!);
+                }
+                
+                self.currentAlbumDetailsViewTopConstraint = NSLayoutConstraint(item: self.currentAlbumDetailsView!, attribute: .top, relatedBy: .equal, toItem: collectionViewItem.view, attribute: .bottom, multiplier: 1, constant: 0);
+                
+                self.albumsCollectionView.superview!.addConstraint(self.currentAlbumDetailsViewTopConstraint!);
+                
+                
+                // Create the popup triangle center X constraint
+                if(self.currentAlbumDetailsViewPopupTriangleCenterConstraint != nil) {
+                    self.albumsCollectionView.superview!.removeConstraint(self.currentAlbumDetailsViewPopupTriangleCenterConstraint!);
+                }
+                
+                self.currentAlbumDetailsViewPopupTriangleCenterConstraint = NSLayoutConstraint(item: self.currentAlbumDetailsView!.popupTriangle, attribute: .centerX, relatedBy: .equal, toItem: collectionViewItem.view, attribute: .centerX, multiplier: 1, constant: 0);
+                
+                self.albumsCollectionView.superview!.addConstraint(self.currentAlbumDetailsViewPopupTriangleCenterConstraint!);
+                
+                self.albumsCollectionView.collectionViewLayout?.invalidateLayout();
+            }
         }
     }
     
@@ -129,6 +169,7 @@ class AZMusicPlayerContentViewController: NSViewController {
 // MARK: - Extensions
 
 extension AZMusicPlayerContentViewController: NSCollectionViewDataSource {
+    
     func numberOfSectionsInCollectionView(collectionView: NSCollectionView) -> Int {
         // The albums collection view only ever has one section
         return 1;
@@ -150,9 +191,28 @@ extension AZMusicPlayerContentViewController: NSCollectionViewDataSource {
         let data : AZAlbum = self.albumsCollectionViewItems[indexPath.item];
         
         // Display the album in the item
-        albumsCollectionViewItem.item = data;
+        albumsCollectionViewItem.representedAlbum = data;
+        
+        // Recreate the album details view's constraints if this is the current seleted item and the only selected item
+        if(self.albumsCollectionView.selectionIndexPaths.count == 1 && indexPath ==  self.albumsCollectionView.selectionIndexPaths.first) {
+            self.currentAlbumDetailsView?.isHidden = false;
+            self.readjustAlbumDetailsViewConstraints(with: albumsCollectionViewItem);
+        }
         
         // Return the created item
         return albumsCollectionViewItem;
+    }
+}
+
+extension AZMusicPlayerContentViewController: NSCollectionViewDelegateFlowLayout {
+    
+    // A fix for when an expanded item gets resized out of the viewport
+    // Hides the album details view from the user when scrolled out and re-attaches it when the item becomes visible 
+    
+    func collectionView(_ collectionView: NSCollectionView, didEndDisplaying item: NSCollectionViewItem, forRepresentedObjectAt indexPath: IndexPath) {
+        if(self.albumsCollectionView.selectionIndexPaths.count == 1 && indexPath ==  self.albumsCollectionView.selectionIndexPaths.first) {
+            self.currentAlbumDetailsView?.isHidden = true;
+            self.albumsCollectionView.collectionViewLayout?.invalidateLayout();
+        }
     }
 }

@@ -26,6 +26,13 @@ class AZQueueTableCellView: NSTableCellView {
     
     // MARK: - Functions
     
+    override func prepareForReuse() {
+        super.prepareForReuse();
+        
+        // Reset the image view's image
+        self.coverImageView?.image = #imageLiteral(resourceName: "AZDefaultCover");
+    }
+    
     /// Displays the given `AZSong` in this cell
     ///
     /// - Parameter song: The `AZSong` to display

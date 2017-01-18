@@ -11,10 +11,12 @@
 		63B2E3C1852F3FAB435DB8D3 /* Pods_Azusa_AzusaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8E74CB10E92694EC1CA13F /* Pods_Azusa_AzusaTests.framework */; };
 		79300E65A5FC66D4D7B5756E /* Pods_AzusaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87980E1FE99B4E409C9A68D3 /* Pods_AzusaUITests.framework */; };
 		82F685E783B3F5C538261B18 /* Pods_AzusaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D54715146391BE5584F2FBD /* Pods_AzusaTests.framework */; };
+		AE0A5AE01E2F067700165708 /* AZExpandableCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0A5ADF1E2F067700165708 /* AZExpandableCollectionViewLayout.swift */; };
 		AE1643C81E22D154001624BC /* AZVolumeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1643C71E22D154001624BC /* AZVolumeSlider.swift */; };
 		AE2AF77D1DFC9A4F00580839 /* AZAspectFillImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2AF77C1DFC9A4F00580839 /* AZAspectFillImageView.swift */; };
 		AE45A5B31E2BDF550029A24C /* AZMusicPlayerContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE45A5B21E2BDF550029A24C /* AZMusicPlayerContentViewController.swift */; };
 		AE4C9B461E230CA600E2FD4C /* WAYWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4C9B451E230CA600E2FD4C /* WAYWindow.m */; };
+		AE57370F1E2DAA8400B647AD /* AZPopupTriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE57370E1E2DAA8400B647AD /* AZPopupTriangleView.swift */; };
 		AE5A63371DF9135D002301F6 /* MIMPDPlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A63361DF9135D002301F6 /* MIMPDPlayerStatus.swift */; };
 		AE5A63391DF91408002301F6 /* MISong.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A63381DF91408002301F6 /* MISong.swift */; };
 		AE602EF41DF8E8E3002225CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE602EF31DF8E8E3002225CB /* AppDelegate.swift */; };
@@ -50,7 +52,6 @@
 		AEDC326C1DFA008C00538F24 /* AZArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC326B1DFA008C00538F24 /* AZArtist.swift */; };
 		AEDC326E1DFA009700538F24 /* AZAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC326D1DFA009700538F24 /* AZAlbum.swift */; };
 		AEDC32721DFA0E0F00538F24 /* AZGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC32711DFA0E0F00538F24 /* AZGenre.swift */; };
-		AEEAA68C1E2C056A00D08195 /* AZExpandableCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEAA68B1E2C056A00D08195 /* AZExpandableCollectionViewLayout.swift */; };
 		AEF6EE781E088F1F009990CB /* AZMusicPlayerSidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF6EE771E088F1F009990CB /* AZMusicPlayerSidebarViewController.swift */; };
 		AEF6EE7C1E0891EA009990CB /* AZMusicPlayerSidebarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF6EE7B1E0891EA009990CB /* AZMusicPlayerSidebarModel.swift */; };
 		AEFC79711E0210F8006DE067 /* AZImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC79701E0210F8006DE067 /* AZImageExtensions.swift */; };
@@ -84,12 +85,14 @@
 		9D54715146391BE5584F2FBD /* Pods_AzusaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AzusaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D7D6908FF45860FCE40E70 /* Pods_Azusa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Azusa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A91C1207D0B3C8600F32B875 /* Pods-Azusa-AzusaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Azusa-AzusaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Azusa-AzusaTests/Pods-Azusa-AzusaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE0A5ADF1E2F067700165708 /* AZExpandableCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZExpandableCollectionViewLayout.swift; sourceTree = "<group>"; };
 		AE1643C71E22D154001624BC /* AZVolumeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZVolumeSlider.swift; sourceTree = "<group>"; };
 		AE2AF77C1DFC9A4F00580839 /* AZAspectFillImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZAspectFillImageView.swift; sourceTree = "<group>"; };
 		AE45A5B21E2BDF550029A24C /* AZMusicPlayerContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerContentViewController.swift; sourceTree = "<group>"; };
 		AE4C9B441E230CA600E2FD4C /* WAYWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAYWindow.h; sourceTree = "<group>"; };
 		AE4C9B451E230CA600E2FD4C /* WAYWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAYWindow.m; sourceTree = "<group>"; };
 		AE4C9B491E230D7100E2FD4C /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		AE57370E1E2DAA8400B647AD /* AZPopupTriangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZPopupTriangleView.swift; sourceTree = "<group>"; };
 		AE5A63361DF9135D002301F6 /* MIMPDPlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMPDPlayerStatus.swift; sourceTree = "<group>"; };
 		AE5A63381DF91408002301F6 /* MISong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MISong.swift; sourceTree = "<group>"; };
 		AE602EF01DF8E8E3002225CB /* Azusa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Azusa.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,7 +184,6 @@
 		AEDC326B1DFA008C00538F24 /* AZArtist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZArtist.swift; sourceTree = "<group>"; };
 		AEDC326D1DFA009700538F24 /* AZAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZAlbum.swift; sourceTree = "<group>"; };
 		AEDC32711DFA0E0F00538F24 /* AZGenre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZGenre.swift; sourceTree = "<group>"; };
-		AEEAA68B1E2C056A00D08195 /* AZExpandableCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZExpandableCollectionViewLayout.swift; sourceTree = "<group>"; };
 		AEF6EE771E088F1F009990CB /* AZMusicPlayerSidebarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerSidebarViewController.swift; sourceTree = "<group>"; };
 		AEF6EE7B1E0891EA009990CB /* AZMusicPlayerSidebarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZMusicPlayerSidebarModel.swift; sourceTree = "<group>"; };
 		AEFC79701E0210F8006DE067 /* AZImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZImageExtensions.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				AE2AF77C1DFC9A4F00580839 /* AZAspectFillImageView.swift */,
 				AE1643C71E22D154001624BC /* AZVolumeSlider.swift */,
 				AEAFBF071E25B1340079596D /* AZRoundDarkEdgedImageView.swift */,
+				AE57370E1E2DAA8400B647AD /* AZPopupTriangleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -501,7 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				AEF6EE7B1E0891EA009990CB /* AZMusicPlayerSidebarModel.swift */,
-				AEEAA68B1E2C056A00D08195 /* AZExpandableCollectionViewLayout.swift */,
+				AE0A5ADF1E2F067700165708 /* AZExpandableCollectionViewLayout.swift */,
 			);
 			path = "Music Player";
 			sourceTree = "<group>";
@@ -842,6 +845,7 @@
 				AE2AF77D1DFC9A4F00580839 /* AZAspectFillImageView.swift in Sources */,
 				AE98A4411DFE85150004F9CF /* AZQueueViewController.swift in Sources */,
 				AE8861A11E24706700EBB23E /* AZMusicPlayerToolbarView.swift in Sources */,
+				AE57370F1E2DAA8400B647AD /* AZPopupTriangleView.swift in Sources */,
 				AE602FD01DF906EC002225CB /* MIMPDStats.swift in Sources */,
 				AEDC326E1DFA009700538F24 /* AZAlbum.swift in Sources */,
 				AE88619D1E245F6300EBB23E /* AZMusicPlayerViewController.swift in Sources */,
@@ -855,13 +859,13 @@
 				AED38A231DFF518300F410E3 /* AZQueueTableCellView.swift in Sources */,
 				AED38A201DFF513E00F410E3 /* AZProgressBarCell.swift in Sources */,
 				AEDC326C1DFA008C00538F24 /* AZArtist.swift in Sources */,
-				AEEAA68C1E2C056A00D08195 /* AZExpandableCollectionViewLayout.swift in Sources */,
 				AE602FD71DF90818002225CB /* AZMusicPlayer.swift in Sources */,
 				AED3093A1DFF8C9F0053AA53 /* AZCoverDatabase.swift in Sources */,
 				AE45A5B31E2BDF550029A24C /* AZMusicPlayerContentViewController.swift in Sources */,
 				AE1643C81E22D154001624BC /* AZVolumeSlider.swift in Sources */,
 				AE7CE04A1E2AB6CB0052AE8E /* AZAlbumDetailsView.swift in Sources */,
 				AED38A251DFF6A4E00F410E3 /* AZQueueTableView.swift in Sources */,
+				AE0A5AE01E2F067700165708 /* AZExpandableCollectionViewLayout.swift in Sources */,
 				AEF6EE781E088F1F009990CB /* AZMusicPlayerSidebarViewController.swift in Sources */,
 				AEDC32721DFA0E0F00538F24 /* AZGenre.swift in Sources */,
 			);

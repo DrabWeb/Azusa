@@ -29,27 +29,16 @@ extension NSImage {
         /// The pixel size of this image
         let pixelSize : NSSize = self.pixelSize;
         
-        // If the height is greater than the width...
-        if(pixelSize.height > pixelSize.width) {
+        // If the height is greater than the width, or vice versa...
+        if(pixelSize.height > pixelSize.width || pixelSize.height < pixelSize.width) {
             /// The aspect ratio of this image
-            let aspectRatio : CGFloat = pixelSize.width / pixelSize.height;
+            let aspectRatio : CGFloat = pixelSize.height / pixelSize.width;
             
             /// Then new width for this image
             let width : CGFloat = aspectRatio * CGFloat(size);
             
             // Return the resized image
             return self.resizedTo(NSSize(width: CGFloat(size), height: width));
-        }
-        // If the width is greater than the height...
-        else if(pixelSize.width > pixelSize.height) {
-            /// The aspect ratio of this image
-            let aspectRatio : CGFloat = pixelSize.height / pixelSize.width;
-            
-            /// Then new height for this image
-            let height : CGFloat = aspectRatio * CGFloat(size);
-            
-            // Return the resized image
-            return self.resizedTo(NSSize(width: CGFloat(size), height: height));
         }
         // If the width and height are equal...
         else {
