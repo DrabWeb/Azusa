@@ -105,6 +105,7 @@ class AZMusicPlayerContentViewController: NSViewController {
         super.viewWillLayout()
         
         self.albumsCollectionView.collectionViewLayout?.invalidateLayout();
+        (self.albumsCollectionView.collectionViewLayout as? AZExpandableCollectionViewLayout)?.scrollToExpansion();
     }
     
     /// Readjusts the current album details view's top and center X constraints relative to `collectionViewItem`

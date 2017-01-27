@@ -44,9 +44,40 @@ class AZExpandableCollectionViewLayout: NSCollectionViewFlowLayout {
         return contentSize;
     }
     
+    /// Scrolls the expansion view and it's item into the viewport, does nothing if no items are expanded
+    func scrollToExpansion() {
+        // If there's only one item selected...
+        if(self.collectionView!.selectionIndexPaths.count == 1) {
+            // Scroll to the expansion view and it's item
+            self.collectionView?.scrollToVisible(NSRect(x: 0, y: selectedItemY, width: self.collectionView?.bounds.width ?? 0, height: expansionHeight + self.itemSize.height));
+        }
+    }
+    
     override func layoutAttributesForElements(in rect: NSRect) -> [NSCollectionViewLayoutAttributes] {
-        /// The layout attributes from `NSCollectionViewFlowLayout`
-        let attributes : [NSCollectionViewLayoutAttributes] = super.layoutAttributesForElements(in: rect);
+        // Return the adjusted attributes
+        return self.adjustLayoutAttributes(attributes: super.layoutAttributesForElements(in: rect));
+    }
+    
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> NSCollectionViewLayoutAttributes? {
+        /// The layout attributes for this item from super
+        var attribute : NSCollectionViewLayoutAttributes? = super.layoutAttributesForItem(at: indexPath);
+        
+        // Adjust the attributes
+        if(attribute != nil) {
+            attribute = self.adjustLayoutAttributes(attributes: [attribute!])[0];
+        }
+        
+        // Return the attributes
+        return attribute;
+    }
+    
+    /// Adjusts the given collection view layout attributes to fit the expandable view
+    ///
+    /// - Parameter attributes: The attributes to adjust
+    /// - Returns: The adjusted attributes
+    private func adjustLayoutAttributes(attributes : [NSCollectionViewLayoutAttributes]) -> [NSCollectionViewLayoutAttributes] {
+        /// `attributes`, adjusted
+        let adjustedAttributes : [NSCollectionViewLayoutAttributes] = attributes;
         
         // If there's only one item selected...
         if(self.collectionView!.selectionIndexPaths.count == 1) {
@@ -64,7 +95,7 @@ class AZExpandableCollectionViewLayout: NSCollectionViewFlowLayout {
                 }
                 
                 // Update the item positions below the expansion view so they are positioned below it
-                attributes.filter({ $0.frame.origin.y > selectedItemY }).forEach { attribute in
+                adjustedAttributes.filter({ $0.frame.origin.y > selectedItemY }).forEach { attribute in
                     attribute.frame.origin = NSPoint(x: attribute.frame.origin.x, y: attribute.frame.origin.y + expansionHeight);
                 }
                 
@@ -73,8 +104,8 @@ class AZExpandableCollectionViewLayout: NSCollectionViewFlowLayout {
                     if let selectedItem = self.collectionView?.item(at: firstSelectionIndexPath) {
                         displayExpansionItem?(onNewRow, selectedItem, firstSelectionIndexPath.item);
                         
-                        // Scroll the expansion view to visible
-                        self.collectionView?.scrollToVisible(NSRect(x: 0, y: selectedItemY + (expansionHeight / 2), width: self.collectionView?.bounds.width ?? 0, height: expansionHeight));
+                        // Scroll to the expansion view and it's item
+                        scrollToExpansion();
                     }
                 }
                 
@@ -91,7 +122,7 @@ class AZExpandableCollectionViewLayout: NSCollectionViewFlowLayout {
         // Set `previousSelectionIndexPaths`
         previousSelectionIndexPaths = self.collectionView!.selectionIndexPaths;
         
-        // Return the attributes
-        return attributes;
+        // Return the adjusted attributes
+        return adjustedAttributes;
     }
 }
