@@ -6,7 +6,6 @@
 //
 
 import Cocoa
-import MPD
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -22,7 +21,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let savePanel : NSSavePanel = NSSavePanel();
         
         // Set the default filename
-        savePanel.nameFieldStringValue = "log.txt";
+        let dateFormatter : DateFormatter = DateFormatter();
+        dateFormatter.dateFormat = "Y-M-d";
+        savePanel.nameFieldStringValue = "azusa.\(dateFormatter.string(from: Date())).log";
         
         // Run the modal, and if the user clicks save...
         if(Bool(savePanel.runModal() as NSNumber)) {

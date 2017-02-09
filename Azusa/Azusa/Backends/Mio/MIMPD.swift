@@ -22,19 +22,23 @@ import MPD
 /// - connectionClosed: Connection closed by MPD
 /// - serverError: The server has returned an error code, which can be queried with `mpd_connection_get_server_error()`
 /// - other: An error not handled by Mio
-enum MIMPDError: Error {
-    case success
-    case disconnected
-    case outOfMemory
-    case argument
-    case state
-    case timeout
-    case system
-    case resolver
-    case malformed
-    case connectionClosed
-    case serverError
-    case other
+enum MIMPDError: String, Error, CustomStringConvertible {
+    var description: String {
+        return rawValue;
+    }
+    
+    case success = "Success"
+    case disconnected = "The MIMPD object is not connected to any servers"
+    case outOfMemory = "Out of memory"
+    case argument = "A function was called with an uncrecognized or invalid argument"
+    case state = "A function was called which is not available in the current state of libmpdclient"
+    case timeout = "Timeout trying to talk to MPD"
+    case system = "System error"
+    case resolver = "Unknown host"
+    case malformed = "Malformed response received from MPD"
+    case connectionClosed = "Connection closed by MPD"
+    case serverError = "The server has returned an error code"
+    case other = "Error not handled"
 }
 
 /// Basics for using libmpdclient easily in swift

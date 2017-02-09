@@ -853,11 +853,13 @@
                                         <collectionView selectable="YES" allowsMultipleSelection="YES" id="zrm-Sj-FvR" userLabel="Albums Collection View">
                                             <rect key="frame" x="0.0" y="0.0" width="450" height="400"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <collectionViewLayout key="collectionViewLayout" id="Jzf-4X-8Fh" customClass="AZExpandableCollectionViewLayout" customModule="Azusa" customModuleProvider="target"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" id="kFC-po-IXj">
+                                                <size key="itemSize" width="200" height="240"/>
+                                                <edgeInsets key="sectionInset" left="30" right="30" top="30" bottom="30"/>
+                                            </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
                                                 <outlet property="dataSource" destination="1rq-R8-huZ" id="vFC-Yy-5NX"/>
-                                                <outlet property="delegate" destination="1rq-R8-huZ" id="5l9-ql-fte"/>
                                             </connections>
                                         </collectionView>
                                     </subviews>

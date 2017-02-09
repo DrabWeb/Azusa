@@ -15,14 +15,14 @@ class AZMusicPlayerAlbumsCollectionViewItem: NSCollectionViewItem {
     /// The constraint for the top edge of the image view
     @IBOutlet weak var imageViewTopConstraint: NSLayoutConstraint!
     
+    /// The selection box for this collection view item
+    @IBOutlet weak var selectionBox: AZSelectionBox!
+    
     /// The header label of this item
     @IBOutlet weak var headerLabel: NSTextField!
     
     /// The sub-header label of this item
     @IBOutlet weak var subHeaderLabel: NSTextField!
-    
-    /// Is this item raised?(showing it's inline album popup)
-    var isRaised : Bool = false;
     
     /// The `AZAlbum` this item represents
     var representedAlbum : AZAlbum? {
@@ -40,47 +40,30 @@ class AZMusicPlayerAlbumsCollectionViewItem: NSCollectionViewItem {
         }
     }
     
+    override var highlightState: NSCollectionViewItemHighlightState {
+        willSet {
+            if(newValue == .forSelection) {
+                selectionBox.isHidden = false;
+            }
+            if(newValue == .forDeselection || (newValue == .none && !isSelected)) {
+                selectionBox.isHidden = true;
+            }
+        }
+    }
+    
     override var isSelected : Bool {
-        didSet {
-            self.setRaised(isSelected);
+        willSet {
+            selectionBox.isHidden = !newValue;
         }
     }
     
     
     // MARK: - Functions
     
-    override func viewDidLoad() {
-        super.viewDidLoad();
-        
-        // Do the initial shadow hide
-        self.imageView!.superview!.layer!.shadowOpacity = 0;
-    }
-    
     override func prepareForReuse() {
         super.prepareForReuse();
         
         // Reset the image view's image
         self.imageView?.image = #imageLiteral(resourceName: "AZDefaultCover");
-    }
-    
-    /// Sets if this item is raised
-    ///
-    /// - Parameter raised: The value to set
-    func setRaised(_ raised : Bool) {
-        self.isRaised = raised;
-        
-        // Setup the shadow opacity animation
-        let shadowOpacityAnimation : CABasicAnimation = CABasicAnimation(keyPath: "shadowOpacity");
-        shadowOpacityAnimation.fromValue = (self.isRaised) ? 0 : 0.5;
-        shadowOpacityAnimation.toValue = (self.isRaised) ? 0.5 : 0;
-        shadowOpacityAnimation.duration = 0.075;
-        self.imageView!.superview!.layer!.add(shadowOpacityAnimation, forKey: "shadowOpacity");
-        
-        // Set the animation duration
-        NSAnimationContext.current().duration = 0.15;
-        
-        // Do the animations
-        self.imageView!.superview!.layer!.shadowOpacity = (self.isRaised) ? 0.5 : 0;
-        self.imageViewTopConstraint.animator().constant = (self.isRaised) ? 0 : 10;
     }
 }

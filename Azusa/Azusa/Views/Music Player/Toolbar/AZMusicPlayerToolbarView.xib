@@ -53,18 +53,20 @@
                     <rect key="frame" x="205" y="0.0" width="80" height="45"/>
                     <subviews>
                         <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uhD-Ju-91D" userLabel="Volume Slider">
-                            <rect key="frame" x="-10" y="13" width="99" height="19"/>
+                            <rect key="frame" x="-2" y="13" width="84" height="19"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="95" id="fYm-Yx-Jxq"/>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="95" id="hQj-0t-Jhe"/>
                             </constraints>
                             <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="sOx-Q1-K4S" customClass="AZVolumeSliderCell" customModule="Azusa" customModuleProvider="target"/>
                         </slider>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="uhD-Ju-91D" firstAttribute="leading" secondItem="eYj-lf-Yf2" secondAttribute="leading" priority="500" id="4ce-1Q-vdy"/>
                         <constraint firstItem="uhD-Ju-91D" firstAttribute="centerY" secondItem="eYj-lf-Yf2" secondAttribute="centerY" id="AVJ-gU-Q7u"/>
+                        <constraint firstAttribute="trailing" secondItem="uhD-Ju-91D" secondAttribute="trailing" priority="500" id="DAg-tl-F6d"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="JKR-4H-V9y"/>
                         <constraint firstAttribute="height" constant="45" id="Nmh-1G-pc0"/>
-                        <constraint firstItem="uhD-Ju-91D" firstAttribute="centerX" secondItem="eYj-lf-Yf2" secondAttribute="centerX" id="gWw-me-1g0"/>
+                        <constraint firstItem="uhD-Ju-91D" firstAttribute="centerX" secondItem="eYj-lf-Yf2" secondAttribute="centerX" id="V60-9W-EKh"/>
                     </constraints>
                 </customView>
                 <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HkS-cX-dXa" userLabel="Status View" customClass="AZToolbarStatusView" customModule="Azusa" customModuleProvider="target">
