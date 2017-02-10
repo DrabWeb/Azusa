@@ -11,6 +11,10 @@
 		AE1C88DD1E4BFEBA0071508F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1C88DC1E4BFEBA0071508F /* Assets.xcassets */; };
 		AE1C88E01E4BFEBA0071508F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1C88DE1E4BFEBA0071508F /* Main.storyboard */; };
 		AE1C88EB1E4BFEBA0071508F /* AzusaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1C88EA1E4BFEBA0071508F /* AzusaUITests.swift */; };
+		AE1C88F81E4C072B0071508F /* MusicPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1C88F71E4C072B0071508F /* MusicPlayerController.swift */; };
+		AE5A73281E4D6822003D7280 /* SidebarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73271E4D6822003D7280 /* SidebarController.swift */; };
+		AE5A732A1E4D68F0003D7280 /* ContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73291E4D68F0003D7280 /* ContentController.swift */; };
+		AE5A73301E4D735A003D7280 /* SidebarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A732F1E4D735A003D7280 /* SidebarModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +36,10 @@
 		AE1C88E61E4BFEBA0071508F /* AzusaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AzusaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1C88EA1E4BFEBA0071508F /* AzusaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzusaUITests.swift; sourceTree = "<group>"; };
 		AE1C88EC1E4BFEBA0071508F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE1C88F71E4C072B0071508F /* MusicPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerController.swift; sourceTree = "<group>"; };
+		AE5A73271E4D6822003D7280 /* SidebarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarController.swift; sourceTree = "<group>"; };
+		AE5A73291E4D68F0003D7280 /* ContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentController.swift; sourceTree = "<group>"; };
+		AE5A732F1E4D735A003D7280 /* SidebarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +83,8 @@
 			children = (
 				AE1C88D81E4BFEB90071508F /* AppDelegate.swift */,
 				AE1C88F51E4BFFF70071508F /* Interface */,
+				AE1C88F61E4C070C0071508F /* View Controllers */,
+				AE5A732B1E4D7291003D7280 /* Model */,
 				AE1C88DC1E4BFEBA0071508F /* Assets.xcassets */,
 				AE1C88E11E4BFEBA0071508F /* Info.plist */,
 			);
@@ -96,6 +106,32 @@
 				AE1C88DE1E4BFEBA0071508F /* Main.storyboard */,
 			);
 			name = Interface;
+			sourceTree = "<group>";
+		};
+		AE1C88F61E4C070C0071508F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AE1C88F71E4C072B0071508F /* MusicPlayerController.swift */,
+				AE5A73271E4D6822003D7280 /* SidebarController.swift */,
+				AE5A73291E4D68F0003D7280 /* ContentController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		AE5A732B1E4D7291003D7280 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AE5A732C1E4D7340003D7280 /* Sidebar */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AE5A732C1E4D7340003D7280 /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				AE5A732F1E4D735A003D7280 /* SidebarModel.swift */,
+			);
+			path = Sidebar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +237,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE1C88D91E4BFEB90071508F /* AppDelegate.swift in Sources */,
+				AE5A73281E4D6822003D7280 /* SidebarController.swift in Sources */,
+				AE5A732A1E4D68F0003D7280 /* ContentController.swift in Sources */,
+				AE5A73301E4D735A003D7280 /* SidebarModel.swift in Sources */,
+				AE1C88F81E4C072B0071508F /* MusicPlayerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,11 +308,14 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -311,11 +354,14 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -399,6 +445,7 @@
 				AE1C88F11E4BFEBA0071508F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE1C88F21E4BFEBA0071508F /* Build configuration list for PBXNativeTarget "AzusaUITests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +454,7 @@
 				AE1C88F41E4BFEBA0071508F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
