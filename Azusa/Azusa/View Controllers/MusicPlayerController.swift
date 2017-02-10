@@ -32,5 +32,9 @@ class MusicPlayerController: NSSplitViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        
+        sidebarController?.onNavigated = { destination in
+            print(destination);
+        };
     }
 }

@@ -13,27 +13,20 @@ class SidebarController: NSViewController {
     
     // MARK: Public Properties
     
-    var sections : [SidebarSection] = [
-        SidebarSection(title: "Library", items: [
-            SidebarItem(title: "Artists", icon: NSImage(named: "NSHomeTemplate")!),
-            SidebarItem(title: "Albums", icon: NSImage(named: "NSHomeTemplate")!),
-            SidebarItem(title: "Songs", icon: NSImage(named: "NSHomeTemplate")!),
-            SidebarItem(title: "Genres", icon: NSImage(named: "NSHomeTemplate")!)
-        ]),
+    let sections : [SidebarSection] = [
+        LibrarySidebarSection(),
         SidebarSection(title: "Playlists", items: [])
-        ] {
-        didSet {
-            contentOutlineView.reloadData();
-        }
-    };
+    ];
     
-    var librarySection : SidebarSection {
-        return sections[0];
+    var librarySection : LibrarySidebarSection {
+        return sections[0] as! LibrarySidebarSection;
     }
     
     var playlistsSection : SidebarSection {
         return sections[1];
     }
+    
+    var onNavigated : ((NavigationDestination) -> Void)?;
     
     // MARK: Private Properties
     
@@ -54,13 +47,37 @@ class SidebarController: NSViewController {
     }
 }
 
+// MARK: - NavigationDestination
+enum NavigationDestination {
+    case Albums, Artists, Songs, Genres
+}
+
 // MARK: - NSOutlineViewDelegate
 extension SidebarController: NSOutlineViewDelegate {
     func outlineViewSelectionDidChange(_ notification: Notification) {
-        // TODO: Implement changing between sections from the sidebar
-//        if let selected = contentOutlineView.item(atRow: contentOutlineView.selectedRow) as? SidebarItem {
-//            
-//        }
+        // TODO: Implement playlist selection handling
+        if let selected = contentOutlineView.item(atRow: contentOutlineView.selectedRow) as? SidebarItem {
+            switch selected {
+                case is ArtistsSidebarItem:
+                    onNavigated?(.Artists);
+                    break;
+                
+                case is AlbumsSidebarItem:
+                    onNavigated?(.Albums);
+                    break;
+                
+                case is SongsSidebarItem:
+                    onNavigated?(.Songs);
+                    break;
+                
+                case is GenresSidebarItem:
+                    onNavigated?(.Genres);
+                    break;
+                
+                default:
+                    break;
+            }
+        }
     }
     
     func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
@@ -69,7 +86,7 @@ extension SidebarController: NSOutlineViewDelegate {
             return 17;
         }
         else {
-            return 22;
+            return 24;
         }
     }
     

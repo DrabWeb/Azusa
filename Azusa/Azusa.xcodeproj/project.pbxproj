@@ -15,6 +15,7 @@
 		AE5A73281E4D6822003D7280 /* SidebarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73271E4D6822003D7280 /* SidebarController.swift */; };
 		AE5A732A1E4D68F0003D7280 /* ContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73291E4D68F0003D7280 /* ContentController.swift */; };
 		AE5A73301E4D735A003D7280 /* SidebarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A732F1E4D735A003D7280 /* SidebarModel.swift */; };
+		AE5A73341E4D80A7003D7280 /* SidebarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73331E4D80A7003D7280 /* SidebarItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		AE5A73271E4D6822003D7280 /* SidebarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarController.swift; sourceTree = "<group>"; };
 		AE5A73291E4D68F0003D7280 /* ContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentController.swift; sourceTree = "<group>"; };
 		AE5A732F1E4D735A003D7280 /* SidebarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarModel.swift; sourceTree = "<group>"; };
+		AE5A73331E4D80A7003D7280 /* SidebarItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				AE5A732F1E4D735A003D7280 /* SidebarModel.swift */,
+				AE5A73331E4D80A7003D7280 /* SidebarItems.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				AE5A732A1E4D68F0003D7280 /* ContentController.swift in Sources */,
 				AE5A73301E4D735A003D7280 /* SidebarModel.swift in Sources */,
 				AE1C88F81E4C072B0071508F /* MusicPlayerController.swift in Sources */,
+				AE5A73341E4D80A7003D7280 /* SidebarItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

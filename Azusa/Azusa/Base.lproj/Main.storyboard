@@ -763,7 +763,7 @@
                                                                     <imageCell key="cell" refusesFirstResponder="YES" imageScaling="proportionallyDown" image="NSActionTemplate" id="a4H-9v-XLV"/>
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Lc-6m-dYT">
-                                                                    <rect key="frame" x="25" y="0.0" width="202" height="17"/>
+                                                                    <rect key="frame" x="25" y="1" width="202" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="mKK-b2-n3f">
                                                                         <font key="font" metaFont="system"/>
