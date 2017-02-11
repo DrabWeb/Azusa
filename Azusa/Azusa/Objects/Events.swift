@@ -43,55 +43,50 @@ class EventManager {
     
     // MARK: Public Properties
     
-    var subscriptions : [AZEventSubscription] {
-        return _subscriptions;
+    var subscribers : [EventSubscriber] {
+        return _subscribers;
     };
     
     // MARK: Private properties
     
-    private var _subscriptions : [AZEventSubscription] = [];
+    private var _subscribers : [EventSubscriber] = [];
     
     
     // MARK: - Methods
     
     // MARK: Public Methods
     
-    func add(subscription : EventSubscription) {
-        // TODO: Migrate over the logger
-        print("EventManager: Subscribing to events \"\(subscription.events)\" with \(subscription)");
+    func add(subscriber : EventSubscriber) {
+        Logger.log("EventManager: Subscribing to events \"\(subscriber.subscriptions)\" with \(subscriber)");
         
-        self._subscriptions.append(subscription);
+        self._subscribers.append(subscriber);
     }
     
-    func remove(subscription : EventSubscription) {
+    func remove(subscriber : EventSubscriber) {
         var removalIndex : Int = -1;
         
-        for(currentIndex, currentSubscription) in self._subscriptions.enumerated() {
-            if(currentSubscription.uuid == subscription.uuid) {
+        for(currentIndex, currentSubscriber) in self._subscribers.enumerated() {
+            if(currentSubscriber.uuid == subscriber.uuid) {
                 removalIndex = currentIndex;
             }
         }
         
         if(removalIndex != -1) {
-            print("EventManager: Removing event subscriber \(subscription)");
+            Logger.log("EventManager: Removing event subscriber \(subscriber)");
             
-            // Remove the subscription at `removalIndex` in `subscriptions`
-            self._subscriptions.remove(at: removalIndex);
+            self._subscribers.remove(at: removalIndex);
         }
         else {
-            print("EventManager: Failed to remove event subscriber \(subscription), was not subscribed");
+            Logger.log("EventManager: Failed to remove event subscriber \(subscriber), was not subscribed");
         }
     }
     
-    func emit(event : AZEvent) {
-        AZLogger.log("EventManager: Emitting event Event.\(event)");
+    func emit(event : Event) {
+        Logger.log("EventManager: Emitting event Event.\(event)");
         
-        // For every item in `subscriptions`...
-        for(_, currentSubscription) in self.subscriptions.enumerated() {
-            // If the current subscription's event is equal to the emitted event
-            if(currentSubscription.events.contains(event)) {
-                // Perform the current subscription
-                currentSubscription.perform(event: event);
+        for(_, currentSubscriber) in self.subscribers.enumerated() {
+            if(currentSubscriber.subscriptions.contains(event)) {
+                currentSubscriber.perform(event: event);
             }
         }
     }
@@ -107,7 +102,7 @@ class EventSubscriber: NSObject {
     // MARK: Public Properties
     
     var subscriptions : [Event] = [];
-    var handler : ((AZEvent) -> ())? = nil;
+    var handler : ((Event) -> ())? = nil;
     var uuid : String = NSUUID().uuidString;
     
     
@@ -118,24 +113,24 @@ class EventSubscriber: NSObject {
     /// Performs this subscription(called when the subscribed event fires), should be passed the event that fired it
     ///
     /// - Parameter event: The event to say triggered the subscriber
-    func perform(event : AZEvent) {
-        self.performer?(event);
+    func perform(event : Event) {
+        self.handler?(event);
     }
     
     
     // MARK: - Initialization and Deinitialization
     
-    init(events : [AZEvent], performer : ((AZEvent) -> ())?) {
-        self.events = events;
-        self.performer = performer;
+    init(events : [Event], performer : ((Event) -> ())?) {
+        self.subscriptions = events;
+        self.handler = performer;
         self.uuid = NSUUID().uuidString;
     }
     
     override init() {
         super.init();
         
-        self.events = [];
-        self.performer = nil;
+        self.subscriptions = [];
+        self.handler = nil;
         self.uuid = NSUUID().uuidString;
     }
 }

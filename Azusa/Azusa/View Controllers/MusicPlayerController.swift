@@ -38,36 +38,36 @@ class MusicPlayerController: NSViewController {
         playerBarController.display(playingState: .paused);
         
         playerBarController.onSeek = { position in
-            print("Seek to \(position)");
+            Logger.log("Seek to \(position)");
         }
         
         playerBarController.onRepeat = { repeatMode in
-            print("Repeat \(repeatMode)");
+            Logger.log("Repeat \(repeatMode)");
             return repeatMode.next();
         }
         
         playerBarController.onPrevious = { playingState in
-            print("Previous \(playingState)");
+            Logger.log("Previous \(playingState)");
             return true;
         }
         
         playerBarController.onPausePlay = { playingState in
-            print("Pause/play \(playingState)");
+            Logger.log("Pause/play \(playingState)");
             return playingState.toggle();
         }
         
         playerBarController.onNext = { playingState in
-            print("Next \(playingState)");
+            Logger.log("Next \(playingState)");
             return true;
         }
         
         playerBarController.onShuffle = { shuffling in
-            print("Shuffling \(shuffling)");
+            Logger.log("Shuffling \(shuffling)");
             return !shuffling;
         }
         
         playerBarController.onVolumeChanged = { volume in
-            print("Volume \(volume)");
+            Logger.log("Volume \(volume)");
         }
     }
     
