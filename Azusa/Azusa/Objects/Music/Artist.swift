@@ -8,13 +8,14 @@
 import Foundation
 
 /// The object to represent an artist in the user's music collection
-class Artist: Equatable, CustomStringConvertible {
+struct Artist: Equatable, CustomStringConvertible {
     
     // MARK: - Properties
     
     // MARK: Public Properties
     
     var name : String = "";
+    
     var albums : [Album] = [];
     
     var displayName : String {

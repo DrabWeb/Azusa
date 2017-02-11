@@ -8,7 +8,7 @@
 import Foundation
 
 /// The object to represent a music genre
-class Genre: Equatable, CustomStringConvertible {
+struct Genre: Equatable, CustomStringConvertible {
     
     // MARK: - Properties
     

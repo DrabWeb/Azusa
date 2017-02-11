@@ -116,7 +116,6 @@
 				AE7F805C1E4F0F2D00D21060 /* Objects */,
 				AE7F805F1E4F0F9000D21060 /* Protocols */,
 				AEC554A31E4DF72800D6A987 /* Views */,
-				AE5A73351E4D8B83003D7280 /* Libraries */,
 				AE1C88DC1E4BFEBA0071508F /* Assets.xcassets */,
 				AE1C88E11E4BFEBA0071508F /* Info.plist */,
 			);
@@ -168,13 +167,6 @@
 				AE5A73331E4D80A7003D7280 /* SidebarItems.swift */,
 			);
 			path = Sidebar;
-			sourceTree = "<group>";
-		};
-		AE5A73351E4D8B83003D7280 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Libraries;
 			sourceTree = "<group>";
 		};
 		AE7F805C1E4F0F2D00D21060 /* Objects */ = {
@@ -490,11 +482,15 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Azusa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/libmpdclient",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
+				"SWIFT_INCLUDE_PATHS[arch=*]" = "$(SRCROOT)/Libraries/libmpdclient/";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
@@ -507,11 +503,14 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Azusa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/libmpdclient",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Libraries/libmpdclient/";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};

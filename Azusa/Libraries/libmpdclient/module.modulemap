@@ -1,0 +1,4 @@
+module MPD {
+    header "./client.h"
+    export *
+}

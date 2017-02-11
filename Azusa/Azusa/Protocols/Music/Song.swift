@@ -75,9 +75,6 @@ protocol Song: CustomStringConvertible {
     /// - Parameter completionHandler: The completion handler to call when the cover is loaded, passed the cover
     func getCoverImage(_ completionHandler : @escaping ((NSImage) -> ()));
     
-    /// Cancels any current calls of `getThumbnailImage`, still stores the thumbnail image but just doesn't call the completion handler
-    func cancelGetThumbnailImage();
-    
     /// Returns an empty song(used for displaying that there is no song)
     static var empty : Song { get };
     
@@ -86,6 +83,8 @@ protocol Song: CustomStringConvertible {
     /// - Returns: If this song is equal to `empty`
     func isEmpty() -> Bool;
 }
+
+// MARK: - Methods
 
 func ==(lhs: Song, rhs: Song) -> Bool {
     return (lhs.title == rhs.title) && (lhs.album.name == rhs.album.name) && (lhs.artist.name == rhs.artist.name);
