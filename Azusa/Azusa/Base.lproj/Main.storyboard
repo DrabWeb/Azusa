@@ -717,10 +717,10 @@
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="2F94A737-B41B-4ED0-AC57-EE286D709740" label="Repeat" paletteLabel="Repeat" id="hmM-TR-fbj">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="39" height="28"/>
-                                    <size key="maxSize" width="39" height="32"/>
+                                    <size key="minSize" width="37" height="20"/>
+                                    <size key="maxSize" width="37" height="43"/>
                                     <button key="view" verticalHuggingPriority="750" id="51U-sS-3JU">
-                                        <rect key="frame" x="3" y="14" width="39" height="28"/>
+                                        <rect key="frame" x="4" y="14" width="37" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jcx-Ju-zhp">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -730,10 +730,10 @@
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="53941CEB-B64F-43FD-A423-BE545B5732A3" label="Shuffle" paletteLabel="Shuffle" id="NPe-gv-poc">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="39" height="28"/>
-                                    <size key="maxSize" width="39" height="32"/>
+                                    <size key="minSize" width="37" height="20"/>
+                                    <size key="maxSize" width="37" height="43"/>
                                     <button key="view" verticalHuggingPriority="750" id="cQW-0Y-iBG">
-                                        <rect key="frame" x="3" y="14" width="39" height="28"/>
+                                        <rect key="frame" x="4" y="14" width="37" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3yO-KB-JZU">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
