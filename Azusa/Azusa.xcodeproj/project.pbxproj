@@ -21,6 +21,13 @@
 		AE5A732A1E4D68F0003D7280 /* ContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73291E4D68F0003D7280 /* ContentController.swift */; };
 		AE5A73301E4D735A003D7280 /* SidebarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A732F1E4D735A003D7280 /* SidebarModel.swift */; };
 		AE5A73341E4D80A7003D7280 /* SidebarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73331E4D80A7003D7280 /* SidebarItems.swift */; };
+		AE7F80651E4F0FBA00D21060 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F80611E4F0FBA00D21060 /* Album.swift */; };
+		AE7F80661E4F0FBA00D21060 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F80621E4F0FBA00D21060 /* Artist.swift */; };
+		AE7F80681E4F0FBA00D21060 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F80641E4F0FBA00D21060 /* Genre.swift */; };
+		AE7F806F1E4F12BE00D21060 /* MusicSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F806C1E4F12BE00D21060 /* MusicSource.swift */; };
+		AE7F80701E4F12BE00D21060 /* PlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F806D1E4F12BE00D21060 /* PlayerStatus.swift */; };
+		AE7F80711E4F12BE00D21060 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F806E1E4F12BE00D21060 /* Song.swift */; };
+		AE7F80731E4F168000D21060 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F80721E4F168000D21060 /* Events.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +59,13 @@
 		AE5A73291E4D68F0003D7280 /* ContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentController.swift; sourceTree = "<group>"; };
 		AE5A732F1E4D735A003D7280 /* SidebarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarModel.swift; sourceTree = "<group>"; };
 		AE5A73331E4D80A7003D7280 /* SidebarItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarItems.swift; sourceTree = "<group>"; };
+		AE7F80611E4F0FBA00D21060 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		AE7F80621E4F0FBA00D21060 /* Artist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		AE7F80641E4F0FBA00D21060 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		AE7F806C1E4F12BE00D21060 /* MusicSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicSource.swift; sourceTree = "<group>"; };
+		AE7F806D1E4F12BE00D21060 /* PlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStatus.swift; sourceTree = "<group>"; };
+		AE7F806E1E4F12BE00D21060 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		AE7F80721E4F168000D21060 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +111,8 @@
 				AE1C88F51E4BFFF70071508F /* Interface */,
 				AE1C88F61E4C070C0071508F /* View Controllers */,
 				AE5A732B1E4D7291003D7280 /* Model */,
+				AE7F805C1E4F0F2D00D21060 /* Objects */,
+				AE7F805F1E4F0F9000D21060 /* Protocols */,
 				AEC554A31E4DF72800D6A987 /* Views */,
 				AE5A73351E4D8B83003D7280 /* Libraries */,
 				AE1C88DC1E4BFEBA0071508F /* Assets.xcassets */,
@@ -157,6 +173,43 @@
 			children = (
 			);
 			path = Libraries;
+			sourceTree = "<group>";
+		};
+		AE7F805C1E4F0F2D00D21060 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				AE7F805E1E4F0F5D00D21060 /* Music */,
+				AE7F80721E4F168000D21060 /* Events.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		AE7F805E1E4F0F5D00D21060 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				AE7F80611E4F0FBA00D21060 /* Album.swift */,
+				AE7F80621E4F0FBA00D21060 /* Artist.swift */,
+				AE7F80641E4F0FBA00D21060 /* Genre.swift */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		AE7F805F1E4F0F9000D21060 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AE7F80601E4F0F9900D21060 /* Music */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		AE7F80601E4F0F9900D21060 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				AE7F806C1E4F12BE00D21060 /* MusicSource.swift */,
+				AE7F806D1E4F12BE00D21060 /* PlayerStatus.swift */,
+				AE7F806E1E4F12BE00D21060 /* Song.swift */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 		AEC5549E1E4DD9DB00D6A987 /* Status */ = {
@@ -282,13 +335,20 @@
 			files = (
 				AE13CA0B1E4EBCB2007CF7BE /* MusicPlayerController.swift in Sources */,
 				AE1C88D91E4BFEB90071508F /* AppDelegate.swift in Sources */,
+				AE7F80701E4F12BE00D21060 /* PlayerStatus.swift in Sources */,
 				AE13CA0D1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift in Sources */,
+				AE7F80661E4F0FBA00D21060 /* Artist.swift in Sources */,
+				AE7F806F1E4F12BE00D21060 /* MusicSource.swift in Sources */,
+				AE7F80651E4F0FBA00D21060 /* Album.swift in Sources */,
 				AE5A73281E4D6822003D7280 /* SidebarController.swift in Sources */,
+				AE7F80681E4F0FBA00D21060 /* Genre.swift in Sources */,
 				AE5A732A1E4D68F0003D7280 /* ContentController.swift in Sources */,
 				AE13CA091E4EBA63007CF7BE /* PlayerBarController.swift in Sources */,
 				AE5A73301E4D735A003D7280 /* SidebarModel.swift in Sources */,
+				AE7F80711E4F12BE00D21060 /* Song.swift in Sources */,
 				AE13CA0F1E4EEF88007CF7BE /* ProgressSliderCell.swift in Sources */,
 				AE1C88F81E4C072B0071508F /* MusicPlayerSplitViewController.swift in Sources */,
+				AE7F80731E4F168000D21060 /* Events.swift in Sources */,
 				AE5A73341E4D80A7003D7280 /* SidebarItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

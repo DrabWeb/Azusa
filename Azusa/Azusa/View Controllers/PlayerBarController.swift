@@ -202,39 +202,3 @@ class PlayerBarController: NSViewController {
         onVolumeChanged?(volume);
     }
 }
-
-// TODO: Move these elsewhere when the music player is more implemented
-
-enum PlayingState {
-    case stopped, paused, playing
-    
-    func toggle() -> PlayingState {
-        switch self {
-            case .stopped:
-                return .stopped;
-            
-            case .paused:
-                return .playing;
-            
-            case .playing:
-                return .paused;
-        }
-    }
-}
-
-enum RepeatMode {
-    case none, queue, single
-    
-    func next() -> RepeatMode {
-        switch self {
-            case .none:
-                return .queue;
-            
-            case .queue:
-                return .single;
-            
-            case .single:
-                return .none;
-        }
-    }
-}
