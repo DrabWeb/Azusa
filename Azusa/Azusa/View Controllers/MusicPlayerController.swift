@@ -23,6 +23,8 @@ class MusicPlayerController: NSSplitViewController {
     
     // MARK: Private Properties
     
+    private var window : NSWindow!
+    
     @IBOutlet private weak var sidebarItem: NSSplitViewItem!
     @IBOutlet private weak var contentItem: NSSplitViewItem!
     
@@ -33,8 +35,14 @@ class MusicPlayerController: NSSplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        sidebarController?.onNavigated = { destination in
-            print(destination);
-        };
+        initialize();
+    }
+    
+    private func initialize() {
+        window = NSApp.windows.last!;
+        
+        window.appearance = NSAppearance(named: NSAppearanceNameVibrantLight);
+        window.styleMask.insert(NSWindowStyleMask.fullSizeContentView);
+        window.titleVisibility = .hidden;
     }
 }

@@ -16,6 +16,10 @@
 		AE5A732A1E4D68F0003D7280 /* ContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73291E4D68F0003D7280 /* ContentController.swift */; };
 		AE5A73301E4D735A003D7280 /* SidebarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A732F1E4D735A003D7280 /* SidebarModel.swift */; };
 		AE5A73341E4D80A7003D7280 /* SidebarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73331E4D80A7003D7280 /* SidebarItems.swift */; };
+		AEBA07D91E4E91F000C444D5 /* StatusProgressSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBA07D81E4E91F000C444D5 /* StatusProgressSliderCell.swift */; };
+		AEBA07DB1E4E96D300C444D5 /* ToolbarStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBA07DA1E4E96D300C444D5 /* ToolbarStatusView.swift */; };
+		AEBA07DF1E4EA04800C444D5 /* StatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEBA07DE1E4EA04800C444D5 /* StatusView.xib */; };
+		AEC554A21E4DDA0500D6A987 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC554A11E4DDA0500D6A987 /* StatusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,10 @@
 		AE5A73291E4D68F0003D7280 /* ContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentController.swift; sourceTree = "<group>"; };
 		AE5A732F1E4D735A003D7280 /* SidebarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarModel.swift; sourceTree = "<group>"; };
 		AE5A73331E4D80A7003D7280 /* SidebarItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarItems.swift; sourceTree = "<group>"; };
+		AEBA07D81E4E91F000C444D5 /* StatusProgressSliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusProgressSliderCell.swift; sourceTree = "<group>"; };
+		AEBA07DA1E4E96D300C444D5 /* ToolbarStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarStatusView.swift; sourceTree = "<group>"; };
+		AEBA07DE1E4EA04800C444D5 /* StatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusView.xib; sourceTree = "<group>"; };
+		AEC554A11E4DDA0500D6A987 /* StatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +95,8 @@
 				AE1C88F51E4BFFF70071508F /* Interface */,
 				AE1C88F61E4C070C0071508F /* View Controllers */,
 				AE5A732B1E4D7291003D7280 /* Model */,
+				AEC554A31E4DF72800D6A987 /* Views */,
+				AE5A73351E4D8B83003D7280 /* Libraries */,
 				AE1C88DC1E4BFEBA0071508F /* Assets.xcassets */,
 				AE1C88E11E4BFEBA0071508F /* Info.plist */,
 			);
@@ -106,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				AE1C88DE1E4BFEBA0071508F /* Main.storyboard */,
+				AEC5549E1E4DD9DB00D6A987 /* Status */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -135,6 +146,32 @@
 				AE5A73331E4D80A7003D7280 /* SidebarItems.swift */,
 			);
 			path = Sidebar;
+			sourceTree = "<group>";
+		};
+		AE5A73351E4D8B83003D7280 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		AEC5549E1E4DD9DB00D6A987 /* Status */ = {
+			isa = PBXGroup;
+			children = (
+				AEBA07DE1E4EA04800C444D5 /* StatusView.xib */,
+				AEC554A11E4DDA0500D6A987 /* StatusView.swift */,
+				AEBA07D81E4E91F000C444D5 /* StatusProgressSliderCell.swift */,
+				AEBA07DA1E4E96D300C444D5 /* ToolbarStatusView.swift */,
+			);
+			name = Status;
+			path = Interface/Status;
+			sourceTree = "<group>";
+		};
+		AEC554A31E4DF72800D6A987 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE1C88DD1E4BFEBA0071508F /* Assets.xcassets in Resources */,
+				AEBA07DF1E4EA04800C444D5 /* StatusView.xib in Resources */,
 				AE1C88E01E4BFEBA0071508F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,10 +278,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE1C88D91E4BFEB90071508F /* AppDelegate.swift in Sources */,
+				AEBA07D91E4E91F000C444D5 /* StatusProgressSliderCell.swift in Sources */,
 				AE5A73281E4D6822003D7280 /* SidebarController.swift in Sources */,
 				AE5A732A1E4D68F0003D7280 /* ContentController.swift in Sources */,
 				AE5A73301E4D735A003D7280 /* SidebarModel.swift in Sources */,
+				AEC554A21E4DDA0500D6A987 /* StatusView.swift in Sources */,
 				AE1C88F81E4C072B0071508F /* MusicPlayerController.swift in Sources */,
+				AEBA07DB1E4E96D300C444D5 /* ToolbarStatusView.swift in Sources */,
 				AE5A73341E4D80A7003D7280 /* SidebarItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,9 +422,12 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Azusa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -395,9 +439,12 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Azusa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
