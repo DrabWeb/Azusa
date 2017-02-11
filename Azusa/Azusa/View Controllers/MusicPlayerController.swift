@@ -2,31 +2,29 @@
 //  MusicPlayerController.swift
 //  Azusa
 //
-//  Created by Ushio on 2/8/17.
+//  Created by Ushio on 2/10/17.
 //
 
 import Cocoa
 
-class MusicPlayerController: NSSplitViewController {
+class MusicPlayerController: NSViewController {
     
     // MARK: - Properties
     
     // MARK: Public Properties
     
-    var sidebarController : SidebarController? {
-        return sidebarItem.viewController as? SidebarController
+    var splitViewController : MusicPlayerSplitViewController! {
+        return childViewControllers[0] as? MusicPlayerSplitViewController
     }
     
-    var contentController : ContentController? {
-        return contentItem.viewController as? ContentController
+    var playerBarController : PlayerBarController! {
+        return childViewControllers[1] as? PlayerBarController;
     }
     
     // MARK: Private Properties
     
     private var window : NSWindow!
-    
-    @IBOutlet private weak var sidebarItem: NSSplitViewItem!
-    @IBOutlet private weak var contentItem: NSSplitViewItem!
+    @IBOutlet private weak var playerBarBottomConstraint: NSLayoutConstraint!
     
     // MARK: - Methods
     
@@ -36,7 +34,70 @@ class MusicPlayerController: NSSplitViewController {
         super.viewDidLoad();
         
         initialize();
+        
+        playerBarController.display(playingState: .paused);
+        
+        playerBarController.onSeek = { position in
+            print("Seek to \(position)");
+        }
+        
+        playerBarController.onRepeat = { repeatMode in
+            print("Repeat \(repeatMode)");
+            return repeatMode.next();
+        }
+        
+        playerBarController.onPrevious = { playingState in
+            print("Previous \(playingState)");
+            return true;
+        }
+        
+        playerBarController.onPausePlay = { playingState in
+            print("Pause/play \(playingState)");
+            return playingState.toggle();
+        }
+        
+        playerBarController.onNext = { playingState in
+            print("Next \(playingState)");
+            return true;
+        }
+        
+        playerBarController.onShuffle = { shuffling in
+            print("Shuffling \(shuffling)");
+            return !shuffling;
+        }
+        
+        playerBarController.onVolumeChanged = { volume in
+            print("Volume \(volume)");
+        }
     }
+    
+    func popInPlayerBar(animate : Bool = true) {
+        if !animate {
+            playerBarBottomConstraint.constant = 0;
+            return;
+        }
+        
+        NSAnimationContext.runAnimationGroup({ (context) in
+            context.duration = 0.2;
+            context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn);
+            playerBarBottomConstraint.animator().constant = 0;
+        }, completionHandler: nil);
+    }
+    
+    func popOutPlayerBar(animate : Bool = true) {
+        if !animate {
+            playerBarBottomConstraint.constant = -62;
+            return;
+        }
+        
+        NSAnimationContext.runAnimationGroup({ (context) in
+            context.duration = 0.2;
+            context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn);
+            playerBarBottomConstraint.animator().constant = -62;
+        }, completionHandler: nil);
+    }
+    
+    // MARK: Private methods
     
     private func initialize() {
         window = NSApp.windows.last!;

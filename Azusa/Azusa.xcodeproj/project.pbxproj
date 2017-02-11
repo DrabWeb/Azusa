@@ -7,19 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE13CA071E4EB8F7007CF7BE /* PlayerBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE13CA061E4EB8F7007CF7BE /* PlayerBar.storyboard */; };
+		AE13CA091E4EBA63007CF7BE /* PlayerBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13CA081E4EBA63007CF7BE /* PlayerBarController.swift */; };
+		AE13CA0B1E4EBCB2007CF7BE /* MusicPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13CA0A1E4EBCB2007CF7BE /* MusicPlayerController.swift */; };
+		AE13CA0D1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13CA0C1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift */; };
+		AE13CA0F1E4EEF88007CF7BE /* ProgressSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13CA0E1E4EEF88007CF7BE /* ProgressSliderCell.swift */; };
 		AE1C88D91E4BFEB90071508F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1C88D81E4BFEB90071508F /* AppDelegate.swift */; };
 		AE1C88DD1E4BFEBA0071508F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1C88DC1E4BFEBA0071508F /* Assets.xcassets */; };
 		AE1C88E01E4BFEBA0071508F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1C88DE1E4BFEBA0071508F /* Main.storyboard */; };
 		AE1C88EB1E4BFEBA0071508F /* AzusaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1C88EA1E4BFEBA0071508F /* AzusaUITests.swift */; };
-		AE1C88F81E4C072B0071508F /* MusicPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1C88F71E4C072B0071508F /* MusicPlayerController.swift */; };
+		AE1C88F81E4C072B0071508F /* MusicPlayerSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1C88F71E4C072B0071508F /* MusicPlayerSplitViewController.swift */; };
 		AE5A73281E4D6822003D7280 /* SidebarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73271E4D6822003D7280 /* SidebarController.swift */; };
 		AE5A732A1E4D68F0003D7280 /* ContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73291E4D68F0003D7280 /* ContentController.swift */; };
 		AE5A73301E4D735A003D7280 /* SidebarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A732F1E4D735A003D7280 /* SidebarModel.swift */; };
 		AE5A73341E4D80A7003D7280 /* SidebarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73331E4D80A7003D7280 /* SidebarItems.swift */; };
-		AEBA07D91E4E91F000C444D5 /* StatusProgressSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBA07D81E4E91F000C444D5 /* StatusProgressSliderCell.swift */; };
-		AEBA07DB1E4E96D300C444D5 /* ToolbarStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBA07DA1E4E96D300C444D5 /* ToolbarStatusView.swift */; };
-		AEBA07DF1E4EA04800C444D5 /* StatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEBA07DE1E4EA04800C444D5 /* StatusView.xib */; };
-		AEC554A21E4DDA0500D6A987 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC554A11E4DDA0500D6A987 /* StatusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE13CA061E4EB8F7007CF7BE /* PlayerBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlayerBar.storyboard; sourceTree = "<group>"; };
+		AE13CA081E4EBA63007CF7BE /* PlayerBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerBarController.swift; sourceTree = "<group>"; };
+		AE13CA0A1E4EBCB2007CF7BE /* MusicPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerController.swift; sourceTree = "<group>"; };
+		AE13CA0C1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundDarkEdgedImageView.swift; sourceTree = "<group>"; };
+		AE13CA0E1E4EEF88007CF7BE /* ProgressSliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressSliderCell.swift; sourceTree = "<group>"; };
 		AE1C88D51E4BFEB90071508F /* Azusa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Azusa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1C88D81E4BFEB90071508F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE1C88DC1E4BFEBA0071508F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -41,15 +47,11 @@
 		AE1C88E61E4BFEBA0071508F /* AzusaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AzusaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1C88EA1E4BFEBA0071508F /* AzusaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzusaUITests.swift; sourceTree = "<group>"; };
 		AE1C88EC1E4BFEBA0071508F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AE1C88F71E4C072B0071508F /* MusicPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerController.swift; sourceTree = "<group>"; };
+		AE1C88F71E4C072B0071508F /* MusicPlayerSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerSplitViewController.swift; sourceTree = "<group>"; };
 		AE5A73271E4D6822003D7280 /* SidebarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarController.swift; sourceTree = "<group>"; };
 		AE5A73291E4D68F0003D7280 /* ContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentController.swift; sourceTree = "<group>"; };
 		AE5A732F1E4D735A003D7280 /* SidebarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarModel.swift; sourceTree = "<group>"; };
 		AE5A73331E4D80A7003D7280 /* SidebarItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarItems.swift; sourceTree = "<group>"; };
-		AEBA07D81E4E91F000C444D5 /* StatusProgressSliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusProgressSliderCell.swift; sourceTree = "<group>"; };
-		AEBA07DA1E4E96D300C444D5 /* ToolbarStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarStatusView.swift; sourceTree = "<group>"; };
-		AEBA07DE1E4EA04800C444D5 /* StatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusView.xib; sourceTree = "<group>"; };
-		AEC554A11E4DDA0500D6A987 /* StatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,9 +126,11 @@
 		AE1C88F61E4C070C0071508F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AE1C88F71E4C072B0071508F /* MusicPlayerController.swift */,
+				AE13CA0A1E4EBCB2007CF7BE /* MusicPlayerController.swift */,
+				AE1C88F71E4C072B0071508F /* MusicPlayerSplitViewController.swift */,
 				AE5A73271E4D6822003D7280 /* SidebarController.swift */,
 				AE5A73291E4D68F0003D7280 /* ContentController.swift */,
+				AE13CA081E4EBA63007CF7BE /* PlayerBarController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -158,10 +162,7 @@
 		AEC5549E1E4DD9DB00D6A987 /* Status */ = {
 			isa = PBXGroup;
 			children = (
-				AEBA07DE1E4EA04800C444D5 /* StatusView.xib */,
-				AEC554A11E4DDA0500D6A987 /* StatusView.swift */,
-				AEBA07D81E4E91F000C444D5 /* StatusProgressSliderCell.swift */,
-				AEBA07DA1E4E96D300C444D5 /* ToolbarStatusView.swift */,
+				AE13CA061E4EB8F7007CF7BE /* PlayerBar.storyboard */,
 			);
 			name = Status;
 			path = Interface/Status;
@@ -170,6 +171,8 @@
 		AEC554A31E4DF72800D6A987 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AE13CA0C1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift */,
+				AE13CA0E1E4EEF88007CF7BE /* ProgressSliderCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -258,8 +261,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE1C88DD1E4BFEBA0071508F /* Assets.xcassets in Resources */,
-				AEBA07DF1E4EA04800C444D5 /* StatusView.xib in Resources */,
 				AE1C88E01E4BFEBA0071508F /* Main.storyboard in Resources */,
+				AE13CA071E4EB8F7007CF7BE /* PlayerBar.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,14 +280,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE13CA0B1E4EBCB2007CF7BE /* MusicPlayerController.swift in Sources */,
 				AE1C88D91E4BFEB90071508F /* AppDelegate.swift in Sources */,
-				AEBA07D91E4E91F000C444D5 /* StatusProgressSliderCell.swift in Sources */,
+				AE13CA0D1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift in Sources */,
 				AE5A73281E4D6822003D7280 /* SidebarController.swift in Sources */,
 				AE5A732A1E4D68F0003D7280 /* ContentController.swift in Sources */,
+				AE13CA091E4EBA63007CF7BE /* PlayerBarController.swift in Sources */,
 				AE5A73301E4D735A003D7280 /* SidebarModel.swift in Sources */,
-				AEC554A21E4DDA0500D6A987 /* StatusView.swift in Sources */,
-				AE1C88F81E4C072B0071508F /* MusicPlayerController.swift in Sources */,
-				AEBA07DB1E4E96D300C444D5 /* ToolbarStatusView.swift in Sources */,
+				AE13CA0F1E4EEF88007CF7BE /* ProgressSliderCell.swift in Sources */,
+				AE1C88F81E4C072B0071508F /* MusicPlayerSplitViewController.swift in Sources */,
 				AE5A73341E4D80A7003D7280 /* SidebarItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

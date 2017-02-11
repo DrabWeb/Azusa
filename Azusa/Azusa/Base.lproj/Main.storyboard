@@ -658,89 +658,22 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Azusa" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="75" y="-595"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="NPU-Fc-0Z1">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="Iwn-8j-dt9" sceneMemberID="viewController">
-                    <window key="window" title="Azusa" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="jpz-42-Jtm">
+                    <window key="window" title="Azusa" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" tabbingMode="disallowed" id="jpz-42-Jtm">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="229" y="249" width="480" height="270"/>
+                        <rect key="contentRect" x="229" y="249" width="854" height="480"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1600" height="900"/>
+                        <value key="minSize" type="size" width="854" height="480"/>
                         <toolbar key="toolbar" implicitIdentifier="82684FA2-DA08-4F71-A0EA-5946DED33631" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="Xzq-D4-cfT">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Bgz-U4-Ngc"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="1IL-oq-cVr"/>
-                                <toolbarItem implicitItemIdentifier="45EEAD92-E9AD-4B70-BB82-577D080E130F" label="Controls" paletteLabel="Controls" id="AYl-a3-6lZ">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="100" height="25"/>
-                                    <size key="maxSize" width="100" height="28"/>
-                                    <segmentedControl key="view" verticalHuggingPriority="750" id="Cx4-0m-u0I">
-                                        <rect key="frame" x="0.0" y="14" width="100" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="2tV-Uj-MyI">
-                                            <font key="font" metaFont="system"/>
-                                            <segments>
-                                                <segment width="32">
-                                                    <nil key="label"/>
-                                                </segment>
-                                                <segment width="32" tag="1">
-                                                    <nil key="label"/>
-                                                </segment>
-                                                <segment width="32">
-                                                    <nil key="label"/>
-                                                </segment>
-                                            </segments>
-                                        </segmentedCell>
-                                    </segmentedControl>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="B4815120-1BF8-4A04-A0EF-32B649429FD4" label="Volume" paletteLabel="Volume" id="ulL-sw-vrS">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="92" height="17"/>
-                                    <size key="maxSize" width="96" height="21"/>
-                                    <slider key="view" verticalHuggingPriority="750" id="NLt-yj-sOE">
-                                        <rect key="frame" x="0.0" y="14" width="92" height="17"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <sliderCell key="cell" controlSize="small" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="f3O-Mp-Iep"/>
-                                    </slider>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="950E0076-F5DC-4394-B70B-F487CAF78A43" label="Status" paletteLabel="Status" tag="-1" id="724-eu-t5R">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="100" height="37"/>
-                                    <size key="maxSize" width="1000" height="37"/>
-                                    <customView key="view" id="aXO-CA-q6p" customClass="ToolbarStatusView" customModule="Azusa" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="14" width="100" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    </customView>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="2F94A737-B41B-4ED0-AC57-EE286D709740" label="Repeat" paletteLabel="Repeat" id="hmM-TR-fbj">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="37" height="20"/>
-                                    <size key="maxSize" width="37" height="43"/>
-                                    <button key="view" verticalHuggingPriority="750" id="51U-sS-3JU">
-                                        <rect key="frame" x="4" y="14" width="37" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jcx-Ju-zhp">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                    </button>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="53941CEB-B64F-43FD-A423-BE545B5732A3" label="Shuffle" paletteLabel="Shuffle" id="NPe-gv-poc">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="37" height="20"/>
-                                    <size key="maxSize" width="37" height="43"/>
-                                    <button key="view" verticalHuggingPriority="750" id="cQW-0Y-iBG">
-                                        <rect key="frame" x="4" y="14" width="37" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3yO-KB-JZU">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                    </button>
-                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="5E6AE82C-53CE-403F-8BB2-1123A7947203" label="Search" paletteLabel="Search" id="Reu-of-0ZX">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="96" height="22"/>
@@ -757,30 +690,59 @@
                                 </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="AYl-a3-6lZ"/>
-                                <toolbarItem reference="1IL-oq-cVr"/>
-                                <toolbarItem reference="ulL-sw-vrS"/>
-                                <toolbarItem reference="1IL-oq-cVr"/>
-                                <toolbarItem reference="724-eu-t5R"/>
-                                <toolbarItem reference="hmM-TR-fbj"/>
-                                <toolbarItem reference="NPe-gv-poc"/>
                                 <toolbarItem reference="1IL-oq-cVr"/>
                                 <toolbarItem reference="Reu-of-0ZX"/>
                             </defaultToolbarItems>
                         </toolbar>
                     </window>
                     <connections>
-                        <segue destination="kV9-Y5-7ut" kind="relationship" relationship="window.shadowedContentViewController" id="JOT-2I-t9x"/>
+                        <segue destination="ce9-e7-N28" kind="relationship" relationship="window.shadowedContentViewController" id="ZeA-lk-xod"/>
                     </connections>
                 </windowController>
                 <customObject id="y8I-5f-elY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74" y="298"/>
+            <point key="canvasLocation" x="74" y="-198"/>
         </scene>
-        <!--Music Player Controller-->
+        <!--Music Player View Controller-->
+        <scene sceneID="gTy-iz-jxc">
+            <objects>
+                <viewController id="ce9-e7-N28" userLabel="Music Player View Controller" customClass="MusicPlayerController" customModule="Azusa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Frg-2P-OeY">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="r1R-hR-D2v" userLabel="Split View Container">
+                                <rect key="frame" x="0.0" y="62" width="450" height="238"/>
+                                <connections>
+                                    <segue destination="kV9-Y5-7ut" kind="embed" id="mhs-eK-wjQ"/>
+                                </connections>
+                            </containerView>
+                            <containerView placeholderIntrinsicWidth="225" placeholderIntrinsicHeight="62" translatesAutoresizingMaskIntoConstraints="NO" id="so1-vw-Taw" userLabel="Player Bar Container">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="62"/>
+                                <connections>
+                                    <segue destination="mUK-g3-Rud" kind="embed" id="erF-GT-jV8"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="r1R-hR-D2v" secondAttribute="trailing" id="BzQ-em-MDL"/>
+                            <constraint firstItem="so1-vw-Taw" firstAttribute="top" secondItem="r1R-hR-D2v" secondAttribute="bottom" id="H7d-PI-MPN"/>
+                            <constraint firstItem="r1R-hR-D2v" firstAttribute="leading" secondItem="Frg-2P-OeY" secondAttribute="leading" id="OMv-sX-Pvv"/>
+                            <constraint firstAttribute="trailing" secondItem="so1-vw-Taw" secondAttribute="trailing" id="PXb-Ut-dd6"/>
+                            <constraint firstAttribute="bottom" secondItem="so1-vw-Taw" secondAttribute="bottom" id="SRk-eL-mcB"/>
+                            <constraint firstItem="so1-vw-Taw" firstAttribute="leading" secondItem="Frg-2P-OeY" secondAttribute="leading" id="iUC-yy-IVh"/>
+                            <constraint firstItem="r1R-hR-D2v" firstAttribute="top" secondItem="Frg-2P-OeY" secondAttribute="top" id="kRs-BK-uor"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="2NL-cK-RPS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="74" y="309"/>
+        </scene>
+        <!--Music Player Split View Controller-->
         <scene sceneID="thJ-KZ-8Q3">
             <objects>
-                <splitViewController id="kV9-Y5-7ut" customClass="MusicPlayerController" customModule="Azusa" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="kV9-Y5-7ut" userLabel="Music Player Split View Controller" customClass="MusicPlayerSplitViewController" customModule="Azusa" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="iuN-63-ORa"/>
                         <splitViewItem id="BZa-RJ-IMB"/>
@@ -910,7 +872,7 @@
                 </viewController>
                 <customObject id="Njz-NO-sPG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-410" y="726"/>
+            <point key="canvasLocation" x="-391" y="726"/>
         </scene>
         <!--Content Controller-->
         <scene sceneID="hop-MS-oG7">
@@ -923,7 +885,15 @@
                 </viewController>
                 <customObject id="44S-Wy-2aT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="646" y="726"/>
+            <point key="canvasLocation" x="616" y="726"/>
+        </scene>
+        <!--PlayerBar-->
+        <scene sceneID="Chf-2d-w9g">
+            <objects>
+                <controllerPlaceholder storyboardName="PlayerBar" id="mUK-g3-Rud" sceneMemberID="viewController"/>
+                <customObject id="4U1-ju-O5P" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="437" y="445"/>
         </scene>
     </scenes>
     <resources>

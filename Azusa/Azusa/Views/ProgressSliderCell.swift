@@ -1,22 +1,16 @@
 //
-//  StatusProgressSliderCell.swift
+//  ProgressSliderCell.swift
 //  Azusa
 //
-//  Created by Ushio on 2/10/17.
+//  Created by Ushio on 2/11/17.
 //
 
 import Cocoa
 
-class StatusProgressSliderCell: NSSliderCell {
-    
-    override func awakeFromNib() {
-        super.awakeFromNib();
-        
-        isVertical = false;
-    }
-    
+class ProgressSliderCell: NSSliderCell {
+
     override func drawKnob(_ knobRect: NSRect) {
-        // Disable the knob
+        // No knob
     }
     
     override func knobRect(flipped: Bool) -> NSRect {
