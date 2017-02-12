@@ -30,8 +30,8 @@
 		AE7F80731E4F168000D21060 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F80721E4F168000D21060 /* Events.swift */; };
 		AE7F80751E4F1A8B00D21060 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F80741E4F1A8B00D21060 /* Logger.swift */; };
 		AEA8640A1E4FB63B00943AEF /* MIMPD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA864091E4FB63B00943AEF /* MIMPD.swift */; };
-		AEA864101E4FBA7500943AEF /* MIMPDPlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8640C1E4FBA7500943AEF /* MIMPDPlayerStatus.swift */; };
-		AEA864111E4FBA7500943AEF /* MIMPDStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8640D1E4FBA7500943AEF /* MIMPDStats.swift */; };
+		AEA864101E4FBA7500943AEF /* MIPlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8640C1E4FBA7500943AEF /* MIPlayerStatus.swift */; };
+		AEA864111E4FBA7500943AEF /* MIStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8640D1E4FBA7500943AEF /* MIStats.swift */; };
 		AEA864121E4FBA7500943AEF /* MISong.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8640E1E4FBA7500943AEF /* MISong.swift */; };
 		AEA864131E4FBA7500943AEF /* MIMusicSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8640F1E4FBA7500943AEF /* MIMusicSource.swift */; };
 		AEA864151E4FBB7A00943AEF /* MusicUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA864141E4FBB7A00943AEF /* MusicUtilities.swift */; };
@@ -77,8 +77,8 @@
 		AE7F80721E4F168000D21060 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		AE7F80741E4F1A8B00D21060 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		AEA864091E4FB63B00943AEF /* MIMPD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMPD.swift; sourceTree = "<group>"; };
-		AEA8640C1E4FBA7500943AEF /* MIMPDPlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMPDPlayerStatus.swift; sourceTree = "<group>"; };
-		AEA8640D1E4FBA7500943AEF /* MIMPDStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMPDStats.swift; sourceTree = "<group>"; };
+		AEA8640C1E4FBA7500943AEF /* MIPlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIPlayerStatus.swift; sourceTree = "<group>"; };
+		AEA8640D1E4FBA7500943AEF /* MIStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIStats.swift; sourceTree = "<group>"; };
 		AEA8640E1E4FBA7500943AEF /* MISong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MISong.swift; sourceTree = "<group>"; };
 		AEA8640F1E4FBA7500943AEF /* MIMusicSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMusicSource.swift; sourceTree = "<group>"; };
 		AEA864141E4FBB7A00943AEF /* MusicUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicUtilities.swift; sourceTree = "<group>"; };
@@ -296,8 +296,8 @@
 		AEA8640B1E4FBA7500943AEF /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				AEA8640C1E4FBA7500943AEF /* MIMPDPlayerStatus.swift */,
-				AEA8640D1E4FBA7500943AEF /* MIMPDStats.swift */,
+				AEA8640C1E4FBA7500943AEF /* MIPlayerStatus.swift */,
+				AEA8640D1E4FBA7500943AEF /* MIStats.swift */,
 				AEA8640E1E4FBA7500943AEF /* MISong.swift */,
 			);
 			path = Objects;
@@ -481,7 +481,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEA864111E4FBA7500943AEF /* MIMPDStats.swift in Sources */,
+				AEA864111E4FBA7500943AEF /* MIStats.swift in Sources */,
 				AE13CA0B1E4EBCB2007CF7BE /* MusicPlayerController.swift in Sources */,
 				AEA864121E4FBA7500943AEF /* MISong.swift in Sources */,
 				AE1C88D91E4BFEB90071508F /* AppDelegate.swift in Sources */,
@@ -489,7 +489,7 @@
 				AE13CA0D1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift in Sources */,
 				AE7F80661E4F0FBA00D21060 /* Artist.swift in Sources */,
 				AE7F806F1E4F12BE00D21060 /* MusicSource.swift in Sources */,
-				AEA864101E4FBA7500943AEF /* MIMPDPlayerStatus.swift in Sources */,
+				AEA864101E4FBA7500943AEF /* MIPlayerStatus.swift in Sources */,
 				AE7F80651E4F0FBA00D21060 /* Album.swift in Sources */,
 				AE5A73281E4D6822003D7280 /* SidebarController.swift in Sources */,
 				AE7F80681E4F0FBA00D21060 /* Genre.swift in Sources */,
@@ -581,7 +581,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -627,7 +627,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -644,9 +644,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/External/libmpdclient",
-					"$(PROJECT_DIR)/Azusa/External/libmpdclient",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
@@ -666,9 +665,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/External/libmpdclient",
-					"$(PROJECT_DIR)/Azusa/External/libmpdclient",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Libraries/libmpdclient/";

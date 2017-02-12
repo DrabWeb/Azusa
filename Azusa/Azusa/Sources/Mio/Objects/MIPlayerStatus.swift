@@ -1,5 +1,5 @@
 //
-//  MIMPDPlayerStatus.swift
+//  MIPlayerStatus.swift
 //  Azusa.Mio
 //
 //  Created by Ushio on 2/11/17.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MIMPDPlayerStatus: PlayerStatus {
+class MIPlayerStatus: PlayerStatus {
     
     // MARK: - Properties
     

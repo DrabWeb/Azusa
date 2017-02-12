@@ -22,90 +22,303 @@ class MIMusicSource: MusicSource {
     // MARK: Private Properties
     
     private var mpd : MIMPD? = nil;
-    private var dispatchQueue : DispatchQueue = DispatchQueue(label: "Azusa.MIMusicSourcez");
+    private var dispatchQueue : DispatchQueue = DispatchQueue(label: "Azusa.MIMusicSource");
     
     // MARK: - Methods
     
     // MARK: Public Methods
     
-    func connect(_ completionHandler : ((Bool) -> ())?) {
-        
+    // TODO: Make these all throw real errors when `MusicSourceError` is implemented
+    
+    func connect(_ completionHandler : ((Bool, MusicSourceError?) -> Void)?) {
+        if !perform({
+            let output = self.mpd!.connect();
+            
+            DispatchQueue.main.async {
+                completionHandler?(output, nil);
+            }
+        }) {
+            completionHandler?(false, MusicSourceError.none);
+        }
     }
     
     // MARK: - Player
-    func getPlayerStatus(_ completionHandler : @escaping ((PlayerStatus) -> ())) {
-        
+    func getPlayerStatus(_ completionHandler : @escaping ((PlayerStatus, MusicSourceError?) -> Void)) {
+        if !perform({
+            if let playerStatus = try? self.mpd!.getPlayerStatus() {
+                DispatchQueue.main.async {
+                    completionHandler(playerStatus, nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler(MIPlayerStatus(), MusicSourceError.none);
+        }
     }
     
-    func getElapsed(_ completionHandler : @escaping ((Int) -> ())) {
-        
+    func getElapsed(_ completionHandler : @escaping ((Int, MusicSourceError?) -> Void)) {
+        if !perform({
+            if let elapsed = try? self.mpd!.getElapsed() {
+                DispatchQueue.main.async {
+                    completionHandler(elapsed, nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler(0, MusicSourceError.none);
+        }
     }
     
-    func seek(to : Int, completionHandler : (() -> ())?) {
-        
+    func seek(to : Int, completionHandler : ((MusicSourceError?) -> Void)?) {
+        if !perform({
+            if (try? self.mpd!.seek(to: to)) != nil {
+                DispatchQueue.main.async {
+                    completionHandler?(nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler?(MusicSourceError.none);
+        }
     }
     
-    func seek(to : Int, trackPosition : Int, completionHandler : (() -> ())?) {
-        
+    func seek(to : Int, trackPosition : Int, completionHandler : ((MusicSourceError?) -> Void)?) {
+        if !perform({
+            if (try? self.mpd!.seek(to: to, trackPosition: trackPosition)) != nil {
+                DispatchQueue.main.async {
+                    completionHandler?(nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler?(MusicSourceError.none);
+        }
     }
     
-    func togglePaused(completionHandler : ((Bool) -> ())?) {
-        
+    func togglePaused(completionHandler : ((Bool, MusicSourceError?) -> Void)?) {
+        if !perform({
+            if let paused = try? self.mpd!.togglePaused() {
+                DispatchQueue.main.async {
+                    completionHandler?(paused, nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler?(false, MusicSourceError.none);
+        }
     }
     
-    func setPaused(_ paused : Bool, completionHandler : (() -> ())?) {
-        
+    func setPaused(_ paused : Bool, completionHandler : ((MusicSourceError?) -> Void)?) {
+        if !perform({
+            if (try? self.mpd!.setPaused(paused)) != nil {
+                DispatchQueue.main.async {
+                    completionHandler?(nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler?(MusicSourceError.none);
+        }
     }
     
-    func stop(completionHandler : (() -> ())?) {
-        
+    func stop(completionHandler : ((MusicSourceError?) -> Void)?) {
+        if !perform({
+            if (try? self.mpd!.stop()) != nil {
+                DispatchQueue.main.async {
+                    completionHandler?(nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler?(MusicSourceError.none);
+        }
     }
     
-    func skipNext(completionHandler : (() -> ())?) {
-        
+    func skipNext(completionHandler : ((MusicSourceError?) -> Void)?) {
+        if !perform({
+            if (try? self.mpd!.skipNextAndMaintainPlayingState()) != nil {
+                DispatchQueue.main.async {
+                    completionHandler?(nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler?(MusicSourceError.none);
+        }
     }
     
-    func skipPrevious(completionHandler : (() -> ())?) {
-        
+    func skipPrevious(completionHandler : ((MusicSourceError?) -> Void)?) {
+        if !perform({
+            if (try? self.mpd!.skipPreviousAndMaintainPlayingState()) != nil {
+                DispatchQueue.main.async {
+                    completionHandler?(nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler?(MusicSourceError.none);
+        }
     }
     
-    func setVolume(to : Int, completionHandler : (() -> ())?) {
-        
+    func setVolume(to volume : Int, completionHandler : ((MusicSourceError?) -> Void)?) {
+        if !perform({
+            if (try? self.mpd!.setVolume(to: volume)) != nil {
+                DispatchQueue.main.async {
+                    completionHandler?(nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler?(MusicSourceError.none);
+        }
     }
     
-    func setRelativeVolume(to : Int, completionHandler : (() -> ())?) {
-        
+    func setRelativeVolume(to volume : Int, completionHandler : ((MusicSourceError?) -> Void)?) {
+        if !perform({
+            if (try? self.mpd!.setRelativeVolume(to: volume)) != nil {
+                DispatchQueue.main.async {
+                    completionHandler?(nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler?(MusicSourceError.none);
+        }
     }
     
     // MARK: - Queue
-    func getQueue(completionHandler : @escaping (([Song], Int) -> ())) {
-        
+    func getQueue(completionHandler : @escaping (([Song], Int, MusicSourceError?) -> Void)) {
+        if !perform({
+            if let queue = try? self.mpd!.getCurrentQueue(), let currentPosition = try? self.mpd!.getCurrentSongPosition() {
+                DispatchQueue.main.async {
+                    completionHandler(queue, currentPosition, nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler([], 0, MusicSourceError.none);
+        }
     }
     
-    func playSongInQueue(_ song : Song, completionHandler : ((Song?) -> ())?) {
-        
+    func playSongInQueue(_ song : Song, completionHandler : ((Song?, MusicSourceError?) -> Void)?) {
+        if !perform({
+            if (try? self.mpd!.playSongInQueue(at: song.position)) != nil, let currentSong = try? self.mpd!.getCurrentSong() {
+                DispatchQueue.main.async {
+                    completionHandler?(currentSong, nil);
+                }
+            }
+            else {
+                DispatchQueue.main.async {
+                    completionHandler?(nil, MusicSourceError.none);
+                }
+            }
+        }) {
+            completionHandler?(nil, MusicSourceError.none);
+        }
     }
     
-    func removeFromQueue(_ songs : [Song], completionHandler : (() -> ())?) {
-        
+    func removeFromQueue(_ songs : [Song], completionHandler : ((MusicSourceError?) -> Void)?) {
+        if !perform({
+            if (try? self.mpd!.removeFromQueue(songs: songs as! [MISong])) != nil {
+                DispatchQueue.main.async {
+                    completionHandler?(nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler?(MusicSourceError.none);
+        }
     }
     
-    func moveAfterCurrent(_ songs : [Song], completionHandler : (() -> ())?) {
-        
+    func moveAfterCurrent(_ songs : [Song], completionHandler : ((MusicSourceError?) -> Void)?) {
+        if !perform({
+            if (try? self.mpd!.moveAfterCurrent(songs: songs as! [MISong])) != nil {
+                DispatchQueue.main.async {
+                    completionHandler?(nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler?(MusicSourceError.none);
+        }
     }
     
-    func shuffleQueue(completionHandler : (() -> ())?) {
-        
+    func shuffleQueue(completionHandler : ((MusicSourceError?) -> Void)?) {
+        if !perform({
+            if (try? self.mpd!.shuffleQueue()) != nil {
+                DispatchQueue.main.async {
+                    completionHandler?(nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler?(MusicSourceError.none);
+        }
     }
     
-    func clearQueue(completionHandler : (() -> ())?) {
+    func clearQueue(completionHandler : ((MusicSourceError?) -> Void)?) {
+        if !perform({
+            if (try? self.mpd!.clearQueue()) != nil {
+                DispatchQueue.main.async {
+                    completionHandler?(nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler?(MusicSourceError.none);
+        }
+    }
+    
+    // MARK: - Private Methods
+    
+    /// Small wrapper for nil checking on `mpd` and async
+    private func perform(_ async: @escaping (() -> Void)) -> Bool {
+        if self.mpd != nil {
+            dispatchQueue.async {
+                async();
+            }
+        }
         
+        return self.mpd != nil;
     }
     
     
     // MARK: - Initialization and Deinitialization
     
     required init(settings : [String : Any]) {
-        
+        // TODO: Make these keys constants
+        self.mpd = MIMPD(serverInfo: MIServerInfo(address: settings["address"] as! String, port: settings["port"] as! Int, directory: settings["directory"] as! String));
     }
 }

@@ -8,6 +8,8 @@
 import Foundation
 import MPD
 
+// TODO: Make `MIMPDError` convertible to `MusicSourceError`
+
 /// The different errors that `MIMPD` can throw
 ///
 /// - Success
@@ -172,11 +174,11 @@ class MIMPD {
     
     /// Gets the current player status of this MPD server
     ///
-    /// - Returns: An `MIMPDPlayerStatus` object representing the current status of this MPD server
+    /// - Returns: An `MIPlayerStatus` object representing the current status of this MPD server
     /// - Throws: An `MIMPDError`
-    func getPlayerStatus() throws -> MIMPDPlayerStatus {
+    func getPlayerStatus() throws -> MIPlayerStatus {
         if connection != nil {
-            let playerStatusObject : MIMPDPlayerStatus = MIMPDPlayerStatus();
+            let playerStatusObject : MIPlayerStatus = MIPlayerStatus();
             
             do {
                 if let mpdStatus = mpd_run_status(self.connection!) {
@@ -411,6 +413,7 @@ class MIMPD {
         }
     }
     
+    // TODO: Make this return the new volume
     /// Adds the given volume to the current volume
     ///
     /// - Parameter to: The value to add to the volume, relative to the current volume(-100 to 100)
@@ -785,9 +788,9 @@ class MIMPD {
     
     /// Gets the stats of this MPD server
     ///
-    /// - Returns: An `MIMPDStats` object that has the current stats of this MPD server
+    /// - Returns: An `MIStats` object that has the current stats of this MPD server
     /// - Throws: An `MIMPDError`
-    func getStats() throws -> MIMPDStats {
+    func getStats() throws -> MIStats {
         if connection != nil {
             let stats = mpd_run_stats(self.connection!);
             
@@ -805,7 +808,7 @@ class MIMPD {
             
             mpd_stats_free(stats);
             
-            return MIMPDStats(albumCount: albumCount,
+            return MIStats(albumCount: albumCount,
                                artistCount: artistCount,
                                songCount: songCount,
                                databasePlayTime: databasePlayTime,

@@ -1,5 +1,5 @@
 //
-//  MIMPDStats.swift
+//  MIStats.swift
 //  Azusa.Mio
 //
 //  Created by Ushio on 2/11/17.
@@ -8,7 +8,7 @@
 import Foundation
 
 /// Represents the stats of an MPD server
-class MIMPDStats: CustomStringConvertible {
+class MIStats: CustomStringConvertible {
     
     // MARK: - Properties
     

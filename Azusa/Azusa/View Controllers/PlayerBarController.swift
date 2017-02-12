@@ -78,7 +78,7 @@ class PlayerBarController: NSViewController {
     
     @IBAction private func progressSlider(_ sender: NSSlider) {
         // Released
-        if(NSApp.currentEvent!.type == NSLeftMouseUp) {
+        if(NSApp.currentEvent!.type == NSEventType.leftMouseUp) {
             invokeOnSeek();
         }
         // Dragging

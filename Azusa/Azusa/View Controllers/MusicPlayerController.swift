@@ -36,15 +36,11 @@ class MusicPlayerController: NSViewController {
         
         initialize();
         
-        let mpd : MIMPD = MIMPD(serverInfo: MIServerInfo(address: "127.0.0.1", port: 6600, directory: "/Volumes/Storage/macOS/Music"));
-        if(mpd.connect()) {
-            do {
-                playerBarController.display(song: try mpd.searchForSongs(with: "Silent Wonderland ~Rem Sleep~", within: MPD_TAG_TITLE, exact: true)[0]);
-            }
-            catch let error {
-                Logger.log(error);
-            }
-        }
+        let mio : MusicSource = MIMusicSource(settings: ["address":"127.0.0.1", "port":6600, "directory":"/Volumes/Storage/macOS/Music"]);
+        mio.connect(nil);
+        mio.getPlayerStatus({ status in
+            Logger.log(status);
+        });
         
         playerBarController.display(playingState: .paused);
         
