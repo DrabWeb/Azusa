@@ -15,7 +15,7 @@ protocol MusicSource {
     // MARK: Public Properties
     
     var settings : [String : Any] { get set };
-    var eventManager : EventManager { get set };
+    var eventManager : EventManager { get };
     
     
     // MARK: - Methods

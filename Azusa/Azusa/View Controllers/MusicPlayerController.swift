@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import MPD
 
 class MusicPlayerController: NSViewController {
     
@@ -35,10 +36,21 @@ class MusicPlayerController: NSViewController {
         
         initialize();
         
+        let mpd : MIMPD = MIMPD(serverInfo: MIServerInfo(address: "127.0.0.1", port: 6600, directory: "/Volumes/Storage/macOS/Music"));
+        if(mpd.connect()) {
+            do {
+                playerBarController.display(song: try mpd.searchForSongs(with: "Silent Wonderland ~Rem Sleep~", within: MPD_TAG_TITLE, exact: true)[0]);
+            }
+            catch let error {
+                Logger.log(error);
+            }
+        }
+        
         playerBarController.display(playingState: .paused);
         
         playerBarController.onSeek = { position in
-            Logger.log("Seek to \(position)");
+            Logger.log("Seek to \(MusicUtilities.displayTime(from: position))");
+            self.playerBarController.display(progress: position);
         }
         
         playerBarController.onRepeat = { repeatMode in

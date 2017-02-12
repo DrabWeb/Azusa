@@ -34,11 +34,23 @@ class PlayerBarController: NSViewController {
     /// Passed the current volume
     var onVolumeChanged : ((Int) -> Void)? = nil;
     
+    private var _timeDisplayMode : TimeDisplayMode = .timeLeft;
+    var timeDisplayMode : TimeDisplayMode {
+        get {
+            return _timeDisplayMode;
+        }
+        set {
+            _timeDisplayMode = newValue;
+            refreshProgress();
+        }
+    }
+    
     // MARK: Private Properties
     
     private var playingState : PlayingState = .stopped;
     private var repeatMode : RepeatMode = .none;
     private var shuffling : Bool = false;
+    private var song : Song? = nil;
     
     private var volume : Int {
         return volumeSlider.integerValue;
@@ -120,15 +132,38 @@ class PlayerBarController: NSViewController {
         refresh();
     }
     
+    func display(song : Song) {
+        self.song = song;
+        
+        song.getCoverImage({ cover in
+            self.coverImageView.image = cover;
+        });
+        
+        titleLabel.stringValue = song.displayTitle;
+        artistAlbumLabel.stringValue = "by \(song.displayArtist) in \(song.displayAlbum)";
+        progressSlider.maxValue = Double(song.duration);
+        refreshProgress();
+    }
+    
     func display(progress : Int) {
         progressSlider.integerValue = progress;
+        
+        switch timeDisplayMode {
+            case .timeLeft:
+                progressLabel.stringValue = "\(MusicUtilities.displayTime(from: progress)) / -\(MusicUtilities.displayTime(from: (song?.duration ?? 0) - progress))";
+                break;
+            
+            case .duration:
+                progressLabel.stringValue = "\(MusicUtilities.displayTime(from: progress)) / \(MusicUtilities.displayTime(from: song?.duration ?? 0))";
+                break;
+        }
     }
     
     func display(playingState : PlayingState) {
         self.playingState = playingState;
         
         switch playingState {
-        case .stopped,  .paused:
+            case .stopped,  .paused:
                 pausePlayButton.image = NSImage(named: "Play")!;
                 break;
             
@@ -172,6 +207,15 @@ class PlayerBarController: NSViewController {
         display(playingState: playingState);
         display(repeatMode: repeatMode);
         display(shuffling: shuffling);
+        refreshProgress();
+        
+        if song != nil {
+            display(song: song!);
+        }
+    }
+    
+    private func refreshProgress() {
+        display(progress: progress);
     }
     
     private func invokeOnSeek() {
@@ -201,4 +245,8 @@ class PlayerBarController: NSViewController {
     private func invokeOnVolumeChanged() {
         onVolumeChanged?(volume);
     }
+}
+
+enum TimeDisplayMode {
+    case timeLeft, duration
 }

@@ -24,7 +24,7 @@
                                     <subviews>
                                         <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u5w-JJ-pgJ" userLabel="Progress Slider">
                                             <rect key="frame" x="-2" y="52" width="858" height="19"/>
-                                            <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="Abu-vv-pOD" customClass="ProgressSliderCell" customModule="Azusa" customModuleProvider="target"/>
+                                            <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="Abu-vv-pOD" customClass="ProgressSliderCell" customModule="Azusa" customModuleProvider="target"/>
                                             <connections>
                                                 <action selector="progressSlider:" target="PwB-gD-FyC" id="Zed-eS-Cfv"/>
                                             </connections>
@@ -37,7 +37,7 @@
                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ExampleCover" id="Jr6-ZC-4KN"/>
                                         </imageView>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyO-nN-4ex" userLabel="Title">
-                                            <rect key="frame" x="68" y="30" width="31" height="17"/>
+                                            <rect key="frame" x="68" y="30" width="246" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="Title" allowsEditingTextAttributes="YES" id="zv2-KK-W89">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -45,7 +45,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwo-cK-fM7">
-                                            <rect key="frame" x="68" y="14" width="98" height="14"/>
+                                            <rect key="frame" x="68" y="14" width="246" height="14"/>
                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="by Artist in Album" allowsEditingTextAttributes="YES" id="MGf-im-Lvg">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -166,7 +166,7 @@
                                                 <constraint firstAttribute="width" constant="113" id="wa1-GQ-Zg8"/>
                                             </constraints>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="00:00:00 / -00:00:00" id="HSs-Tq-Ka9">
-                                                <font key="font" metaFont="system" size="11"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -179,6 +179,7 @@
                                         <constraint firstItem="kaT-0a-TaF" firstAttribute="centerX" secondItem="QNs-cL-SFv" secondAttribute="centerX" id="Ffq-hO-ZvN"/>
                                         <constraint firstItem="srz-hw-rHP" firstAttribute="top" secondItem="QNs-cL-SFv" secondAttribute="top" constant="2" id="Gp5-1O-caK"/>
                                         <constraint firstItem="5PQ-Ox-BKH" firstAttribute="leading" secondItem="j2T-R3-9no" secondAttribute="trailing" constant="20" id="HU8-3c-tSr"/>
+                                        <constraint firstItem="nyO-nN-4ex" firstAttribute="trailing" secondItem="Fwo-cK-fM7" secondAttribute="trailing" id="KLz-Mx-Q7G"/>
                                         <constraint firstAttribute="bottom" secondItem="ePL-wo-B8g" secondAttribute="bottom" constant="15" id="O2C-9m-81K"/>
                                         <constraint firstAttribute="bottom" secondItem="j2T-R3-9no" secondAttribute="bottom" constant="22" id="Oq7-46-hKc"/>
                                         <constraint firstItem="u5w-JJ-pgJ" firstAttribute="leading" secondItem="QNs-cL-SFv" secondAttribute="leading" id="Qia-dt-373"/>
@@ -200,13 +201,13 @@
                                         <constraint firstItem="AJf-5H-Mxd" firstAttribute="leading" secondItem="kaT-0a-TaF" secondAttribute="trailing" constant="15" id="rC3-YQ-MOq"/>
                                         <constraint firstAttribute="bottom" secondItem="kaT-0a-TaF" secondAttribute="bottom" constant="15" id="rKv-l2-8xV"/>
                                         <constraint firstItem="srz-hw-rHP" firstAttribute="leading" secondItem="QNs-cL-SFv" secondAttribute="leading" id="tti-HG-ZIb"/>
+                                        <constraint firstItem="ePL-wo-B8g" firstAttribute="leading" secondItem="Fwo-cK-fM7" secondAttribute="trailing" constant="10" id="xJY-ek-R8G"/>
                                         <constraint firstItem="Fwo-cK-fM7" firstAttribute="leading" secondItem="srz-hw-rHP" secondAttribute="trailing" constant="10" id="xQM-RK-IgE"/>
                                     </constraints>
                                 </view>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="289-1v-4d9"/>
                                 </constraints>
-                                <font key="titleFont" metaFont="message" size="11"/>
                             </box>
                         </subviews>
                         <constraints>

@@ -8,7 +8,7 @@
 import Foundation
 
 /// The object to represent an artist in the user's music collection
-struct Artist: Equatable, CustomStringConvertible {
+class Artist: Equatable, CustomStringConvertible {
     
     // MARK: - Properties
     

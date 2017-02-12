@@ -8,7 +8,7 @@
 import Foundation
 
 /// The object to represent an album in the user's music collection
-struct Album: CustomStringConvertible {
+class Album: CustomStringConvertible {
     
     // MARK: - Properties
     

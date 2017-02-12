@@ -81,7 +81,7 @@ protocol Song: CustomStringConvertible {
     /// Returns if this song is `empty`
     ///
     /// - Returns: If this song is equal to `empty`
-    func isEmpty() -> Bool;
+    var isEmpty : Bool { get };
 }
 
 // MARK: - Methods
