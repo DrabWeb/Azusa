@@ -70,13 +70,50 @@ class MISong: Song {
         return album.displayName;
     }
     
-    var coverIdentifier : String {
-        if(album.name != "") {
-            return album.name;
+    var artwork : NSImage? {
+        var artwork : NSImage? = nil;
+        let fileUrl = URL(fileURLWithPath: self.file);
+        let songFolderPath : String = self.file.replacingOccurrences(of: NSString(string: self.file).lastPathComponent, with: "");
+        
+        // Method 1
+        // Check for an image in this song's folder
+        do {
+            if(FileManager.default.fileExists(atPath: songFolderPath)) {
+                for(_, currentFile) in (try FileManager.default.contentsOfDirectory(atPath: songFolderPath)).enumerated() {
+                    if(["png", "jpg", "jpeg"].contains(NSString(string: currentFile).pathExtension)) {
+                        if let artworkFileImage = NSImage(byReferencingFile: songFolderPath + currentFile) {
+                            artwork = artworkFileImage;
+                        }
+                    }
+                }
+            }
         }
-        else {
-            return uri;
+        catch let error {
+            Logger.log("MISong: Error getting artwork from file, \(error.localizedDescription)");
         }
+        
+        // Method 2
+        // Check for art in the ID3/iTunes metadata
+        if(artwork == nil) {
+            let songAsset : AVURLAsset = AVURLAsset(url: fileUrl);
+            var songMetadata : [AVMetadataItem] = songAsset.metadata(forFormat: AVMetadataFormatID3Metadata) as Array<AVMetadataItem>;
+            
+            if(songMetadata.isEmpty) {
+                songMetadata = songAsset.metadata(forFormat: AVMetadataFormatiTunesMetadata) as Array<AVMetadataItem>;
+            }
+            
+            for currentTag : AVMetadataItem in songMetadata {
+                if(currentTag.commonKey == "artwork") {
+                    if(currentTag.dataValue != nil) {
+                        if let tagImage = NSImage(data: currentTag.dataValue!) {
+                            artwork = tagImage;
+                        }
+                    }
+                }
+            }
+        }
+        
+        return artwork;
     }
     
     static var empty : Song {
@@ -88,17 +125,5 @@ class MISong: Song {
     
     var isEmpty : Bool {
         return self == MISong.empty;
-    }
-    
-    // MARK: - Methods
-    
-    // MARK: Public Methods
-    
-    func getThumbnailImage(_ completionHandler: @escaping ((NSImage) -> ())) {
-        
-    }
-    
-    func getCoverImage(_ completionHandler: @escaping ((NSImage) -> ())) {
-        
     }
 }

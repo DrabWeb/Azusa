@@ -53,7 +53,12 @@ class PlayerBarController: NSViewController {
     private var song : Song? = nil;
     
     private var volume : Int {
-        return volumeSlider.integerValue;
+        get {
+            return volumeSlider.integerValue;
+        }
+        set {
+            volumeSlider.integerValue = newValue;
+        }
     }
     
     private var progress : Int {
@@ -132,12 +137,17 @@ class PlayerBarController: NSViewController {
         refresh();
     }
     
+    func display(status : PlayerStatus) {
+        display(song: status.currentSong);
+        volume = status.volume;
+        display(repeatMode: status.repeatMode);
+        display(shuffling: status.isRandom);
+        display(playingState: status.playingState);
+        display(progress: status.elapsedTime);
+    }
+    
     func display(song : Song) {
         self.song = song;
-        
-        song.getCoverImage({ cover in
-            self.coverImageView.image = cover;
-        });
         
         titleLabel.stringValue = song.displayTitle;
         artistAlbumLabel.stringValue = "by \(song.displayArtist) in \(song.displayAlbum)";

@@ -137,11 +137,11 @@
                                             </connections>
                                         </button>
                                         <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ofk-dP-KYK" userLabel="Volume Slider">
-                                            <rect key="frame" x="572" y="21" width="100" height="19"/>
+                                            <rect key="frame" x="574" y="23" width="96" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="96" id="Mj6-Ky-9Uh"/>
                                             </constraints>
-                                            <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="0V6-yI-aPl"/>
+                                            <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="0V6-yI-aPl"/>
                                             <connections>
                                                 <action selector="volumeSlider:" target="PwB-gD-FyC" id="2Ld-bZ-3Ih"/>
                                             </connections>
@@ -187,7 +187,7 @@
                                         <constraint firstAttribute="bottom" secondItem="srz-hw-rHP" secondAttribute="bottom" id="W2z-PU-jUX"/>
                                         <constraint firstAttribute="trailing" secondItem="5PQ-Ox-BKH" secondAttribute="trailing" constant="20" id="Y4g-vf-x7U"/>
                                         <constraint firstAttribute="bottom" secondItem="juB-Ly-Iba" secondAttribute="bottom" constant="22" id="a55-az-c4V"/>
-                                        <constraint firstAttribute="bottom" secondItem="ofk-dP-KYK" secondAttribute="bottom" constant="23" id="cpi-AO-jnp"/>
+                                        <constraint firstAttribute="bottom" secondItem="ofk-dP-KYK" secondAttribute="bottom" constant="24" id="cpi-AO-jnp"/>
                                         <constraint firstItem="ofk-dP-KYK" firstAttribute="leading" secondItem="juB-Ly-Iba" secondAttribute="trailing" id="dWS-ke-Qlv"/>
                                         <constraint firstAttribute="bottom" secondItem="Fwo-cK-fM7" secondAttribute="bottom" constant="14" id="fop-Um-fGP"/>
                                         <constraint firstItem="Qy4-pY-z0F" firstAttribute="leading" secondItem="ePL-wo-B8g" secondAttribute="trailing" constant="15" id="fuE-Eo-mdX"/>

@@ -14,6 +14,8 @@ class MusicPlayerController: NSViewController {
     
     // MARK: Public Properties
     
+    var musicSource : MusicSource!
+    
     var splitViewController : MusicPlayerSplitViewController! {
         return childViewControllers[0] as? MusicPlayerSplitViewController
     }
@@ -35,48 +37,6 @@ class MusicPlayerController: NSViewController {
         super.viewDidLoad();
         
         initialize();
-        
-        let mio : MusicSource = MIMusicSource(settings: ["address":"127.0.0.1", "port":6600, "directory":"/Volumes/Storage/macOS/Music"]);
-        mio.connect(nil);
-        mio.getPlayerStatus({ status in
-            Logger.log(status);
-        });
-        
-        playerBarController.display(playingState: .paused);
-        
-        playerBarController.onSeek = { position in
-            Logger.log("Seek to \(MusicUtilities.displayTime(from: position))");
-            self.playerBarController.display(progress: position);
-        }
-        
-        playerBarController.onRepeat = { repeatMode in
-            Logger.log("Repeat \(repeatMode)");
-            return repeatMode.next();
-        }
-        
-        playerBarController.onPrevious = { playingState in
-            Logger.log("Previous \(playingState)");
-            return true;
-        }
-        
-        playerBarController.onPausePlay = { playingState in
-            Logger.log("Pause/play \(playingState)");
-            return playingState.toggle();
-        }
-        
-        playerBarController.onNext = { playingState in
-            Logger.log("Next \(playingState)");
-            return true;
-        }
-        
-        playerBarController.onShuffle = { shuffling in
-            Logger.log("Shuffling \(shuffling)");
-            return !shuffling;
-        }
-        
-        playerBarController.onVolumeChanged = { volume in
-            Logger.log("Volume \(volume)");
-        }
     }
     
     func popInPlayerBar(animate : Bool = true) {

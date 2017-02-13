@@ -62,18 +62,11 @@ protocol Song: CustomStringConvertible {
     /// Returns the display album for this song
     var displayAlbum : String { get };
     
-    /// The identifier for getting/storing this song's cover in an AZCoverDatabase
-    var coverIdentifier : String { get };
-    
-    /// Gets the thumbnail image for this song
-    ///
-    /// - Parameter completionHandler: The completion handler to call when the thumbnail is loaded, passed the thumbnail
-    func getThumbnailImage(_ completionHandler : @escaping ((NSImage) -> ()));
-    
-    /// Gets the cover image for this song
-    ///
-    /// - Parameter completionHandler: The completion handler to call when the cover is loaded, passed the cover
-    func getCoverImage(_ completionHandler : @escaping ((NSImage) -> ()));
+    // TODO: Probably make this do a completion handler again for web based sources
+    // But also maybe not because ArtworkCache should be doing the async stuff here
+    /// The full artwork of this song(should only be used by `ArtworkCache` so it can build it's cache)
+    // TODO: Make a new default cover
+    var artwork : NSImage? { get };
     
     /// Returns an empty song(used for displaying that there is no song)
     static var empty : Song { get };
