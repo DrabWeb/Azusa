@@ -13,15 +13,19 @@ public class Mio: Plugin {
         return "Mio";
     }
     
-    public var description : String {
-        return "MPD plugin for Azusa";
-    }
-    
     public var version : String {
         return "0.1";
     }
     
+    public var description : String {
+        return "MPD plugin for Azusa";
+    }
+    
+    public func getMusicSource(settings : [String : Any]) -> MusicSource {
+        return MIMusicSource(settings: settings);
+    }
+    
     required public init() {
-        Logger.log("Mio: Initiated");
+        Logger.log("Mio: Loaded");
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - PluginManager
 public class PluginManager {
     // MARK: - Properties
     
@@ -16,15 +17,28 @@ public class PluginManager {
         return _global;
     }
     
+    public var plugins : [Plugin.Type] {
+        return _plugins;
+    }
+    
     // MARK: Private Properties
     
     private let basePath : String = "\(NSHomeDirectory())/Library/Application Support/Azusa/Plugins"
     private static let _global : PluginManager = PluginManager();
+    private var _plugins : [Plugin.Type] = [];
+    
+    
+    // MARK: - Methods
+    
+    // MARK: Public Methods
+    
+    // MARK: Private Methods
     
     // TODO: Maybe add some sort of safety here?
     // Not sure because it should be on the user to only install trusted plugins
-    /// All the `Plugin`s in the plugins folder
-    private var plugins : [Plugin.Type] {
+    // Probably go with what most do where it's disabled when installed and the user has to enable it
+    /// Loads all the `Plugin`s in the plugins folder and puts them in `_plugins`
+    private func loadPlugins() {
         var plugins : [Plugin.Type] = [];
         
         // Load the `Plugin` class from every `.bundle` in the `Plugins` directory, and if it's valid add it to `plugins`
@@ -43,15 +57,8 @@ public class PluginManager {
             Logger.log("PluginManager: Error getting plugins, \(error)");
         }
         
-        return plugins;
+        _plugins = plugins;
     }
-    
-    
-    // MARK: - Methods
-    
-    // MARK: Public Methods
-    
-    // MARK: Private Methods
     
     
     // MARK: - Init / Deinit
@@ -63,13 +70,35 @@ public class PluginManager {
         catch let error {
             Logger.log("PluginManager: Error creating plugins folder, \(error)");
         }
+        
+        loadPlugins();
     }
 }
 
+// MARK: - Plugin
+/// The protocol for a Azusa plugin to implement in the base class, provides info about the plugin and access to it's classes
 public protocol Plugin {
+    // MARK: - Properties
+    
+    // MARK: Public Properties
+    
+    /// The name of this plugin
     var name : String { get };
-    var description : String { get };
+    
+    /// The version of this plugin
     var version : String { get };
+    
+    /// A short description about this plugin
+    var description : String { get };
+    
+    // MARK: - Methods
+    
+    // MARK: Public Methods
+    
+    /// Provides a new instance of the plugin's `MusicSource` with the provided settings
+    func getMusicSource(settings : [String : Any]) -> MusicSource;
+    
+    // MARK: - Init / Deinit
     
     init();
 }

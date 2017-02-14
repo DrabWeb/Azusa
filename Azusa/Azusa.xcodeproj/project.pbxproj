@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AE13CA071E4EB8F7007CF7BE /* PlayerBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE13CA061E4EB8F7007CF7BE /* PlayerBar.storyboard */; };
 		AE13CA091E4EBA63007CF7BE /* PlayerBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13CA081E4EBA63007CF7BE /* PlayerBarController.swift */; };
 		AE13CA0B1E4EBCB2007CF7BE /* MusicPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13CA0A1E4EBCB2007CF7BE /* MusicPlayerController.swift */; };
 		AE13CA0D1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13CA0C1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift */; };
@@ -17,6 +16,10 @@
 		AE1C88E01E4BFEBA0071508F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1C88DE1E4BFEBA0071508F /* Main.storyboard */; };
 		AE1C88EB1E4BFEBA0071508F /* AzusaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1C88EA1E4BFEBA0071508F /* AzusaUITests.swift */; };
 		AE1C88F81E4C072B0071508F /* MusicPlayerSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1C88F71E4C072B0071508F /* MusicPlayerSplitViewController.swift */; };
+		AE3EE5DE1E53031F0086CA88 /* PlayerBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE3EE5DD1E53031F0086CA88 /* PlayerBar.storyboard */; };
+		AE3EE5E01E5303460086CA88 /* MiniQueue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE3EE5DF1E5303460086CA88 /* MiniQueue.storyboard */; };
+		AE3EE5E21E5303590086CA88 /* MiniQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EE5E11E5303590086CA88 /* MiniQueueController.swift */; };
+		AE3EE5E41E531A5C0086CA88 /* MiniQueueCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EE5E31E531A5C0086CA88 /* MiniQueueCellView.swift */; };
 		AE5A73281E4D6822003D7280 /* SidebarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73271E4D6822003D7280 /* SidebarController.swift */; };
 		AE5A732A1E4D68F0003D7280 /* ContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73291E4D68F0003D7280 /* ContentController.swift */; };
 		AE5A73301E4D735A003D7280 /* SidebarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A732F1E4D735A003D7280 /* SidebarModel.swift */; };
@@ -86,7 +89,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		AE13CA061E4EB8F7007CF7BE /* PlayerBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = PlayerBar.storyboard; path = Interface/Status/PlayerBar.storyboard; sourceTree = "<group>"; };
 		AE13CA081E4EBA63007CF7BE /* PlayerBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerBarController.swift; sourceTree = "<group>"; };
 		AE13CA0A1E4EBCB2007CF7BE /* MusicPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerController.swift; sourceTree = "<group>"; };
 		AE13CA0C1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundDarkEdgedImageView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,10 @@
 		AE1C88EA1E4BFEBA0071508F /* AzusaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzusaUITests.swift; sourceTree = "<group>"; };
 		AE1C88EC1E4BFEBA0071508F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE1C88F71E4C072B0071508F /* MusicPlayerSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerSplitViewController.swift; sourceTree = "<group>"; };
+		AE3EE5DD1E53031F0086CA88 /* PlayerBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = PlayerBar.storyboard; path = Interface/PlayerBar.storyboard; sourceTree = "<group>"; };
+		AE3EE5DF1E5303460086CA88 /* MiniQueue.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MiniQueue.storyboard; path = Interface/MiniQueue.storyboard; sourceTree = "<group>"; };
+		AE3EE5E11E5303590086CA88 /* MiniQueueController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniQueueController.swift; sourceTree = "<group>"; };
+		AE3EE5E31E531A5C0086CA88 /* MiniQueueCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniQueueCellView.swift; sourceTree = "<group>"; };
 		AE5A73271E4D6822003D7280 /* SidebarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarController.swift; sourceTree = "<group>"; };
 		AE5A73291E4D68F0003D7280 /* ContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentController.swift; sourceTree = "<group>"; };
 		AE5A732F1E4D735A003D7280 /* SidebarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarModel.swift; sourceTree = "<group>"; };
@@ -187,8 +193,6 @@
 				AE1C88F51E4BFFF70071508F /* Interface */,
 				AE1C88F61E4C070C0071508F /* View Controllers */,
 				AE5A732B1E4D7291003D7280 /* Model */,
-				AE7F805C1E4F0F2D00D21060 /* Objects */,
-				AE7F805F1E4F0F9000D21060 /* Protocols */,
 				AEC554A31E4DF72800D6A987 /* Views */,
 				AEA3777E1E512A6100A64060 /* Extensions */,
 				AE1C88DC1E4BFEBA0071508F /* Assets.xcassets */,
@@ -210,7 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				AE1C88DE1E4BFEBA0071508F /* Main.storyboard */,
-				AE13CA061E4EB8F7007CF7BE /* PlayerBar.storyboard */,
+				AE3EE5DD1E53031F0086CA88 /* PlayerBar.storyboard */,
+				AE3EE5DF1E5303460086CA88 /* MiniQueue.storyboard */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 				AE5A73271E4D6822003D7280 /* SidebarController.swift */,
 				AE5A73291E4D68F0003D7280 /* ContentController.swift */,
 				AE13CA081E4EBA63007CF7BE /* PlayerBarController.swift */,
+				AE3EE5E11E5303590086CA88 /* MiniQueueController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -244,20 +250,6 @@
 			path = Sidebar;
 			sourceTree = "<group>";
 		};
-		AE7F805C1E4F0F2D00D21060 /* Objects */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Objects;
-			sourceTree = "<group>";
-		};
-		AE7F805F1E4F0F9000D21060 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		AEA3777E1E512A6100A64060 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +262,7 @@
 			children = (
 				AE13CA0C1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift */,
 				AE13CA0E1E4EEF88007CF7BE /* ProgressSliderCell.swift */,
+				AE3EE5E31E531A5C0086CA88 /* MiniQueueCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -473,8 +466,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE1C88DD1E4BFEBA0071508F /* Assets.xcassets in Resources */,
+				AE3EE5E01E5303460086CA88 /* MiniQueue.storyboard in Resources */,
 				AE1C88E01E4BFEBA0071508F /* Main.storyboard in Resources */,
-				AE13CA071E4EB8F7007CF7BE /* PlayerBar.storyboard in Resources */,
+				AE3EE5DE1E53031F0086CA88 /* PlayerBar.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,10 +503,12 @@
 				AE13CA0B1E4EBCB2007CF7BE /* MusicPlayerController.swift in Sources */,
 				AE1C88D91E4BFEB90071508F /* AppDelegate.swift in Sources */,
 				AE13CA0D1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift in Sources */,
+				AE3EE5E41E531A5C0086CA88 /* MiniQueueCellView.swift in Sources */,
 				AE5A73281E4D6822003D7280 /* SidebarController.swift in Sources */,
 				AE5A732A1E4D68F0003D7280 /* ContentController.swift in Sources */,
 				AE13CA091E4EBA63007CF7BE /* PlayerBarController.swift in Sources */,
 				AE5A73301E4D735A003D7280 /* SidebarModel.swift in Sources */,
+				AE3EE5E21E5303590086CA88 /* MiniQueueController.swift in Sources */,
 				AE13CA0F1E4EEF88007CF7BE /* ProgressSliderCell.swift in Sources */,
 				AE1C88F81E4C072B0071508F /* MusicPlayerSplitViewController.swift in Sources */,
 				AE5A73341E4D80A7003D7280 /* SidebarItems.swift in Sources */,

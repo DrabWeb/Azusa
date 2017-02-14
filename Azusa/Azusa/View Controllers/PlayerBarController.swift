@@ -127,7 +127,6 @@ class PlayerBarController: NSViewController {
         invokeOnVolumeChanged();
     }
     
-    
     // MARK: - Methods
     
     // MARK: Public Methods
@@ -151,7 +150,7 @@ class PlayerBarController: NSViewController {
         self.song = song;
         
         titleLabel.stringValue = song.displayTitle;
-        artistAlbumLabel.stringValue = "by \(song.displayArtist) in \(song.displayAlbum)";
+        artistAlbumLabel.stringValue = "\(song.displayArtist) - \(song.displayAlbum)";
         progressSlider.maxValue = Double(song.duration);
         refreshProgress();
     }

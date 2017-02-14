@@ -36,9 +36,6 @@ class MusicPlayerController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        // REMOVEME: This is only for making PluginManager call it's init
-        PluginManager.global;
-        
         initialize();
     }
     
