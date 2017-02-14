@@ -79,10 +79,10 @@ public protocol Song: CustomStringConvertible {
 
 // MARK: - Methods
 
-func ==(lhs: Song, rhs: Song) -> Bool {
+public func ==(lhs: Song, rhs: Song) -> Bool {
     return (lhs.title == rhs.title) && (lhs.album.name == rhs.album.name) && (lhs.artist.name == rhs.artist.name);
 }
 
-func !=(lhs: Song, rhs: Song) -> Bool {
+public func !=(lhs: Song, rhs: Song) -> Bool {
     return !(lhs == rhs);
 }

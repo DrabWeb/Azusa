@@ -6,23 +6,24 @@
 //
 
 import Foundation
+import Yui
 
 /// Represents the stats of an MPD server
-class MIStats: CustomStringConvertible {
+public class MIStats: CustomStringConvertible {
     
     // MARK: - Properties
     
     // MARK: Public Properties
     
-    var albumCount : Int = 0;
-    var artistCount : Int = 0;
-    var songCount : Int = 0;
-    var databasePlayTime : Int = 0;
-    var mpdUptime : Int = 0;
-    var mpdPlayTime : Int = 0;
-    var lastMpdDatabaseUpdate : NSDate = NSDate();
+    public var albumCount : Int = 0;
+    public var artistCount : Int = 0;
+    public var songCount : Int = 0;
+    public var databasePlayTime : Int = 0;
+    public var mpdUptime : Int = 0;
+    public var mpdPlayTime : Int = 0;
+    public var lastMpdDatabaseUpdate : NSDate = NSDate();
     
-    var description : String {
+    public var description : String {
         return "MIMPDStats: \(self.albumCount) albums, " +
             "\(self.artistCount) artists, " +
             "\(songCount) songs, " +
@@ -35,7 +36,7 @@ class MIStats: CustomStringConvertible {
     
     // MARK: - Initialization and Deinitialization
     
-    init(albumCount : Int, artistCount : Int, songCount : Int, databasePlayTime : Int, mpdUptime : Int, mpdPlayTime : Int, lastMpdDatabaseUpdate : NSDate) {
+    public init(albumCount : Int, artistCount : Int, songCount : Int, databasePlayTime : Int, mpdUptime : Int, mpdPlayTime : Int, lastMpdDatabaseUpdate : NSDate) {
         self.albumCount = albumCount;
         self.artistCount = artistCount;
         self.songCount = songCount;
@@ -45,7 +46,7 @@ class MIStats: CustomStringConvertible {
         self.lastMpdDatabaseUpdate = lastMpdDatabaseUpdate;
     }
     
-    init() {
+    public init() {
         self.albumCount = 0;
         self.artistCount = 0;
         self.songCount = 0;

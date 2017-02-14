@@ -6,7 +6,6 @@
 //
 
 import Cocoa
-import MPD
 import Yui
 
 class MusicPlayerController: NSViewController {

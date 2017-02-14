@@ -7,6 +7,7 @@
 
 import Foundation
 import MPD
+import Yui
 
 // TODO: Make `MIMPDError` convertible to `MusicSourceError`
 
@@ -24,8 +25,8 @@ import MPD
 /// - connectionClosed: Connection closed by MPD
 /// - serverError: The server has returned an error code, which can be queried with `mpd_connection_get_server_error()`
 /// - other: An error not handled by Mio
-enum MIMPDError: String, Error, CustomStringConvertible {
-    var description: String {
+public enum MIMPDError: String, Error, CustomStringConvertible {
+    public var description: String {
         return rawValue;
     }
     
@@ -44,7 +45,7 @@ enum MIMPDError: String, Error, CustomStringConvertible {
 }
 
 /// libmpdclient interaction handler in Mio
-class MIMPD {
+public class MIMPD {
     // MARK: - Properties
     
     // MARK: Public Properties

@@ -41,13 +41,14 @@ public struct Logger {
         let timestampDateFormatter : DateFormatter = DateFormatter();
         timestampDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS";
         let timestamp : String = timestampDateFormatter.string(from: Date());
+        let message = "\(timestamp) Yui: \(object)";
         
-        log.append("\(timestamp) Azusa: \(object)\n");
+        log.append("\(message)\n");
         
         // Only print if we are in a debug build
         #if DEBUG
             if(level.rawValue <= self.level.rawValue) {
-                print("\(timestamp) Azusa: \(object)");
+                print(message);
             }
         #endif
     }

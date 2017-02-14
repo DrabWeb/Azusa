@@ -6,16 +6,17 @@
 //
 
 import Foundation
+import Yui
 
 /// The implementation for the `MusicSource` protocol in Mio
-class MIMusicSource: MusicSource {
+public class MIMusicSource: MusicSource {
     
     // MARK: - Properties
     
     // MARK: Public Properties
     
-    var settings : [String : Any] = [:];
-    var eventManager: EventManager {
+    public var settings : [String : Any] = [:];
+    public var eventManager: EventManager {
         return mpd!.eventManager;
     }
     
@@ -30,7 +31,7 @@ class MIMusicSource: MusicSource {
     
     // TODO: Make these all throw real errors when `MusicSourceError` is implemented
     
-    func connect(_ completionHandler : ((Bool, MusicSourceError?) -> Void)?) {
+    public func connect(_ completionHandler : ((Bool, MusicSourceError?) -> Void)?) {
         if !perform({
             let output = self.mpd!.connect();
             
@@ -43,7 +44,7 @@ class MIMusicSource: MusicSource {
     }
     
     // MARK: - Player
-    func getPlayerStatus(_ completionHandler : @escaping ((PlayerStatus, MusicSourceError?) -> Void)) {
+    public func getPlayerStatus(_ completionHandler : @escaping ((PlayerStatus, MusicSourceError?) -> Void)) {
         if !perform({
             if let playerStatus = try? self.mpd!.getPlayerStatus() {
                 DispatchQueue.main.async {
@@ -58,7 +59,7 @@ class MIMusicSource: MusicSource {
         }
     }
     
-    func getElapsed(_ completionHandler : @escaping ((Int, MusicSourceError?) -> Void)) {
+    public func getElapsed(_ completionHandler : @escaping ((Int, MusicSourceError?) -> Void)) {
         if !perform({
             if let elapsed = try? self.mpd!.getElapsed() {
                 DispatchQueue.main.async {
@@ -73,7 +74,7 @@ class MIMusicSource: MusicSource {
         }
     }
     
-    func seek(to : Int, completionHandler : ((MusicSourceError?) -> Void)?) {
+    public func seek(to : Int, completionHandler : ((MusicSourceError?) -> Void)?) {
         if !perform({
             if (try? self.mpd!.seek(to: to)) != nil {
                 DispatchQueue.main.async {
@@ -88,7 +89,7 @@ class MIMusicSource: MusicSource {
         }
     }
     
-    func seek(to : Int, trackPosition : Int, completionHandler : ((MusicSourceError?) -> Void)?) {
+    public func seek(to : Int, trackPosition : Int, completionHandler : ((MusicSourceError?) -> Void)?) {
         if !perform({
             if (try? self.mpd!.seek(to: to, trackPosition: trackPosition)) != nil {
                 DispatchQueue.main.async {
@@ -103,7 +104,7 @@ class MIMusicSource: MusicSource {
         }
     }
     
-    func togglePaused(completionHandler : ((Bool, MusicSourceError?) -> Void)?) {
+    public func togglePaused(completionHandler : ((Bool, MusicSourceError?) -> Void)?) {
         if !perform({
             if let paused = try? self.mpd!.togglePaused() {
                 DispatchQueue.main.async {
@@ -118,7 +119,7 @@ class MIMusicSource: MusicSource {
         }
     }
     
-    func setPaused(_ paused : Bool, completionHandler : ((MusicSourceError?) -> Void)?) {
+    public func setPaused(_ paused : Bool, completionHandler : ((MusicSourceError?) -> Void)?) {
         if !perform({
             if (try? self.mpd!.setPaused(paused)) != nil {
                 DispatchQueue.main.async {
@@ -133,7 +134,7 @@ class MIMusicSource: MusicSource {
         }
     }
     
-    func stop(completionHandler : ((MusicSourceError?) -> Void)?) {
+    public func stop(completionHandler : ((MusicSourceError?) -> Void)?) {
         if !perform({
             if (try? self.mpd!.stop()) != nil {
                 DispatchQueue.main.async {
@@ -148,7 +149,7 @@ class MIMusicSource: MusicSource {
         }
     }
     
-    func skipNext(completionHandler : ((MusicSourceError?) -> Void)?) {
+    public func skipNext(completionHandler : ((MusicSourceError?) -> Void)?) {
         if !perform({
             if (try? self.mpd!.skipNextAndMaintainPlayingState()) != nil {
                 DispatchQueue.main.async {
@@ -163,7 +164,7 @@ class MIMusicSource: MusicSource {
         }
     }
     
-    func skipPrevious(completionHandler : ((MusicSourceError?) -> Void)?) {
+    public func skipPrevious(completionHandler : ((MusicSourceError?) -> Void)?) {
         if !perform({
             if (try? self.mpd!.skipPreviousAndMaintainPlayingState()) != nil {
                 DispatchQueue.main.async {
@@ -178,7 +179,7 @@ class MIMusicSource: MusicSource {
         }
     }
     
-    func setVolume(to volume : Int, completionHandler : ((MusicSourceError?) -> Void)?) {
+    public func setVolume(to volume : Int, completionHandler : ((MusicSourceError?) -> Void)?) {
         if !perform({
             if (try? self.mpd!.setVolume(to: volume)) != nil {
                 DispatchQueue.main.async {
@@ -193,7 +194,7 @@ class MIMusicSource: MusicSource {
         }
     }
     
-    func setRelativeVolume(to volume : Int, completionHandler : ((MusicSourceError?) -> Void)?) {
+    public func setRelativeVolume(to volume : Int, completionHandler : ((MusicSourceError?) -> Void)?) {
         if !perform({
             if (try? self.mpd!.setRelativeVolume(to: volume)) != nil {
                 DispatchQueue.main.async {
@@ -209,7 +210,7 @@ class MIMusicSource: MusicSource {
     }
     
     // MARK: - Queue
-    func getQueue(completionHandler : @escaping (([Song], Int, MusicSourceError?) -> Void)) {
+    public func getQueue(completionHandler : @escaping (([Song], Int, MusicSourceError?) -> Void)) {
         if !perform({
             if let queue = try? self.mpd!.getCurrentQueue(), let currentPosition = try? self.mpd!.getCurrentSongPosition() {
                 DispatchQueue.main.async {
@@ -224,7 +225,7 @@ class MIMusicSource: MusicSource {
         }
     }
     
-    func playSongInQueue(_ song : Song, completionHandler : ((Song?, MusicSourceError?) -> Void)?) {
+    public func playSongInQueue(_ song : Song, completionHandler : ((Song?, MusicSourceError?) -> Void)?) {
         if !perform({
             if (try? self.mpd!.playSongInQueue(at: song.position)) != nil, let currentSong = try? self.mpd!.getCurrentSong() {
                 DispatchQueue.main.async {
@@ -241,7 +242,7 @@ class MIMusicSource: MusicSource {
         }
     }
     
-    func removeFromQueue(_ songs : [Song], completionHandler : ((MusicSourceError?) -> Void)?) {
+    public func removeFromQueue(_ songs : [Song], completionHandler : ((MusicSourceError?) -> Void)?) {
         if !perform({
             if (try? self.mpd!.removeFromQueue(songs: songs as! [MISong])) != nil {
                 DispatchQueue.main.async {
@@ -256,7 +257,7 @@ class MIMusicSource: MusicSource {
         }
     }
     
-    func moveAfterCurrent(_ songs : [Song], completionHandler : ((MusicSourceError?) -> Void)?) {
+    public func moveAfterCurrent(_ songs : [Song], completionHandler : ((MusicSourceError?) -> Void)?) {
         if !perform({
             if (try? self.mpd!.moveAfterCurrent(songs: songs as! [MISong])) != nil {
                 DispatchQueue.main.async {
@@ -271,7 +272,7 @@ class MIMusicSource: MusicSource {
         }
     }
     
-    func shuffleQueue(completionHandler : ((MusicSourceError?) -> Void)?) {
+    public func shuffleQueue(completionHandler : ((MusicSourceError?) -> Void)?) {
         if !perform({
             if (try? self.mpd!.shuffleQueue()) != nil {
                 DispatchQueue.main.async {
@@ -286,7 +287,7 @@ class MIMusicSource: MusicSource {
         }
     }
     
-    func clearQueue(completionHandler : ((MusicSourceError?) -> Void)?) {
+    public func clearQueue(completionHandler : ((MusicSourceError?) -> Void)?) {
         if !perform({
             if (try? self.mpd!.clearQueue()) != nil {
                 DispatchQueue.main.async {
@@ -317,7 +318,7 @@ class MIMusicSource: MusicSource {
     
     // MARK: - Initialization and Deinitialization
     
-    required init(settings : [String : Any]) {
+    public required init(settings : [String : Any]) {
         // TODO: Make these keys constants
         self.mpd = MIMPD(serverInfo: MIServerInfo(address: settings["address"] as! String, port: settings["port"] as! Int, directory: settings["directory"] as! String));
     }

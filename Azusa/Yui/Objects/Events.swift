@@ -90,6 +90,12 @@ public class EventManager {
             }
         }
     }
+    
+    // MARK: Init / Deinit
+    
+    public init() {
+        self._subscribers = [];
+    }
 }
 
 

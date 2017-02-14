@@ -8,40 +8,41 @@
 import Foundation
 import AppKit
 import AVFoundation
+import Yui
 
-class MISong: Song {
+public class MISong: Song {
     // MARK: - Properties
     
     // MARK: Public Properties
     
     /// The MPD URI of this song
-    var uri : String = "";
+    public var uri : String = "";
     
     /// The path to the file of this song
-    var file : String = "";
+    public var file : String = "";
     
     /// The MPD ID of this song
-    var id : Int = -1;
+    public var id : Int = -1;
     
-    var artist : Artist = Artist();
-    var album : Album = Album();
-    var albumArtist : Artist = Artist();
-    var title : String = "";
-    var track : Int = 0;
-    var genre : Genre = Genre();
-    var year : Int = 0;
-    var composer : String = "";
-    var performer : String = "";
-    var disc : Int = 0;
-    var discCount : Int = 0;
-    var duration : Int = 0;
-    var position : Int = 0;
+    public var artist : Artist = Artist();
+    public var album : Album = Album();
+    public var albumArtist : Artist = Artist();
+    public var title : String = "";
+    public var track : Int = 0;
+    public var genre : Genre = Genre();
+    public var year : Int = 0;
+    public var composer : String = "";
+    public var performer : String = "";
+    public var disc : Int = 0;
+    public var discCount : Int = 0;
+    public var duration : Int = 0;
+    public var position : Int = 0;
     
-    var description: String {
+    public var description: String {
         return "MISong<\(id) - \(uri)>: \(displayTitle) by \(displayArtist)(\(MusicUtilities.displayTime(from: duration))), in \(displayAlbum)";
     }
     
-    var displayTitle : String {
+    public var displayTitle : String {
         // If the title is set...
         if(title != "") {
             // Return the title
@@ -62,15 +63,15 @@ class MISong: Song {
         }
     }
     
-    var displayArtist : String {
+    public var displayArtist : String {
         return artist.displayName;
     }
     
-    var displayAlbum : String {
+    public var displayAlbum : String {
         return album.displayName;
     }
     
-    var artwork : NSImage? {
+    public var artwork : NSImage? {
         var artwork : NSImage? = nil;
         let fileUrl = URL(fileURLWithPath: self.file);
         let songFolderPath : String = self.file.replacingOccurrences(of: NSString(string: self.file).lastPathComponent, with: "");
@@ -116,14 +117,14 @@ class MISong: Song {
         return artwork;
     }
     
-    static var empty : Song {
+    public static var empty : Song {
         let song : MISong = MISong();
         song.title = "Song Not Found";
         
         return song;
     }
     
-    var isEmpty : Bool {
+    public var isEmpty : Bool {
         return self == MISong.empty;
     }
 }
