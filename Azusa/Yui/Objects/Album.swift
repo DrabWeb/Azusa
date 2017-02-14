@@ -14,11 +14,11 @@ public class Album: CustomStringConvertible {
     
     // MARK: Public Properties
     
-    var name : String = "";
+    public var name : String = "";
     
-    var songs : [Song] = [];
+    public var songs : [Song] = [];
     
-    var artists : [Artist] {
+    public var artists : [Artist] {
         var noDuplicateArtists : [Artist] = [];
         
         self.songs.map { $0.artist }.forEach { artist in
@@ -30,7 +30,7 @@ public class Album: CustomStringConvertible {
         return noDuplicateArtists;
     }
     
-    var duration : Int {
+    public var duration : Int {
         var length : Int = 0;
         
         self.songs.forEach { song in
@@ -40,7 +40,7 @@ public class Album: CustomStringConvertible {
         return length;
     }
     
-    var genres : [Genre] {
+    public var genres : [Genre] {
         var noDuplicateGenres : [Genre] = [];
         
         self.songs.map { $0.genre }.forEach { genre in
@@ -52,7 +52,7 @@ public class Album: CustomStringConvertible {
         return noDuplicateGenres;
     };
     
-    var year : Int {
+    public var year : Int {
         var releaseYear : Int = -1;
         
         self.songs.forEach {
@@ -62,7 +62,7 @@ public class Album: CustomStringConvertible {
         return releaseYear;
     };
     
-    var displayName : String {
+    public var displayName : String {
         return ((self.name != "") ? self.name : "Unknown Album");
     }
     
@@ -70,7 +70,7 @@ public class Album: CustomStringConvertible {
     ///
     /// - Parameter shorten: If there are multiple artists, should the string be shortened to "Various Artists"?
     /// - Returns: The user readable version of this album's artist(s)
-    func displayArtists(shorten : Bool) -> String {
+    public func displayArtists(shorten : Bool) -> String {
         let artists : [Artist] = self.artists;
         
         //
@@ -102,7 +102,7 @@ public class Album: CustomStringConvertible {
         }
     }
     
-    var displayGenres : String {
+    public var displayGenres : String {
         var displayGenreString : String = "";
         
         let albumGenres : [Genre] = self.genres;
@@ -120,7 +120,7 @@ public class Album: CustomStringConvertible {
         return displayGenreString;
     }
     
-    var displayYear : String {
+    public var displayYear : String {
         let year : Int = self.year;
         
         return (year == -1 || year == 0) ? "Unknown Year" : "\(year)";
@@ -133,17 +133,17 @@ public class Album: CustomStringConvertible {
     
     // MARK: - Initialization and Deinitialization
     
-    init(name : String, songs : [Song]) {
+    public init(name : String, songs : [Song]) {
         self.name = name;
         self.songs = songs;
     }
     
-    init(name : String) {
+    public init(name : String) {
         self.name = name;
         self.songs = [];
     }
     
-    init() {
+    public init() {
         self.name = "";
         self.songs = [];
     }

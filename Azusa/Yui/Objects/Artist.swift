@@ -14,11 +14,11 @@ public class Artist: Equatable, CustomStringConvertible {
     
     // MARK: Public Properties
     
-    var name : String = "";
+    public var name : String = "";
     
-    var albums : [Album] = [];
+    public var albums : [Album] = [];
     
-    var displayName : String {
+    public var displayName : String {
         return ((self.name != "") ? self.name : "Unknown Artist");
     }
     
@@ -36,17 +36,17 @@ public class Artist: Equatable, CustomStringConvertible {
     
     // MARK: - Initialization and Deinitialization
     
-    init(name : String, albums : [Album]) {
+    public init(name : String, albums : [Album]) {
         self.name = name;
         self.albums = albums;
     }
     
-    init(name : String) {
+    public init(name : String) {
         self.name = name;
         self.albums = [];
     }
     
-    init() {
+    public init() {
         self.name = "";
         self.albums = [];
     }

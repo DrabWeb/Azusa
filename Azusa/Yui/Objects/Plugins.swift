@@ -22,7 +22,7 @@ public class PluginManager {
     private static let _global : PluginManager = PluginManager();
     
     /// All the bundles in the plugins folder
-    var bundles : [Bundle] {
+    private var bundles : [Bundle] {
         var bundles : [Bundle] = [];
         
         do {

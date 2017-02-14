@@ -14,9 +14,9 @@ public class Genre: Equatable, CustomStringConvertible {
     
     // MARK: Public Properties
     
-    var name : String = "";
+    public var name : String = "";
     
-    var displayName : String {
+    public var displayName : String {
         return ((self.name != "") ? self.name : "Unknown Genre");
     }
     
@@ -34,11 +34,11 @@ public class Genre: Equatable, CustomStringConvertible {
     
     // MARK: - Initialization and Deinitialization
     
-    init(name : String) {
+    public init(name : String) {
         self.name = name;
     }
     
-    init() {
+    public init() {
         self.name = "";
     }
 }

@@ -27,7 +27,7 @@ extension NSImage {
     func bitmapImageRep() -> NSBitmapImageRep {
         guard let rep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: Int(self.pixelSize.width), pixelsHigh: Int(self.pixelSize.height), bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false, colorSpaceName: NSDeviceRGBColorSpace, bytesPerRow: 0, bitsPerPixel: 0)
         else {
-            preconditionFailure()
+            preconditionFailure();
         }
         
         NSGraphicsContext.saveGraphicsState();

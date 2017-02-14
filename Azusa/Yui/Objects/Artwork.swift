@@ -8,7 +8,7 @@
 import Cocoa
 
 // MARK: - ArtworkSize
-enum ArtworkSize : Int {
+public enum ArtworkSize : Int {
     case thumb = 48
     case small = 192
     case large = 512
@@ -16,13 +16,13 @@ enum ArtworkSize : Int {
 }
 
 // MARK: - ArtworkCache
-class ArtworkCache {
+public class ArtworkCache {
     
     // MARK: - Properties
     
     // MARK: Public Properties
     
-    class var global : ArtworkCache {
+    public class var global : ArtworkCache {
         return _global;
     }
     
@@ -40,7 +40,7 @@ class ArtworkCache {
     ///
     /// - Parameter songs: The songs to create cover databases for
     /// - Parameter callback: The closure to perform when a cover database is created for a `Song` in `songs`, passed the index of the last cached and the count of all the songs to cache
-    func addArt(of songs : [Song], callback : ((Int, Int) -> Void)?, completion : ((Int) -> Void)?) {
+    public func addArt(of songs : [Song], callback : ((Int, Int) -> Void)?, completion : ((Int) -> Void)?) {
         Logger.log("ArtworkCache: Caching artwork of \(songs.count) song\(songs.count == 1 ? "" : "s")");
         
         DispatchQueue.global(qos: DispatchQoS.background.qosClass).async {
@@ -67,7 +67,7 @@ class ArtworkCache {
     ///   - song: The song to get the artwork of
     ///   - size: The size of artwork to get
     ///   - completionHandler: The closure to call upon loading completion, passed the loaded cover
-    func getArt(of song : Song, withSize size : ArtworkSize, completion completionHandler : @escaping ((NSImage?) -> Void)) {
+    public func getArt(of song : Song, withSize size : ArtworkSize, completion completionHandler : @escaping ((NSImage?) -> Void)) {
         var artwork : NSImage? = nil;
         
         func complete() {
@@ -103,7 +103,7 @@ class ArtworkCache {
     }
     
     /// Deletes all the artwork in the cache
-    func clear() {
+    public func clear() {
         do {
             try FileManager.default.removeItem(atPath: basePath);
         }
@@ -184,7 +184,7 @@ class ArtworkCache {
     
     // MARK: - Init / Deinit
     
-    init() {
+    public init() {
         do {
             try FileManager.default.createDirectory(atPath: basePath, withIntermediateDirectories: true, attributes: nil);
         }

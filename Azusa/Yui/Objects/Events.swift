@@ -43,7 +43,7 @@ public class EventManager {
     
     // MARK: Public Properties
     
-    var subscribers : [EventSubscriber] {
+    public var subscribers : [EventSubscriber] {
         return _subscribers;
     };
     
@@ -56,13 +56,13 @@ public class EventManager {
     
     // MARK: Public Methods
     
-    func add(subscriber : EventSubscriber) {
+    public func add(subscriber : EventSubscriber) {
         Logger.log("EventManager: Subscribing to events \"\(subscriber.subscriptions)\" with \(subscriber)");
         
         self._subscribers.append(subscriber);
     }
     
-    func remove(subscriber : EventSubscriber) {
+    public func remove(subscriber : EventSubscriber) {
         var removalIndex : Int = -1;
         
         for(currentIndex, currentSubscriber) in self._subscribers.enumerated() {
@@ -81,7 +81,7 @@ public class EventManager {
         }
     }
     
-    func emit(event : Event) {
+    public func emit(event : Event) {
         Logger.log("EventManager: Emitting event Event.\(event)");
         
         for(_, currentSubscriber) in self.subscribers.enumerated() {
@@ -95,15 +95,15 @@ public class EventManager {
 
 // MARK: - EventSubscriber
 
-class EventSubscriber: NSObject {
+public class EventSubscriber: NSObject {
     
     // MARK: - Properties
     
     // MARK: Public Properties
     
-    var subscriptions : [Event] = [];
-    var handler : ((Event) -> ())? = nil;
-    var uuid : String = NSUUID().uuidString;
+    public var subscriptions : [Event] = [];
+    public var handler : ((Event) -> ())? = nil;
+    public var uuid : String = NSUUID().uuidString;
     
     
     // MARK: - Methods
@@ -113,20 +113,20 @@ class EventSubscriber: NSObject {
     /// Performs this subscription(called when the subscribed event fires), should be passed the event that fired it
     ///
     /// - Parameter event: The event to say triggered the subscriber
-    func perform(event : Event) {
+    public func perform(event : Event) {
         self.handler?(event);
     }
     
     
     // MARK: - Initialization and Deinitialization
     
-    init(events : [Event], performer : ((Event) -> ())?) {
+    public init(events : [Event], performer : ((Event) -> ())?) {
         self.subscriptions = events;
         self.handler = performer;
         self.uuid = NSUUID().uuidString;
     }
     
-    override init() {
+    public override init() {
         super.init();
         
         self.subscriptions = [];

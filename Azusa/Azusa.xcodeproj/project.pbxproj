@@ -34,12 +34,12 @@
 		AEF6605C1E52E0D600136DD8 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF6604F1E52E0D600136DD8 /* Song.swift */; };
 		AEF6605D1E52E0D600136DD8 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660511E52E0D600136DD8 /* Album.swift */; };
 		AEF6605E1E52E0D600136DD8 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660521E52E0D600136DD8 /* Artist.swift */; };
-		AEF6605F1E52E0D600136DD8 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660531E52E0D600136DD8 /* Artwork.swift */; };
 		AEF660601E52E0D600136DD8 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660541E52E0D600136DD8 /* Events.swift */; };
 		AEF660611E52E0D600136DD8 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660551E52E0D600136DD8 /* Genre.swift */; };
 		AEF660621E52E0D600136DD8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660561E52E0D600136DD8 /* Logger.swift */; };
 		AEF660631E52E0D600136DD8 /* MusicUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660571E52E0D600136DD8 /* MusicUtilities.swift */; };
 		AEF660641E52E0D600136DD8 /* Plugins.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660581E52E0D600136DD8 /* Plugins.swift */; };
+		AEF660661E52E44000136DD8 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660651E52E44000136DD8 /* Artwork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,12 +168,12 @@
 		AEF6604F1E52E0D600136DD8 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		AEF660511E52E0D600136DD8 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		AEF660521E52E0D600136DD8 /* Artist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
-		AEF660531E52E0D600136DD8 /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		AEF660541E52E0D600136DD8 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		AEF660551E52E0D600136DD8 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		AEF660561E52E0D600136DD8 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		AEF660571E52E0D600136DD8 /* MusicUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicUtilities.swift; sourceTree = "<group>"; };
 		AEF660581E52E0D600136DD8 /* Plugins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plugins.swift; sourceTree = "<group>"; };
+		AEF660651E52E44000136DD8 /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -437,7 +437,7 @@
 			children = (
 				AEF660511E52E0D600136DD8 /* Album.swift */,
 				AEF660521E52E0D600136DD8 /* Artist.swift */,
-				AEF660531E52E0D600136DD8 /* Artwork.swift */,
+				AEF660651E52E44000136DD8 /* Artwork.swift */,
 				AEF660541E52E0D600136DD8 /* Events.swift */,
 				AEF660551E52E0D600136DD8 /* Genre.swift */,
 				AEF660561E52E0D600136DD8 /* Logger.swift */,
@@ -655,13 +655,13 @@
 				AEF6605E1E52E0D600136DD8 /* Artist.swift in Sources */,
 				AEF6605C1E52E0D600136DD8 /* Song.swift in Sources */,
 				AEF660631E52E0D600136DD8 /* MusicUtilities.swift in Sources */,
-				AEF6605F1E52E0D600136DD8 /* Artwork.swift in Sources */,
 				AEF6605A1E52E0D600136DD8 /* MusicSource.swift in Sources */,
 				AEF660621E52E0D600136DD8 /* Logger.swift in Sources */,
 				AEF660601E52E0D600136DD8 /* Events.swift in Sources */,
 				AEF660591E52E0D600136DD8 /* ImageExtensions.swift in Sources */,
 				AEF6605B1E52E0D600136DD8 /* PlayerStatus.swift in Sources */,
 				AEF660641E52E0D600136DD8 /* Plugins.swift in Sources */,
+				AEF660661E52E44000136DD8 /* Artwork.swift in Sources */,
 				AEF6605D1E52E0D600136DD8 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

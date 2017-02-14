@@ -7,9 +7,12 @@
 
 import Foundation
 
+/// Little utilities for working with music, like time
 public struct MusicUtilities {
     
-    // MARK: - Functions
+    // MARK: - Methods
+    
+    // MARK: Public Methods
     
     /// Returns the hours, minutes and seconds from the given amount of seconds
     ///
@@ -52,11 +55,11 @@ public struct MusicUtilities {
 }
 
 public struct Time {
-    var hours : Int = 0;
-    var minutes : Int = 0;
-    var seconds : Int = 0;
+    public var hours : Int = 0;
+    public var minutes : Int = 0;
+    public var seconds : Int = 0;
     
-    init(hours : Int = 0, minutes : Int = 0, seconds : Int = 0) {
+    public init(hours : Int = 0, minutes : Int = 0, seconds : Int = 0) {
         self.hours = hours;
         self.minutes = minutes;
         self.seconds = seconds;
