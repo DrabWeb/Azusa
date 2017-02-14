@@ -5,6 +5,11 @@ Many thanks to [MPDRemote](https://github.com/Nyx0uf/MPDRemote) for showing how 
 
 # Current Status
 
+#### Feb. 14, 2017
+Moved the backend of Azusa to Yui, the framework for Azusa and plugins
+
+-------
+
 #### Feb. 8, 2017
 Beginning refactoring of the application to be cleaner and more clear in it's implementations
 
