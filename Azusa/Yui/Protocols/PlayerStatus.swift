@@ -1,16 +1,16 @@
 //
 //  PlayerStatus.swift
-//  Azusa
+//  Yui
 //
 //  Created by Ushio on 2/11/17.
 //
 
 import Foundation
 
-enum PlayingState {
+public enum PlayingState {
     case stopped, paused, playing
     
-    func toggle() -> PlayingState {
+    public func toggle() -> PlayingState {
         switch self {
             case .stopped:
                 return .stopped;
@@ -24,10 +24,10 @@ enum PlayingState {
     }
 }
 
-enum RepeatMode {
+public enum RepeatMode {
     case none, queue, single
     
-    func next() -> RepeatMode {
+    public func next() -> RepeatMode {
         switch self {
             case .none:
                 return .queue;
@@ -42,7 +42,7 @@ enum RepeatMode {
 }
 
 /// The protocol for a player status object used by azusa
-protocol PlayerStatus: CustomStringConvertible {
+public protocol PlayerStatus: CustomStringConvertible {
     var currentSong : Song { get set };
     var volume : Int { get set };
     var repeatMode : RepeatMode { get set };

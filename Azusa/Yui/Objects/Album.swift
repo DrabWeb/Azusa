@@ -1,6 +1,6 @@
 //
 //  Album.swift
-//  Azusa
+//  Yui
 //
 //  Created by Ushio on 2/11/17.
 //
@@ -8,7 +8,7 @@
 import Foundation
 
 /// The object to represent an album in the user's music collection
-class Album: CustomStringConvertible {
+public class Album: CustomStringConvertible {
     
     // MARK: - Properties
     
@@ -126,7 +126,7 @@ class Album: CustomStringConvertible {
         return (year == -1 || year == 0) ? "Unknown Year" : "\(year)";
     }
     
-    var description : String {
+    public var description : String {
         return "Album: \(self.displayName) by \(self.artists)(\(self.genres)), \(self.songs.count) songs, released in \(year)"
     }
     

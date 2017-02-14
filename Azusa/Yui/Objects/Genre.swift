@@ -1,6 +1,6 @@
 //
 //  Genre.swift
-//  Azusa
+//  Yui
 //
 //  Created by Ushio on 2/11/17.
 //
@@ -8,7 +8,7 @@
 import Foundation
 
 /// The object to represent a music genre
-class Genre: Equatable, CustomStringConvertible {
+public class Genre: Equatable, CustomStringConvertible {
     
     // MARK: - Properties
     
@@ -20,14 +20,14 @@ class Genre: Equatable, CustomStringConvertible {
         return ((self.name != "") ? self.name : "Unknown Genre");
     }
     
-    var description : String {
+    public var description : String {
         return "Genre: \(self.displayName)"
     }
     
     
     // MARK: - Methods
     
-    static func ==(lhs : Genre, rhs : Genre) -> Bool {
+    public static func ==(lhs : Genre, rhs : Genre) -> Bool {
         return lhs.name == rhs.name;
     }
     

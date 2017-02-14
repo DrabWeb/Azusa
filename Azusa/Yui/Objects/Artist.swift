@@ -1,6 +1,6 @@
 //
 //  Artist.swift
-//  Azusa
+//  Yui
 //
 //  Created by Ushio on 2/11/17.
 //
@@ -8,7 +8,7 @@
 import Foundation
 
 /// The object to represent an artist in the user's music collection
-class Artist: Equatable, CustomStringConvertible {
+public class Artist: Equatable, CustomStringConvertible {
     
     // MARK: - Properties
     
@@ -22,14 +22,14 @@ class Artist: Equatable, CustomStringConvertible {
         return ((self.name != "") ? self.name : "Unknown Artist");
     }
     
-    var description : String {
+    public var description : String {
         return "AZArtist: \(self.displayName), \(self.albums.count) albums"
     }
     
     
     // MARK: - Methods
     
-    static func ==(lhs : Artist, rhs : Artist) -> Bool {
+    public static func ==(lhs : Artist, rhs : Artist) -> Bool {
         return lhs.name == rhs.name;
     }
     

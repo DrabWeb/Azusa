@@ -1,6 +1,6 @@
 //
 //  ImageExtensions.swift
-//  Azusa
+//  Yui
 //
 //  Created by Ushio on 2/12/17.
 //

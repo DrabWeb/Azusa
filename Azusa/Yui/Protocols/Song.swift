@@ -1,6 +1,6 @@
 //
 //  Song.swift
-//  Azusa
+//  Yui
 //
 //  Created by Ushio on 2/11/17.
 //
@@ -8,7 +8,7 @@
 import Cocoa
 
 /// The protocol for a song used by azusa
-protocol Song: CustomStringConvertible {
+public protocol Song: CustomStringConvertible {
     
     // MARK: - Properties
     

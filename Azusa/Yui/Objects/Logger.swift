@@ -1,29 +1,31 @@
 //
 //  Logger.swift
-//  Azusa
+//  Yui
 //
 //  Created by Ushio on 2/11/17.
 //
 
 import Foundation
 
-enum LoggingLevel: Int {
+public enum LoggingLevel: Int {
     case none, regular, high, full
 }
 
-struct Logger {
+public struct Logger {
     
     // MARK: - Properties
     
     // MARK: Public Properties
     
-    static var log : String = "";
-    
-    static var level : LoggingLevel = LoggingLevel.regular {
+    public static var level : LoggingLevel = LoggingLevel.regular {
         didSet {
-            print("Logger: Changed logging level to \(self.level)");
+            Logger.log("Logger: Changed logging level to \(self.level)");
         }
     };
+    
+    // MARK: Private Properties
+    
+    private static var log : String = "";
     
     
     // MARK: - Methods
@@ -35,7 +37,7 @@ struct Logger {
     /// - Parameters:
     ///   - object: The object to log
     ///   - level: The level this print should be
-    static func log(_ object : Any, level : LoggingLevel = .regular) {
+    public static func log(_ object : Any, level : LoggingLevel = .regular) {
         let timestampDateFormatter : DateFormatter = DateFormatter();
         timestampDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS";
         let timestamp : String = timestampDateFormatter.string(from: Date());
@@ -53,7 +55,7 @@ struct Logger {
     /// Writes all the log output to the given file
     ///
     /// - Parameter file: The file to write the output to
-    static func saveTo(file : String) {
+    public static func saveTo(file : String) {
         Logger.log("Logger: Saving all log output to \"\(file)\"");
         
         do {

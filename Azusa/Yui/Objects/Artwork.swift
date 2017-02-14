@@ -1,6 +1,6 @@
 //
 //  Artwork.swift
-//  Azusa
+//  Yui
 //
 //  Created by Ushio on 2/12/17.
 //
@@ -179,6 +179,17 @@ class ArtworkCache {
             save(size: .large);
             save(size: .small);
             save(size: .thumb);
+        }
+    }
+    
+    // MARK: - Init / Deinit
+    
+    init() {
+        do {
+            try FileManager.default.createDirectory(atPath: basePath, withIntermediateDirectories: true, attributes: nil);
+        }
+        catch let error {
+            Logger.log("ArtworkCache: Error creating artwork cache folder, \(error)");
         }
     }
 }

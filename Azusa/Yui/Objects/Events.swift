@@ -1,6 +1,6 @@
 //
 //  Events.swift
-//  Azusa
+//  AzusaFramework
 //
 //  Created by Ushio on 2/11/17.
 //
@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Event
 
-enum Event : Int {
+public enum Event : Int {
     /// The default event, represents nothing
     case none
     
@@ -37,7 +37,7 @@ enum Event : Int {
 
 // MARK: - EventManager
 
-class EventManager {
+public class EventManager {
     
     // MARK: - Properties
     

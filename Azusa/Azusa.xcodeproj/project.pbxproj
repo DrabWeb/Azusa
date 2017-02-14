@@ -21,24 +21,25 @@
 		AE5A732A1E4D68F0003D7280 /* ContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73291E4D68F0003D7280 /* ContentController.swift */; };
 		AE5A73301E4D735A003D7280 /* SidebarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A732F1E4D735A003D7280 /* SidebarModel.swift */; };
 		AE5A73341E4D80A7003D7280 /* SidebarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73331E4D80A7003D7280 /* SidebarItems.swift */; };
-		AE7F80651E4F0FBA00D21060 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F80611E4F0FBA00D21060 /* Album.swift */; };
-		AE7F80661E4F0FBA00D21060 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F80621E4F0FBA00D21060 /* Artist.swift */; };
-		AE7F80681E4F0FBA00D21060 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F80641E4F0FBA00D21060 /* Genre.swift */; };
-		AE7F806F1E4F12BE00D21060 /* MusicSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F806C1E4F12BE00D21060 /* MusicSource.swift */; };
-		AE7F80701E4F12BE00D21060 /* PlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F806D1E4F12BE00D21060 /* PlayerStatus.swift */; };
-		AE7F80711E4F12BE00D21060 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F806E1E4F12BE00D21060 /* Song.swift */; };
-		AE7F80731E4F168000D21060 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F80721E4F168000D21060 /* Events.swift */; };
-		AE7F80751E4F1A8B00D21060 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F80741E4F1A8B00D21060 /* Logger.swift */; };
-		AEA377801E512A7100A64060 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA3777F1E512A7100A64060 /* ImageExtensions.swift */; };
-		AEA8640A1E4FB63B00943AEF /* MIMPD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA864091E4FB63B00943AEF /* MIMPD.swift */; };
-		AEA864101E4FBA7500943AEF /* MIPlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8640C1E4FBA7500943AEF /* MIPlayerStatus.swift */; };
-		AEA864111E4FBA7500943AEF /* MIStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8640D1E4FBA7500943AEF /* MIStats.swift */; };
-		AEA864121E4FBA7500943AEF /* MISong.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8640E1E4FBA7500943AEF /* MISong.swift */; };
-		AEA864131E4FBA7500943AEF /* MIMusicSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8640F1E4FBA7500943AEF /* MIMusicSource.swift */; };
-		AEA864151E4FBB7A00943AEF /* MusicUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA864141E4FBB7A00943AEF /* MusicUtilities.swift */; };
 		AEA864801E4FC90800943AEF /* libmpdclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA864611E4FC90800943AEF /* libmpdclient.a */; };
 		AEA864811E4FC90800943AEF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = AEA864621E4FC90800943AEF /* LICENSE */; };
-		AEFF34121E504FA5000F299D /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFF34111E504FA5000F299D /* Artwork.swift */; };
+		AEF660361E52E0C400136DD8 /* Yui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF6602D1E52E0C400136DD8 /* Yui.framework */; };
+		AEF6603D1E52E0C400136DD8 /* YuiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF6603C1E52E0C400136DD8 /* YuiTests.swift */; };
+		AEF6603F1E52E0C400136DD8 /* Yui.h in Headers */ = {isa = PBXBuildFile; fileRef = AEF6602F1E52E0C400136DD8 /* Yui.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AEF660421E52E0C400136DD8 /* Yui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF6602D1E52E0C400136DD8 /* Yui.framework */; };
+		AEF660431E52E0C400136DD8 /* Yui.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AEF6602D1E52E0C400136DD8 /* Yui.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AEF660591E52E0D600136DD8 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF6604B1E52E0D600136DD8 /* ImageExtensions.swift */; };
+		AEF6605A1E52E0D600136DD8 /* MusicSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF6604D1E52E0D600136DD8 /* MusicSource.swift */; };
+		AEF6605B1E52E0D600136DD8 /* PlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF6604E1E52E0D600136DD8 /* PlayerStatus.swift */; };
+		AEF6605C1E52E0D600136DD8 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF6604F1E52E0D600136DD8 /* Song.swift */; };
+		AEF6605D1E52E0D600136DD8 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660511E52E0D600136DD8 /* Album.swift */; };
+		AEF6605E1E52E0D600136DD8 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660521E52E0D600136DD8 /* Artist.swift */; };
+		AEF6605F1E52E0D600136DD8 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660531E52E0D600136DD8 /* Artwork.swift */; };
+		AEF660601E52E0D600136DD8 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660541E52E0D600136DD8 /* Events.swift */; };
+		AEF660611E52E0D600136DD8 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660551E52E0D600136DD8 /* Genre.swift */; };
+		AEF660621E52E0D600136DD8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660561E52E0D600136DD8 /* Logger.swift */; };
+		AEF660631E52E0D600136DD8 /* MusicUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660571E52E0D600136DD8 /* MusicUtilities.swift */; };
+		AEF660641E52E0D600136DD8 /* Plugins.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF660581E52E0D600136DD8 /* Plugins.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +50,42 @@
 			remoteGlobalIDString = AE1C88D41E4BFEB90071508F;
 			remoteInfo = Azusa;
 		};
+		AEF660371E52E0C400136DD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE1C88CD1E4BFEB90071508F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AEF6602C1E52E0C400136DD8;
+			remoteInfo = Yui;
+		};
+		AEF660391E52E0C400136DD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE1C88CD1E4BFEB90071508F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE1C88D41E4BFEB90071508F;
+			remoteInfo = Azusa;
+		};
+		AEF660401E52E0C400136DD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE1C88CD1E4BFEB90071508F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AEF6602C1E52E0C400136DD8;
+			remoteInfo = Yui;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AEF65FFE1E52DB7D00136DD8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AEF660431E52E0C400136DD8 /* Yui.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AE13CA061E4EB8F7007CF7BE /* PlayerBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = PlayerBar.storyboard; path = Interface/Status/PlayerBar.storyboard; sourceTree = "<group>"; };
@@ -70,21 +106,6 @@
 		AE5A73291E4D68F0003D7280 /* ContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentController.swift; sourceTree = "<group>"; };
 		AE5A732F1E4D735A003D7280 /* SidebarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarModel.swift; sourceTree = "<group>"; };
 		AE5A73331E4D80A7003D7280 /* SidebarItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarItems.swift; sourceTree = "<group>"; };
-		AE7F80611E4F0FBA00D21060 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
-		AE7F80621E4F0FBA00D21060 /* Artist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
-		AE7F80641E4F0FBA00D21060 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
-		AE7F806C1E4F12BE00D21060 /* MusicSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicSource.swift; sourceTree = "<group>"; };
-		AE7F806D1E4F12BE00D21060 /* PlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStatus.swift; sourceTree = "<group>"; };
-		AE7F806E1E4F12BE00D21060 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
-		AE7F80721E4F168000D21060 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
-		AE7F80741E4F1A8B00D21060 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		AEA3777F1E512A7100A64060 /* ImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
-		AEA864091E4FB63B00943AEF /* MIMPD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMPD.swift; sourceTree = "<group>"; };
-		AEA8640C1E4FBA7500943AEF /* MIPlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIPlayerStatus.swift; sourceTree = "<group>"; };
-		AEA8640D1E4FBA7500943AEF /* MIStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIStats.swift; sourceTree = "<group>"; };
-		AEA8640E1E4FBA7500943AEF /* MISong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MISong.swift; sourceTree = "<group>"; };
-		AEA8640F1E4FBA7500943AEF /* MIMusicSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMusicSource.swift; sourceTree = "<group>"; };
-		AEA864141E4FBB7A00943AEF /* MusicUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicUtilities.swift; sourceTree = "<group>"; };
 		AEA8644E1E4FC90800943AEF /* async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = async.h; sourceTree = "<group>"; };
 		AEA8644F1E4FC90800943AEF /* audio_format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_format.h; sourceTree = "<group>"; };
 		AEA864501E4FC90800943AEF /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffer.h; sourceTree = "<group>"; };
@@ -135,7 +156,24 @@
 		AEA8647D1E4FC90800943AEF /* tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tag.h; sourceTree = "<group>"; };
 		AEA8647E1E4FC90800943AEF /* uri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uri.h; sourceTree = "<group>"; };
 		AEA8647F1E4FC90800943AEF /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
-		AEFF34111E504FA5000F299D /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
+		AEF6602D1E52E0C400136DD8 /* Yui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Yui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEF6602F1E52E0C400136DD8 /* Yui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Yui.h; sourceTree = "<group>"; };
+		AEF660301E52E0C400136DD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEF660351E52E0C400136DD8 /* YuiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YuiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEF6603C1E52E0C400136DD8 /* YuiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YuiTests.swift; sourceTree = "<group>"; };
+		AEF6603E1E52E0C400136DD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEF6604B1E52E0D600136DD8 /* ImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
+		AEF6604D1E52E0D600136DD8 /* MusicSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicSource.swift; sourceTree = "<group>"; };
+		AEF6604E1E52E0D600136DD8 /* PlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStatus.swift; sourceTree = "<group>"; };
+		AEF6604F1E52E0D600136DD8 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		AEF660511E52E0D600136DD8 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		AEF660521E52E0D600136DD8 /* Artist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		AEF660531E52E0D600136DD8 /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
+		AEF660541E52E0D600136DD8 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		AEF660551E52E0D600136DD8 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		AEF660561E52E0D600136DD8 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		AEF660571E52E0D600136DD8 /* MusicUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicUtilities.swift; sourceTree = "<group>"; };
+		AEF660581E52E0D600136DD8 /* Plugins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plugins.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEF660421E52E0C400136DD8 /* Yui.framework in Frameworks */,
 				AEA864801E4FC90800943AEF /* libmpdclient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +193,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AEF660291E52E0C400136DD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEF660321E52E0C400136DD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEF660361E52E0C400136DD8 /* Yui.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -162,6 +216,8 @@
 			children = (
 				AE1C88D71E4BFEB90071508F /* Azusa */,
 				AE1C88E91E4BFEBA0071508F /* AzusaUITests */,
+				AEF6602E1E52E0C400136DD8 /* Yui */,
+				AEF6603B1E52E0C400136DD8 /* YuiTests */,
 				AE1C88D61E4BFEB90071508F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -171,6 +227,8 @@
 			children = (
 				AE1C88D51E4BFEB90071508F /* Azusa.app */,
 				AE1C88E61E4BFEBA0071508F /* AzusaUITests.xctest */,
+				AEF6602D1E52E0C400136DD8 /* Yui.framework */,
+				AEF660351E52E0C400136DD8 /* YuiTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -186,7 +244,6 @@
 				AE7F805F1E4F0F9000D21060 /* Protocols */,
 				AEC554A31E4DF72800D6A987 /* Views */,
 				AEA3777E1E512A6100A64060 /* Extensions */,
-				AEA864071E4FB61100943AEF /* Sources */,
 				AEA8644C1E4FC90800943AEF /* External */,
 				AE1C88DC1E4BFEBA0071508F /* Assets.xcassets */,
 				AE1C88E11E4BFEBA0071508F /* Info.plist */,
@@ -244,77 +301,22 @@
 		AE7F805C1E4F0F2D00D21060 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				AE7F805E1E4F0F5D00D21060 /* Music */,
-				AE7F80721E4F168000D21060 /* Events.swift */,
-				AE7F80741E4F1A8B00D21060 /* Logger.swift */,
-				AEA864141E4FBB7A00943AEF /* MusicUtilities.swift */,
-				AEFF34111E504FA5000F299D /* Artwork.swift */,
 			);
 			path = Objects;
-			sourceTree = "<group>";
-		};
-		AE7F805E1E4F0F5D00D21060 /* Music */ = {
-			isa = PBXGroup;
-			children = (
-				AE7F80611E4F0FBA00D21060 /* Album.swift */,
-				AE7F80621E4F0FBA00D21060 /* Artist.swift */,
-				AE7F80641E4F0FBA00D21060 /* Genre.swift */,
-			);
-			path = Music;
 			sourceTree = "<group>";
 		};
 		AE7F805F1E4F0F9000D21060 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				AE7F80601E4F0F9900D21060 /* Music */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		AE7F80601E4F0F9900D21060 /* Music */ = {
-			isa = PBXGroup;
-			children = (
-				AE7F806C1E4F12BE00D21060 /* MusicSource.swift */,
-				AE7F806D1E4F12BE00D21060 /* PlayerStatus.swift */,
-				AE7F806E1E4F12BE00D21060 /* Song.swift */,
-			);
-			path = Music;
 			sourceTree = "<group>";
 		};
 		AEA3777E1E512A6100A64060 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				AEA3777F1E512A7100A64060 /* ImageExtensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		AEA864071E4FB61100943AEF /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				AEA864081E4FB61A00943AEF /* Mio */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		AEA864081E4FB61A00943AEF /* Mio */ = {
-			isa = PBXGroup;
-			children = (
-				AEA864091E4FB63B00943AEF /* MIMPD.swift */,
-				AEA8640F1E4FBA7500943AEF /* MIMusicSource.swift */,
-				AEA8640B1E4FBA7500943AEF /* Objects */,
-			);
-			path = Mio;
-			sourceTree = "<group>";
-		};
-		AEA8640B1E4FBA7500943AEF /* Objects */ = {
-			isa = PBXGroup;
-			children = (
-				AEA8640C1E4FBA7500943AEF /* MIPlayerStatus.swift */,
-				AEA8640D1E4FBA7500943AEF /* MIStats.swift */,
-				AEA8640E1E4FBA7500943AEF /* MISong.swift */,
-			);
-			path = Objects;
 			sourceTree = "<group>";
 		};
 		AEA8644C1E4FC90800943AEF /* External */ = {
@@ -391,7 +393,72 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		AEF6602E1E52E0C400136DD8 /* Yui */ = {
+			isa = PBXGroup;
+			children = (
+				AEF6602F1E52E0C400136DD8 /* Yui.h */,
+				AEF6604A1E52E0D600136DD8 /* Extensions */,
+				AEF6604C1E52E0D600136DD8 /* Protocols */,
+				AEF660501E52E0D600136DD8 /* Objects */,
+				AEF660301E52E0C400136DD8 /* Info.plist */,
+			);
+			path = Yui;
+			sourceTree = "<group>";
+		};
+		AEF6603B1E52E0C400136DD8 /* YuiTests */ = {
+			isa = PBXGroup;
+			children = (
+				AEF6603C1E52E0C400136DD8 /* YuiTests.swift */,
+				AEF6603E1E52E0C400136DD8 /* Info.plist */,
+			);
+			path = YuiTests;
+			sourceTree = "<group>";
+		};
+		AEF6604A1E52E0D600136DD8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AEF6604B1E52E0D600136DD8 /* ImageExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AEF6604C1E52E0D600136DD8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AEF6604D1E52E0D600136DD8 /* MusicSource.swift */,
+				AEF6604E1E52E0D600136DD8 /* PlayerStatus.swift */,
+				AEF6604F1E52E0D600136DD8 /* Song.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		AEF660501E52E0D600136DD8 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				AEF660511E52E0D600136DD8 /* Album.swift */,
+				AEF660521E52E0D600136DD8 /* Artist.swift */,
+				AEF660531E52E0D600136DD8 /* Artwork.swift */,
+				AEF660541E52E0D600136DD8 /* Events.swift */,
+				AEF660551E52E0D600136DD8 /* Genre.swift */,
+				AEF660561E52E0D600136DD8 /* Logger.swift */,
+				AEF660571E52E0D600136DD8 /* MusicUtilities.swift */,
+				AEF660581E52E0D600136DD8 /* Plugins.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		AEF6602A1E52E0C400136DD8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEF6603F1E52E0C400136DD8 /* Yui.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		AE1C88D41E4BFEB90071508F /* Azusa */ = {
@@ -401,10 +468,12 @@
 				AE1C88D11E4BFEB90071508F /* Sources */,
 				AE1C88D21E4BFEB90071508F /* Frameworks */,
 				AE1C88D31E4BFEB90071508F /* Resources */,
+				AEF65FFE1E52DB7D00136DD8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AEF660411E52E0C400136DD8 /* PBXTargetDependency */,
 			);
 			name = Azusa;
 			productName = Azusa;
@@ -429,6 +498,43 @@
 			productReference = AE1C88E61E4BFEBA0071508F /* AzusaUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		AEF6602C1E52E0C400136DD8 /* Yui */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEF660441E52E0C400136DD8 /* Build configuration list for PBXNativeTarget "Yui" */;
+			buildPhases = (
+				AEF660281E52E0C400136DD8 /* Sources */,
+				AEF660291E52E0C400136DD8 /* Frameworks */,
+				AEF6602A1E52E0C400136DD8 /* Headers */,
+				AEF6602B1E52E0C400136DD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Yui;
+			productName = Yui;
+			productReference = AEF6602D1E52E0C400136DD8 /* Yui.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AEF660341E52E0C400136DD8 /* YuiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEF660471E52E0C400136DD8 /* Build configuration list for PBXNativeTarget "YuiTests" */;
+			buildPhases = (
+				AEF660311E52E0C400136DD8 /* Sources */,
+				AEF660321E52E0C400136DD8 /* Frameworks */,
+				AEF660331E52E0C400136DD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AEF660381E52E0C400136DD8 /* PBXTargetDependency */,
+				AEF6603A1E52E0C400136DD8 /* PBXTargetDependency */,
+			);
+			name = YuiTests;
+			productName = YuiTests;
+			productReference = AEF660351E52E0C400136DD8 /* YuiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -444,6 +550,15 @@
 						ProvisioningStyle = Automatic;
 					};
 					AE1C88E51E4BFEBA0071508F = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AE1C88D41E4BFEB90071508F;
+					};
+					AEF6602C1E52E0C400136DD8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					AEF660341E52E0C400136DD8 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = AE1C88D41E4BFEB90071508F;
@@ -465,6 +580,8 @@
 			targets = (
 				AE1C88D41E4BFEB90071508F /* Azusa */,
 				AE1C88E51E4BFEBA0071508F /* AzusaUITests */,
+				AEF6602C1E52E0C400136DD8 /* Yui */,
+				AEF660341E52E0C400136DD8 /* YuiTests */,
 			);
 		};
 /* End PBXProject section */
@@ -488,6 +605,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AEF6602B1E52E0C400136DD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEF660331E52E0C400136DD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -495,32 +626,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEFF34121E504FA5000F299D /* Artwork.swift in Sources */,
-				AEA864111E4FBA7500943AEF /* MIStats.swift in Sources */,
 				AE13CA0B1E4EBCB2007CF7BE /* MusicPlayerController.swift in Sources */,
-				AEA864121E4FBA7500943AEF /* MISong.swift in Sources */,
 				AE1C88D91E4BFEB90071508F /* AppDelegate.swift in Sources */,
-				AE7F80701E4F12BE00D21060 /* PlayerStatus.swift in Sources */,
 				AE13CA0D1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift in Sources */,
-				AE7F80661E4F0FBA00D21060 /* Artist.swift in Sources */,
-				AE7F806F1E4F12BE00D21060 /* MusicSource.swift in Sources */,
-				AEA377801E512A7100A64060 /* ImageExtensions.swift in Sources */,
-				AEA864101E4FBA7500943AEF /* MIPlayerStatus.swift in Sources */,
-				AE7F80651E4F0FBA00D21060 /* Album.swift in Sources */,
 				AE5A73281E4D6822003D7280 /* SidebarController.swift in Sources */,
-				AE7F80681E4F0FBA00D21060 /* Genre.swift in Sources */,
 				AE5A732A1E4D68F0003D7280 /* ContentController.swift in Sources */,
 				AE13CA091E4EBA63007CF7BE /* PlayerBarController.swift in Sources */,
 				AE5A73301E4D735A003D7280 /* SidebarModel.swift in Sources */,
-				AEA864131E4FBA7500943AEF /* MIMusicSource.swift in Sources */,
-				AE7F80711E4F12BE00D21060 /* Song.swift in Sources */,
-				AE7F80751E4F1A8B00D21060 /* Logger.swift in Sources */,
 				AE13CA0F1E4EEF88007CF7BE /* ProgressSliderCell.swift in Sources */,
 				AE1C88F81E4C072B0071508F /* MusicPlayerSplitViewController.swift in Sources */,
-				AEA864151E4FBB7A00943AEF /* MusicUtilities.swift in Sources */,
-				AE7F80731E4F168000D21060 /* Events.swift in Sources */,
 				AE5A73341E4D80A7003D7280 /* SidebarItems.swift in Sources */,
-				AEA8640A1E4FB63B00943AEF /* MIMPD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +647,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AEF660281E52E0C400136DD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEF660611E52E0D600136DD8 /* Genre.swift in Sources */,
+				AEF6605E1E52E0D600136DD8 /* Artist.swift in Sources */,
+				AEF6605C1E52E0D600136DD8 /* Song.swift in Sources */,
+				AEF660631E52E0D600136DD8 /* MusicUtilities.swift in Sources */,
+				AEF6605F1E52E0D600136DD8 /* Artwork.swift in Sources */,
+				AEF6605A1E52E0D600136DD8 /* MusicSource.swift in Sources */,
+				AEF660621E52E0D600136DD8 /* Logger.swift in Sources */,
+				AEF660601E52E0D600136DD8 /* Events.swift in Sources */,
+				AEF660591E52E0D600136DD8 /* ImageExtensions.swift in Sources */,
+				AEF6605B1E52E0D600136DD8 /* PlayerStatus.swift in Sources */,
+				AEF660641E52E0D600136DD8 /* Plugins.swift in Sources */,
+				AEF6605D1E52E0D600136DD8 /* Album.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEF660311E52E0C400136DD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEF6603D1E52E0C400136DD8 /* YuiTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -539,6 +681,21 @@
 			isa = PBXTargetDependency;
 			target = AE1C88D41E4BFEB90071508F /* Azusa */;
 			targetProxy = AE1C88E71E4BFEBA0071508F /* PBXContainerItemProxy */;
+		};
+		AEF660381E52E0C400136DD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AEF6602C1E52E0C400136DD8 /* Yui */;
+			targetProxy = AEF660371E52E0C400136DD8 /* PBXContainerItemProxy */;
+		};
+		AEF6603A1E52E0C400136DD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE1C88D41E4BFEB90071508F /* Azusa */;
+			targetProxy = AEF660391E52E0C400136DD8 /* PBXContainerItemProxy */;
+		};
+		AEF660411E52E0C400136DD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AEF6602C1E52E0C400136DD8 /* Yui */;
+			targetProxy = AEF660401E52E0C400136DD8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -653,6 +810,7 @@
 		AE1C88F01E4BFEBA0071508F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Azusa/Info.plist;
@@ -674,6 +832,7 @@
 		AE1C88F11E4BFEBA0071508F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Azusa/Info.plist;
@@ -719,6 +878,84 @@
 			};
 			name = Release;
 		};
+		AEF660451E52E0C400136DD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Yui/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Yui;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AEF660461E52E0C400136DD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Yui/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Yui;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AEF660481E52E0C400136DD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = YuiTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = drabweb.YuiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Azusa.app/Contents/MacOS/Azusa";
+			};
+			name = Debug;
+		};
+		AEF660491E52E0C400136DD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = YuiTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = drabweb.YuiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Azusa.app/Contents/MacOS/Azusa";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -748,6 +985,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		AEF660441E52E0C400136DD8 /* Build configuration list for PBXNativeTarget "Yui" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEF660451E52E0C400136DD8 /* Debug */,
+				AEF660461E52E0C400136DD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AEF660471E52E0C400136DD8 /* Build configuration list for PBXNativeTarget "YuiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEF660481E52E0C400136DD8 /* Debug */,
+				AEF660491E52E0C400136DD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

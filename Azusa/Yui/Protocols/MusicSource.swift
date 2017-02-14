@@ -1,6 +1,6 @@
 //
 //  MusicPlayer.swift
-//  Azusa
+//  Yui
 //
 //  Created by Ushio on 2/11/17.
 //
@@ -9,13 +9,13 @@ import Foundation
 
 // TODO: Add actual errors here, not sure which to be handled by all `MusicSource`s
 // MARK: - MusicSourceError
-enum MusicSourceError: Error {
+public enum MusicSourceError: Error {
     case none
 }
 
 // MARK: - MusicSource
 /// The protocol for a music source azusa can connect to
-protocol MusicSource {
+public protocol MusicSource {
     
     // MARK: - Properties
     

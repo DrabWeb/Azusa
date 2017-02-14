@@ -1,13 +1,13 @@
 //
 //  MusicUtilities.swift
-//  Azusa
+//  Yui
 //
 //  Created by Ushio on 2/11/16.
 //
 
 import Foundation
 
-struct MusicUtilities {
+public struct MusicUtilities {
     
     // MARK: - Functions
     
@@ -15,7 +15,7 @@ struct MusicUtilities {
     ///
     /// - Parameter seconds: The seconds to use
     /// - Returns: A `Time` object from the given values
-    static func hoursMinutesSeconds(from seconds : Int) -> Time {
+    public static func hoursMinutesSeconds(from seconds : Int) -> Time {
         return Time(hours: seconds / 3600, minutes: (seconds % 3600) / 60, seconds: (seconds % 3600) % 60);
     }
     
@@ -23,7 +23,7 @@ struct MusicUtilities {
     ///
     /// - Parameter seconds: The seconds to get the display time from
     /// - Returns: The display string for the given seconds
-    static func displayTime(from seconds : Int) -> String {
+    public static func displayTime(from seconds : Int) -> String {
         //
         // 0:31
         // 1:32:41
@@ -51,7 +51,7 @@ struct MusicUtilities {
     }
 }
 
-struct Time {
+public struct Time {
     var hours : Int = 0;
     var minutes : Int = 0;
     var seconds : Int = 0;
