@@ -1,0 +1,535 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AE2549C71E5434CE00078BD5 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE2549C61E5434CE00078BD5 /* Preferences.storyboard */; };
+		AE2549CA1E54356900078BD5 /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2549C91E54356900078BD5 /* PreferencesController.swift */; };
+		AE3E277A1E6F1D5000940D59 /* Yui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE3E27741E6F1C6900940D59 /* Yui.framework */; };
+		AE3EE55F1E52EB1E0086CA88 /* MIMPD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EE5591E52EB1E0086CA88 /* MIMPD.swift */; };
+		AE3EE5601E52EB1E0086CA88 /* MIMusicSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EE55A1E52EB1E0086CA88 /* MIMusicSource.swift */; };
+		AE3EE5611E52EB1E0086CA88 /* MIPlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EE55C1E52EB1E0086CA88 /* MIPlayerStatus.swift */; };
+		AE3EE5621E52EB1E0086CA88 /* MISong.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EE55D1E52EB1E0086CA88 /* MISong.swift */; };
+		AE3EE5631E52EB1E0086CA88 /* MIStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EE55E1E52EB1E0086CA88 /* MIStats.swift */; };
+		AE3EE5D61E52EC200086CA88 /* libmpdclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE3EE5B71E52EC200086CA88 /* libmpdclient.a */; };
+		AE3EE5D71E52EC200086CA88 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = AE3EE5B81E52EC200086CA88 /* LICENSE */; };
+		AEF65FCE1E52D50600136DD8 /* Mio.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = AEF65FC21E52D11100136DD8 /* Mio.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AEF65FD11E52D5CC00136DD8 /* Mio.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF65FD01E52D5CC00136DD8 /* Mio.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AE3E27731E6F1C6900940D59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE3E276E1E6F1C6900940D59 /* Yui.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AE056E661E6F19DF006FA9DF;
+			remoteInfo = Yui;
+		};
+		AE3E27751E6F1C6900940D59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE3E276E1E6F1C6900940D59 /* Yui.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AE056E6F1E6F19E0006FA9DF;
+			remoteInfo = YuiTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AEF65FCD1E52D4F000136DD8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$HOME/Library/Application Support/Azusa/Plugins";
+			dstSubfolderSpec = 0;
+			files = (
+				AEF65FCE1E52D50600136DD8 /* Mio.bundle in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AE2549C61E5434CE00078BD5 /* Preferences.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
+		AE2549C91E54356900078BD5 /* PreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
+		AE3E276E1E6F1C6900940D59 /* Yui.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Yui.xcodeproj; path = ../Yui/Yui.xcodeproj; sourceTree = "<group>"; };
+		AE3EE5591E52EB1E0086CA88 /* MIMPD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMPD.swift; sourceTree = "<group>"; };
+		AE3EE55A1E52EB1E0086CA88 /* MIMusicSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIMusicSource.swift; sourceTree = "<group>"; };
+		AE3EE55C1E52EB1E0086CA88 /* MIPlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIPlayerStatus.swift; sourceTree = "<group>"; };
+		AE3EE55D1E52EB1E0086CA88 /* MISong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MISong.swift; sourceTree = "<group>"; };
+		AE3EE55E1E52EB1E0086CA88 /* MIStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIStats.swift; sourceTree = "<group>"; };
+		AE3EE5A41E52EC1F0086CA88 /* async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = async.h; sourceTree = "<group>"; };
+		AE3EE5A51E52EC1F0086CA88 /* audio_format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_format.h; sourceTree = "<group>"; };
+		AE3EE5A61E52EC1F0086CA88 /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffer.h; sourceTree = "<group>"; };
+		AE3EE5A71E52EC1F0086CA88 /* capabilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = capabilities.h; sourceTree = "<group>"; };
+		AE3EE5A81E52EC1F0086CA88 /* client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = client.h; sourceTree = "<group>"; };
+		AE3EE5A91E52EC1F0086CA88 /* compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compiler.h; sourceTree = "<group>"; };
+		AE3EE5AA1E52EC1F0086CA88 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		AE3EE5AB1E52EC1F0086CA88 /* connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = connection.h; sourceTree = "<group>"; };
+		AE3EE5AC1E52EC1F0086CA88 /* database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = database.h; sourceTree = "<group>"; };
+		AE3EE5AD1E52EC1F0086CA88 /* directory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = directory.h; sourceTree = "<group>"; };
+		AE3EE5AE1E52EC1F0086CA88 /* entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entity.h; sourceTree = "<group>"; };
+		AE3EE5AF1E52EC1F0086CA88 /* error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = error.h; sourceTree = "<group>"; };
+		AE3EE5B01E52EC1F0086CA88 /* fd_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fd_util.h; sourceTree = "<group>"; };
+		AE3EE5B11E52EC1F0086CA88 /* iasync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iasync.h; sourceTree = "<group>"; };
+		AE3EE5B21E52EC1F0086CA88 /* idle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = idle.h; sourceTree = "<group>"; };
+		AE3EE5B31E52EC200086CA88 /* ierror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ierror.h; sourceTree = "<group>"; };
+		AE3EE5B41E52EC200086CA88 /* internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = internal.h; sourceTree = "<group>"; };
+		AE3EE5B51E52EC200086CA88 /* isend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isend.h; sourceTree = "<group>"; };
+		AE3EE5B61E52EC200086CA88 /* iso8601.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iso8601.h; sourceTree = "<group>"; };
+		AE3EE5B71E52EC200086CA88 /* libmpdclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmpdclient.a; sourceTree = "<group>"; };
+		AE3EE5B81E52EC200086CA88 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		AE3EE5B91E52EC200086CA88 /* list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = list.h; sourceTree = "<group>"; };
+		AE3EE5BA1E52EC200086CA88 /* message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = message.h; sourceTree = "<group>"; };
+		AE3EE5BB1E52EC200086CA88 /* mixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mixer.h; sourceTree = "<group>"; };
+		AE3EE5BC1E52EC200086CA88 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		AE3EE5BD1E52EC200086CA88 /* output.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = output.h; sourceTree = "<group>"; };
+		AE3EE5BE1E52EC200086CA88 /* pair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pair.h; sourceTree = "<group>"; };
+		AE3EE5BF1E52EC200086CA88 /* parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
+		AE3EE5C01E52EC200086CA88 /* password.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = password.h; sourceTree = "<group>"; };
+		AE3EE5C11E52EC200086CA88 /* player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = player.h; sourceTree = "<group>"; };
+		AE3EE5C21E52EC200086CA88 /* playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playlist.h; sourceTree = "<group>"; };
+		AE3EE5C31E52EC200086CA88 /* protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = protocol.h; sourceTree = "<group>"; };
+		AE3EE5C41E52EC200086CA88 /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
+		AE3EE5C51E52EC200086CA88 /* quote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = quote.h; sourceTree = "<group>"; };
+		AE3EE5C61E52EC200086CA88 /* recv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = recv.h; sourceTree = "<group>"; };
+		AE3EE5C71E52EC200086CA88 /* resolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resolver.h; sourceTree = "<group>"; };
+		AE3EE5C81E52EC200086CA88 /* response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = response.h; sourceTree = "<group>"; };
+		AE3EE5C91E52EC200086CA88 /* run.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = run.h; sourceTree = "<group>"; };
+		AE3EE5CA1E52EC200086CA88 /* search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = search.h; sourceTree = "<group>"; };
+		AE3EE5CB1E52EC200086CA88 /* send.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = send.h; sourceTree = "<group>"; };
+		AE3EE5CC1E52EC200086CA88 /* settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settings.h; sourceTree = "<group>"; };
+		AE3EE5CD1E52EC200086CA88 /* socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket.h; sourceTree = "<group>"; };
+		AE3EE5CE1E52EC200086CA88 /* song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = song.h; sourceTree = "<group>"; };
+		AE3EE5CF1E52EC200086CA88 /* stats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stats.h; sourceTree = "<group>"; };
+		AE3EE5D01E52EC200086CA88 /* status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = status.h; sourceTree = "<group>"; };
+		AE3EE5D11E52EC200086CA88 /* sticker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sticker.h; sourceTree = "<group>"; };
+		AE3EE5D21E52EC200086CA88 /* sync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sync.h; sourceTree = "<group>"; };
+		AE3EE5D31E52EC200086CA88 /* tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tag.h; sourceTree = "<group>"; };
+		AE3EE5D41E52EC200086CA88 /* uri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uri.h; sourceTree = "<group>"; };
+		AE3EE5D51E52EC200086CA88 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		AEF65FC21E52D11100136DD8 /* Mio.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Mio.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEF65FC51E52D11100136DD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEF65FD01E52D5CC00136DD8 /* Mio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mio.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AEF65FBF1E52D11100136DD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE3E277A1E6F1D5000940D59 /* Yui.framework in Frameworks */,
+				AE3EE5D61E52EC200086CA88 /* libmpdclient.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AE2549C51E5434C400078BD5 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				AE2549C61E5434CE00078BD5 /* Preferences.storyboard */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		AE2549C81E54354100078BD5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AE2549C91E54356900078BD5 /* PreferencesController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AE3E276F1E6F1C6900940D59 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE3E27741E6F1C6900940D59 /* Yui.framework */,
+				AE3E27761E6F1C6900940D59 /* YuiTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE3EE55B1E52EB1E0086CA88 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				AE3EE55C1E52EB1E0086CA88 /* MIPlayerStatus.swift */,
+				AE3EE55D1E52EB1E0086CA88 /* MISong.swift */,
+				AE3EE55E1E52EB1E0086CA88 /* MIStats.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		AE3EE5A21E52EC1F0086CA88 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				AE3EE5A31E52EC1F0086CA88 /* libmpdclient */,
+			);
+			path = External;
+			sourceTree = SOURCE_ROOT;
+		};
+		AE3EE5A31E52EC1F0086CA88 /* libmpdclient */ = {
+			isa = PBXGroup;
+			children = (
+				AE3EE5A41E52EC1F0086CA88 /* async.h */,
+				AE3EE5A51E52EC1F0086CA88 /* audio_format.h */,
+				AE3EE5A61E52EC1F0086CA88 /* buffer.h */,
+				AE3EE5A71E52EC1F0086CA88 /* capabilities.h */,
+				AE3EE5A81E52EC1F0086CA88 /* client.h */,
+				AE3EE5A91E52EC1F0086CA88 /* compiler.h */,
+				AE3EE5AA1E52EC1F0086CA88 /* config.h */,
+				AE3EE5AB1E52EC1F0086CA88 /* connection.h */,
+				AE3EE5AC1E52EC1F0086CA88 /* database.h */,
+				AE3EE5AD1E52EC1F0086CA88 /* directory.h */,
+				AE3EE5AE1E52EC1F0086CA88 /* entity.h */,
+				AE3EE5AF1E52EC1F0086CA88 /* error.h */,
+				AE3EE5B01E52EC1F0086CA88 /* fd_util.h */,
+				AE3EE5B11E52EC1F0086CA88 /* iasync.h */,
+				AE3EE5B21E52EC1F0086CA88 /* idle.h */,
+				AE3EE5B31E52EC200086CA88 /* ierror.h */,
+				AE3EE5B41E52EC200086CA88 /* internal.h */,
+				AE3EE5B51E52EC200086CA88 /* isend.h */,
+				AE3EE5B61E52EC200086CA88 /* iso8601.h */,
+				AE3EE5B71E52EC200086CA88 /* libmpdclient.a */,
+				AE3EE5B81E52EC200086CA88 /* LICENSE */,
+				AE3EE5B91E52EC200086CA88 /* list.h */,
+				AE3EE5BA1E52EC200086CA88 /* message.h */,
+				AE3EE5BB1E52EC200086CA88 /* mixer.h */,
+				AE3EE5BC1E52EC200086CA88 /* module.modulemap */,
+				AE3EE5BD1E52EC200086CA88 /* output.h */,
+				AE3EE5BE1E52EC200086CA88 /* pair.h */,
+				AE3EE5BF1E52EC200086CA88 /* parser.h */,
+				AE3EE5C01E52EC200086CA88 /* password.h */,
+				AE3EE5C11E52EC200086CA88 /* player.h */,
+				AE3EE5C21E52EC200086CA88 /* playlist.h */,
+				AE3EE5C31E52EC200086CA88 /* protocol.h */,
+				AE3EE5C41E52EC200086CA88 /* queue.h */,
+				AE3EE5C51E52EC200086CA88 /* quote.h */,
+				AE3EE5C61E52EC200086CA88 /* recv.h */,
+				AE3EE5C71E52EC200086CA88 /* resolver.h */,
+				AE3EE5C81E52EC200086CA88 /* response.h */,
+				AE3EE5C91E52EC200086CA88 /* run.h */,
+				AE3EE5CA1E52EC200086CA88 /* search.h */,
+				AE3EE5CB1E52EC200086CA88 /* send.h */,
+				AE3EE5CC1E52EC200086CA88 /* settings.h */,
+				AE3EE5CD1E52EC200086CA88 /* socket.h */,
+				AE3EE5CE1E52EC200086CA88 /* song.h */,
+				AE3EE5CF1E52EC200086CA88 /* stats.h */,
+				AE3EE5D01E52EC200086CA88 /* status.h */,
+				AE3EE5D11E52EC200086CA88 /* sticker.h */,
+				AE3EE5D21E52EC200086CA88 /* sync.h */,
+				AE3EE5D31E52EC200086CA88 /* tag.h */,
+				AE3EE5D41E52EC200086CA88 /* uri.h */,
+				AE3EE5D51E52EC200086CA88 /* version.h */,
+			);
+			path = libmpdclient;
+			sourceTree = "<group>";
+		};
+		AEF65FB91E52D11100136DD8 = {
+			isa = PBXGroup;
+			children = (
+				AE3E276E1E6F1C6900940D59 /* Yui.xcodeproj */,
+				AEF65FC41E52D11100136DD8 /* Mio */,
+				AEF65FC31E52D11100136DD8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AEF65FC31E52D11100136DD8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AEF65FC21E52D11100136DD8 /* Mio.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AEF65FC41E52D11100136DD8 /* Mio */ = {
+			isa = PBXGroup;
+			children = (
+				AE2549C51E5434C400078BD5 /* Interface */,
+				AEF65FCF1E52D5B400136DD8 /* Sources */,
+				AE3EE5A21E52EC1F0086CA88 /* External */,
+				AEF65FC51E52D11100136DD8 /* Info.plist */,
+			);
+			path = Mio;
+			sourceTree = "<group>";
+		};
+		AEF65FCF1E52D5B400136DD8 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AEF65FD01E52D5CC00136DD8 /* Mio.swift */,
+				AE3EE5591E52EB1E0086CA88 /* MIMPD.swift */,
+				AE3EE55A1E52EB1E0086CA88 /* MIMusicSource.swift */,
+				AE2549C81E54354100078BD5 /* Controllers */,
+				AE3EE55B1E52EB1E0086CA88 /* Objects */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AEF65FC11E52D11100136DD8 /* Mio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEF65FC81E52D11100136DD8 /* Build configuration list for PBXNativeTarget "Mio" */;
+			buildPhases = (
+				AEF65FBE1E52D11100136DD8 /* Sources */,
+				AEF65FBF1E52D11100136DD8 /* Frameworks */,
+				AEF65FC01E52D11100136DD8 /* Resources */,
+				AEF65FCD1E52D4F000136DD8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mio;
+			productName = Mio;
+			productReference = AEF65FC21E52D11100136DD8 /* Mio.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AEF65FBA1E52D11100136DD8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = DrabWeb;
+				TargetAttributes = {
+					AEF65FC11E52D11100136DD8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = AEF65FBD1E52D11100136DD8 /* Build configuration list for PBXProject "Mio" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AEF65FB91E52D11100136DD8;
+			productRefGroup = AEF65FC31E52D11100136DD8 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AE3E276F1E6F1C6900940D59 /* Products */;
+					ProjectRef = AE3E276E1E6F1C6900940D59 /* Yui.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				AEF65FC11E52D11100136DD8 /* Mio */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AE3E27741E6F1C6900940D59 /* Yui.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Yui.framework;
+			remoteRef = AE3E27731E6F1C6900940D59 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AE3E27761E6F1C6900940D59 /* YuiTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = YuiTests.xctest;
+			remoteRef = AE3E27751E6F1C6900940D59 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AEF65FC01E52D11100136DD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE3EE5D71E52EC200086CA88 /* LICENSE in Resources */,
+				AE2549C71E5434CE00078BD5 /* Preferences.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AEF65FBE1E52D11100136DD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEF65FD11E52D5CC00136DD8 /* Mio.swift in Sources */,
+				AE3EE55F1E52EB1E0086CA88 /* MIMPD.swift in Sources */,
+				AE3EE5611E52EB1E0086CA88 /* MIPlayerStatus.swift in Sources */,
+				AE3EE5621E52EB1E0086CA88 /* MISong.swift in Sources */,
+				AE3EE5601E52EB1E0086CA88 /* MIMusicSource.swift in Sources */,
+				AE2549CA1E54356900078BD5 /* PreferencesController.swift in Sources */,
+				AE3EE5631E52EB1E0086CA88 /* MIStats.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AEF65FC61E52D11100136DD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		AEF65FC71E52D11100136DD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		AEF65FC91E52D11100136DD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Mio/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/External/libmpdclient",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Mio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "";
+				"SWIFT_INCLUDE_PATHS[arch=*]" = "$(SRCROOT)/External/libmpdclient/";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		AEF65FCA1E52D11100136DD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Mio/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/External/libmpdclient",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Mio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/External/libmpdclient/";
+				SWIFT_VERSION = 3.0;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AEF65FBD1E52D11100136DD8 /* Build configuration list for PBXProject "Mio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEF65FC61E52D11100136DD8 /* Debug */,
+				AEF65FC71E52D11100136DD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AEF65FC81E52D11100136DD8 /* Build configuration list for PBXNativeTarget "Mio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEF65FC91E52D11100136DD8 /* Debug */,
+				AEF65FCA1E52D11100136DD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AEF65FBA1E52D11100136DD8 /* Project object */;
+}

@@ -1,0 +1,609 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AE0CCFA21E53FC080016A557 /* PluginsPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0CCFA11E53FC080016A557 /* PluginsPreferencesController.swift */; };
+		AE0CCFA41E54045E0016A557 /* PluginsPreferencesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0CCFA31E54045E0016A557 /* PluginsPreferencesCellView.swift */; };
+		AE13CA091E4EBA63007CF7BE /* PlayerBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13CA081E4EBA63007CF7BE /* PlayerBarController.swift */; };
+		AE13CA0B1E4EBCB2007CF7BE /* MusicPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13CA0A1E4EBCB2007CF7BE /* MusicPlayerController.swift */; };
+		AE13CA0D1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13CA0C1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift */; };
+		AE13CA0F1E4EEF88007CF7BE /* ProgressSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13CA0E1E4EEF88007CF7BE /* ProgressSliderCell.swift */; };
+		AE1C88D91E4BFEB90071508F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1C88D81E4BFEB90071508F /* AppDelegate.swift */; };
+		AE1C88DD1E4BFEBA0071508F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1C88DC1E4BFEBA0071508F /* Assets.xcassets */; };
+		AE1C88E01E4BFEBA0071508F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1C88DE1E4BFEBA0071508F /* Main.storyboard */; };
+		AE1C88EB1E4BFEBA0071508F /* AzusaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1C88EA1E4BFEBA0071508F /* AzusaUITests.swift */; };
+		AE1C88F81E4C072B0071508F /* MusicPlayerSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1C88F71E4C072B0071508F /* MusicPlayerSplitViewController.swift */; };
+		AE2549CC1E544DB200078BD5 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2549CB1E544DB200078BD5 /* Preferences.swift */; };
+		AE3E277F1E6F1D7500940D59 /* Yui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE3E27691E6F1BB400940D59 /* Yui.framework */; };
+		AE3EE5DE1E53031F0086CA88 /* PlayerBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE3EE5DD1E53031F0086CA88 /* PlayerBar.storyboard */; };
+		AE3EE5E01E5303460086CA88 /* MiniQueue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE3EE5DF1E5303460086CA88 /* MiniQueue.storyboard */; };
+		AE3EE5E21E5303590086CA88 /* MiniQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EE5E11E5303590086CA88 /* MiniQueueController.swift */; };
+		AE3EE5E41E531A5C0086CA88 /* MiniQueueCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EE5E31E531A5C0086CA88 /* MiniQueueCellView.swift */; };
+		AE5A73281E4D6822003D7280 /* SidebarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73271E4D6822003D7280 /* SidebarController.swift */; };
+		AE5A732A1E4D68F0003D7280 /* ContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73291E4D68F0003D7280 /* ContentController.swift */; };
+		AE5A73301E4D735A003D7280 /* SidebarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A732F1E4D735A003D7280 /* SidebarModel.swift */; };
+		AE5A73341E4D80A7003D7280 /* SidebarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A73331E4D80A7003D7280 /* SidebarItems.swift */; };
+		AED853321E53FA3D00B27DC4 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AED853311E53FA3D00B27DC4 /* Preferences.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AE1C88E71E4BFEBA0071508F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE1C88CD1E4BFEB90071508F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE1C88D41E4BFEB90071508F;
+			remoteInfo = Azusa;
+		};
+		AE3E27681E6F1BB400940D59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE3E27631E6F1BB400940D59 /* Yui.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AE056E661E6F19DF006FA9DF;
+			remoteInfo = Yui;
+		};
+		AE3E276A1E6F1BB400940D59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE3E27631E6F1BB400940D59 /* Yui.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AE056E6F1E6F19E0006FA9DF;
+			remoteInfo = YuiTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AEF65FFE1E52DB7D00136DD8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AE0CCFA11E53FC080016A557 /* PluginsPreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginsPreferencesController.swift; sourceTree = "<group>"; };
+		AE0CCFA31E54045E0016A557 /* PluginsPreferencesCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginsPreferencesCellView.swift; sourceTree = "<group>"; };
+		AE13CA081E4EBA63007CF7BE /* PlayerBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerBarController.swift; sourceTree = "<group>"; };
+		AE13CA0A1E4EBCB2007CF7BE /* MusicPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerController.swift; sourceTree = "<group>"; };
+		AE13CA0C1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundDarkEdgedImageView.swift; sourceTree = "<group>"; };
+		AE13CA0E1E4EEF88007CF7BE /* ProgressSliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressSliderCell.swift; sourceTree = "<group>"; };
+		AE1C88D51E4BFEB90071508F /* Azusa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Azusa.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE1C88D81E4BFEB90071508F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AE1C88DC1E4BFEBA0071508F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AE1C88DF1E4BFEBA0071508F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AE1C88E11E4BFEBA0071508F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE1C88E61E4BFEBA0071508F /* AzusaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AzusaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE1C88EA1E4BFEBA0071508F /* AzusaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzusaUITests.swift; sourceTree = "<group>"; };
+		AE1C88EC1E4BFEBA0071508F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE1C88F71E4C072B0071508F /* MusicPlayerSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerSplitViewController.swift; sourceTree = "<group>"; };
+		AE2549CB1E544DB200078BD5 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		AE3E27631E6F1BB400940D59 /* Yui.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Yui.xcodeproj; path = ../Yui/Yui.xcodeproj; sourceTree = "<group>"; };
+		AE3EE5DD1E53031F0086CA88 /* PlayerBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = PlayerBar.storyboard; path = Interface/PlayerBar.storyboard; sourceTree = "<group>"; };
+		AE3EE5DF1E5303460086CA88 /* MiniQueue.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MiniQueue.storyboard; path = Interface/MiniQueue.storyboard; sourceTree = "<group>"; };
+		AE3EE5E11E5303590086CA88 /* MiniQueueController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniQueueController.swift; sourceTree = "<group>"; };
+		AE3EE5E31E531A5C0086CA88 /* MiniQueueCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniQueueCellView.swift; sourceTree = "<group>"; };
+		AE5A73271E4D6822003D7280 /* SidebarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarController.swift; sourceTree = "<group>"; };
+		AE5A73291E4D68F0003D7280 /* ContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentController.swift; sourceTree = "<group>"; };
+		AE5A732F1E4D735A003D7280 /* SidebarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarModel.swift; sourceTree = "<group>"; };
+		AE5A73331E4D80A7003D7280 /* SidebarItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarItems.swift; sourceTree = "<group>"; };
+		AED853311E53FA3D00B27DC4 /* Preferences.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Preferences.storyboard; path = Interface/Preferences.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AE1C88D21E4BFEB90071508F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE3E277F1E6F1D7500940D59 /* Yui.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE1C88E31E4BFEBA0071508F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AE0CCFA01E53FBEA0016A557 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				AE0CCFA11E53FC080016A557 /* PluginsPreferencesController.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		AE1C88CC1E4BFEB90071508F = {
+			isa = PBXGroup;
+			children = (
+				AE3E27631E6F1BB400940D59 /* Yui.xcodeproj */,
+				AE1C88D71E4BFEB90071508F /* Azusa */,
+				AE1C88E91E4BFEBA0071508F /* AzusaUITests */,
+				AE1C88D61E4BFEB90071508F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AE1C88D61E4BFEB90071508F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE1C88D51E4BFEB90071508F /* Azusa.app */,
+				AE1C88E61E4BFEBA0071508F /* AzusaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE1C88D71E4BFEB90071508F /* Azusa */ = {
+			isa = PBXGroup;
+			children = (
+				AE1C88D81E4BFEB90071508F /* AppDelegate.swift */,
+				AE1C88F51E4BFFF70071508F /* Interface */,
+				AE1C88F61E4C070C0071508F /* View Controllers */,
+				AE5A732B1E4D7291003D7280 /* Model */,
+				AEC554A31E4DF72800D6A987 /* Views */,
+				AEA3777E1E512A6100A64060 /* Extensions */,
+				AE1C88DC1E4BFEBA0071508F /* Assets.xcassets */,
+				AE1C88E11E4BFEBA0071508F /* Info.plist */,
+			);
+			path = Azusa;
+			sourceTree = "<group>";
+		};
+		AE1C88E91E4BFEBA0071508F /* AzusaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AE1C88EA1E4BFEBA0071508F /* AzusaUITests.swift */,
+				AE1C88EC1E4BFEBA0071508F /* Info.plist */,
+			);
+			path = AzusaUITests;
+			sourceTree = "<group>";
+		};
+		AE1C88F51E4BFFF70071508F /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				AE1C88DE1E4BFEBA0071508F /* Main.storyboard */,
+				AE3EE5DD1E53031F0086CA88 /* PlayerBar.storyboard */,
+				AE3EE5DF1E5303460086CA88 /* MiniQueue.storyboard */,
+				AED853311E53FA3D00B27DC4 /* Preferences.storyboard */,
+			);
+			name = Interface;
+			sourceTree = "<group>";
+		};
+		AE1C88F61E4C070C0071508F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AE0CCFA01E53FBEA0016A557 /* Preferences */,
+				AE13CA0A1E4EBCB2007CF7BE /* MusicPlayerController.swift */,
+				AE1C88F71E4C072B0071508F /* MusicPlayerSplitViewController.swift */,
+				AE5A73271E4D6822003D7280 /* SidebarController.swift */,
+				AE5A73291E4D68F0003D7280 /* ContentController.swift */,
+				AE13CA081E4EBA63007CF7BE /* PlayerBarController.swift */,
+				AE3EE5E11E5303590086CA88 /* MiniQueueController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		AE3E27641E6F1BB400940D59 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE3E27691E6F1BB400940D59 /* Yui.framework */,
+				AE3E276B1E6F1BB400940D59 /* YuiTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE5A732B1E4D7291003D7280 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AE5A732C1E4D7340003D7280 /* Sidebar */,
+				AE2549CB1E544DB200078BD5 /* Preferences.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AE5A732C1E4D7340003D7280 /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				AE5A732F1E4D735A003D7280 /* SidebarModel.swift */,
+				AE5A73331E4D80A7003D7280 /* SidebarItems.swift */,
+			);
+			path = Sidebar;
+			sourceTree = "<group>";
+		};
+		AEA3777E1E512A6100A64060 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AEC554A31E4DF72800D6A987 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AE13CA0C1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift */,
+				AE13CA0E1E4EEF88007CF7BE /* ProgressSliderCell.swift */,
+				AE3EE5E31E531A5C0086CA88 /* MiniQueueCellView.swift */,
+				AE0CCFA31E54045E0016A557 /* PluginsPreferencesCellView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AE1C88D41E4BFEB90071508F /* Azusa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE1C88EF1E4BFEBA0071508F /* Build configuration list for PBXNativeTarget "Azusa" */;
+			buildPhases = (
+				AE1C88D11E4BFEB90071508F /* Sources */,
+				AE1C88D21E4BFEB90071508F /* Frameworks */,
+				AE1C88D31E4BFEB90071508F /* Resources */,
+				AEF65FFE1E52DB7D00136DD8 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Azusa;
+			productName = Azusa;
+			productReference = AE1C88D51E4BFEB90071508F /* Azusa.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AE1C88E51E4BFEBA0071508F /* AzusaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE1C88F21E4BFEBA0071508F /* Build configuration list for PBXNativeTarget "AzusaUITests" */;
+			buildPhases = (
+				AE1C88E21E4BFEBA0071508F /* Sources */,
+				AE1C88E31E4BFEBA0071508F /* Frameworks */,
+				AE1C88E41E4BFEBA0071508F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE1C88E81E4BFEBA0071508F /* PBXTargetDependency */,
+			);
+			name = AzusaUITests;
+			productName = AzusaUITests;
+			productReference = AE1C88E61E4BFEBA0071508F /* AzusaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AE1C88CD1E4BFEB90071508F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = DrabWeb;
+				TargetAttributes = {
+					AE1C88D41E4BFEB90071508F = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					AE1C88E51E4BFEBA0071508F = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AE1C88D41E4BFEB90071508F;
+					};
+				};
+			};
+			buildConfigurationList = AE1C88D01E4BFEB90071508F /* Build configuration list for PBXProject "Azusa" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AE1C88CC1E4BFEB90071508F;
+			productRefGroup = AE1C88D61E4BFEB90071508F /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AE3E27641E6F1BB400940D59 /* Products */;
+					ProjectRef = AE3E27631E6F1BB400940D59 /* Yui.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				AE1C88D41E4BFEB90071508F /* Azusa */,
+				AE1C88E51E4BFEBA0071508F /* AzusaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AE3E27691E6F1BB400940D59 /* Yui.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Yui.framework;
+			remoteRef = AE3E27681E6F1BB400940D59 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AE3E276B1E6F1BB400940D59 /* YuiTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = YuiTests.xctest;
+			remoteRef = AE3E276A1E6F1BB400940D59 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE1C88D31E4BFEB90071508F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE1C88DD1E4BFEBA0071508F /* Assets.xcassets in Resources */,
+				AE3EE5E01E5303460086CA88 /* MiniQueue.storyboard in Resources */,
+				AE1C88E01E4BFEBA0071508F /* Main.storyboard in Resources */,
+				AED853321E53FA3D00B27DC4 /* Preferences.storyboard in Resources */,
+				AE3EE5DE1E53031F0086CA88 /* PlayerBar.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE1C88E41E4BFEBA0071508F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE1C88D11E4BFEB90071508F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE13CA0B1E4EBCB2007CF7BE /* MusicPlayerController.swift in Sources */,
+				AE1C88D91E4BFEB90071508F /* AppDelegate.swift in Sources */,
+				AE2549CC1E544DB200078BD5 /* Preferences.swift in Sources */,
+				AE13CA0D1E4EDF91007CF7BE /* RoundDarkEdgedImageView.swift in Sources */,
+				AE3EE5E41E531A5C0086CA88 /* MiniQueueCellView.swift in Sources */,
+				AE0CCFA41E54045E0016A557 /* PluginsPreferencesCellView.swift in Sources */,
+				AE0CCFA21E53FC080016A557 /* PluginsPreferencesController.swift in Sources */,
+				AE5A73281E4D6822003D7280 /* SidebarController.swift in Sources */,
+				AE5A732A1E4D68F0003D7280 /* ContentController.swift in Sources */,
+				AE13CA091E4EBA63007CF7BE /* PlayerBarController.swift in Sources */,
+				AE5A73301E4D735A003D7280 /* SidebarModel.swift in Sources */,
+				AE3EE5E21E5303590086CA88 /* MiniQueueController.swift in Sources */,
+				AE13CA0F1E4EEF88007CF7BE /* ProgressSliderCell.swift in Sources */,
+				AE1C88F81E4C072B0071508F /* MusicPlayerSplitViewController.swift in Sources */,
+				AE5A73341E4D80A7003D7280 /* SidebarItems.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE1C88E21E4BFEBA0071508F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE1C88EB1E4BFEBA0071508F /* AzusaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AE1C88E81E4BFEBA0071508F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE1C88D41E4BFEB90071508F /* Azusa */;
+			targetProxy = AE1C88E71E4BFEBA0071508F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AE1C88DE1E4BFEBA0071508F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE1C88DF1E4BFEBA0071508F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AE1C88ED1E4BFEBA0071508F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AE1C88EE1E4BFEBA0071508F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		AE1C88F01E4BFEBA0071508F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Azusa/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
+				"SWIFT_INCLUDE_PATHS[arch=*]" = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		AE1C88F11E4BFEBA0071508F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Azusa/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Azusa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		AE1C88F31E4BFEBA0071508F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AzusaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = drabweb.AzusaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Azusa;
+			};
+			name = Debug;
+		};
+		AE1C88F41E4BFEBA0071508F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AzusaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = drabweb.AzusaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Azusa;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE1C88D01E4BFEB90071508F /* Build configuration list for PBXProject "Azusa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE1C88ED1E4BFEBA0071508F /* Debug */,
+				AE1C88EE1E4BFEBA0071508F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE1C88EF1E4BFEBA0071508F /* Build configuration list for PBXNativeTarget "Azusa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE1C88F01E4BFEBA0071508F /* Debug */,
+				AE1C88F11E4BFEBA0071508F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE1C88F21E4BFEBA0071508F /* Build configuration list for PBXNativeTarget "AzusaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE1C88F31E4BFEBA0071508F /* Debug */,
+				AE1C88F41E4BFEBA0071508F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AE1C88CD1E4BFEB90071508F /* Project object */;
+}
