@@ -108,7 +108,7 @@ public class ArtworkCache {
             try FileManager.default.removeItem(atPath: basePath);
         }
         catch let error {
-            Logger.log("ArtworkCache: Error deleting cache, \(error)");
+            Logger.logError("ArtworkCache: Error deleting cache, \(error)");
         }
     }
     
@@ -171,7 +171,7 @@ public class ArtworkCache {
                         artwork.save(to: directory + name, as: NSBitmapImageFileType.PNG);
                     }
                     catch let error {
-                        Logger.log("ArtworkCache: Error creating artwork cache for \(song), \(error)");
+                        Logger.logError("ArtworkCache: Error creating artwork cache for \(song), \(error)");
                     }
                 }
             }
@@ -189,7 +189,7 @@ public class ArtworkCache {
             try FileManager.default.createDirectory(atPath: basePath, withIntermediateDirectories: true, attributes: nil);
         }
         catch let error {
-            Logger.log("ArtworkCache: Error creating artwork cache folder, \(error)");
+            Logger.logError("ArtworkCache: Error creating artwork cache folder, \(error)");
         }
     }
 }

@@ -19,7 +19,7 @@ extension NSImage {
                 try data.write(to: URL(fileURLWithPath: filePath), options: []);
             }
             catch let error {
-                Logger.log("NSImage: Failed to save image to \(filePath), \(error)");
+                Logger.logError("NSImage: Failed to save image to \(filePath), \(error)");
             }
         }
     }

@@ -54,7 +54,7 @@ public class PluginManager {
             }
         }
         catch let error {
-            Logger.log("PluginManager: Error getting plugins, \(error)");
+            Logger.logError("PluginManager: Error getting plugins, \(error)");
         }
         
         _plugins = plugins;
@@ -68,7 +68,7 @@ public class PluginManager {
             try FileManager.default.createDirectory(atPath: basePath, withIntermediateDirectories: true, attributes: nil);
         }
         catch let error {
-            Logger.log("PluginManager: Error creating plugins folder, \(error)");
+            Logger.logError("PluginManager: Error creating plugins folder, \(error)");
         }
         
         loadPlugins();

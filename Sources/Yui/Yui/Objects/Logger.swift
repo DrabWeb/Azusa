@@ -53,6 +53,40 @@ public struct Logger {
         #endif
     }
     
+    /// Shows an error alert with the given message and logs it
+    ///
+    /// - Parameter object: The object to log
+    public static func logError(_ object : Any) {
+        Logger.log(object);
+        
+        let alert = NSAlert();
+        alert.messageText = "An error has occured";
+        alert.informativeText = "\(object)";
+        alert.icon = NSImage(named: "NSCaution");
+        alert.addButton(withTitle: "Report");
+        alert.addButton(withTitle: "OK");
+        
+        if alert.runModal() == NSAlertFirstButtonReturn {
+            if (Logger.promptSave()) {
+                NSWorkspace.shared().open(URL(string: "https://github.com/DrabWeb/Azusa/issues/new")!);
+            }
+        }
+    }
+    
+    /// Prompts the user for a place to save the log
+    public static func promptSave() -> Bool {
+        var p = NSSavePanel();
+        p.title = "Save Log";
+        p.nameFieldStringValue = "azusa.txt";
+        
+        if p.runModal() == NSModalResponseOK {
+            Logger.saveTo(file: p.url!.absoluteString.removingPercentEncoding!.replacingOccurrences(of: "file://", with: ""));
+            return true;
+        }
+        
+        return false;
+    }
+    
     /// Writes all the log output to the given file
     ///
     /// - Parameter file: The file to write the output to
@@ -63,7 +97,7 @@ public struct Logger {
             try log.write(toFile: file, atomically: true, encoding: String.Encoding.utf8);
         }
         catch let error as NSError {
-            Logger.log("Logger: Error saving log file to \"\(file)\", \(error.localizedDescription)");
+            Logger.logError("Logger: Error saving log file to \"\(file)\", \(error.localizedDescription)");
         }
     }
 }
