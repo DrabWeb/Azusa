@@ -190,6 +190,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="applyButton:" target="t7f-wS-btV" id="NrF-sG-igq"/>
+                                </connections>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="aFs-Gz-pJP">
                                 <rect key="frame" x="18" y="22" width="63" height="18"/>
@@ -201,6 +204,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="enabledCheckbox:" target="t7f-wS-btV" id="10g-ij-NbS"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -228,6 +234,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="enabledCheckbox" destination="aFs-Gz-pJP" id="3Vf-Hs-RYt"/>
                         <outlet property="preferencesContainerView" destination="std-Ma-b4H" id="GIE-Yl-Pza"/>
                         <outlet property="tableView" destination="WDT-0N-gyF" id="rmj-HK-xY2"/>
                     </connections>

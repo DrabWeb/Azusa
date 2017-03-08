@@ -38,14 +38,17 @@ public class PreferencesController: PluginPreferencesController {
     // MARK: - Public Methods
 
     public override func getSettings() -> [String : Any] {
+        settings[SettingsKey.address] = addressTextField.stringValue;
+        settings[SettingsKey.port] = portTextField.integerValue;
+        
         return settings;
     }
     
     public override func display(settings : [String : Any]) {
         self.settings = settings;
         
-        addressTextField.stringValue = settings[SettingsKey.address] as! String;
-        portTextField.stringValue = String(settings[SettingsKey.port] as! Int);
-        musicDirectoryLabel.stringValue = settings[SettingsKey.directory] as! String;
+        addressTextField.stringValue = settings[SettingsKey.address] as? String ?? "127.0.0.1";
+        portTextField.stringValue = String(settings[SettingsKey.port] as? Int ?? 6600);
+        musicDirectoryLabel.stringValue = settings[SettingsKey.directory] as? String ?? "\(NSHomeDirectory())/Music";
     }
 }

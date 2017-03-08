@@ -35,6 +35,6 @@ class PluginsPreferencesCellView: NSTableCellView {
         
         nameLabel.stringValue = plugin.name;
         versionLabel.stringValue = "v\(plugin.version)";
-        statusImageView.image = NSImage(named: plugin.enabled ? "NSStatusAvailable" : "NSStatusNone")!;
+        statusImageView.image = NSImage(named: plugin.isEnabled ? "NSStatusAvailable" : "NSStatusNone")!;
     }
 }

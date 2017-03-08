@@ -6,8 +6,15 @@
 //
 
 import Cocoa
+import Yui
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        Preferences.global.load();
+    }
     
+    func applicationWillTerminate(_ notification: Notification) {
+        Preferences.global.save();
+    }
 }

@@ -105,16 +105,59 @@ public class PluginInfo: CustomStringConvertible {
     public var bundleIdentifier : String = "";
     public var bundlePath : String = "";
     public var plugin : Plugin.Type!
-    public var enabled : Bool = false;
     
     public var description : String {
         return "PluginInfo(\(plugin)): \(name) v\(version), \(info)";
     }
     
+    public var isEnabled : Bool {
+        return Preferences.global.enabledPlugins.contains(bundleIdentifier);
+    }
+    
+    public var getPlugin : Plugin? {
+        if isEnabled {
+            return plugin.init();
+        }
+        
+        return nil;
+    }
+    
+    public var preferences : [String : Any] {
+        get {
+            if let p = Preferences.global.pluginSettings[bundleIdentifier] {
+                return p;
+            }
+            else {
+                return [:];
+            }
+        }
+    }
+
+    // MARK: - Methods
+    
+    // MARK: Public Methods
+    
+    public func enable() {
+        Preferences.global.enablePlugin(self);
+    }
+    
+    public func disable() {
+        Preferences.global.disablePlugin(self);
+    }
+    
+    public func toggleEnabled() {
+        if isEnabled {
+            Preferences.global.disablePlugin(self);
+        }
+        else {
+            Preferences.global.enablePlugin(self);
+        }
+    }
+    
     // MARK: - Init / Deinit
     
     init?(bundle : Bundle) {
-        if let pluginClass = (bundle.principalClass.self?.class() as? Plugin.Type) {
+        if let pluginClass = bundle.principalClass.self?.class() as? Plugin.Type {
             self.name = bundle.object(forInfoDictionaryKey: "CFBundleName") as! String;
             self.version = bundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String;
             self.info = bundle.object(forInfoDictionaryKey: "PluginDescription") as! String;
@@ -127,13 +170,12 @@ public class PluginInfo: CustomStringConvertible {
         }
     }
     
-    init(name : String, version : String, info : String, bundleIdentifier : String, plugin : Plugin.Type, enabled : Bool = false) {
+    init(name : String, version : String, info : String, bundleIdentifier : String, plugin : Plugin.Type) {
         self.name = name;
         self.version = version;
         self.info = info;
         self.bundleIdentifier = bundleIdentifier;
         self.plugin = plugin;
-        self.enabled = enabled;
     }
 }
 

@@ -22,6 +22,7 @@
 		AE056E981E6F1A01006FA9DF /* MusicSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE056E8C1E6F1A01006FA9DF /* MusicSource.swift */; };
 		AE056E991E6F1A01006FA9DF /* PlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE056E8D1E6F1A01006FA9DF /* PlayerStatus.swift */; };
 		AE056E9A1E6F1A01006FA9DF /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE056E8E1E6F1A01006FA9DF /* Song.swift */; };
+		AEB256081E70097400AB4451 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB256071E70097400AB4451 /* Preferences.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		AE056E8C1E6F1A01006FA9DF /* MusicSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicSource.swift; sourceTree = "<group>"; };
 		AE056E8D1E6F1A01006FA9DF /* PlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStatus.swift; sourceTree = "<group>"; };
 		AE056E8E1E6F1A01006FA9DF /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		AEB256071E70097400AB4451 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				AE056E881E6F1A01006FA9DF /* Logger.swift */,
 				AE056E891E6F1A01006FA9DF /* MusicUtilities.swift */,
 				AE056E8A1E6F1A01006FA9DF /* Plugins.swift */,
+				AEB256071E70097400AB4451 /* Preferences.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				AE056E971E6F1A01006FA9DF /* Plugins.swift in Sources */,
 				AE056E961E6F1A01006FA9DF /* MusicUtilities.swift in Sources */,
 				AE056E951E6F1A01006FA9DF /* Logger.swift in Sources */,
+				AEB256081E70097400AB4451 /* Preferences.swift in Sources */,
 				AE056E901E6F1A01006FA9DF /* Album.swift in Sources */,
 				AE056E991E6F1A01006FA9DF /* PlayerStatus.swift in Sources */,
 				AE056E931E6F1A01006FA9DF /* Events.swift in Sources */,
