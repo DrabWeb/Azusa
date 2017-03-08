@@ -21,12 +21,20 @@ class PluginsPreferencesController: NSViewController {
     @IBAction private func enabledCheckbox(_ sender: NSButton) {
         currentPlugin?.toggleEnabled();
         refresh();
+        Preferences.global.postUpdatedNotification();
     }
     
     @IBAction func applyButton(_ sender: NSButton) {
         if currentPlugin != nil && currentPlugin?.isEnabled ?? false {
             Preferences.global.pluginSettings[currentPlugin!.bundleIdentifier] = preferencesController!.getSettings();
+            Preferences.global.postUpdatedNotification();
         }
+    }
+    
+    @IBAction func makeDefaultButton(_ sender: NSButton) {
+        currentPlugin?.makeDefault();
+        refresh(recreateSettingsView: false);
+        Preferences.global.postUpdatedNotification();
     }
     
     private var preferencesController : PluginPreferencesController? = nil;
@@ -45,17 +53,21 @@ class PluginsPreferencesController: NSViewController {
     
     // MARK: Private Methods
     
-    internal func refresh() {
-        // Refresh the cells without resetting selection and scroll position
-        for i in 0...PluginManager.global.plugins.count - 1 {
-            (tableView.rowView(atRow: i, makeIfNecessary: false)?.view(atColumn: i) as? PluginsPreferencesCellView)?.display(plugin: PluginManager.global.plugins[i]);
-        }
-        
-        if currentPlugin != nil {
-            display(plugin: currentPlugin!);
-        }
-        else {
-            display(plugin: PluginManager.global.plugins[tableView.selectedRow < 0 ? 0 : tableView.selectedRow]);
+    internal func refresh(recreateSettingsView : Bool = true) {
+        if PluginManager.global.plugins.count > 0 {
+            // Refresh the cells without resetting selection and scroll position
+            for i in 0...PluginManager.global.plugins.count - 1 {
+                (tableView.rowView(atRow: i, makeIfNecessary: false)?.view(atColumn: i) as? PluginsPreferencesCellView)?.display(plugin: PluginManager.global.plugins[i]);
+            }
+            
+            if recreateSettingsView {
+                if currentPlugin != nil {
+                    display(plugin: currentPlugin!);
+                }
+                else {
+                    display(plugin: PluginManager.global.plugins[tableView.selectedRow < 0 ? 0 : tableView.selectedRow]);
+                }
+            }
         }
     }
     
@@ -76,7 +88,7 @@ class PluginsPreferencesController: NSViewController {
             preferencesController!.view.autoresizingMask = [.viewWidthSizable, .viewHeightSizable];
             preferencesController!.view.translatesAutoresizingMaskIntoConstraints = true;
             
-            preferencesController!.display(settings: currentPlugin!.preferences);
+            preferencesController!.display(settings: currentPlugin!.settings);
         }
     }
 }

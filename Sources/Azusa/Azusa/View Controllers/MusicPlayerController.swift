@@ -37,6 +37,17 @@ class MusicPlayerController: NSViewController {
         super.viewDidLoad();
         
         initialize();
+        
+        // For testing
+        NotificationCenter.default.addObserver(forName: PreferencesNotification.loaded, object: nil, queue: nil, using: { _ in
+            let d = PluginManager.global.defaultPlugin!;
+            self.musicSource = d.getPlugin!.getMusicSource(settings: Preferences.global.pluginSettings[d.bundleIdentifier] ?? [:]);
+            self.musicSource.connect({ connected, _ in
+                self.musicSource.getPlayerStatus({ status, _ in
+                    print(status);
+                });
+            });
+        });
     }
     
     func popInPlayerBar(animate : Bool = true) {

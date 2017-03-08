@@ -21,6 +21,28 @@ public class PluginManager {
         return _plugins;
     }
     
+    public var enabledPlugins : [PluginInfo] {
+        var ep : [PluginInfo] = [];
+        
+        plugins.forEach {
+            if $0.isEnabled {
+                ep.append($0);
+            }
+        }
+        
+        return ep;
+    }
+    
+    public var defaultPlugin : PluginInfo? {
+        for (_, p) in plugins.enumerated() {
+            if p.bundleIdentifier == Preferences.global.defaultPlugin && p.isEnabled {
+                return p;
+            }
+        }
+        
+        return nil;
+    }
+    
     // MARK: Private Properties
     
     private let basePath : String = "\(NSHomeDirectory())/Library/Application Support/Azusa/Plugins"
@@ -99,30 +121,39 @@ public class PluginInfo: CustomStringConvertible {
     
     // MARK: Public Properties
     
-    public var name : String = "";
-    public var version : String = "";
-    public var info : String = "";
-    public var bundleIdentifier : String = "";
-    public var bundlePath : String = "";
-    public var plugin : Plugin.Type!
+    public let name : String;
+    public var version : String;
+    public var info : String;
+    public var bundleIdentifier : String;
+    public var bundlePath : String;
+    public var pluginClass : Plugin.Type!
     
     public var description : String {
-        return "PluginInfo(\(plugin)): \(name) v\(version), \(info)";
+        return "PluginInfo(\(pluginClass)): \(name) v\(version), \(info)";
     }
     
     public var isEnabled : Bool {
         return Preferences.global.enabledPlugins.contains(bundleIdentifier);
     }
     
+    public var isDefault : Bool {
+        return Preferences.global.defaultPlugin == bundleIdentifier;
+    }
+    
+    private var _plugin : Plugin? = nil;
     public var getPlugin : Plugin? {
         if isEnabled {
-            return plugin.init();
+            if _plugin == nil {
+                _plugin = pluginClass.init();
+            }
+            
+            return _plugin;
         }
         
         return nil;
     }
     
-    public var preferences : [String : Any] {
+    public var settings : [String : Any] {
         get {
             if let p = Preferences.global.pluginSettings[bundleIdentifier] {
                 return p;
@@ -154,6 +185,10 @@ public class PluginInfo: CustomStringConvertible {
         }
     }
     
+    public func makeDefault() {
+        Preferences.global.defaultPlugin = bundleIdentifier;
+    }
+    
     // MARK: - Init / Deinit
     
     init?(bundle : Bundle) {
@@ -163,19 +198,20 @@ public class PluginInfo: CustomStringConvertible {
             self.info = bundle.object(forInfoDictionaryKey: "PluginDescription") as! String;
             self.bundleIdentifier = bundle.bundleIdentifier ?? "";
             self.bundlePath = bundle.bundlePath;
-            self.plugin = pluginClass;
+            self.pluginClass = pluginClass;
         }
         else {
             return nil;
         }
     }
     
-    init(name : String, version : String, info : String, bundleIdentifier : String, plugin : Plugin.Type) {
+    init(name : String, version : String, info : String, bundleIdentifier : String, bundlePath : String, pluginClass : Plugin.Type) {
         self.name = name;
         self.version = version;
         self.info = info;
         self.bundleIdentifier = bundleIdentifier;
-        self.plugin = plugin;
+        self.bundlePath = bundlePath;
+        self.pluginClass = pluginClass;
     }
 }
 

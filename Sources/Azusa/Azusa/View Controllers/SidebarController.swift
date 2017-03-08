@@ -13,17 +13,17 @@ class SidebarController: NSViewController {
     
     // MARK: Public Properties
     
-    let sections : [SidebarSection] = [
+    let items : [SidebarItemBase] = [
         LibrarySidebarSection(),
         SidebarSection(title: "Playlists", items: [])
     ];
     
     var librarySection : LibrarySidebarSection {
-        return sections[0] as! LibrarySidebarSection;
+        return items[0] as! LibrarySidebarSection;
     }
     
     var playlistsSection : SidebarSection {
-        return sections[1];
+        return items[1] as! SidebarSection;
     }
     
     var onNavigated : ((NavigationDestination) -> Void)?;
@@ -95,7 +95,7 @@ extension SidebarController: NSOutlineViewDelegate {
             return section.items.count;
         }
         else {
-            return sections.count;
+            return items.count;
         }
     }
     
@@ -109,7 +109,7 @@ extension SidebarController: NSOutlineViewDelegate {
             return section.items[index];
         }
         else {
-            return sections[index];
+            return items[index];
         }
     }
     

@@ -319,7 +319,6 @@ public class MIMusicSource: MusicSource {
     // MARK: - Initialization and Deinitialization
     
     public required init(settings : [String : Any]) {
-        // TODO: Make these keys constants
         self.mpd = MIMPD(serverInfo: MIServerInfo(address: settings[SettingsKey.address] as! String, port: settings[SettingsKey.port] as! Int, directory: settings[SettingsKey.directory] as! String));
     }
 }
