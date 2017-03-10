@@ -30,7 +30,7 @@ class PlayerBarController: NSViewController {
     var onNext : ((PlayingState) -> Void)? = nil;
     
     /// Passed if shuffle is currently on
-    var onShuffle : ((Bool) -> Void)? = nil;
+    var onShuffle : (() -> Void)? = nil;
     
     /// Passed the current volume
     var onVolumeChanged : ((Int) -> Void)? = nil;
@@ -73,7 +73,6 @@ class PlayerBarController: NSViewController {
     
     private var playingState : PlayingState = .stopped;
     private var repeatMode : RepeatMode = .none;
-    private var shuffling : Bool = false;
     private var song : Song? = nil;
     private weak var miniQueue : MiniQueueController? = nil;
     
@@ -141,16 +140,6 @@ class PlayerBarController: NSViewController {
         invokeOnVolumeChanged();
     }
     
-//    @IBAction private func volumeMinButton(_ sender: NSButton) {
-//        volumeSlider.doubleValue = volumeSlider.minValue;
-//        invokeOnVolumeChanged();
-//    }
-//    
-//    @IBAction private func volumeMaxButton(_ sender: NSButton) {
-//        volumeSlider.doubleValue = volumeSlider.maxValue;
-//        invokeOnVolumeChanged();
-//    }
-    
     // MARK: - Methods
     
     // MARK: Public Methods
@@ -169,7 +158,6 @@ class PlayerBarController: NSViewController {
         display(song: status.currentSong);
         volume = status.volume;
         display(repeatMode: status.repeatMode);
-        display(shuffling: status.isRandom);
         display(playingState: status.playingState);
         display(progress: status.elapsedTime);
     }
@@ -239,12 +227,6 @@ class PlayerBarController: NSViewController {
         }
     }
     
-    func display(shuffling : Bool) {
-        self.shuffling = shuffling;
-        
-        shuffleButton.alphaValue = shuffling ? 1.0 : 0.5;
-    }
-    
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if let mq = segue.destinationController as? MiniQueueController {
             miniQueue = mq;
@@ -263,7 +245,6 @@ class PlayerBarController: NSViewController {
     private func refresh() {
         display(playingState: playingState);
         display(repeatMode: repeatMode);
-        display(shuffling: shuffling);
         refreshProgress();
         
         if song != nil {
@@ -296,7 +277,7 @@ class PlayerBarController: NSViewController {
     }
     
     private func invokeOnShuffle() {
-        onShuffle?(shuffling);
+        onShuffle?();
     }
     
     private func invokeOnVolumeChanged() {

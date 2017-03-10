@@ -131,8 +131,8 @@ class MusicPlayerController: NSViewController {
             self.musicSource.skipNext(completionHandler: nil);
         };
         
-        self.playerBarController.onShuffle = { shuffling in
-            self.playerBarController.display(shuffling: !shuffling);
+        self.playerBarController.onShuffle = {
+            self.musicSource.shuffleQueue(completionHandler: nil);
         };
         
         self.playerBarController.onVolumeChanged = { volume in

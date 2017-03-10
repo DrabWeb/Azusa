@@ -57,7 +57,7 @@ public class EventManager {
     // MARK: Public Methods
     
     public func add(subscriber : EventSubscriber) {
-        Logger.log("EventManager: Subscribing to events \"\(subscriber.subscriptions)\" with \(subscriber)");
+        Logger.log("EventManager: Subscribing to events \(subscriber.subscriptions) with \(subscriber)");
         
         self._subscribers.append(subscriber);
     }
