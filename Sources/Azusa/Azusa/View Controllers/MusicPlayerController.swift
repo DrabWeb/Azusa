@@ -150,10 +150,12 @@ class MusicPlayerController: NSViewController {
             self.musicSource.clearQueue(completionHandler: nil);
         };
         
-        Timer.scheduledTimer(withTimeInterval: TimeInterval(0.5), repeats: true, block: { _ in
-            self.musicSource.getElapsed({ elapsed, _ in
-                self.playerBarController.display(progress: elapsed);
-            });
+        Timer.scheduledTimer(timeInterval: TimeInterval(0.25), target: self, selector: #selector(MusicPlayerController.updateProgress), userInfo: nil, repeats: true);
+    }
+    
+    internal func updateProgress() {
+        self.musicSource.getElapsed({ elapsed, _ in
+            self.playerBarController.display(progress: elapsed);
         });
     }
 }
