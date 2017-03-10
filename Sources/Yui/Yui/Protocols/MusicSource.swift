@@ -111,6 +111,13 @@ public protocol MusicSource {
     ///   - completionHandler: The completion handler to call when the operation finishes(optional)
     func setRelativeVolume(to volume : Int, completionHandler : ((MusicSourceError?) -> Void)?);
     
+    /// Sets the repeat mode of this source to the given mode
+    ///
+    /// - Parameters:
+    ///   - mode: The mode to set to
+    ///   - completionHandler: The completion handler to call when the operation finishes(optional)
+    func setRepeatMode(to mode : RepeatMode, completionHandler : ((MusicSourceError?) -> Void)?);
+    
     
     // MARK: - Queue
     

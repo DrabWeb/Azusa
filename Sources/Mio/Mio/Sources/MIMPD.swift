@@ -506,6 +506,22 @@ public class MIMPD {
         }
     }
     
+    func setRepeatMode(to mode : RepeatMode) throws {
+        if connection != nil {
+            Logger.log("MIMPD: Setting repeat mode to \(mode)");
+            
+            if !mpd_run_repeat(self.connection!, mode != .none) {
+                throw self.currentError();
+            }
+            if !mpd_run_single(self.connection!, mode == .single) {
+                throw self.currentError();
+            }
+        }
+        else {
+            throw MIMPDError.disconnected;
+        }
+    }
+    
     
     // MARK: - Queue
     

@@ -26,7 +26,7 @@ class MusicPlayerController: NSViewController {
     
     private var musicSource : MusicSource! {
         didSet {
-            musicSource.eventManager.add(subscriber: EventSubscriber(events: [.connect, .player, .queue, .database], performer: { event in
+            musicSource.eventManager.add(subscriber: EventSubscriber(events: [.connect, .player, .queue, .options, .database], performer: { event in
                 self.musicSource.getPlayerStatus({ status, _ in
                     self.playerBarController.display(status: status);
                     
@@ -113,7 +113,7 @@ class MusicPlayerController: NSViewController {
         };
         
         self.playerBarController.onRepeat = { mode in
-            self.playerBarController.display(repeatMode: mode.next());
+            self.musicSource.setRepeatMode(to: mode.next(), completionHandler: nil);
         };
         
         self.playerBarController.onPrevious = { playingState in
@@ -144,6 +144,10 @@ class MusicPlayerController: NSViewController {
                 // Drop the songs before and the current song so only up next songs are shown
                 self.playerBarController.display(queue: Array(songs.dropFirst(currentPos + 1)));
             });
+        };
+        
+        self.playerBarController.onClear = {
+            self.musicSource.clearQueue(completionHandler: nil);
         };
         
         Timer.scheduledTimer(withTimeInterval: TimeInterval(0.5), repeats: true, block: { _ in

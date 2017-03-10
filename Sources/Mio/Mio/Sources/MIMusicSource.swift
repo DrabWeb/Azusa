@@ -217,6 +217,21 @@ public class MIMusicSource: MusicSource {
         }
     }
     
+    public func setRepeatMode(to mode: RepeatMode, completionHandler: ((MusicSourceError?) -> Void)?) {
+        if !perform({
+            if (try? self.mpd!.setRepeatMode(to: mode)) != nil {
+                DispatchQueue.main.async {
+                    completionHandler?(nil);
+                }
+            }
+            else {
+                
+            }
+        }) {
+            completionHandler?(MusicSourceError.none);
+        }
+    }
+    
     // MARK: - Queue
     public func getQueue(completionHandler : @escaping (([Song], Int, MusicSourceError?) -> Void)) {
         if !perform({

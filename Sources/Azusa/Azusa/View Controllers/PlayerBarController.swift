@@ -38,6 +38,9 @@ class PlayerBarController: NSViewController {
     /// Called when the mini queue is opened
     var onQueueOpen : (() -> Void)? = nil;
     
+    /// Called when the clear button is pressed in the mini queue
+    var onClear : (() -> Void)? = nil;
+    
     var timeDisplayMode : TimeDisplayMode = .timeLeft {
         didSet {
             refreshProgress();
@@ -246,6 +249,10 @@ class PlayerBarController: NSViewController {
         if let mq = segue.destinationController as? MiniQueueController {
             miniQueue = mq;
             mq.loadView();
+            mq.onClear = {
+                self.onClear?();
+                mq.dismiss(self);
+            };
             onQueueOpen?();
         }
     }

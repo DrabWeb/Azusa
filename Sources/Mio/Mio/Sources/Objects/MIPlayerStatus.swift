@@ -16,7 +16,23 @@ public class MIPlayerStatus: PlayerStatus {
     
     public var currentSong : Song = MISong.empty;
     public var volume : Int = 100;
-    public var repeatMode : RepeatMode = .none;
+    public var repeatMode : RepeatMode {
+        get {
+            if isSingle && isRepeating {
+                return .single;
+            }
+            else if isRepeating {
+                return .queue;
+            }
+            else {
+                return .none;
+            }
+        }
+        set {
+            self.isRepeating = newValue != .none;
+            self.isSingle = newValue == .single;
+        }
+    }
     public var isConsuming : Bool = false;
     public var isRandom : Bool = false;
     public var queueLength : Int = 0;
