@@ -17,32 +17,52 @@ class PlayerBarController: NSViewController {
     /// Passed the time in seconds to seek to
     var onSeek : ((Int) -> Void)? = nil;
     
-    /// Passed the current repeat mode, displays the returned value
-    var onRepeat : ((RepeatMode) -> RepeatMode)? = nil;
+    /// Passed the current repeat mode
+    var onRepeat : ((RepeatMode) -> Void)? = nil;
     
-    /// Passed the current playing state, enables/disables from the returned value
-    var onPrevious : ((PlayingState) -> Bool)? = nil;
+    /// Passed the current playing state
+    var onPrevious : ((PlayingState) -> Void)? = nil;
     
-    /// Passed the current playing state, displays the returned value
-    var onPausePlay : ((PlayingState) -> PlayingState)? = nil;
+    /// Passed the current playing state
+    var onPausePlay : ((PlayingState) -> Void)? = nil;
     
-    /// Passed the current playing state, enables/disables from the returned value
-    var onNext : ((PlayingState) -> Bool)? = nil;
+    /// Passed the current playing state
+    var onNext : ((PlayingState) -> Void)? = nil;
     
-    /// Passed if shuffle is currently on, displays the returned value
-    var onShuffle : ((Bool) -> Bool)? = nil;
+    /// Passed if shuffle is currently on
+    var onShuffle : ((Bool) -> Void)? = nil;
     
     /// Passed the current volume
     var onVolumeChanged : ((Int) -> Void)? = nil;
     
-    private var _timeDisplayMode : TimeDisplayMode = .timeLeft;
-    var timeDisplayMode : TimeDisplayMode {
+    /// Called when the mini queue is opened
+    var onQueueOpen : (() -> Void)? = nil;
+    
+    var timeDisplayMode : TimeDisplayMode = .timeLeft {
+        didSet {
+            refreshProgress();
+        }
+    }
+    
+    var isQueueOpen : Bool {
+        return miniQueue != nil;
+    }
+    
+    var canSkipPrevious : Bool {
         get {
-            return _timeDisplayMode;
+            return previousButton.isEnabled;
         }
         set {
-            _timeDisplayMode = newValue;
-            refreshProgress();
+            previousButton.isEnabled = newValue;
+        }
+    }
+    
+    var canSkipNext : Bool {
+        get {
+            return nextButton.isEnabled;
+        }
+        set {
+            nextButton.isEnabled = newValue;
         }
     }
     
@@ -52,6 +72,7 @@ class PlayerBarController: NSViewController {
     private var repeatMode : RepeatMode = .none;
     private var shuffling : Bool = false;
     private var song : Song? = nil;
+    private weak var miniQueue : MiniQueueController? = nil;
     
     private var volume : Int {
         get {
@@ -89,7 +110,7 @@ class PlayerBarController: NSViewController {
         }
         // Dragging
         else {
-            // TODO: Update the time info label here
+            display(progress: sender.integerValue);
         }
     }
     
@@ -117,15 +138,15 @@ class PlayerBarController: NSViewController {
         invokeOnVolumeChanged();
     }
     
-    @IBAction private func volumeMinButton(_ sender: NSButton) {
-        volumeSlider.doubleValue = volumeSlider.minValue;
-        invokeOnVolumeChanged();
-    }
-    
-    @IBAction private func volumeMaxButton(_ sender: NSButton) {
-        volumeSlider.doubleValue = volumeSlider.maxValue;
-        invokeOnVolumeChanged();
-    }
+//    @IBAction private func volumeMinButton(_ sender: NSButton) {
+//        volumeSlider.doubleValue = volumeSlider.minValue;
+//        invokeOnVolumeChanged();
+//    }
+//    
+//    @IBAction private func volumeMaxButton(_ sender: NSButton) {
+//        volumeSlider.doubleValue = volumeSlider.maxValue;
+//        invokeOnVolumeChanged();
+//    }
     
     // MARK: - Methods
     
@@ -135,6 +156,10 @@ class PlayerBarController: NSViewController {
         super.viewDidLoad();
         
         refresh();
+    }
+    
+    func display(queue : [Song]) {
+        miniQueue?.songs = queue;
     }
     
     func display(status : PlayerStatus) {
@@ -149,6 +174,13 @@ class PlayerBarController: NSViewController {
     func display(song : Song) {
         self.song = song;
         
+        ArtworkCache.global.getArt(of: song, withSize: .thumb, completion: { cover in
+            if self.song != nil  {
+                if self.song! == song {
+                    self.coverImageView.image = cover;
+                }
+            }
+        });
         titleLabel.stringValue = song.displayTitle;
         artistAlbumLabel.stringValue = "\(song.displayArtist) - \(song.displayAlbum)";
         progressSlider.maxValue = Double(song.duration);
@@ -210,6 +242,14 @@ class PlayerBarController: NSViewController {
         shuffleButton.alphaValue = shuffling ? 1.0 : 0.5;
     }
     
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if let mq = segue.destinationController as? MiniQueueController {
+            miniQueue = mq;
+            mq.loadView();
+            onQueueOpen?();
+        }
+    }
+    
     // MARK: Private methods
     
     /// Refreshes the views to match the stored values
@@ -233,23 +273,23 @@ class PlayerBarController: NSViewController {
     }
     
     private func invokeOnRepeat() {
-        display(repeatMode: onRepeat?(repeatMode) ?? repeatMode);
+        onRepeat?(repeatMode);
     }
     
     private func invokeOnPrevious() {
-        previousButton.isEnabled = onPrevious?(playingState) ?? previousButton.isEnabled;
+        onPrevious?(playingState);
     }
     
     private func invokeOnPausePlay() {
-        display(playingState: onPausePlay?(playingState) ?? playingState);
+        onPausePlay?(playingState);
     }
     
     private func invokeOnNext() {
-        nextButton.isEnabled = onNext?(playingState) ?? nextButton.isEnabled;
+        onNext?(playingState);
     }
     
     private func invokeOnShuffle() {
-        display(shuffling: onShuffle?(shuffling) ?? shuffling);
+        onShuffle?(shuffling);
     }
     
     private func invokeOnVolumeChanged() {

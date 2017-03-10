@@ -23,14 +23,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func updateSourcesMenu() {
         sourcesMenu.removeAllItems();
         PluginManager.global.enabledPlugins.forEach { p in
-            let item = NSMenuItem(title: p.name + (p.isDefault ? " (Default)" : ""), action: #selector(AppDelegate.sourcesMenuItemPressed(_:)), keyEquivalent: "");
+            let item = NSMenuItem(title: p.name + (p.isDefault ? " (Default)" : ""), action: #selector(MusicPlayerController.sourceMenuItemPressed(_:)), keyEquivalent: "");
             item.representedObject = p;
+            item.state = p.isDefault ? NSOnState : NSOffState; // TODO: Make this actually reflect the user's selected source (need multiple plugins first)
             sourcesMenu.addItem(item);
         }
-    }
-    
-    func sourcesMenuItemPressed(_ sender : NSMenuItem) {
-        
     }
     
     func applicationWillTerminate(_ notification: Notification) {

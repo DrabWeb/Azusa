@@ -29,6 +29,7 @@ class MiniQueueController: NSViewController {
     @IBOutlet private weak var songCountLabel: NSTextField!
     @IBOutlet private weak var clearButton: NSButton!
     @IBOutlet private weak var nothingQueuedLabel: NSTextField!
+    @IBOutlet private var songContextMenu: NSMenu!
     
     @IBAction func clearButton(_ sender: NSButton) {
         onClear?();
@@ -47,11 +48,15 @@ class MiniQueueController: NSViewController {
     
     private func refresh() {
         songCountLabel.stringValue = "\(songs.count) song\(songs.count == 1 ? "" : "s")";
-        upNextLabel.isHidden = songs.count == 0;
-        songCountLabel.isHidden = songs.count == 0;
-        clearButton.isHidden = songs.count == 0;
+        [upNextLabel, songCountLabel, clearButton].forEach {
+            $0.isHidden = songs.count == 0;
+        }
         nothingQueuedLabel.isHidden = songs.count != 0;
         tableView.reloadData();
+        
+        let preferredHeight = CGFloat(Int(tableView.rowHeight + tableView.intercellSpacing.height) * songs.count) + 47;
+        let maxHeight = CGFloat(550);
+        self.preferredContentSize = NSSize(width: self.view.bounds.width, height: preferredHeight > maxHeight ? maxHeight : preferredHeight);
     }
 }
 

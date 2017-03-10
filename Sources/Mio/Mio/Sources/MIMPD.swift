@@ -183,17 +183,17 @@ public class MIMPD {
             
             do {
                 if let status = mpd_run_status(self.connection!) {
-                    playerStatusObject.currentSong = try self.getCurrentSong() ?? MISong.empty;
+                    playerStatusObject.currentSong = try getCurrentSong() ?? MISong.empty;
                     playerStatusObject.volume = Int(mpd_status_get_volume(status));
                     playerStatusObject.isRandom = mpd_status_get_random(status);
                     playerStatusObject.isRepeating = mpd_status_get_repeat(status);
                     playerStatusObject.isSingle = mpd_status_get_single(status);
                     playerStatusObject.isConsuming = mpd_status_get_consume(status);
-                    playerStatusObject.queueLength = Int(mpd_status_get_queue_length(status));
-                    playerStatusObject.playingState = self.playingStateFrom(mpdState: mpd_status_get_state(status));
-                    playerStatusObject.currentSongPosition = Int(mpd_status_get_song_pos(status));
+                    playerStatusObject.queueLength = try getQueueLength();
+                    playerStatusObject.playingState = try getPlayingState();
+                    playerStatusObject.currentSongPosition = try getCurrentSongPosition();
                     playerStatusObject.nextSongPosition = Int(mpd_status_get_next_song_pos(status));
-                    playerStatusObject.timeElapsed = Int(mpd_status_get_elapsed_time(status));
+                    playerStatusObject.timeElapsed = try getElapsed();
                     
                     mpd_status_free(status);
                     return playerStatusObject;

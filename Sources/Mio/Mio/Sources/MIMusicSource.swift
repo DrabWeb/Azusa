@@ -34,6 +34,9 @@ public class MIMusicSource: MusicSource {
     public func connect(_ completionHandler : ((Bool, MusicSourceError?) -> Void)?) {
         if !perform({
             let output = self.mpd!.connect();
+            if output {
+                self.eventManager.emit(event: .connect);
+            }
             
             DispatchQueue.main.async {
                 completionHandler?(output, nil);
@@ -46,7 +49,12 @@ public class MIMusicSource: MusicSource {
     // MARK: - Player
     public func getPlayerStatus(_ completionHandler : @escaping ((PlayerStatus, MusicSourceError?) -> Void)) {
         if !perform({
+            // TODO: Find out why this player status never gets the elapsed time
+            // It's always zero
+            // And mpd.getElapsedTime returns the proper for some reason
+            // Temporarly just calling that to replace elapsed until fixed
             if let playerStatus = try? self.mpd!.getPlayerStatus() {
+                playerStatus.elapsedTime = (try? self.mpd!.getElapsed()) ?? 0;
                 DispatchQueue.main.async {
                     completionHandler(playerStatus, nil);
                 }

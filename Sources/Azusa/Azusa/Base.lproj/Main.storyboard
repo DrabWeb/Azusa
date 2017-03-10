@@ -373,9 +373,6 @@
                                         <menuItem isSeparatorItem="YES" id="hB3-LF-h0Y"/>
                                         <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
-                                            <connections>
-                                                <action selector="toggleSourceList:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
-                                            </connections>
                                         </menuItem>
                                         <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
@@ -436,7 +433,7 @@
                 </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="-618"/>
+            <point key="canvasLocation" x="74" y="-726"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="NPU-Fc-0Z1">
@@ -474,7 +471,7 @@
                         </toolbar>
                     </window>
                     <connections>
-                        <segue destination="ce9-e7-N28" kind="relationship" relationship="window.shadowedContentViewController" id="ZeA-lk-xod"/>
+                        <segue destination="ce9-e7-N28" kind="relationship" relationship="window.shadowedContentViewController" id="yc7-p6-KOH"/>
                     </connections>
                 </windowController>
                 <customObject id="y8I-5f-elY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -490,26 +487,26 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="r1R-hR-D2v" userLabel="Split View Container">
-                                <rect key="frame" x="0.0" y="62" width="450" height="238"/>
+                                <rect key="frame" x="0.0" y="50" width="450" height="250"/>
                                 <connections>
                                     <segue destination="kV9-Y5-7ut" kind="embed" id="mhs-eK-wjQ"/>
                                 </connections>
                             </containerView>
-                            <containerView placeholderIntrinsicWidth="225" placeholderIntrinsicHeight="62" translatesAutoresizingMaskIntoConstraints="NO" id="so1-vw-Taw" userLabel="Player Bar Container">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="62"/>
+                            <containerView placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="FWg-dP-eMz">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="50"/>
                                 <connections>
-                                    <segue destination="mUK-g3-Rud" kind="embed" id="erF-GT-jV8"/>
+                                    <segue destination="mUK-g3-Rud" kind="embed" id="Qe1-DY-pYM"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="FWg-dP-eMz" secondAttribute="bottom" identifier="playerBarBottomConstraint" id="1G3-sU-kQz"/>
+                            <constraint firstItem="FWg-dP-eMz" firstAttribute="leading" secondItem="Frg-2P-OeY" secondAttribute="leading" id="2wm-HI-NkM"/>
                             <constraint firstAttribute="trailing" secondItem="r1R-hR-D2v" secondAttribute="trailing" id="BzQ-em-MDL"/>
-                            <constraint firstItem="so1-vw-Taw" firstAttribute="top" secondItem="r1R-hR-D2v" secondAttribute="bottom" id="H7d-PI-MPN"/>
+                            <constraint firstAttribute="trailing" secondItem="FWg-dP-eMz" secondAttribute="trailing" id="CK4-41-36w"/>
                             <constraint firstItem="r1R-hR-D2v" firstAttribute="leading" secondItem="Frg-2P-OeY" secondAttribute="leading" id="OMv-sX-Pvv"/>
-                            <constraint firstAttribute="trailing" secondItem="so1-vw-Taw" secondAttribute="trailing" id="PXb-Ut-dd6"/>
-                            <constraint firstAttribute="bottom" secondItem="so1-vw-Taw" secondAttribute="bottom" id="SRk-eL-mcB"/>
-                            <constraint firstItem="so1-vw-Taw" firstAttribute="leading" secondItem="Frg-2P-OeY" secondAttribute="leading" id="iUC-yy-IVh"/>
                             <constraint firstItem="r1R-hR-D2v" firstAttribute="top" secondItem="Frg-2P-OeY" secondAttribute="top" id="kRs-BK-uor"/>
+                            <constraint firstItem="FWg-dP-eMz" firstAttribute="top" secondItem="r1R-hR-D2v" secondAttribute="bottom" id="lMy-pb-9Um"/>
                         </constraints>
                     </view>
                 </viewController>

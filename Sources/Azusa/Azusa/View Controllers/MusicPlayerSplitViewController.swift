@@ -30,6 +30,9 @@ class MusicPlayerSplitViewController: NSSplitViewController {
     
     // MARK: Public Methods
     
+    override func toggleSidebar(_ sender: Any?) {
+        sidebarItem.isCollapsed = !sidebarItem.isCollapsed;
+    }
     
     // MARK: Private methods
     
